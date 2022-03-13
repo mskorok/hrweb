@@ -1,0 +1,50 @@
+<header id="header" class="  clear-fix">
+    <div data-ng-include="header_content"></div>
+</header>
+<div data-ng-include="top_menu"></div>
+<div data-ng-include="top_menu_mobile"></div>
+<div class="container m-t-75">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <center>
+                <div id="error_container" class="red-color f-size-24"></div>
+            </center>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 m-b-50 t-a-c">
+            <div ng-cloak class="block-title">
+                <h2 class="title-color">Applied</h2>
+            </div>
+        </div>
+    </div>
+    <div class="right" data-ng-include="pagination"></div>
+    <div ng-cloak ng-show="vacancies" class="row section-content" ng-repeat="vacancy in vacancies">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="search-block  m-b-30">
+                <div ng-show="vacancy.work_place" ng-cloak class="search-grey-text right">{{ vacancy.work_place }}</div>
+                <a href="/vacancy/{{ vacancy.id }}" ng-cloak ng-show="vacancy.name" class="block-title">{{ vacancy.name }}</a>
+                <div class="m-t-10">
+                    <div ng-cloak ng-show="vacancy.location" class="search-grey-text left">
+                        {{ vacancy.location }}
+                    </div>
+                    <div ng-cloak ng-show="vacancy.location && vacancy.company" class="search-grey-text left m-l-5">|</div>
+                    <div class="search-grey-text left m-l-5">{{ vacancy.company.name }}</div>
+
+                    <div class="search-block-salary" ng-cloak=""  ng-show="vacancy.salary">
+                        <span class="block-salary">{{ vacancy.salary }}&nbsp;{{ vacancy.currency }}</span>
+                    </div>
+                </div>
+
+                <div class="clearfix"></div>
+                <div ng-cloak ng-show="vacancy.description" class="search-block-content m-t-10">{{ vacancy.description }}
+                </div>
+                <div class="m-t-10">
+                    <div ng-cloak ng-show="vacancy.creationDate" class="search-block-date left">{{ vacancy.creationDate }}</div>
+                    <a href="/vacancy/{{ vacancy.id }}" class="search-block-more right">More</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="left" data-ng-include="pagination"></div>
+</div>
+<div data-ng-include="footer"></div>

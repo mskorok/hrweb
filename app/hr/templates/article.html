@@ -1,0 +1,40 @@
+<header id="header" class="  clear-fix">
+    <div data-ng-include="header_content"></div>
+</header>
+<div data-ng-include="top_menu"></div>
+<div data-ng-include="top_menu_mobile"></div>
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <center>
+                <div id="error_container" class="red-color f-size-24"></div>
+            </center>
+        </div>
+        <div class="row section-content m-t-50 m-b-75">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 m-b-30 t-a-c">
+                <a ng-show="article.title" href="javascript:void 0" class="block-title">
+                    <h2  ng-bind-html="article.title" class="title-color"></h2>
+                </a>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" ng-show="show_select">
+                <div class="form-group">
+                    <label for="banner"></label>
+                    <select class="form-control right m-r-20 my-banner" id="banner" style="width:350px;">
+                        <option value="1" selected  data-img-src="assets/images/banners/GB.png" style="width:240px;">&nbsp;GB</option>
+                        <option value="11" data-img-src="assets/images/banners/BR.png" style="width:240px;">&nbsp;BR</option>
+                        <option value="13" data-img-src="assets/images/banners/TR.png"  style="width:240px;">&nbsp;TR</option>
+                        <option value="4" data-img-src="assets/images/banners/RU.png" style="width:240px;">&nbsp;RU</option>
+                        <option value="8" data-img-src="assets/images/banners/ES.png"  style="width:240px;">&nbsp;ES</option>
+                        <option value="2" data-img-src="assets/images/banners/DE.png"  style="width:240px;">&nbsp;DE</option>
+                        <option value="3" data-img-src="assets/images/banners/FR.png" style="width:240px;">&nbsp;FR</option>
+                        <option value="7" data-img-src="assets/images/banners/IT.png" style="width:240px;">&nbsp;IT</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 search-block m-b-30 m-t-30 d-b ov-h" ng-show="article.text">
+                <span class="resume-text" ng-bind-html="article.text"></span>
+            </div>
+        </div>
+    </div>
+</div>
+<div data-ng-include="footer"></div>

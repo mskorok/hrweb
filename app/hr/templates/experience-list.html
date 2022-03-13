@@ -1,0 +1,45 @@
+<header id="header" class="  clear-fix">
+    <div data-ng-include="header-content"></div>
+</header>
+<div data-ng-include="top_menu"></div>
+<div data-ng-include="top_menu_mobile"></div>
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <center>
+                <div id="error_container" class="red-color f-size-24"></div>
+            </center>
+        </div>
+        <div class="right" data-ng-include="pagination"></div>
+        <div class="row section-content" ng-repeat="experience in experiences">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="search-block m-b-30">
+                    <!--<div class="search-grey-text right">Age: {{ experience.age }}</div>-->
+                    <a href="#" class="block-title" style="font-size: 18px;"> {{experience.title}} </a>
+
+                    <div class="experience-user-info m-t-10">
+                        <div class="search-grey-text left">{{ experience.organization }}</div>
+                        <div class="search-grey-text left m-l-5">|</div>
+                        <div class="search-grey-text left m-l-5">{{ experience.location }}</div>
+                        <div class="search-grey-text left m-l-5">|</div>
+                        <div class="search-grey-text left m-l-5">{{ experience.professional_area }}</div>
+                    </div>
+                    <br>
+                    <div class="experience-user-info m-t-10">
+                        <div class="search-grey-text left m-l-5"><a href="{{ experience.site }}">{{ experience.site }}</a></div>
+                    </div>
+                    <br>
+                    <div class="search-block-content  m-t-10">{{ experience.description }}
+                    </div>
+                    <div class="m-t-10">
+                        <div class="search-block-date left">Start: {{ experience.start }}</div>
+                    </div>
+                    <div class="m-t-10">
+                        <div class="search-block-date left p-l-25">End: {{ experience.finish }}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="left" data-ng-include="pagination"></div>
+    </div>
+    <div data-ng-include="footer"></div>

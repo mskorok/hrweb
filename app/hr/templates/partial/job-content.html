@@ -1,0 +1,158 @@
+<div class=" hidden-xs hidden-sm section-content">
+    <div class="row section-content">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 m-b-30">
+            <div class="h-menu-container">
+                <!--<a href="/" class="h-link">Contact us</a>-->
+                <!--<span class="h-link">|</span>-->
+                <a href="/" class="h-link">Hardware</a>
+                <span class="h-link">|</span>
+                <a href="/" class="h-link">Software</a>
+                <span class="h-link">|</span>
+                <a href="/profile/edit/{{user.id}}" class="h-link">Certification</a>
+                <span class="h-link">|</span>
+                <a href="/" class="h-link">Migration</a>
+                <span class="h-link">|</span>
+                <a href="/" class="h-link">Tests</a>
+                <span class="h-link">|</span>
+                <a href="/" class="h-link">Books</a>
+                <span class="h-link">|</span>
+                <a href="/" class="h-link">Education</a>
+                <span class="h-link">|</span>
+                <a href="/" class="h-link">Events</a>
+                <span class="h-link">|</span>
+                <a href="/job" class="h-link org-color">Job</a>
+                <span class="h-link">|</span>
+                <a href="/" class="h-link ">Home</a>
+            </div>
+        </div>
+    </div>
+    <div class="home-block">
+        <div class="main-title">
+            <div  style="margin: 0 auto;">
+                <span class="org-color">All</span>
+                <span class="yellow">for</span>
+                <span class="black">Coders</span>
+            </div>
+        </div>
+        <div class="desc">
+            <span ng-show="totalVacancies || totalResumes">
+                There you will find
+            </span>
+            <span id="show_adv_count" ng-show="hasVacancies">
+                <span class="yellow"> {{ totalVacancies }}</span> job advertisements
+                <span ng-show="hasCountries">
+                    from <a href="javascript:void 0" title="" class="yellow">
+                    {{ totalCountries }}
+                </a> countries
+                </span>
+            </span>
+            <span id="show_res_count" ng-show="hasResumes" style="display: none">
+                <span class="yellow"> {{ totalResumes }}</span> job applicants
+            </span>
+
+
+        </div>
+    </div>
+
+    <form id="job_search_form" class="main-search-form gray-form css3" novalidate style="margin-bottom: 200px">
+        <div class="row">
+            <div class="col-md-5">
+                <div style="width: 100%;margin-top: 20px;">
+                    <input required class="new-input placeholder-gray" type="text"
+                           placeholder="Profession, industries or company" title="Keywords" style="">
+                    <div class="radio-block">
+                        <input class="my" type="radio" id="vacancy_search_type" value="Vacancy" name="search_type" checked>
+                        <label for="vacancy_search_type" class="search-type">&nbsp;&nbsp;Vacancy</label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-5">
+                <div style="width: 100%;margin-top: 20px;">
+                    <input class="new-input placeholder-gray" type="text" placeholder="Country, city or state"
+                           title="Place" maxlength="70" style="width: 100%;">
+                    <div class="radio-block">
+                        <input class="my" type="radio" id="resume_search_type" value="Resume" name="search_type">
+                        <label for="resume_search_type" class="search-type">&nbsp;&nbsp;Resume</label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div style="width: 100%;margin-top: 27px;">
+                    <div style="width: 100%">
+                        <button id="search_resume" style="display: none" class="btn btn-orange">Search Resume</button>
+                        <button id="search_vacancy"  class="btn btn-orange">Search Vacancy
+                        </button>
+                    </div>
+                    <div style="width: 100%">
+                        <div class="add-block" id="resume_add_block">
+                            <img src="assets/images/new/plus.svg" height="20" width="20"
+                                 onerror="this.onerror=null; this.src='assets/images/new/plus.png'">
+                            <a id="addResumeButton" href="/resume/create" title="Add resume">
+                                Add resume
+                            </a>
+                        </div>
+                        <div class="add-block" style="display: none;"  id="vacancy_add_block">
+                            <a id="addVacancyButton" href="/vacancy/create" title="Add vacancy">
+                                <img src="assets/images/new/plus.svg" height="20" width="20"
+                                     onerror="this.onerror=null; this.src='assets/images/new/plus.png'">
+                                &nbsp;&nbsp;Add vacancy
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+</div>
+<div class=" hidden-md hidden-lg   wrapper-mobile">
+    <div class="search-content-mobile">
+        <form id="mobile_job_search">
+            <div class="search-content-mobile-text">
+                <span>IT</span>
+                <p>relocation</p>
+            </div>
+            <div class="input-text-block-mobile">
+                <input required type="text" placeholder="Keywords"/>
+            </div>
+            <div class="input-label-mobile">
+                <span>What:</span>
+                <p>Profession, industries or company</p>
+            </div>
+            <div class="input-text-block-mobile search-icon">
+                <input type="text" placeholder="Location"/>
+            </div>
+            <div class="input-label-mobile">
+                <span>Where:</span>
+                <p>Country, city or state</p>
+            </div>
+            <div class="button-size-mobile">
+                <button class="submit-button-mobile" type="button">
+                    <img class="submit-image-mobile" src="assets/images/mobile/submit.png" alt=""/>
+                    <span>Search</span>
+                </button>
+
+            </div>
+        </form>
+    </div>
+</div>
+<script>
+    $('input:radio[name="search_type"]').on('change', function () {
+        if (this.id === 'resume_search_type') {
+            $('#search_resume').show();
+            $('#search_vacancy').hide();
+            $('#resume_add_block').hide();
+            $('#vacancy_add_block').show();
+            $('#show_res_count').show();
+            $("#show_adv_count").hide();
+        } else if (this.id === 'vacancy_search_type') {
+            $('#search_resume').hide();
+            $('#search_vacancy').show();
+            $('#resume_add_block').show();
+            $('#vacancy_add_block').hide();
+            $('#show_res_count').hide();
+            $("#show_adv_count").show();
+        }
+        console.log(this.id);
+    });
+</script>

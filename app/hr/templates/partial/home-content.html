@@ -1,0 +1,97 @@
+<div class=" hidden-xs hidden-sm section-content" style="position: relative">
+    <div class="row section-content">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 m-b-30">
+            <div class="h-menu-container">
+                <!--<a href="/" class="h-link">Contact us</a>-->
+                <!--<span class="h-link">|</span>-->
+                <a href="/hardware" class="h-link">Hardware</a>
+                <span class="h-link">|</span>
+                <a href="/software" class="h-link">Software</a>
+                <span class="h-link">|</span>
+                <a href="/certification" class="h-link">Certification</a>
+                <span class="h-link">|</span>
+                <a href="/migration" class="h-link">Migration</a>
+                <span class="h-link">|</span>
+                <a href="/tests" class="h-link">Tests</a>
+                <span class="h-link">|</span>
+                <a href="/books" class="h-link">Books</a>
+                <span class="h-link">|</span>
+                <a href="/educations" class="h-link">Education</a>
+                <span class="h-link">|</span>
+                <a href="/events" class="h-link">Events</a>
+                <span class="h-link">|</span>
+                <a href="/job" class="h-link">Job</a>
+                <span class="h-link">|</span>
+                <a href="/" class="h-link org-color">Home</a>
+            </div>
+        </div>
+    </div>
+    <div class="home-block">
+        <div class="main-title">
+            <div style="margin: 0 auto;">
+                <span class="org-color">All</span>
+                <span class="yellow">for</span>
+                <span class="black">Coders</span>
+            </div>
+        </div>
+        <div class="desc">
+            <span ng-show="hasArticles">
+                There you will find <span class="yellow"> {{ totalArticles}}</span> articles<span ng-show="hasVacancies || hasResumes">,
+            </span>
+            </span>
+
+            <span ng-show="hasVacancies">
+                <a href="javascript:void 0" title="" class="yellow"> {{ totalVacancies }} </a> vacancies
+            </span>
+            <span ng-show="hasVacancies && hasResumes"> and
+            </span>
+            <span ng-show="hasResumes">
+                <a href="javascript:void 0" title="" class="yellow"> {{ totalResumes }} </a> resumes
+            </span>
+        </div>
+    </div>
+
+    <form id="main_search_form" class="main-search-form gray-form css3" novalidate style="margin-bottom: 200px">
+        <div class="row">
+            <div class="col-md-11">
+                <div style="width: 100%;margin-top: 20px;">
+                    <input required class="new-input placeholder-gray" type="text"
+                           placeholder="Articles" title="Keywords" style="">
+                </div>
+            </div>
+            <div class="col-md-1">
+                <div style="width: 100%;margin-top: 27px;">
+                    <div style="width: 100%">
+                        <button id="search_article" class="btn btn-orange">Search</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+</div>
+<div class=" hidden-md hidden-lg   wrapper-mobile">
+    <div class="search-content-mobile">
+        <form id="mobile_main_search">
+            <div class="search-content-mobile-text">
+                <span class="org-color">All</span>
+                <span class="yellow">for</span>
+                <p>coders</p>
+            </div>
+            <div class="input-text-block-mobile">
+                <input required type="text" placeholder="Articles"/>
+            </div>
+            <div class="input-label-mobile">
+                <span>What:</span>
+                <p>All articles about programming</p>
+            </div>
+            <div class="button-size-mobile">
+                <button class="submit-button-mobile" type="button">
+                    <img class="submit-image-mobile" src="assets/images/mobile/submit.png" alt=""/>
+                    <span>Search</span>
+                </button>
+
+            </div>
+        </form>
+    </div>
+</div>

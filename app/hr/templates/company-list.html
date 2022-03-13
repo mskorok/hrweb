@@ -1,0 +1,47 @@
+<header id="header" class="  clear-fix">
+    <div data-ng-include="header_content"></div>
+    <div data-ng-include="header_background"></div>
+</header>
+<div data-ng-include="top_menu"></div>
+<div data-ng-include="top_menu_mobile"></div>
+<div class="container m-t-40 m-b-100">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <center>
+                <div id="error_container" class="red-color f-size-24"></div>
+            </center>
+        </div>
+    </div>
+    <div class="pull-left m-b-30 m-l-75">
+        <a class="btn btn-info" href="/company/create">Add Company</a>
+    </div>
+    <div  ng-cloak ng-show="not_empty" class="right" data-ng-include="pagination"></div>
+    <div ng-cloak ng-show="companies" class="row section-content" ng-repeat="company in companies">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="search-block  m-b-30">
+                <div ng-show="company.site" ng-cloak class="search-grey-text right org-color">{{ company.site }}</div>
+                <a href="/company/{{ company.id }}" ng-cloak ng-show="company.name" class="block-title">{{ company.name }}</a>
+                <div class="m-t-10">
+                    <div ng-cloak ng-show="company.Countries.name" class="search-grey-text left m-l-5">
+                        {{ company.Countries.name }}
+                    </div>
+                    <div ng-cloak ng-show="company.city && company.Countries.name" class="search-grey-text left m-l-5">|</div>
+                    <div ng-cloak ng-show="company.city" class="search-grey-text left">
+                        {{ company.city }}
+                    </div>
+                </div>
+
+                <div class="clearfix"></div>
+                <div ng-cloak ng-show="company.description" class="search-block-content m-t-10">{{ company.description }}
+                </div>
+                <div class="m-t-10">
+                    <div ng-cloak ng-show="company.creationDate" class="search-block-date left">{{ company.creationDate }}</div>
+                    <a href="/company/{{ company.id }}" class="search-block-more right">More</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div ng-cloak ng-show="not_empty" class="left" data-ng-include="pagination"></div>
+</div>
+<div data-ng-include="footer"></div>

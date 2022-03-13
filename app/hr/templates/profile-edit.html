@@ -1,0 +1,47 @@
+<header id="header" class="  clear-fix">
+    <div data-ng-include="header_content"></div>
+    <div data-ng-include="header_background"></div>
+</header>
+<div data-ng-include="top_menu"></div>
+<div data-ng-include="top_menu_mobile"></div>
+<div class="container">
+    <div class="row section-content">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 m-b-30">
+            <div class="h-menu-container">
+                <a href="/company/list" class="h-link">Companies</a>
+                <span class="h-link">|</span>
+                <a href="/profile" class="h-link">Profile</a>
+                <span class="h-link">|</span>
+                <a href="/" class="h-link">Home</a>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <center>
+                <div id="error_container" class="red-color f-size-24"></div>
+            </center>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <h3 class="m-b-50" style="color: cornflowerblue;">Profile Edit</h3>
+            <div class="m-b-50" style="height: 20px">
+                <div class="left">
+                    <a class="btn btn-info hidden" href="profile/edit"  id="model_edit">Edit</a>
+                </div>
+                <div class="left">
+                    <a class="btn btn-info" href="/profile/show"  id="model_show">Show</a>
+                </div>
+                <div class="right">
+                    <a class="btn btn-danger" href="javascript:void 0"  id="model_delete">Delete</a>
+                </div>
+            </div>
+            <div class="btn btn-info btn-add-new-photo pull-right m-r-50 m-b-30 hidden" id="add_new_photo"> Add Photo</div>
+            <div id="content_container"></div>
+
+        </div>
+    </div>
+</div>
+<div data-ng-include="footer"></div>

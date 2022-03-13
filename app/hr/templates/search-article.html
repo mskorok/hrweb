@@ -1,0 +1,38 @@
+<header id="header" class="  clear-fix">
+    <div data-ng-include="header_content"></div>
+    <div data-ng-include="header_search_page"></div>
+    <div data-ng-include="header_background"></div>
+</header>
+<div data-ng-include="top_menu"></div>
+<div data-ng-include="top_menu_mobile"></div>
+<div class="container m-t-75">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <center>
+                <div id="error_container" class="red-color f-size-24"></div>
+            </center>
+        </div>
+        <div class="right" data-ng-include="pagination"></div>
+        <div class="row section-content" ng-repeat="article in articles">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="search-block m-b-30 t-a-c">
+                    <a ng-show="article.title" href="/article/{{article.id}}" class="block-title"
+                       style="font-size: 18px;"> <h4  class="title-color">{{article.title}}</h4> </a>
+                    <div class="resume-key m-b-20 m-t-30" ng-show="article.description">
+                        <span class="resume-text content-item" ng-bind-html="article.description"></span>
+                    </div>
+
+
+                    <div class="m-t-10">
+                        <div class="search-block-date right" data-art="{{article.article_id}}" data-link="article.link">
+                            <a href="/article/{{article.article_id}}" target="_blank" ng-show="article.show == 1 && article.article_id != null" style="text-decoration: none;">More</a>
+                            <a href="{{article.link}}" target="_blank" ng-show="article.show == 0 || article.article_id == null" style="text-decoration: none;">More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="left" data-ng-include="pagination"></div>
+</div>
+<div data-ng-include="footer"></div>

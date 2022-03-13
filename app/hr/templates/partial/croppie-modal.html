@@ -1,0 +1,329 @@
+<!-- Modal:Add Child Photo -->
+<div class="modal fade modal-add-photo js-first-modal" id="modal-add-photo" tabindex="-1" role="dialog"
+     aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm" style="width: auto; max-width: 700px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span>Add Photo</span>
+                <span class="close" data-dismiss="modal"><img src="assets/images/new/croppie/close.png" alt=""></span>
+            </div>
+            <div class="modal-body">
+                <div class="row" style="color: #064874;">
+                    <div class="col-sm-6">
+                        <div class="vignette placeholder" id="add_photo_image">
+                        </div>
+                        <div style="width: 300px; height: 1px; position: relative">
+                            <div class="vignette button-placeholder" style="position: absolute; top: -40px;">
+                                <div class="vignette zoom-out" id="zoom_out">-</div>
+                                <div class="vignette zoom-in" id="zoom_in">+</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <!-- Nav tabs -->
+                        <ul class="nav nav-pills nav-justified t-t-u">
+                            <li class="active"><a href="#boys" data-toggle="tab">Men</a></li>
+                            <li><a href="#girls" data-toggle="tab">Women</a></li>
+                        </ul>
+
+                        <!-- Tab panes -->
+                        <div class="tab-content" style="margin-top: 20px;">
+                            <div class="tab-pane fade in active avatar-grid" id="boys">
+                                <div class="row">
+                                    <div class="col-sm-3"><img src="assets/images/new/men/man01.png" id="boys_1"
+                                                               class="first-image"/></div>
+                                    <div class="col-sm-3"><img src="assets/images/new/men/man02.png" id="boys_2"/></div>
+                                    <div class="col-sm-3"><img src="assets/images/new/men/man03.png" id="boys_3"/></div>
+                                    <div class="col-sm-3"><img src="assets/images/new/men/man04.png" id="boys_4"/></div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-3"><img src="assets/images/new/men/man05.png" id="boys_5"/></div>
+                                    <div class="col-sm-3"><img src="assets/images/new/men/man06.png" id="boys_6"/></div>
+                                    <div class="col-sm-3"><img src="assets/images/new/men/man07.png" id="boys_7"/></div>
+                                    <div class="col-sm-3"><img src="assets/images/new/men/man08.png" id="boys_8"/></div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-3"><img src="assets/images/new/men/man09.png" id="boys_9"/></div>
+                                    <div class="col-sm-3"><img src="assets/images/new/men/man10.png" id="boys_10"/>
+                                    </div>
+                                    <div class="col-sm-3"><img src="assets/images/new/men/man11.png" id="boys_11"/>
+                                    </div>
+                                    <div class="col-sm-3"><img src="assets/images/new/men/man12.png" id="boys_12"/>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-3"><img src="assets/images/new/men/man13.png" id="boys_13"/>
+                                    </div>
+                                    <div class="col-sm-3"><img src="assets/images/new/men/man14.png" id="boys_14"/>
+                                    </div>
+                                    <div class="col-sm-3"><img src="assets/images/new/men/man15.png" id="boys_15"/>
+                                    </div>
+                                    <div class="col-sm-3"><img src="assets/images/new/men/man16.png" id="boys_16"/>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="tab-pane avatar-grid" id="girls">
+                                <div class="row">
+                                    <div class="col-sm-3"><img src="assets/images/new/women/woman01.png" id="girls_1"/>
+                                    </div>
+                                    <div class="col-sm-3"><img src="assets/images/new/women/woman02.png" id="girls_2"/>
+                                    </div>
+                                    <div class="col-sm-3"><img src="assets/images/new/women/woman03.png" id="girls_3"/>
+                                    </div>
+                                    <div class="col-sm-3"><img src="assets/images/new/women/woman04.png" id="girls_4"/>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-3"><img src="assets/images/new/women/woman05.png" id="girls_5"/>
+                                    </div>
+                                    <div class="col-sm-3"><img src="assets/images/new/women/woman06.png" id="girls_6"/>
+                                    </div>
+                                    <div class="col-sm-3"><img src="assets/images/new/women/woman07.png" id="girls_7"/>
+                                    </div>
+                                    <div class="col-sm-3"><img src="assets/images/new/women/woman08.png" id="girls_8"/>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-3"><img src="assets/images/new/women/woman09.png" id="girls_9"/>
+                                    </div>
+                                    <div class="col-sm-3"><img src="assets/images/new/women/woman10.png" id="girls_10"/>
+                                    </div>
+                                    <div class="col-sm-3"><img src="assets/images/new/women/woman11.png" id="girls_11"/>
+                                    </div>
+                                    <div class="col-sm-3"><img src="assets/images/new/women/woman12.png" id="girls_12"/>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-3"><img src="assets/images/new/women/woman13.png" id="girls_13"/>
+                                    </div>
+                                    <div class="col-sm-3"><img src="assets/images/new/women/woman14.png" id="girls_14"/>
+                                    </div>
+                                    <div class="col-sm-3"><img src="assets/images/new/women/woman15.png" id="girls_15"/>
+                                    </div>
+                                    <div class="col-sm-3"><img src="assets/images/new/women/woman16.png" id="girls_16"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-footer" style="padding: 15px 25px;">
+                <div class="pull-left">
+                    <div class="btn-group" id="upload_photo_buttons">
+                        <button type="button" class="btn btn-sm btn-orange add-photo-btn t-t-u">Add photo</button>
+                        <button type="button" class="btn btn-sm btn-siel" data-dismiss="modal"><img
+                            src="assets/images/new/croppie/exit_icon.png" alt=""></button>
+                    </div>
+                    <div>
+                        <input type="file" id="modal_upload" name="modal_upload" style="display: none;"/>
+                        <input type="hidden" id="base64">
+                    </div>
+                </div>
+                <div class="link-color pull-left m-l-75">
+                    <span id="allowed_formats">
+                    Allowed formats: JPG, PNG
+                    </span>
+                    <br/>
+                    <span id="max_image_size">
+                    Max size of photo 4 Mb
+                    </span>
+                </div>
+                <div style="position: relative; display: none;" id="add_photo_errors">
+                    <div style="float: left; margin-left: 20px; margin-right: 5px; padding: 5px;">
+                        <img src="assets/images/new/croppie/danger.png" style="width: 24px; height: 24px;">
+                    </div>
+                    <div style="float: left; text-align: left;">
+                        <div style="line-height: 16px; color: red;">
+                            Error: <br> Wrong size or format
+                        </div>
+                    </div>
+                </div>
+                <div style="float: right;">
+                    <div class="btn-group" id="add_photo_buttons">
+                        <button type="button" class="btn btn-sm btn-orange p-l-20 p-r-20 t-t-u">Save</button>
+                        <button type="button" class="btn btn-sm btn-siel" data-dismiss="modal"><img
+                            src="assets/images/new/croppie/exit_icon.png" alt=""></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    (function () {
+        function removeActive() {
+            for (var j = 1; j < 17; j++) {
+                var boy = document.getElementById('boys_' + j);
+                if (boy && boy.classList.contains('active')) {
+                    boy.classList.remove('active');
+                }
+                var girl = document.getElementById('girls_' + j);
+                if (girl && girl.classList.contains('active')) {
+                    girl.classList.remove('active');
+                }
+            }
+        }
+
+
+        var crop = new Croppie(document.getElementById('add_photo_image'), crop_opts);
+        var uri = the_host + '/assets/images/new/men/man01.png';
+        crop.bind({
+            url: uri
+        });
+
+        $(document).on('shown.bs.modal', function (e) {
+            crop.bind({
+                url: uri
+            });
+        });
+
+        $('#add_photo_buttons').on('click', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            crop.result('rawcanvas').then(function (html) {
+                html.setAttribute('id', 'canvas');
+                html.setAttribute('crossOrigin', 'anonymous');
+                try {
+                    var img = html.toDataURL('image/png');
+                    var avatar = document.getElementById('new_avatar');
+                    if (avatar) {
+                        var avatar_image = document.getElementById('new_avatar_image');
+                        if (avatar_image && img) {
+                            avatar_image.setAttribute('src', img);
+                            avatar.classList.remove('hidden');
+                            var add_btn = document.getElementById('add_new_photo');
+                            if (add_btn) {
+                                add_btn.textContent = 'Change Photo';
+                            }
+                        }
+
+                    }
+                    $('.modal-add-photo').modal('hide');
+                    var input = document.getElementById('base64');
+                    if (input && img) {
+                        input.value = img;
+                    }
+                } catch (e) {
+                    console.log('e', e);
+                }
+            });
+        });
+        var up_button = document.getElementById('zoom_in');
+        if (up_button) {
+            up_button.addEventListener('click', function (e) {
+                e.preventDefault();
+                e.stopPropagation();
+                crop.up();
+            })
+        }
+
+        var down_button = document.getElementById('zoom_out');
+        if (down_button) {
+            down_button.addEventListener('click', function (e) {
+                e.preventDefault();
+                e.stopPropagation();
+                crop.down();
+            })
+        }
+        for (var j = 1; j < 17; j++) {
+            var boy = document.getElementById('boys_' + j);
+            if (boy) {
+                boy.addEventListener('click', function () {
+                    $('#add_photo_buttons .btn').removeAttr('disabled');
+                    var allowed_formats = document.getElementById('allowed_formats');
+                    var max_image_size = document.getElementById('max_image_size');
+                    if (allowed_formats) {
+                        allowed_formats.style.color = '#064874';
+                    }
+                    if (max_image_size) {
+                        max_image_size.style.color = '#064874';
+                    }
+                    removeActive();
+                    this.classList.add('active');
+                    var url = this.src;
+                    crop.bind({
+                        url: url
+                    })
+                });
+
+            }
+            var girl = document.getElementById('girls_' + j);
+            if (girl) {
+                girl.addEventListener('click', function () {
+                    $('#add_photo_buttons .btn').removeAttr('disabled');
+                    var allowed_formats = document.getElementById('allowed_formats');
+                    var max_image_size = document.getElementById('max_image_size');
+                    if (allowed_formats) {
+                        allowed_formats.style.color = '#064874';
+                    }
+                    if (max_image_size) {
+                        max_image_size.style.color = '#064874';
+                    }
+                    removeActive();
+                    this.classList.add('active');
+                    var url = this.src;
+                    crop.bind({
+                        url: url
+                    })
+                });
+            }
+        }
+
+
+        document.getElementById('modal_upload').onchange = function () {
+            var extension = this.files[0].name;
+            extension = extension.split('.').pop();
+            var size = this.files[0].size;
+            if (this.files && this.files[0]) {
+                var reader = new FileReader();
+                reader.addEventListener('load', function (e) {
+                    var url = e.target.result;
+                    crop.bind({
+                        url: url
+                    })
+                });
+                reader.readAsDataURL(this.files[0]);
+            }
+            var upload_errors = document.getElementById('add_photo_errors');
+            removeActive();
+            $('#add_photo_buttons .btn').attr('disabled', true);
+            if (upload_errors) {
+                upload_errors.style.display = 'none';
+            }
+            var allowed_formats = document.getElementById('allowed_formats');
+            var max_image_size = document.getElementById('max_image_size');
+            if (['png', 'jpg'].indexOf(extension.toLowerCase()) !== -1) {
+                if (allowed_formats) {
+                    allowed_formats.style.color = '#064874';
+                }
+            } else {
+                if (allowed_formats) {
+                    allowed_formats.style.color = 'red';
+                }
+            }
+            if (parseInt(size) < 4000000) {
+                if (max_image_size) {
+                    max_image_size.style.color = '#064874';
+                }
+            } else {
+                if (max_image_size) {
+                    max_image_size.style.color = 'red';
+                }
+            }
+            if (['png', 'jpg'].indexOf(extension.toLowerCase()) !== -1 && parseInt(size) < 4000000) {
+                $('#add_photo_buttons .btn').removeAttr('disabled');
+            }
+        };
+
+
+        $('.add-photo-btn').on('click', function () {
+            $('#modal_upload').click();
+        })
+
+    })();
+</script>
+<!-- End Add Child Photo -->

@@ -1,0 +1,45 @@
+<header id="header" class="  clear-fix">
+    <div data-ng-include="header-content"></div>
+</header>
+<div data-ng-include="top_menu"></div>
+<div data-ng-include="top_menu_mobile"></div>
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <center>
+                <div id="error_container" class="red-color f-size-24"></div>
+            </center>
+        </div>
+    </div>
+    <div class="right" data-ng-include="pagination"></div>
+    <div class="row section-content" ng-repeat="vacancy in vacancies">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="search-block  m-b-30">
+                <div ng-show="vacancy.jobTypes[0]" class="search-grey-text right">{{ vacancy.jobTypes[0] }}</div>
+                <a href="/vacancy/{{ vacancy.id }}" class="block-title">{{ vacancy.title }}</a>
+                <div class="m-t-10">
+                    <div class="search-grey-text left">
+                        {{ vacancy.location }}
+                    </div>
+                    <div class="search-grey-text left m-l-5">|</div>
+                    <div class="search-grey-text left m-l-5">{{ vacancy.Companies.name }}</div>
+
+                    <div class="search-block-salary"  ng-show="vacancy.salary">
+                        <span class="block-salary">{{ vacancy.salary }}&nbsp;{{ vacancy.currency }}</span>
+                    </div>
+                </div>
+
+                <div class="clearfix"></div>
+                <div class="search-block-content m-t-10">{{ vacancy.description }}
+                </div>
+                <div class="m-t-10">
+                    <div class="search-block-date left">{{ vacancy.date }}</div>
+                    <a href="/vacancy/{{ vacancy.id }}" class="search-block-more right">More</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="left" data-ng-include="pagination"></div>
+</div>
+<div data-ng-include="footer"></div>

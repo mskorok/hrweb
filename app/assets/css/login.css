@@ -1,0 +1,13 @@
+.welcome {
+    width: 200px;
+    height: 300px;
+    margin-top: 100px;
+    margin-bottom: 100px;
+}
+
+.login-recovery-link {
+    text-decoration: none;
+    border-bottom: 1px dashed;
+    display: inline-block;
+    cursor: pointer;
+}

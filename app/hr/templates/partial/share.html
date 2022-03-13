@@ -1,0 +1,155 @@
+<script>
+    var _URL = "https://www.bigtv.ru/pages/otzivy";
+    var _TITLE = "Участвуй в розыгрыше! Напиши отзыв и выиграй до 10000 рублей на покупки в BIGTV.";
+    var _IMG_PATH = "https://www.bigtv.ru/desktop/images/review-contest/1353x400_otzivy.jpg";
+    var _DESC = "";
+    var _IMG_TEXT = '<img src="' + _IMG_PATH + '">' + _TITLE;
+    var Share = {
+        vkontakte: function(purl, ptitle, pimg, text) {
+            var url  = 'http://vkontakte.ru/share.php?';
+            url += 'url='          + encodeURIComponent(purl);
+            url += '&title='       + encodeURIComponent(ptitle);
+            url += '&description=' + encodeURIComponent(text);
+            url += '&image='       + encodeURIComponent(pimg);
+            url += '&noparse=true';
+            Share.popup(url);
+        },
+        odnoklassniki: function(purl, text) {
+            var url  = 'http://www.odnoklassniki.ru/dk?st.cmd=addShare&st.s=1';
+            url += '&st.comments=' + encodeURIComponent(text);
+            url += '&st._surl='    + encodeURIComponent(purl);
+            Share.popup(url);
+        },
+        facebook: function(purl, ptitle, pimg, text) {
+            var url  = 'http://www.facebook.com/sharer.php?s=100';
+            url += '&p[title]='     + encodeURIComponent(ptitle);
+            url += '&p[summary]='   + encodeURIComponent(text);
+            url += '&p[url]='       + encodeURIComponent(purl);
+            url += '&p[images][0]=' + encodeURIComponent(pimg);
+            Share.popup(url);
+        },
+        fb: function(purl, ptitle, pimg, text) {
+            var url = 'https://www.facebook.com/sharer/sharer.php?';
+            url += 'u=' + encodeURIComponent(purl);
+            url += '&title=' + encodeURIComponent(ptitle);
+            console.log(url);
+            Share.popup(url);
+        },
+        fb1: function(purl, ptitle, pimg, text) {
+            var url  = 'http://www.facebook.com/sharer/sharer.php?s=100';
+            url += '&p[title]='     + encodeURIComponent(ptitle);
+            url += '&p[summary]='   + encodeURIComponent(text);
+            url += '&p[url]='       + encodeURIComponent(purl);
+            url += '&p[images][0]=' + encodeURIComponent(pimg);
+            Share.popup(url);
+            //http://www.facebook.com/sharer/sharer.php?s=100&p%5Btitle%5D=[TITLE]&p%5Bsummary%5D=[TEXT]&p%5Burl%5D=[LINK]&p%5Bimages%5D%5B0%5D=[IMAGE]
+        },
+        twitter: function(purl, ptitle) {
+            var url  = 'http://twitter.com/share?';
+            url += 'text='      + encodeURIComponent(ptitle);
+            url += '&url='      + encodeURIComponent(purl);
+            url += '&counturl=' + encodeURIComponent(purl);
+            Share.popup(url);
+        },
+        mailru: function(purl, ptitle, pimg, text) {
+            var url  = 'http://connect.mail.ru/share?';
+            url += 'url='          + encodeURIComponent(purl);
+            url += '&title='       + encodeURIComponent(ptitle);
+            url += '&description=' + encodeURIComponent(text);
+            url += '&imageurl='    + encodeURIComponent(pimg);
+            Share.popup(url)
+        },
+
+        popup: function(url) {
+            window.open(url,'','toolbar=0,status=0,width=626,height=436');
+        }
+    };
+</script>
+
+<a onclick="Share.vkontakte(_URL,_TITLE,_IMG_PATH,_DESC)" class="m-l-25"> VK</a>
+<a onclick="Share.fb(_URL,_TITLE,_IMG_PATH,_DESC)"  class="m-l-25">FB</a>
+<a onclick="Share.mailru(_URL,_TITLE,_IMG_PATH,_DESC)"  class="m-l-25">MLR</a>
+<a onclick="Share.odnoklassniki(_URL,_TITLE)"  class="m-l-25">OK</a>
+<a onclick="Share.twitter(_URL, _IMG_TEXT)"  class="m-l-25">TWR</a>
+
+
+
+
+<!-- Это правильно -->
+
+<script>
+    var _URL = "http://arcana.pw";
+    var _TITLE = "ARCANA";
+    var _IMG_PATH = '';//"http://arcana.pw/assets/img/it-services.jpg";
+    var _DESC = "";
+    var _IMG_TEXT = '<img src="' + _IMG_PATH + '">' + _TITLE;
+    var Share = {
+        vkontakte: function(purl, ptitle, pimg, text) {
+            var url  = 'http://vkontakte.ru/share.php?';
+            url += 'url='          + encodeURIComponent(purl);
+            url += '&title='       + encodeURIComponent(ptitle);
+            url += '&description=' + encodeURIComponent(text);
+            url += '&image='       + encodeURIComponent(pimg);
+            url += '&noparse=true';
+            //https://vk.com/share.php?title=%D0%A3%D1%87%D0%B0%D1%81%D1%82%D0%B2%D1%83%D0%B9%20%D0%B2%20%D1%80%D0%BE%D0%B7%D1%8B%D0%B3%D1%80%D1%8B%D1%88%D0%B5!%20%D0%9D%D0%B0%D0%BF%D0%B8%D1%88%D0%B8%20%D0%BE%D1%82%D0%B7%D1%8B%D0%B2%20%D0%B8%20%D0%B2%D1%8B%D0%B8%D0%B3%D1%80%D0%B0%D0%B9%20%D0%B4%D0%BE%2010000%20%D1%80%D1%83%D0%B1%D0%BB%D0%B5%D0%B9%20%D0%BD%D0%B0%20%D0%BF%D0%BE%D0%BA%D1%83%D0%BF%D0%BA%D0%B8%20%D0%B2%20BIGTV.&url=https%3A%2F%2Fwww.bigtv.ru%2Fpages%2Fotzivy
+            Share.popup(url);
+        },
+        odnoklassniki: function(purl, text) {
+            //https://connect.ok.ru/dk?st.cmd=WidgetSharePreview&st.shareUrl=https%3A%2F%2Fwww.bigtv.ru%2Fpages%2Fotzivy
+            var url  = 'https://connect.ok.ru/dk?st.cmd=WidgetSharePreview';
+            url += '&st.shareUrl='    + encodeURIComponent(purl);
+            Share.popup(url);
+        },
+        facebook: function(purl, ptitle, pimg, text) {
+            var url  = 'http://www.facebook.com/sharer.php?s=100';
+            url += '&p[title]='     + encodeURIComponent(ptitle);
+            url += '&p[summary]='   + encodeURIComponent(text);
+            url += '&p[url]='       + encodeURIComponent(purl);
+            url += '&p[images][0]=' + encodeURIComponent(pimg);
+            Share.popup(url);
+        },
+        fb: function(purl, ptitle, pimg, text) {
+            var url = 'https://www.facebook.com/sharer/sharer.php?';
+            url += 'u=' + encodeURIComponent(purl);
+            url += '&title=' + encodeURIComponent(ptitle);
+            Share.popup(url);
+        },
+        fb1: function(purl, ptitle, pimg, text) {
+            var url  = 'http://www.facebook.com/sharer.php?s=100';
+            url += '&p[title]='     + encodeURIComponent(ptitle);
+            url += '&p[summary]='   + encodeURIComponent(text);
+            url += '&p[url]='       + encodeURIComponent(purl);
+            url += '&p[images][0]=' + encodeURIComponent(pimg);
+            Share.popup(url);
+            //http://www.facebook.com/sharer/sharer.php?s=100&p%5Btitle%5D=[TITLE]&p%5Bsummary%5D=[TEXT]&p%5Burl%5D=[LINK]&p%5Bimages%5D%5B0%5D=[IMAGE]
+        },
+        twitter: function(purl, ptitle) {
+            var url  = 'http://twitter.com/share?';
+            url += 'text='      + encodeURIComponent(ptitle);
+            url += '&url='      + encodeURIComponent(purl);
+            // url += '&counturl=' + encodeURIComponent(purl);
+            //https://twitter.com/intent/tweet?text=TEST&url=http%3A%2F%2Farcana.pw
+            Share.popup(url);
+        },
+        mailru: function(purl, ptitle, pimg, text) {
+            var url  = 'http://connect.mail.ru/share?';
+            url += 'url='          + encodeURIComponent(purl);
+            url += '&title='       + encodeURIComponent(ptitle);
+            url += '&description=' + encodeURIComponent(text);
+            url += '&imageurl='    + encodeURIComponent(pimg);
+            Share.popup(url)
+        },
+
+        popup: function(url) {
+            window.open(url,'','toolbar=0,status=0,width=626,height=436');
+        }
+    };
+</script>
+
+<a onclick="Share.vkontakte(_URL,_TITLE,_IMG_PATH,_DESC)" class="m-l-25"> VK</a>
+<a onclick="Share.fb(_URL,_TITLE,_IMG_PATH,_DESC)"  class="m-l-25">FB</a>
+<a onclick="Share.mailru(_URL,_TITLE,_IMG_PATH,_DESC)"  class="m-l-25">MLR</a>
+<a onclick="Share.odnoklassniki(_URL,_TITLE)"  class="m-l-25">OK</a>
+<a onclick="Share.twitter(_URL, _IMG_PATH + ' ' + _TITLE)"  class="m-l-25">TWR</a>
+
+<div class="m-b-50"></div>

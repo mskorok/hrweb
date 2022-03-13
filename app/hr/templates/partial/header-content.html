@@ -1,0 +1,330 @@
+<div class="header-content">
+    <div class="section-content clear-fix">
+        <div class="row m-r-0 m-l-0">
+            <div class="col-xs-6 col-sm-6 col-md-2">
+                <div class="left account-hide">
+                    <div class="arrow-drop user account-authorized" ng-cloak ng-class="user_id ? 'show' : 'hide'">
+                        <div class="account-image">
+                            <a href="javascript:void 0">
+                                <img src="{{user_avatar}}" title="{{user_name}}" class="boy-img">
+                                <span class="user-name">{{user_name}}</span>
+                            </a>
+                        </div>
+                        <div class="account-controls">
+                            <ul class="account-list">
+                                <li><a href="/profile" title="Profile">Profile</a></li>
+                                <li><a href="javascript:void 0" id="hr_nav_logout" onclick="admin_auth.force_logout()"
+                                       title="Logout">Logout</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class=" account-unauthorized" ng-cloak ng-class="user_id ? 'hide' : 'show'">
+                        <ul class="auth-text g-borders">
+                            <li><a href="/profile/create" title="Signup">Signup</a></li>
+                            <li><a href="/login" title="Login">Login</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="hidden-xs hidden-sm col-md-8">
+                <!--<form class="top-subscription-form hidden" id="mail_subscription" ng-show="!hide_subscribe_link">-->
+                    <!--<div class="row">-->
+                        <!--<div class="col-md-4 col-lg-4">-->
+                            <!--<input required name="email" id="subscription_email" type="email"-->
+                                   <!--class="new-input placeholder-gray h-30 p-l-10" placeholder="Email">-->
+                        <!--</div>-->
+                        <!--<div class="col-md-4 col-lg-4">-->
+                            <!--<select name="category" id="subscription_category"-->
+                                    <!--class="new-input placeholder-gray h-30 p-l-10" title="Subscription category">-->
+                                <!--<option value="0" selected>Choose category</option>-->
+                                <!--<option value="1">Certification</option>-->
+                                <!--<option value="2">Countries</option>-->
+                            <!--</select>-->
+                        <!--</div>-->
+                        <!--<div class="col-md-4 col-lg-4">-->
+                            <!--<button id="head_subscribe" class="btn btn-orange">Subscribe</button>-->
+                        <!--</div>-->
+                        <!--<div class="col-md-12 col-lg-12 t-a-c">-->
+                            <!--<label class="h-15 orange-color" for="subscription_email">Subscribe for updates</label>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</form>-->
+
+
+
+                <!--<ul class="nav-text">-->
+                <!--<li>Visitors this week: <span>38000</span></li>-->
+                <!--<li>Registered job seekers: <span> 54123</span></li>-->
+                <!--</ul>-->
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-2">
+                <div class="right main-menu">
+                    <div class="main-menu-btn">
+                        <svg viewBox="0 0 100 80" width="40" height="40" class="menu-svg" fill="#E9A505">
+                            <rect width="100" height="10" rx="8"></rect>
+                            <rect y="30" width="100" height="10" rx="8"></rect>
+                            <rect y="60" width="100" height="10" rx="8"></rect>
+                        </svg>
+                    </div>
+
+                    <!--<div class="arrow-drop menu-items">-->
+                    <!--<ul>-->
+                    <!--<li><a href="/pages/countries.html" title="Countries">Countries</a></li>-->
+                    <!--<li><a href="/pages/articles.html" title="Articles">Articles</a></li>-->
+                    <!--<li><a href="/pages/certification.html" title="Certification">Certification</a></li>-->
+                    <!--</ul>-->
+                    <!--</div>-->
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 hidden-md hidden-lg m-t-20 hidden" ng-show="!hide_subscribe_link">
+                <!--<form class="top-subscription-form hidden" id="mail_subscription_mobile">-->
+                    <!--<div class="row">-->
+                        <!--<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 p-r-3">-->
+                            <!--<input name="email" id="subscription_email_mobile" type="email"-->
+                                   <!--class="new-input placeholder-gray h-30 p-l-3" placeholder="Email">-->
+                        <!--</div>-->
+                        <!--<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 p-l-3 p-r-3">-->
+                            <!--<select name="category" id="subscription_category_mobile"-->
+                                    <!--class="new-input placeholder-gray h-30 p-l-3" title="Subscription category">-->
+                                <!--<option value="0" selected>Choose category</option>-->
+                                <!--<option value="1">Certification</option>-->
+                                <!--<option value="2">Countries</option>-->
+                            <!--</select>-->
+                        <!--</div>-->
+                        <!--<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 p-l-3">-->
+                            <!--<button id="head_subscribe_mobile" class="btn btn-orange">Subscribe</button>-->
+                        <!--</div>-->
+                        <!--<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 t-a-c m-t-5 m-b-5">-->
+                            <!--<label class="h-15 orange-color" for="subscription_email_mobile">Subscribe for updates</label>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</form>-->
+                <!--<ul class="nav-text">-->
+                <!--<li>Visitors this week: <span>38000</span></li>-->
+                <!--<li>Registered job seekers: <span> 54123</span></li>-->
+                <!--</ul>-->
+            </div>
+        </div>
+        <div style="position: relative; width: 100%">
+            <div class="row" style="position: absolute;width: 100%">
+                <div class="hidden-xs hidden-sm col-md-4 "></div>
+                <div class="hidden-xs hidden-sm col-md-4"></div>
+                <div class="col-xs-12 col-md-4 ">
+                    <div class="arrow-drop menu-items">
+                        <ul>
+                            <li class="menu-item">
+                                <a class="menu-link" href="/pages/countries.html" title="Countries">Countries</a>
+                                <span class="menu-arrow dim-down">
+                                        <svg height="15" width="15">
+                                            <polygon points="0,0 14,0 7,14"
+                                                     style="fill:lightgrey;stroke:darkgray;stroke-width:1px"/>
+                                        </svg>
+                                    </span>
+                                <span class="menu-arrow dim-right">
+                                        <svg height="15" width="15">
+                                            <polygon points="0,0 14,7 0,14"
+                                                     style="fill:lightgrey;stroke:darkgray;stroke-width:1px"/>
+                                        </svg>
+                                    </span>
+                                <ul class="inner-items">
+                                    <li>
+                                        <a>Article 1</a>
+                                    </li>
+                                    <li>
+                                        <a>Article 2</a>
+                                    </li>
+                                    <li>
+                                        <a>Article 3</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="menu-item">
+                                <a class="menu-link" href="/pages/articles.html" title="Articles">Articles</a>
+                                <span class="menu-arrow dim-down">
+                                        <svg height="15" width="15">
+                                            <polygon points="0,0 14,0 7,14"
+                                                     style="fill:lightgrey;stroke:darkgray;stroke-width:1px"/>
+                                        </svg>
+                                    </span>
+                                <span class="menu-arrow dim-right">
+                                        <svg height="15" width="15">
+                                            <polygon points="0,0 14,7 0,14"
+                                                     style="fill:lightgrey;stroke:darkgray;stroke-width:1px"/>
+                                        </svg>
+                                    </span>
+                                <ul class="inner-items">
+                                    <li>
+                                        <a>Article 1</a>
+                                    </li>
+                                    <li>
+                                        <a>Article 2</a>
+                                    </li>
+                                    <li>
+                                        <a>Article 3</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="menu-item">
+                                <a class="menu-link" href="/pages/certification.html" title="Certification">Certification</a>
+                                <span class="menu-arrow dim-down">
+                                        <svg height="15" width="15">
+                                            <polygon points="0,0 14,0 7,14"
+                                                     style="fill:lightgrey;stroke:darkgray;stroke-width:1px"/>
+                                        </svg>
+                                    </span>
+                                <span class="menu-arrow dim-right">
+                                        <svg height="15" width="15">
+                                            <polygon points="0,0 14,7 0,14"
+                                                     style="fill:lightgrey;stroke:darkgray;stroke-width:1px"/>
+                                        </svg>
+                                    </span>
+                                <ul class="inner-items">
+                                    <li>
+                                        <a>Article 1</a>
+                                    </li>
+                                    <li>
+                                        <a>Article 2</a>
+                                    </li>
+                                    <li>
+                                        <a>Article 3</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row m-r-0 m-l-0 m-t-10 hidden-md hidden-lg">
+    <div class="col-xs-12 col-sm-12 hidden-md hidden-lg">
+        <a href="/subscribe" class="h-link m-l-30"  ng-cloak  ng-show="!hide_subscribe_link">Subscribe for updates</a>
+        <a href="/" class="h-link m-l-30  org-color pull-left" ng-cloak ng-show="!route_home">Home</a>
+    </div>
+</div>
+<script>
+
+    $('.account-image').on('click', function () {
+        $('.account-list').toggle();
+    });
+    $('.account-hide').on('mouseleave', function () {
+        $('.account-list').hide();
+    });
+
+    $('.main-menu-btn').on('click', function () {
+        $('.menu-items').toggle();
+    });
+
+    // $('.main-menu').on('mouseleave', function () {
+    //   $('.menu-items').hide();
+    // });
+
+    var size = 180;
+    var descriptions = document.getElementsByClassName('content-item');
+    if (descriptions) {
+        [].forEach.call(descriptions, function (description) {
+            if (description.textContent.length > size) {
+                description.textContent = description.textContent.slice(0, size) + ' ...';
+            }
+        })
+    }
+
+    $('.btn').on('mousedown mouseup', function (e) {
+        this.style.outlineStyle = 'none';
+    });
+    $('input').on('mousedown', function (e) {
+        this.style.outlineStyle = 'none';
+    });
+
+    $('select').on('mousedown', function (e) {
+        this.style.outlineStyle = 'none';
+    });
+
+    $('.menu-arrow').on('click', function () {
+        // console.log(this.parentNode);
+        if (this.parentNode.classList.contains('active')) {
+            // console.log($(this).parent(), 1);
+            this.parentNode.classList.remove('active');
+            $(this).parent().find('.dim-down').css('display', 'none');
+            $(this).parent().find('.dim-right').css('display', 'inline-block');
+        } else {
+            // console.log(2);
+            this.parentNode.classList.add('active');
+            $(this).parent().find('.dim-down').css('display', 'inline-block');
+            $(this).parent().find('.dim-right').css('display', 'none');
+        }
+    });
+
+    // var mail_form_mobile = document.getElementById('mail_subscription_mobile');
+    //
+    // if (mail_form_mobile) {
+    //     mail_form_mobile.addEventListener('submit', function (ev) {
+    //         var url = rest_api_host + hr_mail_subscription_url;
+    //         var xhr = new XMLHttpRequest();
+    //         var form_data = new FormData(mail_form_mobile);
+    //         xhr.onload = function () {
+    //             // console.log('r', this.response);
+    //             if (this.readyState === 4) {
+    //                 if (this.status === 200) {
+    //                     mail_form_mobile.style.display = 'none';
+    //                     setTimeout(function () {
+    //                         mail_form_mobile.style.display = 'block';
+    //                     }, 10000);
+    //                 } else {
+    //                     console.log('error response', this.response);
+    //                 }
+    //             }
+    //         };
+    //         xhr.open('POST', url, true);
+    //         xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+    //         xhr.send(form_data);
+    //     });
+    // }
+    //
+    // var mail_form = document.getElementById('mail_subscription');
+    // console.log('mf', mail_form);
+    // if (mail_form) {
+    //     mail_form.addEventListener('submit', function (ev) {
+    //         var url = rest_api_host + hr_mail_subscription_url;
+    //         var xhr = new XMLHttpRequest();
+    //         var form_data = new FormData(mail_form);
+    //         xhr.onload = function () {
+    //             console.log('r', this.response);
+    //             if (this.readyState === 4) {
+    //                 if (this.status === 200) {
+    //                     mail_form.style.display = 'none';
+    //                     setTimeout(function () {
+    //                         mail_form.style.display = 'block';
+    //                     }, 10000);
+    //                 } else {
+    //                     console.log('error response', this.response);
+    //                 }
+    //             }
+    //         };
+    //         xhr.open('POST', url, true);
+    //         xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+    //         // xhr.send(form_data);
+    //     });
+    // }
+</script>
+<script>
+    // just for the demos, avoids form submit
+    // jQuery.validator.setDefaults({
+    //     debug: true,
+    //     success: "valid"
+    // });
+    // $( "#mail_subscription" ).validate({
+    //     rules: {
+    //         field: {
+    //             required: true,
+    //             email: true
+    //         }
+    //     }
+    // });
+</script>
+
+
+
+
+

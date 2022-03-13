@@ -1,0 +1,30 @@
+<header id="header" class="  clear-fix">
+    <div data-ng-include="header-content"></div>
+</header>
+<div data-ng-include="top_menu"></div>
+<div data-ng-include="top_menu_mobile"></div>
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <center>
+                <div id="error_container" class="red-color f-size-24"></div>
+            </center>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="left">
+                <a class="btn btn-info hidden" href="javascript:void 0" ng-show="modelEdit" id="model_edit">Edit</a>
+            </div>
+            <div class="left">
+                <a class="btn btn-info hidden" href="javascript:void 0" ng-show="modelShow" id="model_show">Show</a>
+            </div>
+            <div class="right">
+                <a class="btn btn-danger hidden" href="javascript:void 0"  ng-show="modelDelete" id="model_delete">Delete</a>
+            </div>
+            <div id="content_container"></div>
+        </div>
+    </div>
+</div>
+<div data-ng-include="footer"></div>

@@ -1,0 +1,33 @@
+<div class="row m-t-30 m-b-30">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="pagination-el-loop" ng-if="first < current">
+            <a href="#" ng-click="goLink(before)">
+                <div class="pagination-el previous org-color">Previous</div>
+            </a>
+        </div>
+        <a href="#" ng-click="goLink(first)">
+            <div class="pagination-el first" ng-class="first === current ? 'title-color  pagination-el-current' : 'orange-color'">{{ first }}</div>
+        </a>
+        <div class="pagination-el-loop dot" ng-if="first < firstInRange - 1">
+            <div class="pagination-el dot orange-color  m-l-0 m-r-0 p-l-0 p-r-0">&nbsp;.&nbsp;.&nbsp;.&nbsp;</div>
+        </div>
+        <div class="pagination-el-loop" ng-repeat="page in pagesRange">
+            <a href="#" ng-click="goLink(page)">
+                <div class="pagination-el middle"  ng-class="page === current ? 'title-color pagination-el-current' : 'orange-color'">{{ page }}</div>
+            </a>
+        </div>
+        <div class="pagination-el-loop dot" ng-if="last > lastInRange + 1">
+            <div class="pagination-el dot orange-color  m-l-0 m-r-0 p-l-0 p-r-0">&nbsp;.&nbsp;.&nbsp;.&nbsp;</div>
+        </div>
+        <div class="pagination-el-loop" ng-if="last > 1">
+            <a href="#" ng-click="goLink(last)">
+                <div class="pagination-el last" ng-class="last === current ? 'title-color  pagination-el-current' : 'orange-color'">{{ last }}</div>
+            </a>
+        </div>
+        <div class="pagination-el-loop" ng-if="last > current">
+            <a href="#" ng-click="goLink(next)">
+                <div class="pagination-el next org-color">Next</div>
+            </a>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,56 @@
+{
+  "_from": "blowup",
+  "_id": "blowup@1.0.2",
+  "_inBundle": false,
+  "_integrity": "sha512-bMRKisjPwBDlP+KcxGcsF+CDnBYb0b/ZZ31P4WxX7j9sBwnYo4UyU/5xAebZS6bxhv4WASf06L3WWQc+euvRqQ==",
+  "_location": "/blowup",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "blowup",
+    "name": "blowup",
+    "escapedName": "blowup",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/blowup/-/blowup-1.0.2.tgz",
+  "_shasum": "a887111fbdc7366570b24254f1abe39a27f70a3d",
+  "_spec": "blowup",
+  "_where": "/home/mike/PhpstormProjects/allcables/sites",
+  "author": {
+    "name": "Paul Krishnamurthy",
+    "email": "paul@paulkr.com",
+    "url": "http://paulkr.com"
+  },
+  "bugs": {
+    "url": "https://github.com/paulkr/blowup.js/issues"
+  },
+  "bundleDependencies": false,
+  "dependencies": {},
+  "deprecated": false,
+  "description": "A jQuery plugin for customizable image magnification.",
+  "devDependencies": {},
+  "homepage": "https://github.com/paulkr/blowup.js#readme",
+  "keywords": [
+    "magnify",
+    "magnification",
+    "zoom"
+  ],
+  "license": "MIT",
+  "main": "index.js",
+  "name": "blowup",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/paulkr/blowup.js.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "1.0.2"
+}

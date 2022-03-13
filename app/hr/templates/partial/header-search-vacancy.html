@@ -1,0 +1,194 @@
+<div class=" hidden-xs hidden-sm search-panel desktop"
+     style="height: 100px; width: 100%; background-color: #F6D101;">
+    <form id="full_text_search_form" novalidate>
+        <div class="section-content" style="height: 100px;padding-top: 10px">
+            <div class="page-search-form">
+                <div class="row">
+                    <div class="col-md-5 col-lg-5">
+                        <div style="width: 100%;margin-top: 10px;">
+                            <input class="new-input placeholder-gray" type="text"
+                                   placeholder="Profession, industries or company" title="Keywords" style="">
+                        </div>
+                    </div>
+                    <div class="col-md-5 col-lg-5">
+                        <div style="width: 100%;margin-top: 10px;">
+                            <input class="new-input placeholder-gray" type="text" placeholder="Country, city or state"
+                                   title="Place" maxlength="70" style="width: 100%;">
+                        </div>
+                    </div>
+                    <div class="col-md-2 col-lg-2">
+                        <div style="width: 100%;margin-top: 17px;">
+                            <div style="width: 100%">
+                                <button class="btn btn-orange" type="submit">Search Vacancy</button>
+                            </div>
+                            <div style="width: 100%" ng-show="user_id">
+                                <div class="add-block m-t-3" style="display: none;">
+                                    <img src="assets/images/new/plus.svg" height="20" width="20"
+                                         onerror="this.onerror=null; this.src='assets/images/new/plus.png'">
+                                    <a id="addResumeButton" href="/resume/create" title="Add resume">
+                                        Add resume
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="section-content page-additional-form">
+            <div class="row p-t-20">
+                <div class="col-md-3 col-lg-3">
+                    <div class="input-label-mobile m-b-5">
+                        <label for="search_salary" class="fwn" style="color: #BD8200">Salary from</label>
+                    </div>
+                    <div class="input-text-block-mobile">
+                        <input id="search_salary" class="new-input m-t-3 placeholder-gray" type="text"
+                               placeholder="Salary"
+                               name="salary">
+                    </div>
+                </div>
+
+                <div class="col-md-3 col-lg-3">
+                    <div class="input-label-mobile m-b-5">
+                        <label for="search_currency" class="fwn" style="color: #BD8200">Currency</label>
+                    </div>
+                    <div class="input-text-block-mobile">
+                        <select class="new-input m-t-3 placeholder-gray" id="search_currency" name="currency">
+                            <option>EURO</option>
+                            <option>US dollar</option>
+                            <option>UK pound</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-md-3 col-lg-3">
+                    <div class="input-label-mobile m-b-5">
+                        <label class="fwn" for="type_of_work" style="color: #BD8200">Type of work</label>
+                    </div>
+                    <div class="input-text-block-mobile">
+                        <select class="new-input m-t-3 placeholder-gray" data-live-search="true"
+                                id="type_of_work"
+                                name="type-of-work">
+                            <option selected>Full time</option>
+                            <option>Part time</option>
+                            <option>Project</option>
+                            <option>Remote</option>
+                            <option>Volunteer</option>
+                            <option>Contract</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-md-3 col-lg-3">
+                    <div class="input-label-mobile m-b-5">
+                        <label class="fwn" for="search_sort" style="color: #BD8200">Sort by</label>
+                    </div>
+                    <div class="input-text-block-mobile">
+                        <select class="new-input m-t-3 placeholder-gray" id="search_sort" name="search-sort">
+                            <option>Newest first</option>
+                            <option>Salary</option>
+                            <option>Salary desc</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="button-size-mobile m-t-10 right">
+                <button class="btn btn-orange" type="submit">
+                    <img class="submit-image-mobile" src="assets/images/mobile/submit.png" height="15" width="15"
+                         alt=""/>
+                    <span>Search</span>
+                </button>
+
+            </div>
+        </div>
+    </form>
+</div>
+<button id="filter_button" class="hidden-md hidden-lg btn filter-button" type="button">
+    <span>Filter</span>
+</button>
+<div id="mobile_filter" style="display: none" class=" hidden-md hidden-lg  wrapper-mobile">
+    <div class="search-content-mobile p-t-30">
+        <form id="mobile_full_text_search_form">
+            <div class="input-text-block-mobile">
+                <input name="keywords" type="text" placeholder="Keywords"/>
+            </div>
+            <div class="input-label-mobile">
+                <span>What:</span>
+                <p>Profession, industries or company</p>
+            </div>
+            <div class="input-text-block-mobile search-icon">
+                <input name="location" type="text" placeholder="Location"/>
+            </div>
+            <div class="input-label-mobile">
+                <span>Where:</span>
+                <p>Country, city or state</p>
+            </div>
+            <div class="input-text-block-mobile">
+                <input id="mobile_search_salary" class="form-control input-text-block-mobile m-t-3" type="text"
+                       placeholder="Salary"
+                       name="salary">
+
+            </div>
+            <div class="input-label-mobile">
+                <label for="mobile_search_salary" class="fwn">Salary from</label>
+            </div>
+
+            <div class="input-text-block-mobile">
+                <select class="form-control input-text-block-mobile m-t-3" id="mobile_search_currency" name="currency">
+                    <option>EURO</option>
+                    <option>US dollar</option>
+                    <option>UK pound</option>
+                </select>
+            </div>
+
+            <div class="input-label-mobile">
+                <label for="mobile_search_currency" class="fwn">Currency</label>
+            </div>
+            <div class="input-text-block-mobile">
+                <select class="form-control  input-text-block-mobile m-t-3" data-live-search="true"
+                        id="mobile_type_of_job"
+                        name="type-of-job">
+                    <option selected>Full time</option>
+                    <option>Part time</option>
+                    <option>Project</option>
+                    <option>Volunteer</option>
+                    <option>Contract</option>
+                </select>
+            </div>
+            <div class="input-label-mobile">
+                <label class="fwn" for="mobile_type_of_job">Type of Job</label>
+            </div>
+            <div class="input-text-block-mobile">
+                <select class="form-control  input-text-block-mobile m-t-3" data-live-search="true"
+                        id="mobile_work_place"
+                        name="work_place">
+                    <option selected>Office</option>
+                    <option>Remote</option>
+                    <option>Partially remote</option>
+                </select>
+            </div>
+            <div class="input-label-mobile">
+                <label class="fwn" for="mobile_work_place">Place of work</label>
+            </div>
+            <div class="input-text-block-mobile">
+                <select class="form-control input-text-block-mobile m-t-3" id="mobile_search_sort" name="search-sort">
+                    <option>Newest first</option>
+                    <option>Salary</option>
+                    <option>Salary desc</option>
+                </select>
+            </div>
+            <div class="input-label-mobile">
+                <label class="fwn" for="mobile_search_sort">Sort by</label>
+            </div>
+            <div class="button-size-mobile">
+                <button class="submit-button-mobile" type="submit">
+                    <img class="submit-image-mobile" src="assets/images/mobile/submit.png" alt=""/>
+                    <span>Search</span>
+                </button>
+
+            </div>
+        </form>
+    </div>
+</div>

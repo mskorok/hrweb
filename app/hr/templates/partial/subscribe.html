@@ -1,0 +1,50 @@
+<center><h3 id="mail_subscription_title" class="m-t-50 gray-color">Subscribe for updates</h3></center>
+<h3 class="w-100 t-a-c olive-color m-t-100" id="mail_subscription_success" style="display: none"> You successfully subscribed!!!</h3>
+<div id="mail_subscription_wrapper" class="hidden-xs hidden-sm section-content page-additional-form top-radius m-t-100 p-l-20 p-t-50 p-r-20">
+    <div style="height: 100px; width: 100%;">
+        <form class="top-subscription-form" id="mail_subscription">
+            <div class="row">
+                <div class="col-md-4 col-lg-5 p-l-50">
+                    <input required name="email" id="subscription_email" type="email"
+                           class="new-input placeholder-gray p-l-10" placeholder="Email">
+                </div>
+                <div class="col-md-4 col-lg-5 p-l-50">
+                    <select name="category" id="subscription_category"
+                            class="new-input placeholder-gray p-l-10" title="Subscription category">
+                        <option value="0" selected>Choose category</option>
+                        <option value="1">Certification</option>
+                        <option value="2">Countries</option>
+                    </select>
+                </div>
+                <div class="col-md-4 col-lg-2">
+                    <button id="head_subscribe" class="btn btn-orange m-t-5">Subscribe</button>
+                </div>
+                <!--<div class="col-md-12 col-lg-12 t-a-c">-->
+                    <!--<label class="h-15 orange-color" for="subscription_email">Subscribe for updates</label>-->
+                <!--</div>-->
+            </div>
+        </form>
+    </div>
+</div>
+<div class="col-xs-12 wrapper-mobile col-sm-12 hidden-md hidden-lg m-t-20 search-content-mobile">
+    <form class="top-subscription-form" id="mail_subscription_mobile">
+        <div class="row">
+            <div class="input-text-block-mobile m-b-20">
+                <input name="email" id="subscription_email_mobile" type="email" required
+                       class="new-input placeholder-gray h-45 p-l-10" placeholder="Email">
+            </div>
+            <div class="input-text-block-mobile m-b-20">
+                <select name="category" id="subscription_category_mobile"
+                        class="placeholder-gray h-45 p-l-10" title="Subscription category">
+                    <option value="0" selected>Choose category</option>
+                    <option value="1">Certification</option>
+                    <option value="2">Countries</option>
+                </select>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <button id="head_subscribe_mobile" class="submit-button-mobile"><span>Subscribe</span></button>
+            </div>
+        </div>
+    </form>
+
+</div>

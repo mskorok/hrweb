@@ -1,0 +1,38 @@
+<header id="header" class="  clear-fix">
+    <div data-ng-include="header-content"></div>
+</header>
+<div data-ng-include="top_menu"></div>
+<div data-ng-include="top_menu_mobile"></div>
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <center>
+                <div id="error_container" class="red-color f-size-24"></div>
+            </center>
+        </div>
+        <div class="right" data-ng-include="pagination"></div>
+        <div class="row section-content" ng-repeat="education in educations">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="search-block m-b-30">
+                    <a href="#" class="block-title" style="font-size: 18px;"> {{education.name}} </a>
+
+                    <div class="education-user-info m-t-10">
+                        <div class="search-grey-text left">{{ education.specialization }}</div>
+                        <div class="search-grey-text left m-l-5">|</div>
+                        <div class="search-grey-text left m-l-5">{{ education.organization }}</div>
+                        <div class="search-grey-text left m-l-5">|</div>
+                        <div class="search-grey-text left m-l-5">{{ education.level }}</div>
+                    </div>
+                    <br>
+                    <div class="m-t-10">
+                        <div class="search-block-date left">Start: &nbsp; {{ education.start }}</div>
+                    </div>
+                    <div class="m-t-10">
+                        <div class="search-block-date left p-l-25">End: &nbsp; {{ education.finish }}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="left" data-ng-include="pagination"></div>
+    </div>
+    <div data-ng-include="footer"></div>

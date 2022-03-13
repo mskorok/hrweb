@@ -1,0 +1,38 @@
+{
+  "name": "hr_front",
+  "author": "Mikhail Skorokhod",
+  "version": "1.0.0",
+  "description": "HR",
+  "repository": "https://gitlab.com/mskorok/hr-front.git",
+  "license": "MIT",
+  "dependencies": {
+    "@uirouter/angularjs": "^1.0.24",
+    "angular": "^1.7.9",
+    "angular-loader": "^1.7.9",
+    "angular-resource": "^1.7.9",
+    "angular-route": "^1.7.5",
+    "angular-ui-router-styles": "0.0.6",
+    "chosen-js": "^1.8.7",
+    "core-js": "^3.6.1",
+    "html5-boilerplate": "0.0.1",
+    "jquery-validation": "^1.19.3",
+    "ng-cookies": "^1.0.2",
+    "uglify-js": "^3.7.3"
+  },
+  "devDependencies": {
+    "angular-mocks": "^1.7.5",
+    "cpx": "^1.5.0",
+    "http-server": "^0.12.3"
+  },
+  "scripts": {
+    "postinstall": "npm run copy-libs",
+    "update-deps": "npm update",
+    "postupdate-deps": "npm run copy-libs",
+    "copy-libs": "cpx \"node_modules/{@uirouter,angular,angular-resource, angular-route, angular-*, jquery-validation, html5-boilerplate/dist}/**/*\" app/lib -C",
+    "prestart": "npm install",
+    "start": "http-server -a localhost -p 8000 -c-1 ./app",
+    "pretest": "npm install",
+    "min": "uglifyjs app/hr/variables.js  app/hr/module.js app/hr/controllers/*.js  app/assets/js/common.js -m -o app/app.js",
+    "mm": "uglifyjs app/hr/variables.js app/hr/module.js  -m -o app/app.js"
+  }
+}
