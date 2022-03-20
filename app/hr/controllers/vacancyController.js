@@ -18,6 +18,7 @@ angular.module('Vacancy', [], function () {
         $scope.show_applied = false;
         $scope.show_remove_favorite = false;
         $scope.show_add_favorite = false;
+        $scope.server = rest_api_host;
 
         var token = 'Bearer ' + $cookies.get('rest_user_token');
 

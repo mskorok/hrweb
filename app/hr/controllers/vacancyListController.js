@@ -40,7 +40,7 @@ angular.module('VacancyList', [], function () {
                         console.log('tpl', templateName);
                         if (templateName.toString() === 'hr/templates/partial/footer.html') {
                             var url = rest_api_host + '/vacancy/list/' + page;
-                            // console.log('url', url);
+                            console.log('url', url);
                             $http.get(url).then(function (data) {
                                     console.log(data.data.data);
                                     $scope.vacancies = data.data.data.vacancies;
