@@ -23,22 +23,22 @@
                 <div class="search-block m-b-30">
                     <div ng-show="institution.title" class="block-title"
                        style="font-size: 18px;"> {{institution.title}} </div>
-                    <div class="resume-key m-b-20 m-t-30" ng-show="institution.specialization">
-                        <span class="resume-text content-item" ng-bind-html="institution.specialization"></span>
+                    <div class="resume-key m-b-20 m-t-30  pull-right" ng-show="institution.specialization">
+                        <span class="orange-color f-size-16  content-item" ng-bind-html="institution.specialization"></span>
                     </div>
 
                     <div class="resume-key m-b-20 m-t-30">
-                        <span class="resume-text content-item" ng-bind-html="institution.city"></span>
+                        <span class="resume-text content-item org-color" ng-bind-html="institution.city"></span>
                         &nbsp;
-                        <span class="resume-text content-item" ng-bind-html="institution.Countries.name"></span>
+                        <span class="resume-text content-item org-color" ng-bind-html="institution.Countries.name"></span>
                     </div>
 
                     <div class="resume-key m-b-20 m-t-30" ng-show="institution.description">
                         <span class="resume-content content-item" ng-bind-html="institution.description"></span>
                     </div>
 
-                    <div class="resume-key m-b-20 m-t-30" ng-show="institution.site">
-                        <span class="resume-text content-item" ng-bind-html="institution.site"></span>
+                    <div class="resume-key m-b-20 m-t-30  pull-right" ng-show="institution.site">
+                        <span class="resume-text content-item link-color" ng-bind-html="institution.site"></span>
                     </div>
 
 

@@ -33,10 +33,8 @@ angular.module('Educations', [], function () {
             $scope.$on('$includeContentLoaded', function (event, templateName) {
 
                 if (templateName.toString() === 'hr/templates/partial/footer.html') {
-                    var url = rest_api_host + 'institutions/list' + '?page=' + page;
-                    console.warn(url);
+                    var url = rest_api_host + 'institutions/list' + '?include=Countries,EducationLevel&page=' + page;
                     $http.get(url).then(function (data) {
-                        console.log('data institutions', data.data.data.institutions);
                         if (data.data.data.institutions) {
                             $scope.institutions = data.data.data.institutions
                         }
