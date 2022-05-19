@@ -1,5 +1,5 @@
 angular.module('Confirm User', [], function () {
-    console.log('module New Password init');
+    // console.log('module New Password init');
 }).controller('confirmUserController', ["$scope", "$state", "$cookies", '$location', function ($scope, $state, $cookies, $location) {
     $scope.hr_rest_limit = 100;
     $scope.header_content = 'hr/templates/partial/header-content.html';

@@ -1,5 +1,5 @@
 angular.module('CompanyEdit', [], function () {
-    console.log('module CompanyEdit init');
+    // console.log('module CompanyEdit init');
 }).controller(
     'companyEditController',
     [

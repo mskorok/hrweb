@@ -1,5 +1,5 @@
 angular.module('notFound', [], function () {
-    console.log('module Profile init');
+    // console.log('module Profile init');
 }).controller(
     'notFoundController',
     [

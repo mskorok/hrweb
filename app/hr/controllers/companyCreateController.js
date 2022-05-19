@@ -1,5 +1,5 @@
 angular.module('CompanyCreate', [], function () {
-    console.log('module CompanyCreate init');
+    // console.log('module CompanyCreate init');
 }).controller(
     'companyCreateController',
     [
@@ -85,16 +85,13 @@ angular.module('CompanyCreate', [], function () {
                     xhr.onload = function () {
                         if (this.readyState === 4) {
                             if (this.status === 200) {
-                                console.log(this.response);
                                 try {
                                     var error_container = document.getElementById('error_container');
                                     error_container.innerHTML = '';
                                     var response = JSON.parse(this.response);
-                                    console.log('response', response);
 
                                     var html = '';
                                     if (response.result === 'error') {
-                                        // alert('error');
                                         if (error_container) {
                                             if (Array.isArray(response.message)) {
                                                 response.message.forEach(function (message) {

@@ -1,5 +1,5 @@
 angular.module('Login Recovery', [], function () {
-    console.log('module Login Recovery init');
+    // console.log('module Login Recovery init');
 }).controller('loginRecoveryController',
     [
         "$scope",
@@ -32,7 +32,6 @@ angular.module('Login Recovery', [], function () {
                         if (this.status === 200) {
                             try {
                                 var response = JSON.parse(this.response);
-                                console.log(response.html);
                                 $('#login_recovery_container').html(response.html);
                                 $('#ajax_loader').hide();
                                 var form = document.getElementById('login_recovery_form');

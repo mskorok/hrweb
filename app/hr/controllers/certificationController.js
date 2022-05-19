@@ -1,5 +1,5 @@
 angular.module('Certification', [], function () {
-    console.log('module Certification init');
+    // console.log('module Certification init');
 }).controller(
     'certificationController',
     [
@@ -33,11 +33,11 @@ angular.module('Certification', [], function () {
             $scope.data = '';
 
             $scope.$on('$includeContentLoaded', function (event, templateName) {
-                console.log(templateName);
+                // console.log(templateName);
                 if (templateName.toString() === 'hr/templates/partial/footer.html') {
                     var url = rest_api_host + 'categories/sub/certification' + '?page=' + page;
                     $http.get(url).then(function (data) {
-                        console.log('data events', data);
+                        // console.log('data events', data);
                         $scope.subcategories = data.data.data.subcategory;
                         $scope.totalItems = data.data.data.totalItems;
                         $scope.totalPages = data.data.data.totalPages;
@@ -99,7 +99,7 @@ angular.module('Certification', [], function () {
 
                         var url = rest_api_host + 'categories/sub/certification' + qs;
                         $http.get(url).then(function (data) {
-                            console.log('data events', data);
+                            // console.log('data events', data);
                             $scope.subcategories = data.data.data.subcategory;
                             $scope.totalItems = data.data.data.totalItems;
                             $scope.totalPages = data.data.data.totalPages;

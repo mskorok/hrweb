@@ -1,5 +1,5 @@
 angular.module('Hardware', [], function () {
-    console.log('module Hardware init');
+    // console.log('module Hardware init');
 }).controller(
     'hardwareController',
     [
@@ -37,7 +37,7 @@ angular.module('Hardware', [], function () {
                 if (templateName.toString() === 'hr/templates/partial/footer.html') {
                     var url = rest_api_host + 'categories/sub/hardware' + '?page=' + page;
                     $http.get(url).then(function (data) {
-                        console.log('data events', data);
+                        // console.log('data events', data);
                         $scope.subcategories = data.data.data.subcategory;
                         $scope.totalItems = data.data.data.totalItems;
                         $scope.totalPages = data.data.data.totalPages;
@@ -99,7 +99,7 @@ angular.module('Hardware', [], function () {
 
                         var url = rest_api_host + 'categories/sub/hardware' + qs;
                         $http.get(url).then(function (data) {
-                            console.log('data events', data);
+                            // console.log('data events', data);
                             $scope.subcategories = data.data.data.subcategory;
                             $scope.totalItems = data.data.data.totalItems;
                             $scope.totalPages = data.data.data.totalPages;

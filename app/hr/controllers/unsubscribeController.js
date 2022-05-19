@@ -1,5 +1,5 @@
 angular.module('Unsubscribe', [], function () {
-    console.log('module Unsubscribe init');
+    // console.log('module Unsubscribe init');
 }).controller(
     'unsubscribeController',
     [

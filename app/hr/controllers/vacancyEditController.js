@@ -1,5 +1,5 @@
 angular.module('VacancyEdit', [], function () {
-    console.log('module VacancyEdit init');
+    // console.log('module VacancyEdit init');
 }).controller(
     'vacancyEditController',
     [

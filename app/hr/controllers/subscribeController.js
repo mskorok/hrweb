@@ -1,5 +1,5 @@
 angular.module('Subscribe', [], function () {
-    console.log('module Subscribe init');
+    // console.log('module Subscribe init');
 }).controller('subscribeController', [
         "$scope",
         '$state',
@@ -26,7 +26,7 @@ angular.module('Subscribe', [], function () {
             if ($state.current.controller === "subscribeController") {
                 $scope.$on('$viewContentLoaded', function () {
                     $scope.$on('$includeContentLoaded', function (event, templateName) {
-                        console.log('tpl', templateName);
+                        // console.log('tpl', templateName);
                         if (templateName.toString() === 'hr/templates/partial/footer.html') {
 
                             $("#mail_subscription").validate({
@@ -88,7 +88,6 @@ angular.module('Subscribe', [], function () {
                                     var xhr = new XMLHttpRequest();
                                     var form_data = new FormData(mail_form);
                                     xhr.onload = function () {
-                                        console.log('r', this.response);
                                         if (this.readyState === 4) {
                                             if (this.status === 200) {
                                                 $('#mail_subscription_wrapper').hide();

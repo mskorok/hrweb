@@ -1,5 +1,5 @@
 angular.module('Resume', [], function () {
-    console.log('module Resume init');
+    // console.log('module Resume init');
 }).controller('resumeController', [
         '$scope',
         '$state',

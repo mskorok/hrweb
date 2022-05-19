@@ -1,5 +1,5 @@
 angular.module('Educations', [], function () {
-    console.log('module Educations init');
+    // console.log('module Educations init');
 }).controller(
     'educationsController',
     [

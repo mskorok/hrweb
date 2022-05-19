@@ -1,5 +1,5 @@
 angular.module('VacancyUserList', [], function () {
-    console.log('module VacancyUserList init');
+    // console.log('module VacancyUserList init');
 }).controller('vacancyUserListController', [
         "$scope",
         '$state',
@@ -43,10 +43,9 @@ angular.module('VacancyUserList', [], function () {
             if ($state.current.controller === "vacancyUserListController") {
                 $scope.$on('$viewContentLoaded', function () {
                     $scope.$on('$includeContentLoaded', function (event, templateName) {
-                        console.log('tpl', templateName);
+                        // console.log('tpl', templateName);
                         if (templateName.toString() === 'hr/templates/partial/footer.html') {
                             var url = rest_api_host + '/vacancy/user/list/' + page;
-                            // console.log('url', url);
                             $http.get(url
                                 ,
                                 {

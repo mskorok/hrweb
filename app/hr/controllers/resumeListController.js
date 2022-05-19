@@ -1,5 +1,5 @@
 angular.module('ResumeList', [], function () {
-    console.log('module ResumeList init');
+    // console.log('module ResumeList init');
 }).controller('resumeListController', [
         "$scope",
         '$state',
@@ -39,12 +39,10 @@ angular.module('ResumeList', [], function () {
             if ($state.current.controller === "resumeListController") {
                 $scope.$on('$viewContentLoaded', function () {
                     $scope.$on('$includeContentLoaded', function (event, templateName) {
-                        console.log('tpl', templateName);
+                        // console.log('tpl', templateName);
                         if (templateName.toString() === 'hr/templates/partial/footer.html') {
                             var url = rest_api_host + 'resume/list/' + page;
-                            // console.log('url', url);
                             $http.get(url).then(function (data) {
-                                    // console.log(222, data.data.data);
                                     $scope.resumes = data.data.data.resumes;
                                     $scope.totalItems = data.data.data.totalItems;
                                     $scope.totalPages = data.data.data.totalPages;

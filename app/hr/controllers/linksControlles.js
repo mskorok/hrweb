@@ -1,5 +1,5 @@
 angular.module('Links', [], function () {
-    console.log('module Links init');
+    // console.log('module Links init');
 }).controller(
     'linksController', [
         "$scope",
@@ -27,12 +27,11 @@ angular.module('Links', [], function () {
             if ($state.current.controller === "linksController") {
                 $scope.$on('$viewContentLoaded', function () {
                     $scope.$on('$includeContentLoaded', function (event, templateName) {
-                        console.log('tpl', templateName);
+                        // console.log('tpl', templateName);
                         if (templateName.toString() === 'hr/templates/partial/footer.html') {
                             var url = rest_api_host + 'articles';
                             // console.log('url', url);
                             $http.get(url).then(function (data) {
-                                    console.log(data.data.data.articles);
                                     $scope.articles = data.data.data.articles;
                                     $scope.totalItems = data.data.data.totalItems;
                                     $scope.totalPages = data.data.data.totalPages;

@@ -1,5 +1,5 @@
 angular.module('CompanyList', [], function () {
-    console.log('module CompanyList init');
+    // console.log('module CompanyList init');
 }).controller('companyListController', [
         "$scope",
         '$state',
@@ -51,7 +51,7 @@ angular.module('CompanyList', [], function () {
             if ($state.current.controller === "companyListController") {
                 $scope.$on('$viewContentLoaded', function () {
                     $scope.$on('$includeContentLoaded', function (event, templateName) {
-                        console.log('tpl', templateName);
+                        // console.log('tpl', templateName);
                         if (templateName.toString() === 'hr/templates/partial/footer.html') {
                             var url = rest_api_host + '/company/list/' + page;
                             // console.log('url', url);
@@ -61,7 +61,6 @@ angular.module('CompanyList', [], function () {
                                     headers: {'Authorization': token}
                                 }
                             ).then(function (data) {
-                                    console.log(123, data.data);
                                     var error_container = document.getElementById('error_container');
                                     if (data.data.result === 'error') {
                                         if (error_container) {

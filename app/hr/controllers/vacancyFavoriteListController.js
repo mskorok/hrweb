@@ -1,5 +1,5 @@
 angular.module('VacancyFavoriteList', [], function () {
-    console.log('module VacancyFavoriteList init');
+    // console.log('module VacancyFavoriteList init');
 }).controller('vacancyFavoriteListController', [
         "$scope",
         '$state',
@@ -43,17 +43,15 @@ angular.module('VacancyFavoriteList', [], function () {
             if ($state.current.controller === "vacancyFavoriteListController") {
                 $scope.$on('$viewContentLoaded', function () {
                     $scope.$on('$includeContentLoaded', function (event, templateName) {
-                        console.log('tpl', templateName);
+                        // console.log('tpl', templateName);
                         if (templateName.toString() === 'hr/templates/partial/footer.html') {
                             var url = rest_api_host + 'favorite/list/' + page;
-                            // console.log('url', url);
                             $http.get(url
                                 ,
                                 {
                                   headers: {'Authorization': token}
                                 }
                             ).then(function (data) {
-                                    console.log(data.data.data);
                                     $scope.vacancies = data.data.data.vacancies;
                                     $scope.totalItems = data.data.data.totalItems;
                                     $scope.totalPages = data.data.data.totalPages;
@@ -69,7 +67,6 @@ angular.module('VacancyFavoriteList', [], function () {
                                     $scope.firstInRange = $scope.pagesRange.length > 0 ? $scope.pagesRange[0] : 0;
                                     $scope.lastInRange = $scope.pagesRange.length > 0 ? $scope.pagesRange.slice(-1)[0] : 0;
                                     $scope.pageUrl = window.location.origin + window.location.pathname;
-                                    // console.log('scope', $scope)
                                 },
                                 function (data) {
                                     console.log('error response', data);

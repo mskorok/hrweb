@@ -1,5 +1,5 @@
 angular.module('Tests', [], function () {
-    console.log('module Tests init');
+    // console.log('module Tests init');
 }).controller(
     'testsController',
     [
@@ -37,7 +37,6 @@ angular.module('Tests', [], function () {
                 if (templateName.toString() === 'hr/templates/partial/footer.html') {
                     var url = rest_api_host + 'categories/sub/tests' + '?page=' + page;
                     $http.get(url).then(function (data) {
-                        console.log('data events', data);
                         $scope.subcategories = data.data.data.subcategory;
                         $scope.totalItems = data.data.data.totalItems;
                         $scope.totalPages = data.data.data.totalPages;
@@ -99,7 +98,6 @@ angular.module('Tests', [], function () {
 
                         var url = rest_api_host + 'categories/sub/tests' + qs;
                         $http.get(url).then(function (data) {
-                            console.log('data events', data);
                             $scope.subcategories = data.data.data.subcategory;
                             $scope.totalItems = data.data.data.totalItems;
                             $scope.totalPages = data.data.data.totalPages;

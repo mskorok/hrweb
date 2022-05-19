@@ -1,5 +1,5 @@
 angular.module('Article', [], function () {
-    console.log('module Article init');
+    // console.log('module Article init');
 }).controller('articleController', [
         "$scope",
         '$state',

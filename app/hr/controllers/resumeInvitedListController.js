@@ -1,5 +1,5 @@
 angular.module('ResumeInvitedList', [], function () {
-    console.log('module ResumeInvitedList init');
+    // console.log('module ResumeInvitedList init');
 }).controller('resumeInvitedListController', [
         "$scope",
         '$state',
@@ -47,7 +47,7 @@ angular.module('ResumeInvitedList', [], function () {
             if ($state.current.controller === "resumeInvitedListController") {
                 $scope.$on('$viewContentLoaded', function () {
                     $scope.$on('$includeContentLoaded', function (event, templateName) {
-                        console.log('tpl', templateName);
+                        // console.log('tpl', templateName);
                         if (templateName.toString() === 'hr/templates/partial/footer.html') {
                             var url = rest_api_host + 'resume/invited/list/' + page;
                             // console.log('url', url);

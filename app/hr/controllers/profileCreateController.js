@@ -1,5 +1,5 @@
 angular.module('ProfileCreate', [], function () {
-    console.log('module ProfileCreate init');
+    // console.log('module ProfileCreate init');
 }).controller(
     'profileCreateController',
     [
@@ -43,7 +43,7 @@ angular.module('ProfileCreate', [], function () {
             $scope.$on('$viewContentLoaded', function () {
                 // console.log('url', url);
                 $http.get(url).then(function (data) {
-                        console.log('loaded', new Date().getTime());
+                        // console.log('loaded', new Date().getTime());
                         // console.log('form', data.data.html);
 
                         $('#content_container').html(data.data.html);
@@ -120,7 +120,7 @@ angular.module('ProfileCreate', [], function () {
                                     var error_container = document.getElementById('error_container');
                                     error_container.innerHTML = '';
                                     var response = JSON.parse(this.response);
-                                    console.log('resp', response);
+                                    // console.log('resp', response);
                                     var html = '';
                                     if (response.result === 'error') {
                                         if (error_container) {

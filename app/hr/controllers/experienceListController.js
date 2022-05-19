@@ -1,5 +1,5 @@
 angular.module('ExperienceList', [], function () {
-    console.log('module ExperienceList init');
+    // console.log('module ExperienceList init');
 }).controller('experienceListController', [
         "$scope",
         '$state',
@@ -37,7 +37,7 @@ angular.module('ExperienceList', [], function () {
             if ($state.current.controller === "experienceListController") {
                 $scope.$on('$viewContentLoaded', function () {
                     $scope.$on('$includeContentLoaded', function (event, templateName) {
-                        console.log('tpl', templateName);
+                        // console.log('tpl', templateName);
                         if (templateName.toString() === 'hr/templates/partial/footer.html') {
                             var url = rest_api_host + 'experience/user/list?page=' + page;
                             // console.log('url', url);

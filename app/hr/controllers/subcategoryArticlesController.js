@@ -1,5 +1,5 @@
 angular.module('SubcategoryArticles', [], function () {
-    console.log('module SubcategoryArticles init');
+    // console.log('module SubcategoryArticles init');
 }).controller(
     'subcategoryArticlesController',
     [

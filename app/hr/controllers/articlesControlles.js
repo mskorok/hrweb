@@ -1,5 +1,5 @@
 angular.module('Articles', [], function () {
-    console.log('module Articles init');
+    // console.log('module Articles init');
 }).controller('articlesController', [
         "$scope",
         '$state',
@@ -34,7 +34,7 @@ angular.module('Articles', [], function () {
             if ($state.current.controller === "articlesController") {
                 $scope.$on('$viewContentLoaded', function () {
                     $scope.$on('$includeContentLoaded', function (event, templateName) {
-                        console.log('tpl', templateName);
+                        // console.log('tpl', templateName);
                         if (templateName.toString() === 'hr/templates/partial/footer.html') {
                             var qs = '';
                             if (category || tag || page) {
@@ -60,7 +60,7 @@ angular.module('Articles', [], function () {
                             var url = rest_api_host + 'articles-list' + qs;
                             // console.log('url', url);
                             $http.get(url).then(function (data) {
-                                    console.log(data);
+                                    // console.log(data);
 
                                     $scope.articles = data.data.data.articles;
                                     $scope.totalItems = data.data.data.totalItems;

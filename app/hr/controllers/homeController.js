@@ -1,5 +1,5 @@
 angular.module('Home', [], function () {
-    console.log('module Home init');
+    // console.log('module Home init');
 }).controller(
     'homeController',
     [
@@ -34,7 +34,7 @@ angular.module('Home', [], function () {
                     // console.log('tpl', templateName);
                     var url = rest_api_host + 'home';
                     $http.get(url).then(function (data) {
-                        console.log('data home', data);
+                        // console.log('data home', data);
                         if (typeof data.data.vacancies != "undefined")
                             $scope.totalVacancies = data.data.vacancies;
                         if (typeof data.data.resumes != "undefined")

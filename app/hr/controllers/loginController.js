@@ -1,5 +1,5 @@
 angular.module('Login', [], function () {
-    console.log('module Login init');
+    // console.log('module Login init');
 }).controller(
     'loginController',
     [

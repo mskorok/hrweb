@@ -1,5 +1,5 @@
 angular.module('Job', [], function () {
-    console.log('module Job init');
+    // console.log('module Job init');
 }).controller(
     'jobController',
     [
@@ -27,11 +27,10 @@ angular.module('Job', [], function () {
 
             $scope.$on('$viewContentLoaded', function () {
                 $scope.$on('$includeContentLoaded', function (event, templateName) {
-                    console.log('tpl', templateName);
+                    // console.log('tpl', templateName);
                     if (templateName.toString() === 'hr/templates/partial/footer.html') {
                         var url = rest_api_host + 'home';
                         $http.get(url).then(function (data) {
-                            console.log('data job', data);
                             if (typeof data.data.vacancies != "undefined")
                                 $scope.totalVacancies = data.data.vacancies;
                             if (typeof data.data.resumes != "undefined")

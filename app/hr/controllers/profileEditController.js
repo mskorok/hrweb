@@ -1,5 +1,5 @@
 angular.module('ProfileEdit', [], function () {
-    console.log('module ProfileEdit init');
+    // console.log('module ProfileEdit init');
 }).controller(
     'profileEditController',
     [
@@ -47,9 +47,6 @@ angular.module('ProfileEdit', [], function () {
                       headers: {'Authorization': token}
                     }
                 ).then(function (data) {
-                        console.log('loaded', new Date().getTime());
-                        // console.log('form', data.data.html);
-
                         $('#content_container').html(data.data.html);
 
                         $('#add_new_photo').removeClass('hidden');
@@ -136,7 +133,6 @@ angular.module('ProfileEdit', [], function () {
                         if (this.readyState === 4) {
                             if (this.status === 200) {
                                 try {
-                                    console.log('æ', this.response);
                                     var response = JSON.parse(this.response);
                                     var error_container = document.getElementById('jd_error_container');
                                     var html;
@@ -185,7 +181,7 @@ angular.module('ProfileEdit', [], function () {
                                                     })
 
                                                 } catch (e) {
-                                                    console.log(e.message);
+                                                    console.log('error', e.message);
                                                     html = response.error.message;
                                                 }
                                             }
@@ -194,7 +190,6 @@ angular.module('ProfileEdit', [], function () {
                                         }
                                         console.log('error', error_container, response.error.message);
                                     } else {
-                                        console.log('success', response);
                                         window.location.reload();
                                     }
                                 } catch (e) {

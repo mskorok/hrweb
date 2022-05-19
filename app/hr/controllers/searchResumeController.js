@@ -1,5 +1,5 @@
 angular.module('SearchResume', [], function () {
-    console.log('module SearchResume init');
+    // console.log('module SearchResume init');
 }).controller('searchResumeController', [
         "$scope",
         '$state',
@@ -38,7 +38,7 @@ angular.module('SearchResume', [], function () {
             if ($state.current.controller === "searchResumeController") {
                 $scope.$on('$viewContentLoaded', function () {
                     $scope.$on('$includeContentLoaded', function (event, templateName) {
-                        console.log('tpl', templateName);
+                        // console.log('tpl', templateName);
                         if (templateName.toString() === 'hr/templates/partial/footer.html') {
                             $('#filter_button').on('click', function () {
                                 $('#mobile_filter').toggle();
@@ -91,7 +91,6 @@ angular.module('SearchResume', [], function () {
                                 var url = rest_api_host + 'resume/search' + qs;
                                 // console.log('url', url);
                                 $http.get(url).then(function (data) {
-                                        console.log(qs, data);
                                         if (data.data.result && data.data.result === 'error') {
                                             console.log('error', data.data.message);
                                             return false;

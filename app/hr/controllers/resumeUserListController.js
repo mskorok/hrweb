@@ -1,5 +1,5 @@
 angular.module('ResumeUserList', [], function () {
-    console.log('module ResumeUserList init');
+    // console.log('module ResumeUserList init');
 }).controller('resumeUserListController', [
         "$scope",
         '$state',
@@ -50,17 +50,16 @@ angular.module('ResumeUserList', [], function () {
             if ($state.current.controller === "resumeUserListController") {
                 $scope.$on('$viewContentLoaded', function () {
                     $scope.$on('$includeContentLoaded', function (event, templateName) {
-                        console.log('tpl', templateName);
+                        // console.log('tpl', templateName);
                         if (templateName.toString() === 'hr/templates/partial/footer.html') {
                             var url = rest_api_host + 'resume/user/list/' + page;
-                            console.log('url', url);
+                            // console.log('url', url);
                             $http.get(url
                                 ,
                                 {
                                   headers: {'Authorization': token}
                                 }
                             ).then(function (data) {
-                                    console.log(data.data.data);
                                     $scope.resumes = data.data.data.resumes;
                                     $scope.totalItems = data.data.data.totalItems;
                                     $scope.totalPages = data.data.data.totalPages;

@@ -1,5 +1,5 @@
 angular.module('Migration', [], function () {
-    console.log('module Migration init');
+    // console.log('module Migration init');
 }).controller(
     'migrationController',
     [
@@ -37,7 +37,7 @@ angular.module('Migration', [], function () {
                 if (templateName.toString() === 'hr/templates/partial/footer.html') {
                     var url = rest_api_host + 'categories/sub/migration' + '?page=' + page;
                     $http.get(url).then(function (data) {
-                        console.log('data events', data);
+                        // console.log('data events', data);
                         $scope.subcategories = data.data.data.subcategory;
                         $scope.totalItems = data.data.data.totalItems;
                         $scope.totalPages = data.data.data.totalPages;
@@ -99,7 +99,7 @@ angular.module('Migration', [], function () {
 
                         var url = rest_api_host + 'categories/sub/migration' + qs;
                         $http.get(url).then(function (data) {
-                            console.log('data events', data);
+                            // console.log('data events', data);
                             $scope.subcategories = data.data.data.subcategory;
                             $scope.totalItems = data.data.data.totalItems;
                             $scope.totalPages = data.data.data.totalPages;

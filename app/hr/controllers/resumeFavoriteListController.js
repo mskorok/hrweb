@@ -1,5 +1,5 @@
 angular.module('ResumeFavoriteList', [], function () {
-    console.log('module ResumeFavoriteList init');
+    // console.log('module ResumeFavoriteList init');
 }).controller('resumeFavoriteListController', [
         "$scope",
         '$state',
@@ -42,7 +42,7 @@ angular.module('ResumeFavoriteList', [], function () {
             if ($state.current.controller === "resumeFavoriteListController") {
                 $scope.$on('$viewContentLoaded', function () {
                     $scope.$on('$includeContentLoaded', function (event, templateName) {
-                        console.log('tpl', templateName);
+                        // console.log('tpl', templateName);
                         if (templateName.toString() === 'hr/templates/partial/footer.html') {
                             var url = rest_api_host + 'favorite-resume/list/' + page;
                             // console.log('url', url);

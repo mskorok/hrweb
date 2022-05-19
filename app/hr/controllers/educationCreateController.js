@@ -1,5 +1,5 @@
 angular.module('EducationCreate', [], function () {
-    console.log('module EducationCreate init');
+    // console.log('module EducationCreate init');
 }).controller(
     'educationCreateController',
     [
@@ -36,16 +36,12 @@ angular.module('EducationCreate', [], function () {
             var url = rest_api_host + 'education/create';
 
             $scope.$on('$viewContentLoaded', function () {
-                // console.log('url', url);
                 $http.get(url
                     ,
                     {
                       headers: {'Authorization': token}
                     }
                 ).then(function (data) {
-                        console.log('loaded', new Date().getTime());
-                        // console.log('form', data.data.html);
-
                         $('#content_container').html(data.data.html);
 
                         hr_create.init();
@@ -85,7 +81,6 @@ angular.module('EducationCreate', [], function () {
                     xhr.onload = function () {
                         if (this.readyState === 4) {
                             if (this.status === 200) {
-                                console.log(this.response);
                                 try {
                                     var error_container = document.getElementById('error_container');
                                     error_container.innerHTML = '';

@@ -1,5 +1,5 @@
 angular.module('Education', [], function () {
-    console.log('module Education init');
+    // console.log('module Education init');
 }).controller('educationController', [
         "$scope",
         '$state',
@@ -30,12 +30,10 @@ angular.module('Education', [], function () {
             if ($state.current.controller === "educationController") {
                 $scope.$on('$viewContentLoaded', function () {
                     $scope.$on('$includeContentLoaded', function (event, templateName) {
-                        console.log('tpl', templateName);
+                        // console.log('tpl', templateName);
                         if (templateName.toString() === 'hr/templates/partial/footer.html') {
                             var url = rest_api_host + 'education' + edu_id;
-                            // console.log('url', url);
                             $http.get(url).then(function (data) {
-                                    // console.log(data.data.html);
                                     $scope.education = data.data;
                                     $('#content_container').html(data.data.html);
                                 },

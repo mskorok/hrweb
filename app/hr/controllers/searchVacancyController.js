@@ -1,5 +1,5 @@
 angular.module('SearchVacancy', [], function () {
-    console.log('module SearchVacancy init');
+    // console.log('module SearchVacancy init');
 }).controller('searchVacancyController', [
         "$scope",
         '$state',
@@ -38,7 +38,7 @@ angular.module('SearchVacancy', [], function () {
             if ($state.current.controller === "searchVacancyController") {
                 $scope.$on('$viewContentLoaded', function () {
                     $scope.$on('$includeContentLoaded', function (event, templateName) {
-                        console.log('tpl', templateName);
+                        // console.log('tpl', templateName);
                         if (templateName.toString() === 'hr/templates/partial/footer.html') {
                             $('#filter_button').on('click', function () {
                                 $('#mobile_filter').toggle();
@@ -90,9 +90,7 @@ angular.module('SearchVacancy', [], function () {
                                 qs = qs.slice(0, -1);
 
                                 var url = rest_api_host + 'vacancy/search' + qs;
-                                // console.log('url', url);
                                 $http.get(url).then(function (data) {
-                                        console.log(data.data);
                                         if (data.data.result && data.data.result === 'error') {
                                             console.log('error', data.data.message);
                                             return false;

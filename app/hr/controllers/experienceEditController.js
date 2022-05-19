@@ -1,5 +1,5 @@
 angular.module('ExperienceEdit', [], function () {
-    console.log('module ExperienceEdit init');
+    // console.log('module ExperienceEdit init');
 }).controller(
     'experienceEditController',
     [

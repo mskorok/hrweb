@@ -1,5 +1,5 @@
 angular.module('Contact', [], function () {
-    console.log('module Contact init');
+    // console.log('module Contact init');
 }).controller(
     'contactController',
     [
@@ -15,7 +15,7 @@ angular.module('Contact', [], function () {
             $scope.user_avatar = hr_user_avatar();
 
             $scope.$on('$includeContentLoaded', function (event, templateName) {
-                console.log(templateName);
+                // console.log(templateName);
                 // if (templateName.indexOf('header') !== -1) {
                 //   //
                 // }

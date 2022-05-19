@@ -1,5 +1,5 @@
 angular.module('EducationList', [], function () {
-    console.log('module EducationList init');
+    // console.log('module EducationList init');
 }).controller('educationListController', [
         "$scope",
         '$state',
@@ -37,7 +37,7 @@ angular.module('EducationList', [], function () {
             if ($state.current.controller === "educationListController") {
                 $scope.$on('$viewContentLoaded', function () {
                     $scope.$on('$includeContentLoaded', function (event, templateName) {
-                        console.log('tpl', templateName);
+                        // console.log('tpl', templateName);
                         if (templateName.toString() === 'hr/templates/partial/footer.html') {
                             var url = rest_api_host + 'education/user/list?page=' + page;
                             // console.log('url', url);

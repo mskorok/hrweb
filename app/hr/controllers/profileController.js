@@ -1,5 +1,5 @@
 angular.module('Profile', [], function () {
-    console.log('module Profile init');
+    // console.log('module Profile init');
 }).controller('profileController', [
         "$scope",
         '$state',
@@ -40,22 +40,19 @@ angular.module('Profile', [], function () {
             if ($state.current.controller === "profileController") {
                 $scope.$on('$viewContentLoaded', function () {
                     $scope.$on('$includeContentLoaded', function (event, templateName) {
-                        console.log('tpl', templateName);
+                        // console.log('tpl', templateName);
                         if (templateName.toString() === 'hr/templates/partial/footer.html') {
                             var url = rest_api_host + 'users/' + user_id + '?include=ProfessionalExperiences,Education,Images,Countries';
-                            console.log('url', url);
                             $http.get(url
                                 ,
                                 {
                                   headers: {'Authorization': token}
                                 }
                             ).then(function (data) {
-                                    console.log(data.data.user);
                                     $scope.user = data.data.user;
                                     var role = $scope.user.role;
                                     $scope.user.role = $scope.user.role.capitalize();
 
-                                    console.log('role', role);
                                     $scope.company = role === 'admin' || role === 'superadmin' || role === 'partner' || role === 'manager';
                                     // $scope.company = true;
                                 },

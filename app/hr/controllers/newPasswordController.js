@@ -1,5 +1,5 @@
 angular.module('New Password', [], function () {
-    console.log('module New Password init');
+    // console.log('module New Password init');
 }).controller(
     'newPasswordController',
     [
@@ -63,13 +63,11 @@ angular.module('New Password', [], function () {
                 login_recovery: function (form) {
                     var form_data = new FormData(form);
                     var url = rest_api_host + hr_new_password_post_url + window.location.search;
-                    console.log('u', url);
                     var xhr = new XMLHttpRequest();
                     xhr.onload = function () {
                         if (this.readyState === 4) {
                             if (this.status === 200) {
                                 try {
-                                    console.log('resp', this.response);
                                     var response = JSON.parse(this.response);
                                     var message = response.result;
                                     $('#new_password_container').html('<div class="recovery-response">' + message + '</div>');

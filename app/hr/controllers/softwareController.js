@@ -1,5 +1,5 @@
 angular.module('Software', [], function () {
-    console.log('module Software init');
+    // console.log('module Software init');
 }).controller(
     'softwareController',
     [
@@ -37,7 +37,6 @@ angular.module('Software', [], function () {
                 if (templateName.toString() === 'hr/templates/partial/footer.html') {
                     var url = rest_api_host + 'categories/sub/software' + '?page=' + page;
                     $http.get(url).then(function (data) {
-                        console.log('data events', data);
                         $scope.subcategories = data.data.data.subcategory;
                         $scope.totalItems = data.data.data.totalItems;
                         $scope.totalPages = data.data.data.totalPages;
@@ -99,7 +98,6 @@ angular.module('Software', [], function () {
 
                         var url = rest_api_host + 'categories/sub/software' + qs;
                         $http.get(url).then(function (data) {
-                            console.log('data events', data);
                             $scope.subcategories = data.data.data.subcategory;
                             $scope.totalItems = data.data.data.totalItems;
                             $scope.totalPages = data.data.data.totalPages;

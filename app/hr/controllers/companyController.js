@@ -1,5 +1,5 @@
 angular.module('Company', [], function () {
-    console.log('module Company init');
+    // console.log('module Company init');
 }).controller('companyController', [
         "$scope",
         '$state',
@@ -35,8 +35,6 @@ angular.module('Company', [], function () {
 
             $scope.company_id = company_id;
 
-            console.log(888, $scope.company_id);
-
             var delete_url = rest_api_host + 'company/delete/' + company_id;
 
             $scope.deleteCompany = function () {
@@ -52,7 +50,6 @@ angular.module('Company', [], function () {
                         headers: {'Authorization': token}
                     }
                 ).then(function (data) {
-                        console.log('delete', data);
                         if (data.result === 'OK') {
 
                         }
@@ -78,12 +75,10 @@ angular.module('Company', [], function () {
             if ($state.current.controller === "companyController") {
                 $scope.$on('$viewContentLoaded', function () {
                     $scope.$on('$includeContentLoaded', function (event, templateName) {
-                        console.log('tpl', templateName);
+                        // console.log('tpl', templateName);
                         if (templateName.toString() === 'hr/templates/partial/footer.html') {
                             var url = rest_api_host + 'companies/' + company_id + '?include=Countries,Images';
-                            // console.log('url', url);
                             $http.get(url).then(function (data) {
-                                    // console.log(data.data);
                                     $scope.company = data.data.company;
                                     $scope.avatar = rest_api_host + $scope.company.Images.path + $scope.company.Images.fileName;
                                     // $('#content_container').html(data.data.html);

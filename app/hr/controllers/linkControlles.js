@@ -1,5 +1,5 @@
 angular.module('Link', [], function () {
-    console.log('module Link init');
+    // console.log('module Link init');
 }).controller('linkController', [
         "$scope",
         '$state',

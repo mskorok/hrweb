@@ -1,5 +1,5 @@
 angular.module('ExperienceCreate', [], function () {
-    console.log('module ExperienceCreate init');
+    // console.log('module ExperienceCreate init');
 }).controller(
     'experienceCreateController',
     [
@@ -43,9 +43,6 @@ angular.module('ExperienceCreate', [], function () {
                       headers: {'Authorization': token}
                     }
                 ).then(function (data) {
-                        console.log('loaded', new Date().getTime());
-                        // console.log('form', data.data.html);
-
                         $('#content_container').html(data.data.html);
 
                         hr_create.init();
@@ -85,7 +82,6 @@ angular.module('ExperienceCreate', [], function () {
                     xhr.onload = function () {
                         if (this.readyState === 4) {
                             if (this.status === 200) {
-                                console.log(this.response);
                                 try {
                                     var error_container = document.getElementById('error_container');
                                     error_container.innerHTML = '';

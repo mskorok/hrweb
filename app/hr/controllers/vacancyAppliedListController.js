@@ -1,5 +1,5 @@
 angular.module('VacancyAppliedList', [], function () {
-    console.log('module VacancyAppliedList init');
+    // console.log('module VacancyAppliedList init');
 }).controller('vacancyAppliedListController', [
         "$scope",
         '$state',
@@ -43,17 +43,15 @@ angular.module('VacancyAppliedList', [], function () {
             if ($state.current.controller === "vacancyAppliedListController") {
                 $scope.$on('$viewContentLoaded', function () {
                     $scope.$on('$includeContentLoaded', function (event, templateName) {
-                        console.log('tpl', templateName);
+                        // console.log('tpl', templateName);
                         if (templateName.toString() === 'hr/templates/partial/footer.html') {
                             var url = rest_api_host + 'vacancy/applied/list/' + page;
-                            // console.log('url', url);
                             $http.get(url
                                 ,
                                 {
                                   headers: {'Authorization': token}
                                 }
                             ).then(function (data) {
-                                    console.log(data.data.data);
                                     $scope.vacancies = data.data.data.vacancies;
                                     $scope.totalItems = data.data.data.totalItems;
                                     $scope.totalPages = data.data.data.totalPages;

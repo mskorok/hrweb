@@ -1,5 +1,5 @@
 angular.module('VacancyCreate', [], function () {
-    console.log('module VacancyCreate init');
+    // console.log('module VacancyCreate init');
 }).controller(
     'vacancyCreateController',
     [
@@ -39,15 +39,12 @@ angular.module('VacancyCreate', [], function () {
 
 
             $scope.$on('$viewContentLoaded', function () {
-                console.log('url', url);
                 $http.get(url
                     ,
                     {
                       headers: {'Authorization': token}
                     }
                 ).then(function (data) {
-                        // console.log('loaded', new Date().getTime());
-                        console.log('form', data.data.result, data.data.message);
                         if (data.data.result && data.data.result === 'error') {
                             $('#error_container').text('Error occurred');
                             if (data.data.message === 'company not found') {
@@ -94,7 +91,6 @@ angular.module('VacancyCreate', [], function () {
                     xhr.onload = function () {
                         if (this.readyState === 4) {
                             if (this.status === 200) {
-                                console.log(this.response);
                                 try {
                                     var error_container = document.getElementById('error_container');
                                     error_container.innerHTML = '';

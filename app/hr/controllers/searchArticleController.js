@@ -1,5 +1,5 @@
 angular.module('SearchArticle', [], function () {
-    console.log('module SearchArticle init');
+    // console.log('module SearchArticle init');
 }).controller('searchArticleController', [
         "$scope",
         '$state',
@@ -36,7 +36,7 @@ angular.module('SearchArticle', [], function () {
             if ($state.current.controller === "searchArticleController") {
                 $scope.$on('$viewContentLoaded', function () {
                     $scope.$on('$includeContentLoaded', function (event, templateName) {
-                        console.log('tpl', templateName);
+                        // console.log('tpl', templateName);
                         if (templateName.toString() === 'hr/templates/partial/footer.html') {
                             $('#filter_button').on('click', function () {
                                 $('#mobile_articles_filter').toggle();
@@ -87,7 +87,6 @@ angular.module('SearchArticle', [], function () {
 
 
                             var url = rest_api_host + 'search/articles' + qs;
-                            console.log('url', url);
                             $http.get(url).then(function (data) {
                                     // console.log(data.data);
                                     if (data.data.result && data.data.result === 'error') {

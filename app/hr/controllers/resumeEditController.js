@@ -1,5 +1,5 @@
 angular.module('ResumeEdit', [], function () {
-    console.log('module ResumeEdit init');
+    // console.log('module ResumeEdit init');
 }).controller(
     'resumeEditController',
     [

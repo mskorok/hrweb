@@ -1,5 +1,5 @@
 angular.module('Vacancy', [], function () {
-    console.log('module Vacancy init');
+    // console.log('module Vacancy init');
 }).controller('vacancyController', [
     "$scope",
     '$state',
@@ -38,15 +38,13 @@ angular.module('Vacancy', [], function () {
         if ($state.current.controller === "vacancyController") {
             $scope.$on('$viewContentLoaded', function () {
                 $scope.$on('$includeContentLoaded', function (event, templateName) {
-                    console.log('tpl', templateName);
+                    // console.log('tpl', templateName);
                     if (templateName.toString() === 'hr/templates/partial/footer.html') {
 
                         var url = rest_api_host + 'vacancies/' + vacancy_id + '/?include=Companies,CompanyAvatar,JobTypes,Country,Favorites,Applied';
-                        console.log('url', url);
                         $http.get(url).then(function (data) {
                                 if (data.data.vacancy) {
                                     var vacancy = data.data.vacancy;
-                                    console.log('v', vacancy);
                                     vacancy.job_type = vacancy.JobTypes.length > 0 ? vacancy.JobTypes[0].name : null;
                                     vacancy.company_url = vacancy.Companies.site;
                                     vacancy.company_name = vacancy.Companies.name;
@@ -59,10 +57,6 @@ angular.module('Vacancy', [], function () {
                                     var applied = vacancy.Applied;
 
                                     var favorites = vacancy.Favorites;
-
-                                    // console.log('applied', applied);
-                                    //
-                                    console.log('fav', favorites);
 
                                     if (user_id && applied && applied.length > 0) {
                                         [].forEach.call(applied, function (apl) {
@@ -89,9 +83,6 @@ angular.module('Vacancy', [], function () {
                                     } else {
                                         $scope.show_add_favorite = true;
                                     }
-
-                                    console.log(3, $scope.show_add_favorite, $scope.show_remove_favorite);
-
                                 }
                             },
                             function (data) {
@@ -152,7 +143,6 @@ angular.module('Vacancy', [], function () {
                 $scope.applyVacancy = function () {
                     if (user_id && $scope.vacancy.id && user_id) {
                         var url = rest_api_host + 'vacancy/apply/' + user_id + '/' + $scope.vacancy.id ;
-                        console.log('url', url);
                         $http.get(url
                             ,
                             {
