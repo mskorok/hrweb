@@ -18,7 +18,7 @@
         </div>
 
         <div class="right" data-ng-include="pagination"></div>
-        <div class="row section-content  m-b-100" ng-repeat="subcategory in subcategories">
+        <div class="row section-content  m-b-30" ng-repeat="subcategory in subcategories">
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                 <div class="search-block m-b-30">
                     <a ng-show="subcategory.title" href="/subcategory/articles/{{subcategory.id}}" class="block-title"
@@ -27,14 +27,17 @@
                         <span class="resume-text content-item" ng-bind-html="subcategory.description"></span>
                     </div>
 
-                    <div class="resume-key m-b-20 m-t-30" ng-show="subcategory.text">
-                        <span class="resume-content content-item" ng-bind-html="subcategory.text"></span>
-                    </div>
+<!--                    <div class="resume-key m-b-20 m-t-30" ng-show="subcategory.text">-->
+<!--                        <span class="resume-content content-item" ng-bind-html="subcategory.text"></span>-->
+<!--                    </div>-->
 
 
                     <div class="m-t-10">
-                        <div class="search-block-date right">
+                        <div class="search-block-date right" ng-if="subcategory.has_article === '1'">
                             <a href="/subcategory/articles/{{subcategory.id}}" style="text-decoration: none;">More</a>
+                        </div>
+                        <div class="search-block-date right" ng-if="subcategory.link">
+                            <a href="{{subcategory.link}}" style="text-decoration: none;" target="_blank">More</a>
                         </div>
                     </div>
                 </div>
@@ -42,6 +45,7 @@
         </div>
     </div>
     <div class="left" data-ng-include="pagination"></div>
+    <div class="m-b-50"></div>
 </div>
 
 <div data-ng-include="footer"></div>

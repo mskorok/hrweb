@@ -25,8 +25,8 @@
                 <a id="top_menu_home" href="/" class="h-link">Home</a>
             </div>
         </div>
-        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 m-b-30">
-            <div id="tab_menu_title" class="w-100 t-a-c f-size-28 fwb"></div>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div id="tab_menu_title" class="w-100 t-a-c f-size-28 fwb m-b-30"></div>
         </div>
     </div>
 </div>
@@ -34,7 +34,7 @@
     (() => {
         const path = window.location.pathname;
         let id = 'top_menu_home';
-        let title = 'Home';
+        let title = '';
 
         if (path.includes('hardware')) {
             id = 'top_menu_hardware';
@@ -70,11 +70,11 @@
         }
         if (path.includes('job')) {
             id = 'top_menu_job';
-            title = 'Job';
+            title = '';
         }
         if (path.includes('home')) {
             id = 'top_menu_home';
-            title = 'Home';
+            title = '';
         }
 
         const el = document.getElementById(id);
@@ -84,7 +84,12 @@
 
         const title_el = document.getElementById('tab_menu_title');
         if(title_el) {
-            title_el.textContent = title;
+            if (title !== '') {
+                title_el.textContent = title;
+            } else {
+                title_el.classList.add('hidden');
+            }
+
         }
     })()
 

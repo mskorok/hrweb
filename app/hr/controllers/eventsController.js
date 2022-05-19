@@ -11,7 +11,6 @@ angular.module('Events', [], function () {
         '$location',
         function ($scope, $state, $cookies, $http, $templateCache, $location) {
             $scope.hr_rest_limit = 100;
-            $scope.hr_rest_limit = 100;
             $scope.header_content = 'hr/templates/partial/header-content.html';
             $scope.header_background = 'hr/templates/partial/header-background.html';
             $scope.header_search = 'hr/templates/partial/header-search-keywords.html';
@@ -24,7 +23,7 @@ angular.module('Events', [], function () {
 
             if (!page) page = 1;
 
-            $scope.active_menu = 'home';
+            $scope.active_menu = 'events';
 
             $scope.user_id = hr_authorized_id();
 
@@ -41,7 +40,7 @@ angular.module('Events', [], function () {
 
             $scope.$on('$viewContentLoaded', function () {
                 $scope.$on('$includeContentLoaded', function (event, templateName) {
-                    console.log('tpl', templateName);
+                    // console.log('tpl', templateName);
                     if (templateName.toString() === 'hr/templates/partial/footer.html') {
                         var url = rest_api_host + 'categories/sub/events' + '?page=' + page;
                         $http.get(url).then(function (data) {
@@ -105,7 +104,6 @@ angular.module('Events', [], function () {
                                 qs += '&q=' + keyword;
                             }
 
-                            console.warn(1, keyword, country);
                             var url = rest_api_host + 'categories/sub/events' + qs;
                             $http.get(url).then(function (data) {
                                 console.log('data events', data);
