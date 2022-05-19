@@ -53,7 +53,6 @@ angular.module('Educations', [], function () {
                     select.chosen({width: "100px",});
                     select.chosen().change(function () {
                         $scope.lang = parseInt($(this).val());
-                        console.warn(2, $scope.lang);
                         [].forEach.call(options, function (option) {
                             option.removeAttribute('selected');
                         });
