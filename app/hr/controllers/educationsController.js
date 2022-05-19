@@ -63,6 +63,35 @@ angular.module('Educations', [], function () {
                             }
                         });
                     });
+
+                    var form = document.getElementById('full_text_search_form');
+
+                    form.addEventListener('submit', function (ev) {
+                        ev.preventDefault();
+                        ev.stopPropagation();
+                        var keywordInput = form.querySelector('#search_keywords');
+                        var keyword = keywordInput? keywordInput.value : null;
+                        var countryInput = form.querySelector('#banner');
+                        var country = countryInput? countryInput.value : null;
+
+                        var qs = '&page=' + page;
+
+                        if (country) {
+                            qs += '&country=' + country;
+                        }
+
+                        if (keyword) {
+                            qs += '&q=' + keyword;
+                        }
+
+                        console.warn(1, keyword, country);
+                        var url = rest_api_host + 'institutions/list' + '?include=Countries,EducationLevel' + qs;
+                        $http.get(url).then(function (data) {
+                            if (data.data.data.institutions) {
+                                $scope.institutions = data.data.data.institutions
+                            }
+                        });
+                    })
                 }
             });
         }
