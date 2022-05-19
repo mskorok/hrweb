@@ -1465,6 +1465,11 @@ button {
     float: right;
 }
 
+.h-link.active {
+    font-weight: bold;
+    color: darkred !important;
+}
+
 @media screen and (max-width: 990px) {
     .main-menu-btn {
         padding-right: 15px;

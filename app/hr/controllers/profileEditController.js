@@ -63,7 +63,11 @@ angular.module('ProfileEdit', [], function () {
                             role_select.removeAttribute('disabled');
                             if (role_id_input) {
                                 var role_id = role_id_input.value;
-                                var options = role_select.querySelectorAll('option');
+                                var options = [];
+                                if (role_select) {
+                                    options = role_select.querySelectorAll('option');
+                                }
+
                                 if (role_id.length < 1 || role_id === 'null' || role_id === null) {
                                     [].forEach.call(options, function (option) {
                                         if (parseInt(option.value) === 9) {

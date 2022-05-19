@@ -4,26 +4,88 @@
             <div class="h-menu-container">
                 <!--<a href="/" class="h-link">Contact us</a>-->
                 <!--<span class="h-link">|</span>-->
-                <a href="/hardware" class="h-link">Hardware</a>
+                <a id="top_menu_hardware" href="/hardware" class="h-link">Hardware</a>
                 <span class="h-link">|</span>
-                <a href="/software" class="h-link">Software</a>
+                <a id="top_menu_software" href="/software" class="h-link">Software</a>
                 <span class="h-link">|</span>
-                <a href="/certification" class="h-link">Certification</a>
+                <a id="top_menu_certification" href="/certification" class="h-link">Certification</a>
                 <span class="h-link">|</span>
-                <a href="/migration" class="h-link">Migration</a>
+                <a id="top_menu_migration" href="/migration" class="h-link">Migration</a>
                 <span class="h-link">|</span>
-                <a href="/tests" class="h-link">Tests</a>
+                <a id="top_menu_tests" href="/tests" class="h-link">Tests</a>
                 <span class="h-link">|</span>
-                <a href="/books" class="h-link">Books</a>
+                <a id="top_menu_books" href="/books" class="h-link">Books</a>
                 <span class="h-link">|</span>
-                <a href="/educations" class="h-link">Education</a>
+                <a id="top_menu_educations" href="/educations" class="h-link">Education</a>
                 <span class="h-link">|</span>
-                <a href="/events" class="h-link">Events</a>
+                <a id="top_menu_events" href="/events" class="h-link">Events</a>
                 <span class="h-link">|</span>
-                <a href="/job" class="h-link">Job</a>
+                <a id="top_menu_job" href="/job" class="h-link">Job</a>
                 <span class="h-link">|</span>
-                <a href="/" class="h-link">Home</a>
+                <a id="top_menu_home" href="/" class="h-link">Home</a>
             </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 m-b-30">
+            <div id="tab_menu_title" class="w-100 t-a-c f-size-28 fwb"></div>
         </div>
     </div>
 </div>
+<script>
+    (() => {
+        const path = window.location.pathname;
+        let id = 'top_menu_home';
+        let title = 'Home';
+        console.warn(1, path);
+        if (path.includes('hardware')) {
+            id = 'top_menu_hardware';
+            title = 'Hardware';
+        }
+        if (path.includes('software')) {
+            id = 'top_menu_software';
+            title = 'Software';
+        }
+        if (path.includes('certification')) {
+            id = 'top_menu_certification';
+            title = 'Certification';
+        }
+        if (path.includes('migration')) {
+            id = 'top_menu_migration';
+            title = 'Migration';
+        }
+        if (path.includes('tests')) {
+            id = 'top_menu_tests';
+            title = 'Tests';
+        }
+        if (path.includes('books')) {
+            id = 'top_menu_books';
+            title = 'Books';
+        }
+        if (path.includes('educations')) {
+            id = 'top_menu_educations';
+            title = 'Eduction';
+        }
+        if (path.includes('events')) {
+            id = 'top_menu_events';
+            title = 'Events';
+        }
+        if (path.includes('job')) {
+            id = 'top_menu_job';
+            title = 'Job';
+        }
+        if (path.includes('home')) {
+            id = 'top_menu_home';
+            title = 'Home';
+        }
+
+        const el = document.getElementById(id);
+        if (el) {
+            el.classList.add('active');
+        }
+
+        const title_el = document.getElementById('tab_menu_title');
+        if(title_el) {
+            title_el.textContent = title;
+        }
+    })()
+
+</script>

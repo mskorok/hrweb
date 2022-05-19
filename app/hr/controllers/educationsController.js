@@ -43,7 +43,11 @@ angular.module('Educations', [], function () {
                     });
 
                     var select = jQuery("#banner");
-                    var options = select[0].querySelectorAll('option');
+                    var options = [];
+                    if (select[0]) {
+                        options = select[0].querySelectorAll('option');
+                    }
+
 
                     $scope.show_select = true;
                     select.chosen({width: "100px",});

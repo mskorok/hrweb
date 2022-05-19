@@ -45,7 +45,10 @@ angular.module('Article', [], function () {
 
 
                                     var select = jQuery("#banner");
-                                    var options = select[0].querySelectorAll('option');
+                                    var options = [];
+                                    if (select[0]) {
+                                        options = select[0].querySelectorAll('option');
+                                    }
                                     [].forEach.call(options, function (option) {
                                         option.removeAttribute('selected');
                                     });
