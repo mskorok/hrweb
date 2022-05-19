@@ -93,56 +93,60 @@ var admin_auth = {
         this.set_cookie(name, '', -1);
     },
     login: function (name, password, remember) {
-        // var token = 'Bearer ' + this.get_cookie('rest_user_token');
-        remember = remember || null;
-        var self = this;
-        var error_container = document.getElementById('error_container');
-        var url = rest_api_host + hr_login_post_url;
-        var xhr = new XMLHttpRequest();
-        var form_data = new FormData();
-        form_data.append('username', name);
-        form_data.append('password', password);
-        var basic = 'Basic ' + btoa(name + ":" + password);
-        form_data.append('Authorization', basic);
-        xhr.onload = function () {
-            if (this.readyState === 4) {
-                if (this.status === 200) {
-                    try {
-                        var response = JSON.parse(this.response);
-                        // console.log('r', response, remember);
-                        self.set_cookies(response, remember);
-                        // console.log(444, self.get_token());
-                        window.location.href = self.frontHome;
-                    } catch (e) {
+        setTimeout(function () {
+            remember = remember || null;
+            var self = this;
+            var error_container = document.getElementById('error_container');
+            var url = rest_api_host + hr_login_post_url;
+            var xhr = new XMLHttpRequest();
+            var form_data = new FormData();
+            form_data.append('username', name);
+            form_data.append('password', password);
+            var basic = 'Basic ' + btoa(name + ":" + password);
+            form_data.append('Authorization', basic);
+            xhr.onload = function () {
+                if (this.readyState === 4) {
+                    if (this.status === 200) {
+                        try {
+                            var response = JSON.parse(this.response);
+                            // console.log('r', response, remember);
+                            self.set_cookies(response, remember);
+                            // console.log(444, self.get_token());
+                            window.location.href = self.frontHome;
+                        } catch (e) {
+                            if (error_container) {
+                                error_container.textContent = 'Wrong login or password'
+                            }
+                            console.log('login error', e);
+                        }
+                    } else {
                         if (error_container) {
                             error_container.textContent = 'Wrong login or password'
                         }
-                        console.log('login error', e);
+                        console.log('login error response', this.response);
                     }
-                } else {
-                   if (error_container) {
-                       error_container.textContent = 'Wrong login or password'
-                   }
-                    console.log('login error response', this.response);
                 }
-            }
-        };
-        xhr.open('POST', url, true);
-        xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
-        xhr.setRequestHeader('Authorization', basic);
-        xhr.send(form_data);
-
+            };
+            xhr.open('POST', url, true);
+            xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+            xhr.setRequestHeader('Authorization', basic);
+            xhr.send(form_data);
+        }, 200);
+        // var token = 'Bearer ' + this.get_cookie('rest_user_token');
     },
     logout: function () {
-        var el = document.getElementById('hr_nav_logout');
-        console.log(el);
-        if (el) {
-            el.addEventListener('click', function (ev) {
-                ev.stopPropagation();
-                admin_auth.remove_cookies();
-                window.location.reload();
-            })
-        }
+        setTimeout(function () {
+            var el = document.getElementById('hr_nav_logout');
+            console.log(el);
+            if (el) {
+                el.addEventListener('click', function (ev) {
+                    ev.stopPropagation();
+                    admin_auth.remove_cookies();
+                    window.location.reload();
+                })
+            }
+        }, 200)
+
     },
     force_logout: function () {
         admin_auth.remove_cookies();
@@ -566,6 +570,7 @@ console.log('loaded');
 document.addEventListener('DOMContentLoaded', function (e) {
     if (admin_auth.get_cookie('close_cookies_block') === '') {
         var el = document.getElementById('wr-cookies-notice');
+        console.warn(222, el);
         if (el) {
             el.classList.remove('hidden');
         }
