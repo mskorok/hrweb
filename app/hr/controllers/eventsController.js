@@ -35,6 +35,8 @@ angular.module('Events', [], function () {
 
             $scope.data = '';
 
+            $scope.host = rest_api_host;
+
 
 
 
@@ -44,6 +46,7 @@ angular.module('Events', [], function () {
                     if (templateName.toString() === 'hr/templates/partial/footer.html') {
                         var url = rest_api_host + 'categories/sub/events' + '?page=' + page;
                         $http.get(url).then(function (data) {
+                            console.warn('data', data);
                             $scope.subcategories = data.data.data.subcategory;
                             $scope.totalItems = data.data.data.totalItems;
                             $scope.totalPages = data.data.data.totalPages;

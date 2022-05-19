@@ -24,7 +24,10 @@
                     <a ng-show="subcategory.title" href="/subcategory/articles/{{subcategory.id}}" class="block-title"
                        style="font-size: 18px;"> {{subcategory.title}} </a>
                     <div class="resume-key m-b-20 m-t-30" ng-show="subcategory.description">
-                        <span class="resume-text content-item" ng-bind-html="subcategory.description"></span>
+                        <img alt="" ng-if="subcategory.Images" src="{{host}}{{subcategory.Images.path}}{{subcategory.Images.fileName}}" class="w-8 m-r-30 f-l">
+                        <p class="p-l-10">
+                            <span class="resume-text content-item" ng-bind-html="subcategory.description"></span>
+                        </p>
                     </div>
 
                     <!--                    <div class="resume-key m-b-20 m-t-30" ng-show="subcategory.text">-->

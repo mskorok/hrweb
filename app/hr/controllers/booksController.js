@@ -32,6 +32,8 @@ angular.module('Books', [], function () {
 
             $scope.data = '';
 
+            $scope.host = rest_api_host;
+
             $scope.$on('$includeContentLoaded', function (event, templateName) {
                 // console.log(templateName);
                 if (templateName.toString() === 'hr/templates/partial/footer.html') {
@@ -99,7 +101,6 @@ angular.module('Books', [], function () {
 
                         var url = rest_api_host + 'categories/sub/books' + qs;
                         $http.get(url).then(function (data) {
-                            // console.log('data events', data);
                             $scope.subcategories = data.data.data.subcategory;
                             $scope.totalItems = data.data.data.totalItems;
                             $scope.totalPages = data.data.data.totalPages;

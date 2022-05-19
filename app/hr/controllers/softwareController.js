@@ -32,6 +32,8 @@ angular.module('Software', [], function () {
 
             $scope.data = '';
 
+            $scope.host = rest_api_host;
+
             $scope.$on('$includeContentLoaded', function (event, templateName) {
                 // console.log(templateName);
                 if (templateName.toString() === 'hr/templates/partial/footer.html') {
