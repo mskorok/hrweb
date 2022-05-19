@@ -1,6 +1,8 @@
 <header id="header" class="  clear-fix">
     <div data-ng-include="header_content"></div>
+    <div data-ng-include="header_background"></div>
 </header>
+<div data-ng-include="header_search"></div>
 <div data-ng-include="top_menu"></div>
 <div data-ng-include="top_menu_mobile"></div>
 
@@ -16,7 +18,7 @@
         </div>
 
         <div class="right" data-ng-include="pagination"></div>
-        <div class="row section-content" ng-repeat="subcategory in subcategories">
+        <div class="row section-content  m-b-100" ng-repeat="subcategory in subcategories">
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                 <div class="search-block m-b-30">
                     <a ng-show="subcategory.title" href="/subcategory/articles/{{subcategory.id}}" class="block-title"

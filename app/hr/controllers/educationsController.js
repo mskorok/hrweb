@@ -21,7 +21,7 @@ angular.module('Educations', [], function () {
             $scope.hr_rest_limit = 100;
             $scope.header_content = 'hr/templates/partial/header-content.html';
             $scope.header_background = 'hr/templates/partial/header-background.html';
-            $scope.header_search = 'hr/templates/partial/header-search-educations.html';
+            $scope.header_search = 'hr/templates/partial/header-search-keywords.html';
             $scope.top_menu = 'hr/templates/partial/top-menu.html';
             $scope.top_menu_mobile = 'hr/templates/partial/top-menu-mobile.html';
             $scope.footer = 'hr/templates/partial/footer.html';
