@@ -19,11 +19,10 @@ var admin_auth = {
         // 'vacancy-edit'
     ],
     check_auth: function () {
-        var self = this;
         window.rest_user_id = null;
         var cookies = admin_auth.get_cookies(), current_url = window.location.href;
         if (typeof cookies === 'object' && Object.keys(cookies).length > 0) {
-            console.log('logged in');
+            console.info('logged in');
             window.rest_user_role = cookies['rest_user_role'];
             window.rest_user_full_name = cookies['rest_user_full_name'];
             window.rest_user_id = cookies['rest_user_id'];
@@ -35,10 +34,10 @@ var admin_auth = {
                 window.location.href = this.frontHome;
             }
         } else {
-            console.log('not logged');
+            console.info('not logged');
             this.notAllowedUrls.forEach(function (url) {
                 if (current_url.indexOf(url) !== -1) {
-                    console.log('not logged');
+                    console.info('not logged');
                     // window.location.href = self.frontLogin;
                 }
             });
@@ -131,13 +130,12 @@ var admin_auth = {
             xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
             xhr.setRequestHeader('Authorization', basic);
             xhr.send(form_data);
-        }, 200);
+        }, 500);
         // var token = 'Bearer ' + this.get_cookie('rest_user_token');
     },
     logout: function () {
         setTimeout(function () {
             var el = document.getElementById('hr_nav_logout');
-            console.log(el);
             if (el) {
                 el.addEventListener('click', function (ev) {
                     ev.stopPropagation();
@@ -145,7 +143,7 @@ var admin_auth = {
                     window.location.reload();
                 })
             }
-        }, 200)
+        }, 500);
 
     },
     force_logout: function () {
@@ -154,7 +152,6 @@ var admin_auth = {
     },
     set_cookies: function (response, remember) {
         var expires = remember ? 7 : null;
-        // console.log('expires', expires);
         if (typeof response.data !== 'undefined' && typeof response.data.role !== 'undefined') {
             this.set_cookie('rest_user_role', response.data.role, expires);
         }
@@ -565,12 +562,11 @@ function dataURLtoFile(data_url, filename) {
     return file;
 }
 
-console.log('loaded');
+console.info('loaded');
 
 document.addEventListener('DOMContentLoaded', function (e) {
     if (admin_auth.get_cookie('close_cookies_block') === '') {
         var el = document.getElementById('wr-cookies-notice');
-        console.warn(222, el);
         if (el) {
             el.classList.remove('hidden');
         }

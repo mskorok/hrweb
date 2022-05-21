@@ -91,5 +91,3 @@ angular.module('Login', [], function () {
         }
     ]
 );
-
-console.log('start', new Date().getTime());

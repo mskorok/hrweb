@@ -29,7 +29,7 @@ angular.module('SearchArticle', [], function () {
             var category = $location.search().category;
             var tag = $location.search().tag;
 
-            if (typeof page == 'undefined') {
+            if (!page) {
                 page = 1;
             }
 

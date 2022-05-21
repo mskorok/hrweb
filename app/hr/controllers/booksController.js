@@ -79,6 +79,10 @@ angular.module('Books', [], function () {
                         });
                     });
 
+
+                }
+
+                if (templateName.toString() === 'hr/templates/partial/header-search-keywords.html') {
                     var form = document.getElementById('full_text_search_form');
 
                     form.addEventListener('submit', function (ev) {
@@ -117,7 +121,7 @@ angular.module('Books', [], function () {
                             $scope.lastInRange = $scope.pagesRange.length > 0 ? $scope.pagesRange.slice(-1)[0] : 0;
                             $scope.pageUrl = window.location.origin + window.location.pathname;
                         });
-                    })
+                    });
                 }
             });
         }

@@ -86,6 +86,10 @@ angular.module('Events', [], function () {
                             });
                         });
 
+
+                    }
+
+                    if (templateName.toString() === 'hr/templates/partial/header-search-keywords.html') {
                         var form = document.getElementById('full_text_search_form');
 
                         form.addEventListener('submit', function (ev) {
@@ -108,7 +112,7 @@ angular.module('Events', [], function () {
 
                             var url = rest_api_host + 'categories/sub/events' + qs;
                             $http.get(url).then(function (data) {
-                                console.log('data events', data);
+                                // console.info('data events', data);
                                 $scope.subcategories = data.data.data.subcategory;
                                 $scope.totalItems = data.data.data.totalItems;
                                 $scope.totalPages = data.data.data.totalPages;

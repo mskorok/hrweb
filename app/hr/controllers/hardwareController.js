@@ -79,6 +79,10 @@ angular.module('Hardware', [], function () {
                         });
                     });
 
+
+                }
+
+                if (templateName.toString() === 'hr/templates/partial/header-search-keywords.html') {
                     var form = document.getElementById('full_text_search_form');
 
                     form.addEventListener('submit', function (ev) {
