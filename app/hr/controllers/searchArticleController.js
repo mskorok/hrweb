@@ -24,7 +24,7 @@ angular.module('SearchArticle', [], function () {
             $scope.user_avatar = hr_user_avatar();
 
 
-            var q = $location.search().q;
+            var q = $location.search().articles;
             var page = $location.search().page;
             var category = $location.search().category;
             var tag = $location.search().tag;
@@ -58,7 +58,7 @@ angular.module('SearchArticle', [], function () {
                                 }
                             });
                             var qs;
-                            if (q || tag || page || category) {
+                            if (q || tag || page || category || keyword) {
                                 qs = '?';
 
 

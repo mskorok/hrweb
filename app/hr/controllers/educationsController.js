@@ -88,7 +88,6 @@ angular.module('Educations', [], function () {
                             qs += '&q=' + keyword;
                         }
 
-                        console.warn(1, keyword, country);
                         var url = rest_api_host + 'institutions/list' + '?include=Countries,EducationLevel' + qs;
                         $http.get(url).then(function (data) {
                             if (data.data.data.institutions) {

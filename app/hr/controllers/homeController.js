@@ -45,15 +45,29 @@ angular.module('Home', [], function () {
                         $scope.hasResumes = $scope.totalResumes > 0;
                         $scope.hasArticles = $scope.totalArticles > 0;
                     });
-                    if (templateName.toString() === 'hr/templates/partial/footer.html') {
+                    if (templateName.toString() === 'hr/templates/partial/home-content.html') {
                         $("#main_search_form").validate({
                             rules: {
-                                field: {
+                                articles: {
                                     required: true,
                                     // email: true
                                 }
+                            },
+                            messages: {
+                                articles: "Please enter article keyword",
+                                // lastname: "Please enter your lastname",
+                                // password: {
+                                //     required: "Please provide a password",
+                                //     minlength: "Your password must be at least 5 characters long"
+                                // },
+                                // email: "Please enter a valid email address"
+                            },
+                            submitHandler: function(form) {
+                                form.submit();
                             }
                         });
+                    }
+                    if (templateName.toString() === 'hr/templates/partial/home-content-mobile.html') {
                         $("#mobile_main_search").validate({
                             rules: {
                                 field: {

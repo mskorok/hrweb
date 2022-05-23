@@ -51,18 +51,18 @@
         </div>
     </div>
 
-    <form id="main_search_form" class="main-search-form gray-form css3" novalidate style="margin-bottom: 200px">
+    <form id="main_search_form" class="main-search-form gray-form css3" action="/search-article" novalidate style="margin-bottom: 200px">
         <div class="row">
             <div class="col-md-11">
                 <div style="width: 100%;margin-top: 20px;">
-                    <input required class="new-input placeholder-gray" type="text"
+                    <input required class="new-input placeholder-gray" type="text" name="articles"
                            placeholder="Articles" title="Keywords" style="">
                 </div>
             </div>
             <div class="col-md-1">
                 <div style="width: 100%;margin-top: 27px;">
                     <div style="width: 100%">
-                        <button id="search_article" class="btn btn-orange">Search</button>
+                        <button type="submit" id="search_article" class="btn btn-orange">Search</button>
                     </div>
                 </div>
             </div>
