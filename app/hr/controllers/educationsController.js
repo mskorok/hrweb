@@ -41,7 +41,9 @@ angular.module('Educations', [], function () {
                             $scope.institutions = data.data.data.institutions
                         }
                     });
+                }
 
+                if (templateName.toString() === 'hr/templates/partial/header-search-keywords.html') {
                     var select = jQuery("#banner");
                     var options = [];
                     if (select[0]) {
@@ -65,9 +67,6 @@ angular.module('Educations', [], function () {
                     });
 
 
-                }
-
-                if (templateName.toString() === 'hr/templates/partial/header-search-keywords.html') {
                     var form = document.getElementById('full_text_search_form');
 
                     form.addEventListener('submit', function (ev) {

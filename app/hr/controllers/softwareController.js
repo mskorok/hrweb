@@ -55,7 +55,9 @@ angular.module('Software', [], function () {
                         $scope.lastInRange = $scope.pagesRange.length > 0 ? $scope.pagesRange.slice(-1)[0] : 0;
                         $scope.pageUrl = window.location.origin + window.location.pathname;
                     });
+                }
 
+                if (templateName.toString() === 'hr/templates/partial/header-search-keywords.html') {
                     var select = jQuery("#banner");
                     var options = [];
                     if (select[0]) {
@@ -77,9 +79,8 @@ angular.module('Software', [], function () {
                             }
                         });
                     });
-                }
 
-                if (templateName.toString() === 'hr/templates/partial/header-search-keywords.html') {
+
                     var form = document.getElementById('full_text_search_form');
 
                     form.addEventListener('submit', function (ev) {
