@@ -1,6 +1,78 @@
 <header id="header" class="  clear-fix">
     <div data-ng-include="header_content"></div>
-    <div data-ng-include="header_search_page"></div>
+<!--    <div   ng-controller="searchArticleController  as testCtrl"  data-ng-include="header_search_page"></div>-->
+    <div class=" hidden-xs hidden-sm search-panel desktop"
+         style="height: 100px; width: 100%; background-color: #F6D101;">
+        <div class="section-content" style="height: 130px;">
+            <form id="articles_full_text_search_form" novalidate class="page-search-form" action="/search-article" style="margin-bottom: 200px">
+                <div class="row">
+                    <div class="col-md-10 col-lg-10">
+                        <div class="row m-t-10">
+                            <div class="col-md-8 col-lg-8">
+                                <div class="form-group">
+                                    <div class="input-label-mobile m-b-5">
+                                        <label for="articles" class="brown-color p-l-20">Articles</label>
+                                    </div>
+                                    <input class="new-input placeholder-gray" type="text" id="articles" name="keywords"
+                                           placeholder="Keywords" title="Keywords" style="">
+                                </div>
+                            </div>
+                            <div class="col-md-1 col-lg-1"></div>
+                            <div class="col-md-3 col-lg-3">
+                                <div class="form-group">
+                                    <div class="input-label-mobile m-b-5">
+                                        <label for="categories" class="brown-color">Categories</label>
+                                    </div>
+                                    <select ng-if="categories.length" class="new-input placeholder-gray" id="categories" name="category">
+                                        <option data-ng-repeat="category in categories" value="{{category.id}}">
+                                            {{category.name.toUpperCase()}}
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-2 col-lg-2">
+                        <div class="w-100 m-t-30">
+                            <button class="btn btn-orange btn-lg" type="submit">Search</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <button id="filter_button" class="hidden-md hidden-lg btn filter-button hidden" type="button">
+        <span>Filter</span>
+    </button>
+    <div id="mobile_articles_filter" class=" hidden-md hidden-lg  wrapper-mobile">
+        <div class="search-content-mobile p-t-30">
+            <form id="mobile_articles_full_text_search_form">
+                <div class="input-text-block-mobile">
+                    <div class="input-label-mobile m-b-5">
+                        <label for="m_keywords" class="brown-color p-l-20">Articles</label>
+                    </div>
+                    <input name="keywords" required type="text" id="m_keywords" placeholder="Articles"/>
+                </div>
+                <div class="input-text-block-mobile m-b-5">
+                    <div class="input-label-mobile m-b-25">
+                        <label for="m_categories" class="brown-color  p-l-20">Categories</label>
+                    </div>
+                    <select ng-if="categories.length" class="new-input placeholder-gray" id="m_categories" name="category">
+                        <option data-ng-repeat="category in categories" value="{{category.id}}">
+                            {{category.name}}
+                        </option>
+                    </select>
+                </div>
+                <div class="button-size-mobile m-t-20">
+                    <button class="submit-button-mobile" type="submit">
+                        <img class="submit-image-mobile" src="assets/images/mobile/submit.png" alt=""/>
+                        <span>Search</span>
+                    </button>
+
+                </div>
+            </form>
+        </div>
+    </div>
     <div data-ng-include="header_background"></div>
 </header>
 <div data-ng-include="top_menu"></div>

@@ -22,11 +22,16 @@ angular.module('SearchArticle', [], function () {
             $scope.user_name = hr_user();
 
             $scope.user_avatar = hr_user_avatar();
+            $scope.categories = [];
 
 
-            var q = $location.search().articles;
+            var q = $location.search().keywords;
             var page = $location.search().page;
             var category = $location.search().category;
+            console.warn(2, category);
+            if (category === '0') {
+                category = null;
+            }
             var tag = $location.search().tag;
 
             if (!page) {
@@ -34,20 +39,36 @@ angular.module('SearchArticle', [], function () {
             }
 
             if ($state.current.controller === "searchArticleController") {
+                $http.get(rest_api_host + 'categories/all').then(function (data) {
+                    $scope.categories = data.data.categories;
+                    $scope.categories.push({id: '0', name: 'ALL'});
+                    $scope.categories = [{id: '0', name: 'ALL'}].concat($scope.categories);
+                });
                 $scope.$on('$viewContentLoaded', function () {
+                    $("#articles_full_text_search_form").validate({
+                        rules: {
+                            keywords: {
+                                required: true,
+                            },
+                            category: {
+                                required: true,
+                            },
+                        },
+                        messages: {
+                            keywords: "Please enter article keyword",
+                        },
+                        submitHandler: function(form) {
+                            form.submit();
+                        }
+                    });
+
+
+
                     $scope.$on('$includeContentLoaded', function (event, templateName) {
-                        // console.log('tpl', templateName);
+                        console.info('tpl', templateName);
                         if (templateName.toString() === 'hr/templates/partial/footer.html') {
                             $('#filter_button').on('click', function () {
                                 $('#mobile_articles_filter').toggle();
-                            });
-                            $("#articles_full_text_search_form").validate({
-                                rules: {
-                                    field: {
-                                        required: true,
-                                        email: true
-                                    }
-                                }
                             });
                             $("#mobile_articles_full_text_search_form").validate({
                                 rules: {
@@ -57,7 +78,7 @@ angular.module('SearchArticle', [], function () {
                                     }
                                 }
                             });
-                            var qs;
+                            var qs = '';
                             if (q || tag || page || category || keyword) {
                                 qs = '?';
 
@@ -66,19 +87,19 @@ angular.module('SearchArticle', [], function () {
                                     return false;
                                 }
 
-                                if (typeof q != "undefined") {
+                                if (q) {
                                     qs += 'q=' + q + '&'
                                 }
 
-                                if (typeof page != "undefined") {
+                                if (page) {
                                     qs += 'page=' + page + '&'
                                 }
 
-                                if (typeof tag != "undefined") {
+                                if (tag) {
                                     qs += 'tag=' + tag + '&'
                                 }
 
-                                if (typeof category != "undefined") {
+                                if (category) {
                                     qs += 'category=' + category + '&'
                                 }
 
