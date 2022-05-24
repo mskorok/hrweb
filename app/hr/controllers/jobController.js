@@ -32,7 +32,7 @@ angular.module('Job', [], function () {
             $scope.$on('$viewContentLoaded', function () {
                 let url = rest_api_host + 'home';
                 $http.get(url).then(function (data) {
-                    console.warn(data);
+                    // console.info(data);
                     if (typeof data.data.vacancies != "undefined")
                         $scope.totalVacancies = data.data.vacancies;
                     if (typeof data.data.resumes != "undefined")
@@ -46,7 +46,7 @@ angular.module('Job', [], function () {
                     console.error(error);
                 });
                 $scope.$on('$includeContentLoaded', function (event, templateName) {
-                    console.info('tpl', templateName);
+                    // console.info('tpl', templateName);
                     if (templateName.toString() === 'hr/templates/partial/job-content.html') {
                         $("#job_search_form").validate({
                             rules: {
