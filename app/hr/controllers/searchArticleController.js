@@ -28,24 +28,60 @@ angular.module('SearchArticle', [], function () {
             var q = $location.search().keywords;
             var page = $location.search().page;
             var category = $location.search().category;
-            console.warn(2, category);
+            var tag = $location.search().tag;
+
+            if (q.length < 5) q = '';
+
             if (category === '0') {
                 category = null;
             }
-            var tag = $location.search().tag;
 
             if (!page) {
                 page = 1;
             }
 
+            $scope.keyword = q;
+            $scope.selected = category;
+            $scope.qs1 = '';
+
+
+            $scope.goLink = function (p) {
+                if ('' + page === '' + p) {
+                    return false;
+                }
+                var url = $scope.pageUrl;
+                if ($scope.qs1.length > 0) {
+                    url +=  '&page=' + p;
+                } else {
+                    url +=  '?page=' + p;
+                }
+                window.location = url;
+            };
+
             if ($state.current.controller === "searchArticleController") {
                 $http.get(rest_api_host + 'categories/all').then(function (data) {
                     $scope.categories = data.data.categories;
-                    $scope.categories.push({id: '0', name: 'ALL'});
                     $scope.categories = [{id: '0', name: 'ALL'}].concat($scope.categories);
                 });
                 $scope.$on('$viewContentLoaded', function () {
                     $("#articles_full_text_search_form").validate({
+                        rules: {
+                            keywords: {
+                                require_from_group: [1, ".desktop-group"],
+                            },
+                            category: {
+                                require_from_group: [1, ".desktop-group"],
+                            },
+                        },
+                        messages: {
+                            keywords: "Please enter article keyword",
+                        },
+                        submitHandler: function(form) {
+                            form.submit();
+                        }
+                    });
+
+                    $("#mobile_articles_full_text_search_form").validate({
                         rules: {
                             keywords: {
                                 required: true,
@@ -65,27 +101,15 @@ angular.module('SearchArticle', [], function () {
 
 
                     $scope.$on('$includeContentLoaded', function (event, templateName) {
-                        console.info('tpl', templateName);
+                        // console.info('tpl', templateName);
                         if (templateName.toString() === 'hr/templates/partial/footer.html') {
                             $('#filter_button').on('click', function () {
                                 $('#mobile_articles_filter').toggle();
                             });
-                            $("#mobile_articles_full_text_search_form").validate({
-                                rules: {
-                                    field: {
-                                        required: true,
-                                        email: true
-                                    }
-                                }
-                            });
+
                             var qs = '';
-                            if (q || tag || page || category || keyword) {
+                            if (q || tag || page || category) {
                                 qs = '?';
-
-
-                                if (!q || q.length < 3) {
-                                    return false;
-                                }
 
                                 if (q) {
                                     qs += 'q=' + q + '&'
@@ -109,7 +133,7 @@ angular.module('SearchArticle', [], function () {
 
                             var url = rest_api_host + 'search/articles' + qs;
                             $http.get(url).then(function (data) {
-                                    // console.log(data.data);
+                                    // console.info(data.data);
                                     if (data.data.result && data.data.result === 'error') {
                                         console.log('error', data.data.message);
                                         return false;
@@ -129,7 +153,29 @@ angular.module('SearchArticle', [], function () {
                                     $scope.firstInRange = $scope.pagesRange.length > 0 ? $scope.pagesRange[0] : 0;
                                     $scope.lastInRange = $scope.pagesRange.length > 0 ? $scope.pagesRange.slice(-1)[0] : 0;
                                     $scope.pageUrl = window.location.origin + window.location.pathname;
-                                    // console.log('scope', $scope)
+
+                                    var qs1 = '';
+                                    if (q || tag || page || category) {
+                                        qs1 = '?';
+
+                                        if (q) {
+                                            qs1 += 'q=' + q + '&'
+                                        }
+
+
+                                        if (tag) {
+                                            qs1 += 'tag=' + tag + '&'
+                                        }
+
+                                        if (category) {
+                                            qs1 += 'category=' + category + '&'
+                                        }
+
+                                        qs1 = qs1.slice(0, -1);
+                                    }
+
+                                    $scope.pageUrl +=  qs1;
+                                    $scope.qs1 = qs1;
                                 },
                                 function (data) {
                                     console.log('error response', data);
