@@ -3237,4 +3237,9 @@ label.error {
     /*margin-bottom: 5px;*/
 }
 
+.job-switch {
+    position: relative;
+    top: .5rem;
+}
+
 

@@ -20,7 +20,7 @@
                 <span class="h-link">|</span>
                 <a href="/" class="h-link">Events</a>
                 <span class="h-link">|</span>
-                <a href="/job" class="h-link org-color">Job</a>
+                <a href="/job" class="h-link active">Job</a>
                 <span class="h-link">|</span>
                 <a href="/" class="h-link ">Home</a>
             </div>
@@ -58,7 +58,7 @@
         <div class="row">
             <div class="col-md-5">
                 <div style="width: 100%;margin-top: 20px;">
-                    <input required class="new-input placeholder-gray" type="text"
+                    <input required class="new-input placeholder-gray desktop-group" type="text" name="profession"
                            placeholder="Profession, industries or company" title="Keywords" style="">
                     <div class="radio-block">
                         <input class="my" type="radio" id="vacancy_search_type" value="Vacancy" name="search_type" checked>
@@ -68,7 +68,7 @@
             </div>
             <div class="col-md-5">
                 <div style="width: 100%;margin-top: 20px;">
-                    <input class="new-input placeholder-gray" type="text" placeholder="Country, city or state"
+                    <input class="new-input placeholder-gray desktop-group" type="text" name="location" placeholder="Country, city or state"
                            title="Place" maxlength="70" style="width: 100%;">
                     <div class="radio-block">
                         <input class="my" type="radio" id="resume_search_type" value="Resume" name="search_type">
@@ -79,9 +79,8 @@
             <div class="col-md-2">
                 <div style="width: 100%;margin-top: 27px;">
                     <div style="width: 100%">
-                        <button id="search_resume" style="display: none" class="btn btn-orange">Search Resume</button>
-                        <button id="search_vacancy"  class="btn btn-orange">Search Vacancy
-                        </button>
+                        <button type="submit" id="search_resume" style="display: none" class="btn btn-orange">Search Resume</button>
+                        <button type="submit" id="search_vacancy"  class="btn btn-orange">Search Vacancy</button>
                     </div>
                     <div style="width: 100%">
                         <div class="add-block" id="resume_add_block">
@@ -108,30 +107,53 @@
 <div class=" hidden-md hidden-lg   wrapper-mobile">
     <div class="search-content-mobile">
         <form id="mobile_job_search">
-            <div class="search-content-mobile-text">
-                <span>IT</span>
-                <p>relocation</p>
+            <div class="w-100 m-t-50 m-b-50" style="display: flex; flex-direction: row; justify-content: space-between">
+                <div class="input-text-block-mobile m-b-50">
+                    <div class="m-l-75">
+                        <input name="mobile_search_type" type="radio" id="mobile_resume_search_type" checked>
+                        <label for="mobile_resume_search_type" class="fwn  f-size-20 gray-color job-switch">Search resume</label>
+                    </div>
+                    <div class="m-l-75">
+                        <input name="mobile_search_type" type="radio" id="mobile_vacancy_search_type">
+                        <label for="mobile_vacancy_search_type" class="fwn f-size-20 gray-color job-switch">Search vacancy</label>
+                    </div>
+                </div>
+                <div class="add-block p-t-30 right m-r-50 p-l-75"  style="display: none;" id="mobile_resume_add_block">
+                    <a href="/resume/create" title="Add resume">
+                    <button class="btn-lg btn-blue">
+                        Add resume
+                    </button>
+                    </a>
+                </div>
+                <div class="add-block p-t-30 right m-r-50 p-l-75"  id="mobile_vacancy_add_block">
+                    <a href="/vacancy/create" title="Add vacancy">
+                        <button class="btn-lg btn-blue">
+                            Add vacancy
+                        </button>
+                    </a>
+                </div>
+                <div class="clear-fix"></div>
             </div>
             <div class="input-text-block-mobile">
-                <input required type="text" placeholder="Keywords"/>
+                <input required type="text" name="profession" class="mobile-group" placeholder="Profession, industries or company"/>
             </div>
             <div class="input-label-mobile">
                 <span>What:</span>
                 <p>Profession, industries or company</p>
             </div>
             <div class="input-text-block-mobile search-icon">
-                <input type="text" placeholder="Location"/>
+                <input type="text" class="mobile-group" name="location" placeholder="Location"/>
             </div>
             <div class="input-label-mobile">
                 <span>Where:</span>
                 <p>Country, city or state</p>
             </div>
+
             <div class="button-size-mobile">
-                <button class="submit-button-mobile" type="button">
+                <button class="submit-button-mobile" type="submit">
                     <img class="submit-image-mobile" src="assets/images/mobile/submit.png" alt=""/>
                     <span>Search</span>
                 </button>
-
             </div>
         </form>
     </div>
@@ -153,6 +175,17 @@
             $('#show_res_count').hide();
             $("#show_adv_count").show();
         }
-        console.log(this.id);
+        // console.info(this.id);
+    });
+
+    $('input:radio[name="mobile_search_type"]').on('change', function () {
+        if (this.id === 'mobile_resume_search_type') {
+            $('#mobile_resume_add_block').hide();
+            $('#mobile_vacancy_add_block').show();
+        } else if (this.id === 'mobile_vacancy_search_type') {
+            $('#mobile_resume_add_block').show();
+            $('#mobile_vacancy_add_block').hide();
+        }
+        // console.info(this.id);
     });
 </script>

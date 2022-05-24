@@ -24,12 +24,16 @@ angular.module('SearchResume', [], function () {
             $scope.user_avatar = hr_user_avatar();
 
 
-            var where = $location.search().where;
-            var what = $location.search().what;
-            var salary = $location.search().salary;
-            var type = $location.search().type;
-            var order = $location.search().order;
-            var page = $location.search().page;
+            let where = $location.search().where;
+            let what = $location.search().what;
+            let salary = $location.search().salary;
+            let type = $location.search().type;
+            let order = $location.search().order;
+            let page = $location.search().page;
+
+
+            where = decodeURIComponent(where);
+            what = decodeURIComponent(what);
 
             if (typeof page == 'undefined') {
                 page = 1;

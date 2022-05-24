@@ -24,12 +24,15 @@ angular.module('SearchVacancy', [], function () {
 
             $scope.user_avatar = hr_user_avatar();
 
-            var where = $location.search().where;
-            var what = $location.search().what;
-            var salary = $location.search().salary;
-            var type = $location.search().type;
-            var order = $location.search().order;
-            var page = $location.search().page;
+            let where = $location.search().where;
+            let what = $location.search().what;
+            let salary = $location.search().salary;
+            let type = $location.search().type;
+            let order = $location.search().order;
+            let page = $location.search().page;
+
+            where = decodeURIComponent(where);
+            what = decodeURIComponent(what);
 
             if (typeof page == 'undefined') {
                 page = 1;
@@ -59,7 +62,7 @@ angular.module('SearchVacancy', [], function () {
                                     }
                                 }
                             });
-                            var qs = '';
+                            let qs = '';
                             if (what || where || page || salary || type || order) {
                                 qs = '?';
 
@@ -89,7 +92,7 @@ angular.module('SearchVacancy', [], function () {
 
                                 qs = qs.slice(0, -1);
 
-                                var url = rest_api_host + 'vacancy/search' + qs;
+                                let url = rest_api_host + 'vacancy/search' + qs;
                                 $http.get(url).then(function (data) {
                                         if (data.data.result && data.data.result === 'error') {
                                             console.log('error', data.data.message);
