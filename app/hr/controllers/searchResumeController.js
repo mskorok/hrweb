@@ -35,7 +35,7 @@ angular.module('SearchResume', [], function () {
             where = decodeURIComponent(where);
             what = decodeURIComponent(what);
 
-            if (typeof page == 'undefined') {
+            if (!page) {
                 page = 1;
             }
 
@@ -66,27 +66,27 @@ angular.module('SearchResume', [], function () {
                             let qs = '';
                             if (what || where || page || salary || type || order) {
                                 qs = '?';
-                                if (typeof what != "undefined") {
+                                if (what && what.length > 4) {
                                     qs += 'what=' + what + '&'
                                 }
 
-                                if (typeof where != "undefined") {
+                                if (where && where.length > 4) {
                                     qs += 'where=' + where + '&'
                                 }
 
-                                if (typeof page != "undefined") {
+                                if (page) {
                                     qs += 'page=' + page + '&'
                                 }
 
-                                if (typeof salary != "undefined") {
+                                if (salary) {
                                     qs += 'salary=' + salary + '&'
                                 }
 
-                                if (typeof type != "undefined") {
+                                if (type) {
                                     qs += 'type=' + type + '&'
                                 }
 
-                                if (typeof order != "undefined") {
+                                if (order) {
                                     qs += 'order=' + order + '&'
                                 }
 
