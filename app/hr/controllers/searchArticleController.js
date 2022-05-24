@@ -25,12 +25,13 @@ angular.module('SearchArticle', [], function () {
             $scope.categories = [];
 
 
-            var q = $location.search().keywords;
-            var page = $location.search().page;
-            var category = $location.search().category;
-            var tag = $location.search().tag;
 
-            if (q.length < 5) q = '';
+            let q = $location.search().keywords;
+            let page = $location.search().page;
+            let category = $location.search().category;
+            let tag = $location.search().tag;
+
+            if (!q || q.length < 5) q = '';
 
             if (category === '0') {
                 category = null;
@@ -45,11 +46,11 @@ angular.module('SearchArticle', [], function () {
             $scope.qs1 = '';
 
 
-            $scope.goLink = function (p) {
+            $scope.goLink = (p) => {
                 if ('' + page === '' + p) {
                     return false;
                 }
-                var url = $scope.pageUrl;
+                let url = $scope.pageUrl;
                 if ($scope.qs1.length > 0) {
                     url +=  '&page=' + p;
                 } else {
@@ -59,11 +60,11 @@ angular.module('SearchArticle', [], function () {
             };
 
             if ($state.current.controller === "searchArticleController") {
-                $http.get(rest_api_host + 'categories/all').then(function (data) {
+                $http.get(rest_api_host + 'categories/all').then((data) => {
                     $scope.categories = data.data.categories;
                     $scope.categories = [{id: '0', name: 'ALL'}].concat($scope.categories);
                 });
-                $scope.$on('$viewContentLoaded', function () {
+                $scope.$on('$viewContentLoaded', () => {
                     $("#articles_full_text_search_form").validate({
                         rules: {
                             keywords: {
@@ -76,7 +77,7 @@ angular.module('SearchArticle', [], function () {
                         messages: {
                             keywords: "Please enter article keyword",
                         },
-                        submitHandler: function(form) {
+                        submitHandler: (form) => {
                             form.submit();
                         }
                     });
@@ -93,7 +94,7 @@ angular.module('SearchArticle', [], function () {
                         messages: {
                             keywords: "Please enter article keyword",
                         },
-                        submitHandler: function(form) {
+                        submitHandler: (form) => {
                             form.submit();
                         }
                     });
@@ -103,11 +104,11 @@ angular.module('SearchArticle', [], function () {
                     $scope.$on('$includeContentLoaded', function (event, templateName) {
                         // console.info('tpl', templateName);
                         if (templateName.toString() === 'hr/templates/partial/footer.html') {
-                            $('#filter_button').on('click', function () {
+                            $('#filter_button').on('click', () => {
                                 $('#mobile_articles_filter').toggle();
                             });
 
-                            var qs = '';
+                            let qs = '';
                             if (q || tag || page || category) {
                                 qs = '?';
 
@@ -131,8 +132,8 @@ angular.module('SearchArticle', [], function () {
                             }
 
 
-                            var url = rest_api_host + 'search/articles' + qs;
-                            $http.get(url).then(function (data) {
+                            let url = rest_api_host + 'search/articles' + qs;
+                            $http.get(url).then((data) => {
                                     // console.info(data.data);
                                     if (data.data.result && data.data.result === 'error') {
                                         console.log('error', data.data.message);
@@ -154,7 +155,7 @@ angular.module('SearchArticle', [], function () {
                                     $scope.lastInRange = $scope.pagesRange.length > 0 ? $scope.pagesRange.slice(-1)[0] : 0;
                                     $scope.pageUrl = window.location.origin + window.location.pathname;
 
-                                    var qs1 = '';
+                                    let qs1 = '';
                                     if (q || tag || page || category) {
                                         qs1 = '?';
 
@@ -177,7 +178,7 @@ angular.module('SearchArticle', [], function () {
                                     $scope.pageUrl +=  qs1;
                                     $scope.qs1 = qs1;
                                 },
-                                function (data) {
+                                (data) => {
                                     console.log('error response', data);
                                 });
                         }
@@ -185,7 +186,7 @@ angular.module('SearchArticle', [], function () {
 
                     $templateCache.remove('hr/templates/partial/pagination.html');
                 });
-                angular.element(document).ready(function () {
+                angular.element(document).ready(() => {
 
                 });
             }
