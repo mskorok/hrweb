@@ -63,7 +63,7 @@ angular.module('SearchResume', [], function () {
                                     }
                                 }
                             });
-                            var qs = '';
+                            let qs = '';
                             if (what || where || page || salary || type || order) {
                                 qs = '?';
                                 if (typeof what != "undefined") {
@@ -92,7 +92,7 @@ angular.module('SearchResume', [], function () {
 
                                 qs = qs.slice(0, -1);
 
-                                var url = rest_api_host + 'resume/search' + qs;
+                                let url = rest_api_host + 'resume/search' + qs;
                                 // console.log('url', url);
                                 $http.get(url).then(function (data) {
                                         if (data.data.result && data.data.result === 'error') {
@@ -114,7 +114,6 @@ angular.module('SearchResume', [], function () {
                                         $scope.firstInRange = $scope.pagesRange.length > 0 ? $scope.pagesRange[0] : 0;
                                         $scope.lastInRange = $scope.pagesRange.length > 0 ? $scope.pagesRange.slice(-1)[0] : 0;
                                         $scope.pageUrl = window.location.origin + window.location.pathname;
-                                        // console.log('scope', $scope)
                                     },
                                     function (data) {
                                         console.log('error response', data);
