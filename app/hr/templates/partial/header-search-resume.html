@@ -1,31 +1,34 @@
-<div class=" hidden-xs hidden-sm search-panel desktop"
-     style="height: 100px; width: 100%; background-color: #F6D101;">
+<div class=" hidden-xs hidden-sm search-panel desktop w-100"
+     style="height: 100px; background-color: #F6D101;">
 
-    <form id="full_text_search_form" novalidate>
-        <div class="section-content" style="height: 100px;padding-top: 10px">
+    <form id="full_text_search_form"  novalidate action="/search-resume">
+        <div class="section-content p-t-10" style="height: 100px;">
             <div class="page-search-form">
                 <div class="row">
                     <div class="col-md-5 col-lg-5">
-                        <div style="width: 100%;margin-top: 10px;">
-                            <input class="new-input placeholder-gray" type="text"
+                        <div class="w-100 m-t-10">
+                            <input class="new-input placeholder-gray desktop-group" type="text" value="{{what}}" name="what"
                                    placeholder="Profession, industries or company" title="Keywords" style="">
                         </div>
                     </div>
                     <div class="col-md-5 col-lg-5">
-                        <div style="width: 100%;margin-top: 10px;">
-                            <input class="new-input placeholder-gray" type="text" placeholder="Country, city or state"
-                                   title="Place" maxlength="70" style="width: 100%;">
+                        <div class="w-100 m-t-10">
+                            <input class="new-input placeholder-gray desktop-group w-100" type="text" placeholder="Country, city or state"
+                                   title="Place" maxlength="70" value="{{where}}" name="where">
                         </div>
                     </div>
                     <div class="col-md-2 col-lg-2">
-                        <div style="width: 100%;margin-top: 17px;">
-                            <div style="width: 100%">
+                        <div class="w-100 m-t-15">
+                            <div class="w-100">
                                 <button class="btn btn-orange" type="submit">Search Resume</button>
                             </div>
-                            <div style="width: 100%" ng-show="user_id">
+                            <div class="w-100">
                                 <div class="add-block m-t-3">
                                     <a id="addVacancyButton" href="/vacancy/create" title="Add vacancy">
-                                        <img src="assets/images/new/plus.svg" style="margin-top: 5px;" height="20"
+                                        <img src="assets/images/new/plus.svg"
+                                             alt=""
+                                             class="m-t-5"
+                                             height="20"
                                              width="20"
                                              onerror="this.onerror=null; this.src='assets/images/new/plus.png'">
                                         <div style="display: inline-block; position: relative; bottom: 5px">&nbsp;&nbsp;Add
@@ -43,55 +46,73 @@
             <div class="row p-t-20">
                 <div class="col-md-3 col-lg-3">
                     <div class="input-label-mobile m-b-5">
-                        <label for="search_salary" class="fwn" style="color: #BD8200">Salary from</label>
+                        <label for="search_salary" class="fwn light-brown-color">Salary from</label>
                     </div>
                     <div class="input-text-block-mobile">
-                        <input id="search_salary" class="new-input m-t-3 placeholder-gray" type="text"
-                               placeholder="Salary"
+                        <input id="search_salary" class="new-input m-t-3 placeholder-gray desktop-group" type="text"
+                               placeholder="Salary" value="{{salary}}"
                                name="salary">
                     </div>
                 </div>
 
                 <div class="col-md-3 col-lg-3">
                     <div class="input-label-mobile m-b-5">
-                        <label for="search_currency" class="fwn" style="color: #BD8200">Currency</label>
+                        <label for="search_currency" class="fwn light-brown-color" >Currency</label>
                     </div>
                     <div class="input-text-block-mobile">
-                        <select class="new-input m-t-3 placeholder-gray" id="search_currency" name="currency">
-                            <option>EURO</option>
-                            <option>USD</option>
-                            <option>GBP</option>
+                        <select class="new-input m-t-3 placeholder-gray"
+                                id="search_currency"
+                                data-live-search="true"
+                                name="currencies">
+                            <option></option>
+                            <option value="USD"  ng-checked="currencies === 'USD'">USD</option>
+                            <option value="EURO" ng-checked="currencies === 'EURO'">EURO</option>
+                            <option value="GBP"  ng-checked="currencies === 'GBP'">GBP</option>
+                            <option value="BRL"  ng-checked="currencies === 'BRL'">BRL</option>
+                            <option value="SEK"  ng-checked="currencies === 'SEK'">SEK</option>
+                            <option value="TRY"  ng-checked="currencies === 'TRY'">TRY</option>
+                            <option value="PLN"  ng-checked="currencies === 'PLN'">PLN</option>
+                            <option value="JPY"  ng-checked="currencies === 'JPY'">JPY</option>
+                            <option value="CAD"  ng-checked="currencies === 'CAD'">CAD</option>
+                            <option value="AUD"  ng-checked="currencies === 'AUD'">AUD</option>
                         </select>
                     </div>
                 </div>
 
                 <div class="col-md-3 col-lg-3">
                     <div class="input-label-mobile m-b-5">
-                        <label class="fwn" for="type_of_work" style="color: #BD8200">Type of work</label>
+                        <label class="fwn light-brown-color" for="type_of_work">Type of work</label>
                     </div>
                     <div class="input-text-block-mobile">
-                        <select class="new-input m-t-3 placeholder-gray" data-live-search="true"
+                        <select class="new-input m-t-3 placeholder-gray"
+                                data-live-search="true"
                                 id="type_of_work"
-                                name="type-of-work">
-                            <option selected>Full time</option>
-                            <option>Part time</option>
-                            <option>Project</option>
-                            <option>Remote</option>
-                            <option>Volunteer</option>
-                            <option>Contract</option>
+                                name="type">
+                            <option value="no-matter"  ng-checked="type === 'no-matter'">No Matter</option>
+                            <option value="full-time" ng-checked="type === 'full-time'">Full time</option>
+                            <option value="part-time"  ng-checked="type === 'part-time'">Part time</option>
+                            <option value="project"  ng-checked="type === 'project'">Project</option>
+                            <option value="remote"  ng-checked="type === 'remote'">Remote</option>
+                            <option value="volunteer"  ng-checked="type === 'volunteer'">Volunteer</option>
+
                         </select>
                     </div>
                 </div>
 
                 <div class="col-md-3 col-lg-3">
                     <div class="input-label-mobile m-b-5">
-                        <label class="fwn" for="search_sort" style="color: #BD8200">Sort by</label>
+                        <label class="fwn light-brown-color" for="search_sort">Sort by</label>
                     </div>
                     <div class="input-text-block-mobile">
-                        <select class="new-input m-t-3 placeholder-gray" id="search_sort" name="search-sort">
-                            <option>Newest first</option>
-                            <option>Salary</option>
-                            <option>Salary desc</option>
+                        <select class="new-input m-t-3 placeholder-gray"
+                                id="search_sort"
+                                data-live-search="true"
+                                name="order">
+                            <option value="0">Relevant</option>
+                            <option value="1">Newest first</option>
+                            <option value="2">Oldest first</option>
+                            <option value="3">Salary max</option>
+                            <option value="4">Salary min</option>
                         </select>
                     </div>
                 </div>
@@ -109,30 +130,36 @@
         </div>
     </form>
 </div>
-<button id="filter_button" class="hidden-md hidden-lg btn filter-button" type="button">
+<button id="filter_button" class="hidden-md hidden-lg btn filter-button m-b-25" type="button">
     <span>Filter</span>
 </button>
 <div id="mobile_filter" style="display: none" class=" hidden-md hidden-lg  wrapper-mobile">
     <div class="search-content-mobile p-t-30">
         <form id="mobile_full_text_search_form">
             <div class="input-text-block-mobile">
-                <input name="keywords" type="text" placeholder="Keywords"/>
+                <input name="what" type="text" title="Keywords" class="mobile-group"
+                       placeholder="Profession, industries or company"
+                       value="{{what}}"
+                />
             </div>
             <div class="input-label-mobile">
                 <span>What:</span>
                 <p>Profession, industries or company</p>
             </div>
             <div class="input-text-block-mobile search-icon">
-                <input name="location" type="text" placeholder="Location"/>
+                <input name="where" class="mobile-group" type="text" title="location" placeholder="Location" value="{{where}}"  />
             </div>
             <div class="input-label-mobile">
                 <span>Where:</span>
                 <p>Country, city or state</p>
             </div>
             <div class="input-text-block-mobile">
-                <input id="mobile_search_salary" class="form-control input-text-block-mobile m-t-3" type="text"
+                <input id="mobile_search_salary" class="form-control input-text-block-mobile m-t-3 mobile-group"
+                       type="text"
                        placeholder="Salary"
-                       name="salary">
+                       name="salary"
+                       value="{{salary}}"
+                />
 
             </div>
             <div class="input-label-mobile">
@@ -140,10 +167,21 @@
             </div>
 
             <div class="input-text-block-mobile">
-                <select class="form-control input-text-block-mobile m-t-3" id="mobile_search_currency" name="currency">
-                    <option>EURO</option>
-                    <option>USD</option>
-                    <option>GBP</option>
+                <select class="form-control input-text-block-mobile m-t-3"
+                        data-live-search="true"
+                        id="mobile_search_currency"
+                        name="currencies">
+                    <option value=""></option>
+                    <option value="USD"  ng-checked="currencies === 'USD'">USD</option>
+                    <option value="EURO" ng-checked="currencies === 'EURO'">EURO</option>
+                    <option value="GBP"  ng-checked="currencies === 'GBP'">GBP</option>
+                    <option value="BRL"  ng-checked="currencies === 'BRL'">BRL</option>
+                    <option value="SEK"  ng-checked="currencies === 'SEK'">SEK</option>
+                    <option value="TRY"  ng-checked="currencies === 'TRY'">TRY</option>
+                    <option value="PLN"  ng-checked="currencies === 'PLN'">PLN</option>
+                    <option value="JPY"  ng-checked="currencies === 'JPY'">JPY</option>
+                    <option value="CAD"  ng-checked="currencies === 'CAD'">CAD</option>
+                    <option value="AUD"  ng-checked="currencies === 'AUD'">AUD</option>
                 </select>
             </div>
 
@@ -153,34 +191,25 @@
             <div class="input-text-block-mobile">
                 <select class="form-control  input-text-block-mobile m-t-3" data-live-search="true"
                         id="mobile_type_of_job"
-                        name="type-of-job">
-                    <option selected>Full time</option>
-                    <option>Part time</option>
-                    <option>Project</option>
-                    <option>Volunteer</option>
-                    <option>Contract</option>
+                        name="type">
+                    <option value="no-matter"  ng-checked="type === 'no-matter'">No Matter</option>
+                    <option value="full-time" ng-checked="type === 'full-time'">Full time</option>
+                    <option value="part-time"  ng-checked="type === 'part-time'">Part time</option>
+                    <option value="project"  ng-checked="type === 'project'">Project</option>
+                    <option value="remote"  ng-checked="type === 'remote'">Remote</option>
+                    <option value="volunteer"  ng-checked="type === 'volunteer'">Volunteer</option>
                 </select>
             </div>
             <div class="input-label-mobile">
-                <label class="fwn" for="mobile_type_of_job">Type of Job</label>
+                <label class="fwn" for="mobile_type_of_job">Type of Work</label>
             </div>
             <div class="input-text-block-mobile">
-                <select class="form-control  input-text-block-mobile m-t-3" data-live-search="true"
-                        id="mobile_work_place"
-                        name="work_place">
-                    <option selected>Office</option>
-                    <option>Remote</option>
-                    <option>Partially remote</option>
-                </select>
-            </div>
-            <div class="input-label-mobile">
-                <label class="fwn" for="mobile_work_place">Place of work</label>
-            </div>
-            <div class="input-text-block-mobile">
-                <select class="form-control input-text-block-mobile m-t-3" id="mobile_search_sort" name="search-sort">
-                    <option>Newest first</option>
-                    <option>Salary</option>
-                    <option>Salary desc</option>
+                <select class="form-control input-text-block-mobile m-t-3" id="mobile_search_sort" name="order">
+                    <option value="0">Relevant</option>
+                    <option value="1">Newest first</option>
+                    <option value="2">Oldest first</option>
+                    <option value="3">Salary max</option>
+                    <option value="4">Salary min</option>
                 </select>
             </div>
             <div class="input-label-mobile">
@@ -188,7 +217,7 @@
             </div>
             <div class="button-size-mobile">
                 <button class="submit-button-mobile" type="submit">
-                    <img class="submit-image-mobile" src="assets/images/mobile/submit.png" alt=""/>
+                    <img class="submit-image-mobile-w" src="assets/images/mobile/submit.png" alt=""/>
                     <span>Search</span>
                 </button>
 

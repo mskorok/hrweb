@@ -22,8 +22,14 @@ angular.module('Subscribe', [], function () {
             $scope.user_name = hr_user();
             $scope.user_avatar = hr_user_avatar();
 
+            $scope.categories = [];
+
 
             if ($state.current.controller === "subscribeController") {
+                $http.get(rest_api_host + 'categories/all').then((data) => {
+                    $scope.categories = data.data.categories;
+                    $scope.categories = [{id: '0', name: 'ALL'}].concat($scope.categories);
+                });
                 $scope.$on('$viewContentLoaded', function () {
                     $scope.$on('$includeContentLoaded', function (event, templateName) {
                         // console.log('tpl', templateName);
@@ -47,13 +53,13 @@ angular.module('Subscribe', [], function () {
                                 }
                             });
 
-                            var mail_form_mobile = document.getElementById('mail_subscription_mobile');
+                            let mail_form_mobile = document.getElementById('mail_subscription_mobile');
 
                             if (mail_form_mobile) {
                                 mail_form_mobile.addEventListener('submit', function (ev) {
-                                    var url = rest_api_host + hr_mail_subscription_url;
-                                    var xhr = new XMLHttpRequest();
-                                    var form_data = new FormData(mail_form_mobile);
+                                    let url = rest_api_host + hr_mail_subscription_url;
+                                    let xhr = new XMLHttpRequest();
+                                    let form_data = new FormData(mail_form_mobile);
                                     xhr.onload = function () {
                                         // console.log('r', this.response);
                                         if (this.readyState === 4) {
@@ -80,13 +86,13 @@ angular.module('Subscribe', [], function () {
                                 });
                             }
 
-                            var mail_form = document.getElementById('mail_subscription');
+                            let mail_form = document.getElementById('mail_subscription');
 
                             if (mail_form) {
                                 mail_form.addEventListener('submit', function (ev) {
-                                    var url = rest_api_host + hr_mail_subscription_url;
-                                    var xhr = new XMLHttpRequest();
-                                    var form_data = new FormData(mail_form);
+                                    let url = rest_api_host + hr_mail_subscription_url;
+                                    let xhr = new XMLHttpRequest();
+                                    let form_data = new FormData(mail_form);
                                     xhr.onload = function () {
                                         if (this.readyState === 4) {
                                             if (this.status === 200) {

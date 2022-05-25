@@ -1,5 +1,5 @@
-<center><h3 id="mail_subscription_title" class="m-t-50 gray-color">Subscribe for updates</h3></center>
-<h3 class="w-100 t-a-c olive-color m-t-100" id="mail_subscription_success" style="display: none"> You successfully subscribed!!!</h3>
+<center><h3 id="mail_subscription_title" class="p-t-50 gray-color bg-mobile-gray">Subscribe for updates</h3></center>
+<h3 class="w-100 t-a-c olive-color m-t-100 bg-mobile-gray" id="mail_subscription_success" style="display: none;"> You successfully subscribed!!!</h3>
 <div id="mail_subscription_wrapper" class="hidden-xs hidden-sm section-content page-additional-form top-radius m-t-100 p-l-20 p-t-50 p-r-20">
     <div style="height: 100px; width: 100%;">
         <form class="top-subscription-form" id="mail_subscription">
@@ -26,19 +26,19 @@
         </form>
     </div>
 </div>
-<div class="col-xs-12 wrapper-mobile col-sm-12 hidden-md hidden-lg m-t-20 search-content-mobile">
+<div class="col-xs-12 wrapper-mobile col-sm-12 hidden-md hidden-lg p-t-20 search-content-mobile">
     <form class="top-subscription-form" id="mail_subscription_mobile">
-        <div class="row">
-            <div class="input-text-block-mobile m-b-20">
-                <input name="email" id="subscription_email_mobile" type="email" required
+        <div class="row m-t-50 m-b-75">
+            <div class="input-text-block-mobile m-b-75">
+                <input title="Email" name="email" id="subscription_email_mobile" type="email" required
                        class="new-input placeholder-gray h-45 p-l-10" placeholder="Email">
             </div>
-            <div class="input-text-block-mobile m-b-20">
-                <select name="category" id="subscription_category_mobile"
+            <div class="input-text-block-mobile m-b-75">
+                <select ng-if="categories.length" name="category" id="subscription_category_mobile"
                         class="placeholder-gray h-45 p-l-10" title="Subscription category">
-                    <option value="0" selected>Choose category</option>
-                    <option value="1">Certification</option>
-                    <option value="2">Countries</option>
+                    <option ng-selected="category.id == selected" data-ng-repeat="category in categories" value="{{category.id}}">
+                        {{category.name.toUpperCase()}}
+                    </option>
                 </select>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">

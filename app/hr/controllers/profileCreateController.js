@@ -20,9 +20,9 @@ angular.module('ProfileCreate', [], function () {
             $scope.footer = 'hr/templates/partial/footer.html';
             $scope.croppie = 'hr/templates/partial/croppie-modal.html';
 
-            var redirectUrl = '/login';
+            let redirectUrl = '/login';
 
-            var user_id = hr_authorized_id();
+            let user_id = hr_authorized_id();
 
             $scope.user_id = user_id;
 
@@ -38,13 +38,13 @@ angular.module('ProfileCreate', [], function () {
                 })
             }
 
-            var url = rest_api_host + 'profile/create/';
+            let url = rest_api_host + 'profile/create/';
 
             $scope.$on('$viewContentLoaded', function () {
-                // console.log('url', url);
+                // console.info('url', url);
                 $http.get(url).then(function (data) {
-                        // console.log('loaded', new Date().getTime());
-                        // console.log('form', data.data.html);
+                        // console.info('loaded', new Date().getTime());
+                        // console.info('form', data.data.html);
 
                         $('#content_container').html(data.data.html);
 
@@ -77,7 +77,7 @@ angular.module('ProfileCreate', [], function () {
                 });
             });
 
-            var hr_create = {
+            let hr_create = {
                 init: function () {
                     //
                 },
@@ -85,9 +85,9 @@ angular.module('ProfileCreate', [], function () {
                     //
                 },
                 submit: function () {
-                    var self = this;
-                    var button = document.querySelector('button[type=submit]');
-                    var form = button.closest('form');
+                    let self = this;
+                    let button = document.querySelector('button[type=submit]');
+                    let form = button.closest('form');
                     if (form) {
                         form.addEventListener('submit', function (e) {
                             e.preventDefault();
@@ -100,10 +100,10 @@ angular.module('ProfileCreate', [], function () {
                 send: function (form) {
                     hr_sanitize_checkbox(form);
 
-                    var form_data = new FormData(form);
-                    var file_input = document.getElementById('base64');
+                    let form_data = new FormData(form);
+                    let file_input = document.getElementById('base64');
                     if (file_input && file_input.value) {
-                        var file = dataURLtoFile(file_input.value, 'avatar.png');
+                        let file = dataURLtoFile(file_input.value, 'avatar.png');
 
                         if (file) {
                             form_data.append('fileName', file);
@@ -111,23 +111,23 @@ angular.module('ProfileCreate', [], function () {
                     }
 
 
-                    var xhr = new XMLHttpRequest();
+                    let xhr = new XMLHttpRequest();
                     xhr.onload = function () {
                         if (this.readyState === 4) {
                             if (this.status === 200) {
                                 // console.log(this.response);
                                 try {
-                                    var error_container = document.getElementById('error_container');
+                                    let error_container = document.getElementById('error_container');
                                     error_container.innerHTML = '';
-                                    var response = JSON.parse(this.response);
+                                    let response = JSON.parse(this.response);
                                     // console.log('resp', response);
-                                    var html = '';
+                                    let html = '';
                                     if (response.result === 'error') {
                                         if (error_container) {
                                             if (Array.isArray(response.message)) {
                                                 response.message.forEach(function (message) {
                                                     if (typeof message === 'object') {
-                                                        for (var key in message) {
+                                                        for (let key in message) {
                                                             html += '<div>' + key + ' : ' + message[key] + '</div>';
                                                         }
                                                     } else if (typeof message === 'string') {
@@ -135,7 +135,7 @@ angular.module('ProfileCreate', [], function () {
                                                     }
                                                 });
                                             } else if (typeof response.message === 'object') {
-                                                for (var key in response.message) {
+                                                for (let key in response.message) {
                                                     html += '<div>' + key + ' : ' + response.message[key] + '</div>';
                                                 }
                                             } else {
