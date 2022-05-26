@@ -33,25 +33,29 @@ angular.module('SearchResume', [], function () {
             let page = $location.search().page;
             where = where ? where : '';
             what = what ? what : '';
+            console.warn(1, what);
 
 
             where = decodeURIComponent(where);
             what = decodeURIComponent(what);
+            console.warn(2, what);
+            console.warn(3, $location.search());
 
 
-            $scope.curensies = currency;
+            $scope.currencies = currency;
             $scope.where = where;
             $scope.what = what;
             $scope.salary = salary;
             $scope.type = type;
             $scope.order = order;
 
+            $templateCache.remove('hr/templates/partial/header-search-resume.html');
+
             if (!page) {
                 page = 1;
             }
 
             $scope.qs1 = '';
-
 
             $scope.goLink = (p) => {
                 if ('' + page === '' + p) {
@@ -121,11 +125,11 @@ angular.module('SearchResume', [], function () {
                             let qs = '';
                             if (what || where || page || salary || type || currency || order) {
                                 qs = '?';
-                                if (what && what.length > 4) {
-                                    qs += 'what=' + what + '&'
+                                if (what && what.length > 1) {
+                                    qs += 'what=' + encodeURIComponent(what) + '&'
                                 }
 
-                                if (where && where.length > 4) {
+                                if (where && where.length > 1) {
                                     qs += 'where=' + where + '&'
                                 }
 
@@ -179,11 +183,11 @@ angular.module('SearchResume', [], function () {
                                         if (what || where || salary || type || currency || order) {
                                             qs1 = '?';
 
-                                            if (what && what.length > 4) {
+                                            if (what && what.length > 1) {
                                                 qs1 += 'what=' + what + '&'
                                             }
 
-                                            if (where && where.length > 4) {
+                                            if (where && where.length > 1) {
                                                 qs1 += 'where=' + where + '&'
                                             }
 

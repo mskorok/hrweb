@@ -26,67 +26,129 @@ angular.module('SearchVacancy', [], function () {
 
             let where = $location.search().where;
             let what = $location.search().what;
+
             let salary = $location.search().salary;
             let type = $location.search().type;
+            let currency = $location.search().currencies;
             let order = $location.search().order;
             let page = $location.search().page;
 
+            where = where ? where : '';
+            what = what ? what : '';
+
             where = decodeURIComponent(where);
             what = decodeURIComponent(what);
+
+            $scope.curencies = currency;
+            $scope.where = where;
+            $scope.what = what;
+            $scope.salary = salary;
+            $scope.type = type;
+            $scope.order = order;
+
+            $templateCache.remove('hr/templates/partial/header-search-resume.html');
 
             if (typeof page == 'undefined') {
                 page = 1;
             }
 
+            $scope.qs1 = '';
+
+            $scope.goLink = (p) => {
+                if ('' + page === '' + p) {
+                    return false;
+                }
+                let url = $scope.pageUrl;
+                if ($scope.qs1.length > 0) {
+                    url +=  '&page=' + p;
+                } else {
+                    url +=  '?page=' + p;
+                }
+                window.location = url;
+            };
+
             if ($state.current.controller === "searchVacancyController") {
                 $scope.$on('$viewContentLoaded', function () {
                     $scope.$on('$includeContentLoaded', function (event, templateName) {
-                        // console.log('tpl', templateName);
-                        if (templateName.toString() === 'hr/templates/partial/footer.html') {
+                        // console.info('tpl', templateName);
+                        if (templateName.toString() === 'hr/templates/partial/header-search-resume.html') {
                             $('#filter_button').on('click', function () {
                                 $('#mobile_filter').toggle();
                             });
                             $("#full_text_search_form").validate({
                                 rules: {
-                                    field: {
-                                        required: true,
-                                        email: true
+                                    what: {
+                                        require_from_group: [1, ".desktop-group"],
+                                    },
+                                    where: {
+                                        require_from_group: [1, ".desktop-group"],
+                                    },
+                                    salary: {
+                                        require_from_group: [1, ".desktop-group"],
                                     }
+                                },
+                                messages: {
+                                    what: "Please enter keywords",
+                                    where: "Please enter location",
+                                    salary: "Please enter salary",
+                                },
+                                submitHandler: (form) => {
+                                    form.submit();
                                 }
                             });
                             $("#mobile_full_text_search_form").validate({
                                 rules: {
-                                    field: {
-                                        required: true,
-                                        email: true
+                                    what: {
+                                        require_from_group: [1, ".mobile-group"],
+                                    },
+                                    where: {
+                                        require_from_group: [1, ".mobile-group"],
+                                    },
+                                    salary: {
+                                        require_from_group: [1, ".mobile-group"],
                                     }
+                                },
+                                messages: {
+                                    what: "Please enter keywords",
+                                    where: "Please enter location",
+                                    salary: "Please enter salary",
+                                },
+                                submitHandler: (form) => {
+                                    form.submit();
                                 }
                             });
+                        }
+                        if (templateName.toString() === 'hr/templates/partial/footer.html') {
+
                             let qs = '';
-                            if (what || where || page || salary || type || order) {
+                            if (what || where || page || salary || type || currency || order) {
                                 qs = '?';
 
-                                if (typeof what != "undefined") {
-                                    qs += 'what=' + what + '&'
+                                if (what && what.length > 1) {
+                                    qs += 'what=' + encodeURIComponent(what) + '&'
                                 }
 
-                                if (typeof where != "undefined") {
+                                if (where && where.length > 1) {
                                     qs += 'where=' + where + '&'
                                 }
 
-                                if (typeof page != "undefined") {
+                                if (page) {
                                     qs += 'page=' + page + '&'
                                 }
 
-                                if (typeof salary != "undefined") {
+                                if (salary) {
                                     qs += 'salary=' + salary + '&'
                                 }
 
-                                if (typeof type != "undefined") {
+                                if (currency) {
+                                    qs += 'currency=' + currency + '&'
+                                }
+
+                                if (type) {
                                     qs += 'type=' + type + '&'
                                 }
 
-                                if (typeof order != "undefined") {
+                                if (order) {
                                     qs += 'order=' + order + '&'
                                 }
 
@@ -94,6 +156,7 @@ angular.module('SearchVacancy', [], function () {
 
                                 let url = rest_api_host + 'vacancy/search' + qs;
                                 $http.get(url).then(function (data) {
+                                        // console.info('data', data);
                                         if (data.data.result && data.data.result === 'error') {
                                             console.log('error', data.data.message);
                                             return false;
@@ -113,7 +176,40 @@ angular.module('SearchVacancy', [], function () {
                                         $scope.firstInRange = $scope.pagesRange.length > 0 ? $scope.pagesRange[0] : 0;
                                         $scope.lastInRange = $scope.pagesRange.length > 0 ? $scope.pagesRange.slice(-1)[0] : 0;
                                         $scope.pageUrl = window.location.origin + window.location.pathname;
-                                        // console.log('scope', $scope)
+                                        let qs1 = '';
+                                        if (what || where || salary || type || currency || order) {
+                                            qs1 = '?';
+
+                                            if (what && what.length > 1) {
+                                                qs1 += 'what=' + what + '&'
+                                            }
+
+                                            if (where && where.length > 1) {
+                                                qs1 += 'where=' + where + '&'
+                                            }
+
+                                            if (salary) {
+                                                qs1 += 'salary=' + salary + '&'
+                                            }
+
+                                            if (currency) {
+                                                qs1 += 'currency=' + currency + '&'
+                                            }
+
+                                            if (type) {
+                                                qs1 += 'type=' + type + '&'
+                                            }
+
+                                            if (order) {
+                                                qs1 += 'order=' + order + '&'
+                                            }
+
+                                            qs1 = qs1.slice(0, -1);
+                                        }
+
+                                        $scope.pageUrl +=  qs1;
+                                        $scope.qs1 = qs1;
+
                                     },
                                     function (data) {
                                         console.log('error response', data);

@@ -65,16 +65,16 @@
                                 data-live-search="true"
                                 name="currencies">
                             <option></option>
-                            <option value="USD"  ng-checked="currencies === 'USD'">USD</option>
-                            <option value="EURO" ng-checked="currencies === 'EURO'">EURO</option>
-                            <option value="GBP"  ng-checked="currencies === 'GBP'">GBP</option>
-                            <option value="BRL"  ng-checked="currencies === 'BRL'">BRL</option>
-                            <option value="SEK"  ng-checked="currencies === 'SEK'">SEK</option>
-                            <option value="TRY"  ng-checked="currencies === 'TRY'">TRY</option>
-                            <option value="PLN"  ng-checked="currencies === 'PLN'">PLN</option>
-                            <option value="JPY"  ng-checked="currencies === 'JPY'">JPY</option>
-                            <option value="CAD"  ng-checked="currencies === 'CAD'">CAD</option>
-                            <option value="AUD"  ng-checked="currencies === 'AUD'">AUD</option>
+                            <option value="USD"  ng-selected="currencies === 'USD'">USD</option>
+                            <option value="EURO" ng-selected="currencies === 'EURO'">EURO</option>
+                            <option value="GBP"  ng-selected="currencies === 'GBP'">GBP</option>
+                            <option value="BRL"  ng-selected="currencies === 'BRL'">BRL</option>
+                            <option value="SEK"  ng-selected="currencies === 'SEK'">SEK</option>
+                            <option value="TRY"  ng-selected="currencies === 'TRY'">TRY</option>
+                            <option value="PLN"  ng-selected="currencies === 'PLN'">PLN</option>
+                            <option value="JPY"  ng-selected="currencies === 'JPY'">JPY</option>
+                            <option value="CAD"  ng-selected="currencies === 'CAD'">CAD</option>
+                            <option value="AUD"  ng-selected="currencies === 'AUD'">AUD</option>
                         </select>
                     </div>
                 </div>
@@ -88,12 +88,13 @@
                                 data-live-search="true"
                                 id="type_of_work"
                                 name="type">
-                            <option value="no-matter"  ng-checked="type === 'no-matter'">No Matter</option>
-                            <option value="full-time" ng-checked="type === 'full-time'">Full time</option>
-                            <option value="part-time"  ng-checked="type === 'part-time'">Part time</option>
-                            <option value="project"  ng-checked="type === 'project'">Project</option>
-                            <option value="remote"  ng-checked="type === 'remote'">Remote</option>
-                            <option value="volunteer"  ng-checked="type === 'volunteer'">Volunteer</option>
+                            <option value="no-matter"  ng-selected="type === 'no-matter'">No Matter</option>
+                            <option value="full-time" ng-selected="type === 'full-time'">Full time</option>
+                            <option value="insite" ng-selected="type === 'insite'">Insite</option>
+                            <option value="part-time"  ng-selected="type === 'part-time'">Part time</option>
+                            <option value="project"  ng-selected="type === 'project'">Project</option>
+                            <option value="remote"  ng-selected="type === 'remote'">Remote</option>
+                            <option value="volunteer"  ng-selected="type === 'volunteer'">Volunteer</option>
 
                         </select>
                     </div>
@@ -108,11 +109,10 @@
                                 id="search_sort"
                                 data-live-search="true"
                                 name="order">
-                            <option value="0">Relevant</option>
-                            <option value="1">Newest first</option>
-                            <option value="2">Oldest first</option>
-                            <option value="3">Salary max</option>
-                            <option value="4">Salary min</option>
+                            <option value="1"  ng-selected="order === '1'">Newest first</option>
+                            <option value="2"  ng-selected="order === '2'">Oldest first</option>
+                            <option value="3"  ng-selected="order === '3'">Salary max</option>
+                            <option value="4"  ng-selected="order === '4'">Salary min</option>
                         </select>
                     </div>
                 </div>
@@ -172,16 +172,16 @@
                         id="mobile_search_currency"
                         name="currencies">
                     <option value=""></option>
-                    <option value="USD"  ng-checked="currencies === 'USD'">USD</option>
-                    <option value="EURO" ng-checked="currencies === 'EURO'">EURO</option>
-                    <option value="GBP"  ng-checked="currencies === 'GBP'">GBP</option>
-                    <option value="BRL"  ng-checked="currencies === 'BRL'">BRL</option>
-                    <option value="SEK"  ng-checked="currencies === 'SEK'">SEK</option>
-                    <option value="TRY"  ng-checked="currencies === 'TRY'">TRY</option>
-                    <option value="PLN"  ng-checked="currencies === 'PLN'">PLN</option>
-                    <option value="JPY"  ng-checked="currencies === 'JPY'">JPY</option>
-                    <option value="CAD"  ng-checked="currencies === 'CAD'">CAD</option>
-                    <option value="AUD"  ng-checked="currencies === 'AUD'">AUD</option>
+                    <option value="USD"  ng-selected="currencies === 'USD'">USD</option>
+                    <option value="EURO" ng-selected="currencies === 'EURO'">EURO</option>
+                    <option value="GBP"  ng-selected="currencies === 'GBP'">GBP</option>
+                    <option value="BRL"  ng-selected="currencies === 'BRL'">BRL</option>
+                    <option value="SEK"  ng-selected="currencies === 'SEK'">SEK</option>
+                    <option value="TRY"  ng-selected="currencies === 'TRY'">TRY</option>
+                    <option value="PLN"  ng-selected="currencies === 'PLN'">PLN</option>
+                    <option value="JPY"  ng-selected="currencies === 'JPY'">JPY</option>
+                    <option value="CAD"  ng-selected="currencies === 'CAD'">CAD</option>
+                    <option value="AUD"  ng-selected="currencies === 'AUD'">AUD</option>
                 </select>
             </div>
 
@@ -192,12 +192,12 @@
                 <select class="form-control  input-text-block-mobile m-t-3" data-live-search="true"
                         id="mobile_type_of_job"
                         name="type">
-                    <option value="no-matter"  ng-checked="type === 'no-matter'">No Matter</option>
-                    <option value="full-time" ng-checked="type === 'full-time'">Full time</option>
-                    <option value="part-time"  ng-checked="type === 'part-time'">Part time</option>
-                    <option value="project"  ng-checked="type === 'project'">Project</option>
-                    <option value="remote"  ng-checked="type === 'remote'">Remote</option>
-                    <option value="volunteer"  ng-checked="type === 'volunteer'">Volunteer</option>
+                    <option value="no-matter"  ng-selected="type === 'no-matter'">No Matter</option>
+                    <option value="full-time" ng-selected="type === 'full-time'">Full time</option>
+                    <option value="part-time"  ng-selected="type === 'part-time'">Part time</option>
+                    <option value="project"  ng-selected="type === 'project'">Project</option>
+                    <option value="remote"  ng-selected="type === 'remote'">Remote</option>
+                    <option value="volunteer"  ng-selected="type === 'volunteer'">Volunteer</option>
                 </select>
             </div>
             <div class="input-label-mobile">
@@ -205,11 +205,11 @@
             </div>
             <div class="input-text-block-mobile">
                 <select class="form-control input-text-block-mobile m-t-3" id="mobile_search_sort" name="order">
-                    <option value="0">Relevant</option>
-                    <option value="1">Newest first</option>
-                    <option value="2">Oldest first</option>
-                    <option value="3">Salary max</option>
-                    <option value="4">Salary min</option>
+                    <option value="0" ng-selected="order === '0'">Relevant</option>
+                    <option value="1"  ng-selected="order === '1'">Newest first</option>
+                    <option value="2"  ng-selected="order === '2'">Oldest first</option>
+                    <option value="3"  ng-selected="order === '3'">Salary max</option>
+                    <option value="4"  ng-selected="order === '4'">Salary min</option>
                 </select>
             </div>
             <div class="input-label-mobile">
