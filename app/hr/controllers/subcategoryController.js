@@ -1,7 +1,7 @@
-angular.module('Tests', [], function () {
-    // console.log('module Tests init');
+angular.module('Subcategory', [], function () {
+    console.info('module Subcategory init');
 }).controller(
-    'testsController',
+    'subcategoryController',
     [
         '$scope',
         '$state',
@@ -22,9 +22,15 @@ angular.module('Tests', [], function () {
             $scope.user_name = hr_user();
             $scope.user_avatar = hr_user_avatar();
 
+            let segment = $location.path();
+
+
             let page = $location.search().page;
             let keyword =  $location.search().keywords;
-            let country =  $location.search().countries
+            let country =  $location.search().countries;
+
+            keyword = keyword ? keyword : '';
+            keyword = decodeURIComponent(keyword);
 
             if (!page) page = 1;
 
@@ -55,7 +61,7 @@ angular.module('Tests', [], function () {
             $scope.$on('$includeContentLoaded', function (event, templateName) {
                 // console.log(templateName);
                 if (templateName.toString() === 'hr/templates/partial/footer.html') {
-                    let url = rest_api_host + 'categories/sub/tests' + '?page=' + page;
+                    let url = rest_api_host + 'categories/sub' + segment + '?page=' + page;
                     $http.get(url).then((data) => {
                         $scope.subcategories = data.data.data.subcategory;
                         $scope.totalItems = data.data.data.totalItems;
@@ -118,7 +124,7 @@ angular.module('Tests', [], function () {
                             qs += '&q=' + encodeURIComponent(keyword);
                         }
 
-                        let url = rest_api_host + 'categories/sub/tests' + qs;
+                        let url = rest_api_host + 'categories/sub'  + segment + qs;
                         $http.get(url).then((data) => {
                             $scope.subcategories = data.data.data.subcategory;
                             $scope.totalItems = data.data.data.totalItems;

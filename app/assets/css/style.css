@@ -1387,6 +1387,10 @@ button {
     display: inline-block;
 }
 
+a.menu-link.active {
+    color: #008db1 !important;
+}
+
 .arrow-drop li span.menu-arrow {
     display: inline-block;
     float: right;
@@ -1483,6 +1487,10 @@ button {
     .h-link {
         font-size: 16px !important;
     }
+}
+
+.main-menu-btn {
+    cursor: pointer;
 }
 
 @media screen and (max-width: 990px) {
@@ -2668,9 +2676,12 @@ select.placeholder-gray option:not(:first-of-type) {
     color: black !important;
 }
 
-.bg-mobile-gray {
-    background-color: #d7d7d7;
+@media screen and (max-width: 990px) {
+    .bg-mobile-gray {
+        background-color: #d7d7d7;
+    }
 }
+
 
 .pointer {
     cursor: pointer;

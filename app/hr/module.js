@@ -53,6 +53,8 @@ var app = angular.module(
         'SearchArticle',
         'SearchVacancy',
         'Software',
+        'Subcategory',
+        'SubcategoryArticles',
         'Subscribe',
         'Tests',
         'Unsubscribe',
@@ -63,7 +65,6 @@ var app = angular.module(
         'VacancyUserList',
         'VacancyFavoriteList',
         'VacancyAppliedList',
-        'SubcategoryArticles',
     ]
 );
 app.config(['$locationProvider', function ($locationProvider) {
@@ -84,22 +85,40 @@ app.config(['$stateProvider', '$urlRouterProvider', '$cookiesProvider', function
                 css: 'assets/css/home.css'
             }
         })
-        .state('job', {
-            url: '/job',
-            controller: 'jobController',
-            templateUrl: 'hr/templates/job.html',
+        // .state('job', {
+        //     url: '/job',
+        //     controller: 'jobController',
+        //     templateUrl: 'hr/templates/job.html',
+        //     data: {
+        //         title: 'Job',
+        //         css: 'assets/css/job.css'
+        //     }
+        // })
+        .state('jobs', {
+            url: '/jobs',
+            controller: 'subcategoryController',
+            templateUrl: 'hr/templates/subcategory.html',
             data: {
                 title: 'Job',
-                css: 'assets/css/job.css'
+                css: 'assets/css/subcategory.css'
             }
         })
+        // .state('events', {
+        //     url: '/events',
+        //     controller: 'eventsController',
+        //     templateUrl: 'hr/templates/events.html',
+        //     data: {
+        //         title: 'Events',
+        //         css: 'assets/css/events.css'
+        //     }
+        // })
         .state('events', {
             url: '/events',
-            controller: 'eventsController',
-            templateUrl: 'hr/templates/events.html',
+            controller: 'subcategoryController',
+            templateUrl: 'hr/templates/subcategory.html',
             data: {
                 title: 'Events',
-                css: 'assets/css/events.css'
+                css: 'assets/css/subcategory.css'
             }
         })
         .state('educations', {
@@ -111,58 +130,121 @@ app.config(['$stateProvider', '$urlRouterProvider', '$cookiesProvider', function
                 css: 'assets/css/educations.css'
             }
         })
+        // .state('educations', {
+        //     url: '/educations',
+        //     controller: 'subcategoryController',
+        //     templateUrl: 'hr/templates/subcategory.html',
+        //     data: {
+        //         title: 'Educations',
+        //         css: 'assets/css/subcategory.css'
+        //     }
+        // })
+        // .state('books', {
+        //     url: '/books',
+        //     controller: 'booksController',
+        //     templateUrl: 'hr/templates/books.html',
+        //     data: {
+        //         title: 'Books',
+        //         css: 'assets/css/books.css'
+        //     }
+        // })
         .state('books', {
             url: '/books',
-            controller: 'booksController',
-            templateUrl: 'hr/templates/books.html',
+            controller: 'subcategoryController',
+            templateUrl: 'hr/templates/subcategory.html',
             data: {
                 title: 'Books',
-                css: 'assets/css/books.css'
+                css: 'assets/css/subcategory.css'
             }
         })
+        // .state('tests', {
+        //     url: '/tests',
+        //     controller: 'testsController',
+        //     templateUrl: 'hr/templates/tests.html',
+        //     data: {
+        //         title: 'Tests',
+        //         css: 'assets/css/tests.css'
+        //     }
+        // })
         .state('tests', {
             url: '/tests',
-            controller: 'testsController',
-            templateUrl: 'hr/templates/tests.html',
+            controller: 'subcategoryController',
+            templateUrl: 'hr/templates/subcategory.html',
             data: {
                 title: 'Tests',
-                css: 'assets/css/tests.css'
+                css: 'assets/css/subcategory.css'
             }
         })
+        // .state('migration', {
+        //     url: '/migration',
+        //     controller: 'migrationController',
+        //     templateUrl: 'hr/templates/migration.html',
+        //     data: {
+        //         title: 'Migration',
+        //         css: 'assets/css/migration.css'
+        //     }
+        // })
         .state('migration', {
             url: '/migration',
-            controller: 'migrationController',
-            templateUrl: 'hr/templates/migration.html',
+            controller: 'subcategoryController',
+            templateUrl: 'hr/templates/subcategory.html',
             data: {
                 title: 'Migration',
-                css: 'assets/css/migration.css'
+                css: 'assets/css/subcategory.css'
             }
         })
+        // .state('certification', {
+        //     url: '/certification',
+        //     controller: 'certificationController',
+        //     templateUrl: 'hr/templates/certification.html',
+        //     data: {
+        //         title: 'Certification',
+        //         css: 'assets/css/certification.css'
+        //     }
+        // })
         .state('certification', {
             url: '/certification',
-            controller: 'certificationController',
-            templateUrl: 'hr/templates/certification.html',
+            controller: 'subcategoryController',
+            templateUrl: 'hr/templates/subcategory.html',
             data: {
                 title: 'Certification',
-                css: 'assets/css/certification.css'
+                css: 'assets/css/subcategory.css'
             }
         })
+        // .state('software', {
+        //     url: '/software',
+        //     controller: 'softwareController',
+        //     templateUrl: 'hr/templates/software.html',
+        //     data: {
+        //         title: 'Software',
+        //         css: 'assets/css/software.css'
+        //     }
+        // })
         .state('software', {
             url: '/software',
-            controller: 'softwareController',
-            templateUrl: 'hr/templates/software.html',
+            controller: 'subcategoryController',
+            templateUrl: 'hr/templates/subcategory.html',
             data: {
                 title: 'Software',
-                css: 'assets/css/software.css'
+                css: 'assets/css/subcategory.css'
             }
         })
+        // .state('hardware', {
+        //     url: '/hardware',
+        //     controller: 'hardwareController',
+        //     templateUrl: 'hr/templates/hardware.html',
+        //     data: {
+        //         title: 'Hardware',
+        //         css: 'assets/css/hardware.css'
+        //     }
+        // })
         .state('hardware', {
             url: '/hardware',
-            controller: 'hardwareController',
-            templateUrl: 'hr/templates/hardware.html',
+            controller: 'subcategoryController',
+            templateUrl: 'hr/templates/subcategory.html',
             data: {
                 title: 'Hardware',
-                css: 'assets/css/hardware.css'
+                css: 'assets/css/subcategory.css'
             }
         })
         .state('search-resume', {

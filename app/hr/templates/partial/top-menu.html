@@ -19,8 +19,10 @@
                 <a id="top_menu_educations" href="/educations" class="h-link">Education</a>
                 <span class="h-link">|</span>
                 <a id="top_menu_events" href="/events" class="h-link">Events</a>
+<!--                <span class="h-link">|</span>-->
+<!--                <a id="top_menu_job" href="/job" class="h-link">Job</a>-->
                 <span class="h-link">|</span>
-                <a id="top_menu_job" href="/job" class="h-link">Job</a>
+                <a id="top_menu_jobs" href="/jobs" class="h-link">Jobs</a>
                 <span class="h-link">|</span>
                 <a id="top_menu_home" href="/" class="h-link">Home</a>
             </div>
@@ -71,6 +73,10 @@
         if (path.includes('job')) {
             id = 'top_menu_job';
             title = '';
+        }
+        if (path.includes('jobs')) {
+            id = 'top_menu_jobs';
+            title = 'Jobs';
         }
         if (path.includes('home')) {
             id = 'top_menu_home';

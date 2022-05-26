@@ -33,13 +33,11 @@ angular.module('SearchResume', [], function () {
             let page = $location.search().page;
             where = where ? where : '';
             what = what ? what : '';
-            console.warn(1, what);
+
 
 
             where = decodeURIComponent(where);
             what = decodeURIComponent(what);
-            console.warn(2, what);
-            console.warn(3, $location.search());
 
 
             $scope.currencies = currency;
