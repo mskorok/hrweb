@@ -115,12 +115,12 @@ angular.module('ProfileCreate', [], function () {
                     xhr.onload = function () {
                         if (this.readyState === 4) {
                             if (this.status === 200) {
-                                // console.log(this.response);
+
                                 try {
                                     let error_container = document.getElementById('error_container');
                                     error_container.innerHTML = '';
                                     let response = JSON.parse(this.response);
-                                    // console.log('resp', response);
+                                    console.info('resp', response);
                                     let html = '';
                                     if (response.result === 'error') {
                                         if (error_container) {
@@ -148,7 +148,7 @@ angular.module('ProfileCreate', [], function () {
                                     } else if (response.result === 'OK') {
                                         console.log('OK');
                                         // alert('ok');
-                                        window.location.href = redirectUrl;
+                                        // window.location.href = redirectUrl;
                                     } else if (response.html) {
                                         $('#content_container').html(response.html);
                                     }

@@ -156,7 +156,7 @@ angular.module('SearchResume', [], function () {
                                 let url = rest_api_host + 'resume/search' + qs;
                                 // console.info('url', url);
                                 $http.get(url).then(function (data) {
-                                    // console.info('data', data);
+                                    console.info('data', data);
                                         if (data.data.result && data.data.result === 'error') {
                                             console.log('error', data.data.message);
                                             return false;

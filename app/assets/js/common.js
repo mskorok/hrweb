@@ -94,7 +94,6 @@ var admin_auth = {
     login: function (name, password, remember) {
         setTimeout(function () {
             remember = remember || null;
-            var self = this;
             var error_container = document.getElementById('error_container');
             var url = rest_api_host + hr_login_post_url;
             var xhr = new XMLHttpRequest();
@@ -108,10 +107,10 @@ var admin_auth = {
                     if (this.status === 200) {
                         try {
                             var response = JSON.parse(this.response);
-                            // console.log('r', response, remember);
-                            self.set_cookies(response, remember);
-                            // console.log(444, self.get_token());
-                            window.location.href = self.frontHome;
+                            console.log('r', response, remember);
+                            admin_auth.set_cookies(response, remember);
+                            console.log(444, admin_auth.get_token());
+                            window.location.href = admin_auth.frontHome;
                         } catch (e) {
                             if (error_container) {
                                 error_container.textContent = 'Wrong login or password'
@@ -166,11 +165,11 @@ var admin_auth = {
             this.set_cookie('rest_user_avatar_url', response.data.avatar.path + response.data.avatar.fileName, expires);
         } else if (typeof response.data !== 'undefined' && typeof  response.data.user.gender !== 'undefined') {
             if (response.data.user.gender === 'male') {
-                img = '/assets/images/new/mans/man13.png';
+                img = '/assets/images/new/men/man13.png';
             } else if (response.data.user.gender === 'female') {
                 img = '/assets/images/new/women/woman13.png';
             } else {
-                img = '/assets/images/new/mans/boy09.png';
+                img = '/assets/images/new/men/boy09.png';
             }
             this.set_cookie('rest_user_avatar_url', img, expires);
         }
