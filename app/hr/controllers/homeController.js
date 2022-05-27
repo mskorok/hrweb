@@ -32,7 +32,7 @@ angular.module('Home', [], function () {
             $scope.$on('$viewContentLoaded', function () {
                 $scope.$on('$includeContentLoaded', function (event, templateName) {
                     // console.log('tpl', templateName);
-                    var url = rest_api_host + 'home';
+                    let url = rest_api_host + 'home';
                     $http.get(url).then(function (data) {
                         // console.log('data home', data);
                         if (typeof data.data.vacancies != "undefined")

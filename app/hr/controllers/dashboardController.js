@@ -30,6 +30,18 @@ angular.module('Dashboard', [], function () {
             $scope.user_avatar = hr_user_avatar();
             $scope.superadmin = false;
 
+            $scope.subscriptions = 0
+
+            $scope.totalVacancies = 0;
+            $scope.favoriteVacancies = 0;
+            $scope.appliedVacancies = 0
+
+            $scope.totalResumes = 0;
+            $scope.myResumes = 0;
+            $scope.invitations = 0
+            $scope.favoriteResumes = 0
+
+
             if (!user_id) {
                 console.log('id not found');
                 $state.go('login', {
@@ -38,26 +50,45 @@ angular.module('Dashboard', [], function () {
                 })
             }
 
+            $http.get(rest_api_host + 'home').then(function (data) {
+                console.log('data home', data);
+                if (typeof data.data.vacancies != "undefined")
+                    $scope.totalVacancies = data.data.vacancies;
+                if (typeof data.data.resumes != "undefined")
+                    $scope.totalResumes = data.data.resumes;
+            });
+
             if ($state.current.controller === "dashboardController") {
                 $scope.$on('$viewContentLoaded', function () {
                     $scope.$on('$includeContentLoaded', function (event, templateName) {
                         console.log('tpl', templateName);
                         if (templateName.toString() === 'hr/templates/partial/footer.html') {
-                            let url = rest_api_host + 'users/' + user_id + '?include=ProfessionalExperiences,Education,Images,Countries,Subscriptions,Invitations,AppliedVacancies,Vacancies,Resumes,Resumes,Senders,FavoriteResumes,FavoriteVacancies';
+                            let url = rest_api_host + 'users/' + user_id + '?include=ProfessionalExperiences,Education,Images,Countries,Companies,Subscriptions,Invitations,AppliedVacancies,Vacancies,Resumes,Resumes,Senders,FavoriteResumes,FavoriteVacancies';
                             $http.get(url
                                 ,
                                 {
-                                  headers: {'Authorization': token}
+                                    headers: {'Authorization': token}
                                 }
                             ).then(function (data) {
+                                console.warn('data', data);
                                     $scope.user = data.data.user;
                                     let role = $scope.user.role;
                                     $scope.user.role = $scope.user.role.capitalize();
 
                                     $scope.company = role === 'admin' || role === 'superadmin' || role === 'partner' || role === 'manager';
-                                    $scope.superadmin =  role === 'superadmin';
+                                    $scope.admin = role === 'admin' || role === 'superadmin';
+                                    $scope.companyAdmin = role === 'admin' || role === 'superadmin' || role === 'companyAdmin';
+                                    $scope.superadmin = role === 'superadmin';
                                     // $scope.company = true;
                                     // console.info(1, $scope.company, $scope.superadmin, role);
+
+                                $scope.cpmpanies = $scope.user.Companies;
+                                $scope.favoriteVacancies = $scope.user.FavoriteVacancies.length;
+                                $scope.appliedVacancies = $scope.user.AppliedVacancies.length;
+                                $scope.myResumes =  $scope.user.Resumes.length;
+                                $scope.invitations = $scope.user.Invitations.length;
+                                $scope.favoriteResumes = $scope.user.FavoriteResumes.length;
+                                $scope.subscriptions = $scope.user.Subscriptions.length;
                                 },
                                 function (data) {
                                     console.log('error response', data);
