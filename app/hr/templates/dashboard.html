@@ -15,7 +15,7 @@
                 <a href="/profile/edit" class="h-link">Profile Edit</a>
                 <span class="h-link">|</span>
                 <a href="/profile" class="h-link">Profile</a>
-                <span class="h-link" ng-if="admin">|</span>
+                <span class="h-link" ng-if="superadmin">|</span>
                 <a href="/admin" class="h-link" ng-if="admin">Admin</a>
                 <span class="h-link">|</span>
                 <a href="/dashboard" class="h-link active">Dashboard</a>
@@ -172,6 +172,20 @@
             <a href="404.html">
                 <div class="search-block  d-f-center gray-color dashboard-block">
                     Favorite Resumes
+                </div>
+            </a>
+        </div>
+        <div ng-if="superadmin" class="col-xs-4 col-sm-4 col-md-4 col-lg-4 m-b-20">
+            <a href="404.html">
+                <div class="search-block  d-f-center gray-color dashboard-block">
+                    All Invited Resumes
+                </div>
+            </a>
+        </div>
+        <div  ng-if="superadmin" class="col-xs-4 col-sm-4 col-md-4 col-lg-4 m-b-20">
+            <a href="404.html">
+                <div class="search-block  d-f-center gray-color dashboard-block">
+                    All Favorite Resumes
                 </div>
             </a>
         </div>

@@ -28,7 +28,7 @@ angular.module('Dashboard', [], function () {
             $scope.user_name = hr_user();
 
             $scope.user_avatar = hr_user_avatar();
-            $scope.admin = false;
+            $scope.superadmin = false;
 
             if (!user_id) {
                 console.log('id not found');
@@ -55,7 +55,9 @@ angular.module('Dashboard', [], function () {
                                     $scope.user.role = $scope.user.role.capitalize();
 
                                     $scope.company = role === 'admin' || role === 'superadmin' || role === 'partner' || role === 'manager';
+                                    $scope.superadmin =  role === 'superadmin';
                                     // $scope.company = true;
+                                    console.warn(1, $scope.company, role);
                                 },
                                 function (data) {
                                     console.log('error response', data);
