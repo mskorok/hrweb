@@ -18,9 +18,9 @@ angular.module('ResumeEdit', [], function () {
             $scope.top_menu_mobile = 'hr/templates/partial/top-menu-mobile.html';
             $scope.footer = 'hr/templates/partial/footer.html';
 
-            var token = 'Bearer ' + $cookies.get('rest_user_token');
+            let token = 'Bearer ' + $cookies.get('rest_user_token');
 
-            var user_id = hr_authorized_id();
+            let user_id = hr_authorized_id();
 
             $scope.user_id = hr_authorized_id();
 
@@ -28,11 +28,11 @@ angular.module('ResumeEdit', [], function () {
 
             $scope.user_avatar = hr_user_avatar();
 
-            // var resume_id = window.location.pathname.split("/").pop();
+            // let resume_id = window.location.pathname.split("/").pop();
 
-            var resume_id = $stateParams.id;
+            let resume_id = $stateParams.id;
 
-            var url = rest_api_host + '/resume/update/' + resume_id;
+            let url = rest_api_host + '/resume/update/' + resume_id;
 
             if (!user_id) {
                 console.log('id not found');
@@ -50,12 +50,12 @@ angular.module('ResumeEdit', [], function () {
                         headers: {'Authorization': token}
                     }
                 ).then(function (data) {
-                        console.log('loaded', new Date().getTime());
-                        // console.log('form', data.data.html);
+                        // console.info('loaded', new Date().getTime());
+                        // console.info('form', data.data.html);
 
                         $('#content_container').html(data.data.html);
 
-                        var form = document.getElementById('resume_form');
+                        let form = document.getElementById('resume_form');
                         if (form) {
                             form.addEventListener('submit', function (e) {
                                 e.stopPropagation();
@@ -70,31 +70,31 @@ angular.module('ResumeEdit', [], function () {
                     });
             });
 
-            var hr_edit = {
+            let hr_edit = {
                 appendCheckbox: function (form, form_data) {
                 },
                 hr_user_edit: function (form) {
                     hr_sanitize_checkbox(form);
-                    var form_data = new FormData(form);
+                    let form_data = new FormData(form);
                     this.appendCheckbox(form, form_data);
 
 
-                    var xhr = new XMLHttpRequest();
+                    let xhr = new XMLHttpRequest();
                     xhr.onload = function () {
                         if (this.readyState === 4) {
                             if (this.status === 200) {
                                 try {
-                                    // console.log('æ', this.response);
-                                    var response = JSON.parse(this.response);
-                                    var error_container = document.getElementById('error_container');
-                                    var html;
+                                    // console.info('response', this.response);
+                                    let response = JSON.parse(this.response);
+                                    let error_container = document.getElementById('error_container');
+                                    let html;
                                     if (response.result === 'error') {
                                         if (error_container) {
                                             html = '';
                                             if (Array.isArray(response.message)) {
                                                 response.message.forEach(function (message) {
                                                     if (typeof message === 'object') {
-                                                        for (var key in message) {
+                                                        for (let key in message) {
                                                             html += '<div>' + key + ' : ' + message[key] + '</div>';
                                                         }
                                                     } else if (typeof message === 'string') {
@@ -102,7 +102,7 @@ angular.module('ResumeEdit', [], function () {
                                                     }
                                                 });
                                             } else if (typeof response.message === 'object') {
-                                                for (var key in response.message) {
+                                                for (let key in response.message) {
                                                     html += '<div>' + key + ' : ' + response.message[key] + '</div>';
                                                 }
                                             } else {
@@ -118,7 +118,7 @@ angular.module('ResumeEdit', [], function () {
                                             if (Array.isArray(response.error.message)) {
                                                 response.error.message.forEach(function (message) {
                                                     if (typeof message === 'object') {
-                                                        for (var key in message) {
+                                                        for (let key in message) {
                                                             html += '<div>' + key + ' : ' + message[key] + '</div>';
                                                         }
                                                     } else if (typeof message === 'string') {
@@ -127,7 +127,7 @@ angular.module('ResumeEdit', [], function () {
                                                 })
                                             } else if (typeof response.error.message === 'string') {
                                                 try {
-                                                    var errors = JSON.parse(response);
+                                                    let errors = JSON.parse(response);
                                                     errors.forEach(function (message) {
                                                         html += '<div>' + message + '</div>';
                                                     })

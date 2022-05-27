@@ -8,11 +8,13 @@
     <div class="row section-content">
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 m-b-30">
             <div class="h-menu-container">
-                <a href="/profile/delete/{{user.id}}" class="h-link org-color">Profile Delete</a>
+                <a href="/profile/delete" class="h-link red-color">Profile Delete</a>
                 <span class="h-link">|</span>
                 <a ng-cloak ng-show="company" href="/company/list" class="h-link">Companies</a>
                 <span ng-cloak ng-show="company" class="h-link">|</span>
-                <a href="/profile/edit/{{user.id}}" class="h-link">Profile Edit</a>
+                <a href="/profile/edit" class="h-link">Profile Edit</a>
+                <span class="h-link">|</span>
+                <a href="/dashboard" class="h-link">Dashboard</a>
                 <span class="h-link">|</span>
                 <a href="/" class="h-link">Home</a>
             </div>
@@ -26,18 +28,7 @@
         </div>
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                <h3 class="m-b-50 flower-blue-color">Profile</h3>
-                <!--<div class="m-b-50" style="height: 20px">-->
-                    <!--<div class="left">-->
-                        <!--<a class="btn btn-info" href="/profile/edit"  id="model_edit">Edit</a>-->
-                    <!--</div>-->
-                    <!--<div class="left">-->
-                        <!--<a class="btn btn-info hidden" href="/profile/show"  id="model_show">Show</a>-->
-                    <!--</div>-->
-                    <!--<div class="right">-->
-                        <!--<a class="btn btn-danger" href="javascript:void 0"  id="model_delete">Delete</a>-->
-                    <!--</div>-->
-                <!--</div>-->
+                <h3 class="m-b-50 title-color">Profile</h3>
             </div>
         </div>
     </div>
@@ -45,7 +36,7 @@
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 m-b-30 m-t-30">
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                    <div ng-cloak ng-show="user.name" class="resume-position title-color">{{ user.name }} &nbsp; {{user.surname}}</div>
+                    <div ng-cloak ng-show="user.name" class="resume-position flower-blue-color">{{ user.name }} &nbsp; {{user.surname}}</div>
                 </div>
             </div>
             <div class="row m-t-30 m-b-50" data-img="{{user.Images.path}}">

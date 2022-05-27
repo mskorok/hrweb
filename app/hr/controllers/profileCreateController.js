@@ -120,7 +120,7 @@ angular.module('ProfileCreate', [], function () {
                                     let error_container = document.getElementById('error_container');
                                     error_container.innerHTML = '';
                                     let response = JSON.parse(this.response);
-                                    console.info('resp', response);
+                                    // console.info('resp', response);
                                     let html = '';
                                     if (response.result === 'error') {
                                         if (error_container) {
@@ -148,7 +148,7 @@ angular.module('ProfileCreate', [], function () {
                                     } else if (response.result === 'OK') {
                                         console.log('OK');
                                         // alert('ok');
-                                        // window.location.href = redirectUrl;
+                                        window.location.href = redirectUrl;
                                     } else if (response.html) {
                                         $('#content_container').html(response.html);
                                     }

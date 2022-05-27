@@ -1,0 +1,180 @@
+<header id="header" class="  clear-fix">
+    <div data-ng-include="header_content"></div>
+    <div data-ng-include="header_background"></div>
+</header>
+<!--<div data-ng-include="top_menu"></div>-->
+<!--<div data-ng-include="top_menu_mobile"></div>-->
+<div class="container">
+    <div class="row section-content">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 m-b-30">
+            <div class="h-menu-container">
+                <a href="/profile/delete" class="h-link red-color">Profile Delete</a>
+                <span class="h-link">|</span>
+                <!--                <a ng-cloak ng-show="company" href="/company/list" class="h-link">Companies</a>-->
+                <!--                <span ng-cloak ng-show="company" class="h-link">|</span>-->
+                <a href="/profile/edit" class="h-link">Profile Edit</a>
+                <span class="h-link">|</span>
+                <a href="/profile" class="h-link">Profile</a>
+                <span class="h-link" ng-if="admin">|</span>
+                <a href="/admin" class="h-link" ng-if="admin">Admin</a>
+                <span class="h-link">|</span>
+                <a href="/dashboard" class="h-link active">Dashboard</a>
+                <span class="h-link">|</span>
+                <a href="/" class="h-link">Home</a>
+            </div>
+        </div>
+    </div>
+    <h2 class="m-t-100 m-b-50 title-color">Notifications</h2>
+    <div class="row m-b-30">
+        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 m-b-20">
+            <a href="404.html">
+                <div class="search-block  d-f-center gray-color dashboard-block">
+                    Inbox messages
+                </div>
+            </a>
+        </div>
+        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 m-b-20">
+            <a href="404.html">
+                <div class="search-block  d-f-center gray-color dashboard-block">
+                    Sent messages
+                </div>
+            </a>
+        </div>
+        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 m-b-20">
+            <a href="404.html">
+                <div class="search-block  d-f-center gray-color dashboard-block">
+                    Create message
+                </div>
+            </a>
+        </div>
+        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 m-b-20">
+            <a href="404.html">
+                <div class="search-block  d-f-center gray-color dashboard-block">
+                    Subscriptions
+                </div>
+            </a>
+        </div>
+    </div>
+    <h2 class="m-t-100 m-b-50 title-color">Companies</h2>
+    <div class="row m-b-50">
+        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 m-b-20">
+            <a href="404.html">
+                <div class="search-block  d-f-center gray-color dashboard-block">
+                    List Companies
+                </div>
+            </a>
+        </div>
+        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 m-b-20">
+            <a href="404.html">
+                <div class="search-block  d-f-center gray-color dashboard-block">
+                    Create Company
+                </div>
+            </a>
+        </div>
+        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 m-b-20">
+            <a href="404.html">
+                <div class="search-block  d-f-center gray-color dashboard-block">
+                    Connect Company
+                </div>
+            </a>
+        </div>
+        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 m-b-20">
+            <a href="404.html">
+                <div class="search-block  d-f-center gray-color dashboard-block">
+                    Disconnect Company
+                </div>
+            </a>
+        </div>
+    </div>
+    <h2 class="m-t-100 m-b-50 title-color">Vacancies</h2>
+    <div class="row m-b-50">
+        <div ng-if="company" class="col-xs-4 col-sm-4 col-md-4 col-lg-4 m-b-20">
+            <a href="404.html">
+                <div class="search-block  d-f-center gray-color dashboard-block">
+                    My Vacancies
+                </div>
+            </a>
+        </div>
+        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 m-b-20">
+            <a href="404.html">
+                <div class="search-block  d-f-center gray-color dashboard-block">
+                    All Vacancies
+                </div>
+            </a>
+        </div>
+        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 m-b-20">
+            <a href="404.html">
+                <div class="search-block  d-f-center gray-color dashboard-block">
+                    Favorite Vacancies
+                </div>
+            </a>
+        </div>
+        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 m-b-20">
+            <a href="404.html">
+                <div class="search-block  d-f-center gray-color dashboard-block">
+                    Create Vacancy
+                </div>
+            </a>
+        </div>
+        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 m-b-20">
+            <a href="404.html">
+                <div class="search-block  d-f-center gray-color dashboard-block">
+                    Applied Vacancies
+                </div>
+            </a>
+        </div>
+        <div ng-if="company" class="col-xs-4 col-sm-4 col-md-4 col-lg-4 m-b-20">
+            <a href="404.html">
+                <div class="search-block  d-f-center gray-color dashboard-block">
+                    Applied Users
+                </div>
+            </a>
+        </div>
+        <div ng-if="company" class="col-xs-4 col-sm-4 col-md-4 col-lg-4 m-b-20">
+            <a href="404.html">
+                <div class="search-block  d-f-center gray-color dashboard-block">
+                    Invited Users
+                </div>
+            </a>
+        </div>
+    </div>
+    <h2 class="m-t-100 m-b-50 title-color">Resumes</h2>
+    <div class="row m-b-150">
+        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 m-b-20">
+            <a href="404.html">
+                <div class="search-block  d-f-center gray-color dashboard-block">
+                    My Resumes
+                </div>
+            </a>
+        </div>
+        <div  ng-if="company" class="col-xs-4 col-sm-4 col-md-4 col-lg-4 m-b-20">
+            <a href="404.html">
+                <div class="search-block  d-f-center gray-color dashboard-block">
+                    All Resumes
+                </div>
+            </a>
+        </div>
+        <div ng-if="!company" class="col-xs-4 col-sm-4 col-md-4 col-lg-4 m-b-20">
+            <a href="404.html">
+                <div class="search-block  d-f-center gray-color dashboard-block">
+                    Create Resume
+                </div>
+            </a>
+        </div>
+        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 m-b-20">
+            <a href="404.html">
+                <div class="search-block  d-f-center gray-color dashboard-block">
+                    Invited Resumes
+                </div>
+            </a>
+        </div>
+        <div ng-if="company" class="col-xs-4 col-sm-4 col-md-4 col-lg-4 m-b-20">
+            <a href="404.html">
+                <div class="search-block  d-f-center gray-color dashboard-block">
+                    Favorite Resumes
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+<div data-ng-include="footer"></div>

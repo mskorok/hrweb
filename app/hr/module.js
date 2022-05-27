@@ -10,6 +10,7 @@ var app = angular.module(
         'ngCookies',
         'ngSanitize',
         'notFound',
+        'Admin',
         'Article',
         'Articles',
         'Books',
@@ -20,6 +21,7 @@ var app = angular.module(
         'CompanyList',
         'Confirm User',
         'Contact',
+        'Dashboard',
         'Education',
         'EducationCreate',
         'EducationEdit',
@@ -85,15 +87,15 @@ app.config(['$stateProvider', '$urlRouterProvider', '$cookiesProvider', function
                 css: 'assets/css/home.css'
             }
         })
-        // .state('job', {
-        //     url: '/job',
-        //     controller: 'jobController',
-        //     templateUrl: 'hr/templates/job.html',
-        //     data: {
-        //         title: 'Job',
-        //         css: 'assets/css/job.css'
-        //     }
-        // })
+        .state('job', {
+            url: '/job',
+            controller: 'jobController',
+            templateUrl: 'hr/templates/job.html',
+            data: {
+                title: 'Job',
+                css: 'assets/css/job.css'
+            }
+        })
         .state('jobs', {
             url: '/jobs',
             controller: 'subcategoryController',
@@ -348,6 +350,26 @@ app.config(['$stateProvider', '$urlRouterProvider', '$cookiesProvider', function
             data: {
                 title: 'Profile',
                 css: 'assets/css/profile.css'
+            }
+        })
+
+        .state('dashboard', {
+            url: '/dashboard',
+            controller: 'dashboardController',
+            templateUrl: 'hr/templates/dashboard.html',
+            data: {
+                title: 'Dashboard',
+                css: 'assets/css/dashboard.css'
+            }
+        })
+
+        .state('admin', {
+            url: '/admin',
+            controller: 'adminController',
+            templateUrl: 'hr/templates/admin.html',
+            data: {
+                title: 'Admin',
+                css: 'assets/css/admin.css'
             }
         })
 
@@ -621,13 +643,13 @@ app.config(['$stateProvider', '$urlRouterProvider', '$cookiesProvider', function
         })
 
         .state('confirm', {
-          url: '/confirm',
-          controller: 'confirmUserController',
-          templateUrl: 'hr/templates/confirm-user.html',
-          data: {
-            title: '',
-            css: 'assets/css/confirm-user.css'
-          }
+            url: '/confirm',
+            controller: 'confirmUserController',
+            templateUrl: 'hr/templates/confirm-user.html',
+            data: {
+                title: '',
+                css: 'assets/css/confirm-user.css'
+            }
         })
 
         .state('subscribe', {
@@ -697,14 +719,14 @@ app.config(['$stateProvider', '$urlRouterProvider', '$cookiesProvider', function
             }
         })
         .state('unsubscribe', {
-        url: '/unsubscribe',
-        controller: 'unsubscribeController',
-        templateUrl: 'hr/templates/unsubscribe.html',
-        data: {
-            title: 'Unsubscribe',
-            css: 'assets/css/unsubscribe.css'
-        }
-    });
+            url: '/unsubscribe',
+            controller: 'unsubscribeController',
+            templateUrl: 'hr/templates/unsubscribe.html',
+            data: {
+                title: 'Unsubscribe',
+                css: 'assets/css/unsubscribe.css'
+            }
+        });
 
-    $urlRouterProvider.otherwise('/not_found');
+    $urlRouterProvider.otherwise('/not-found');
 }]);

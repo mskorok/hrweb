@@ -1,6 +1,6 @@
-angular.module('Profile', [], function () {
-    // console.log('module Profile init');
-}).controller('profileController', [
+angular.module('Dashboard', [], function () {
+    console.log('module Dashboard init');
+}).controller('dashboardController', [
         "$scope",
         '$state',
         '$cookies',
@@ -28,6 +28,7 @@ angular.module('Profile', [], function () {
             $scope.user_name = hr_user();
 
             $scope.user_avatar = hr_user_avatar();
+            $scope.admin = false;
 
             if (!user_id) {
                 console.log('id not found');
@@ -37,12 +38,12 @@ angular.module('Profile', [], function () {
                 })
             }
 
-            if ($state.current.controller === "profileController") {
+            if ($state.current.controller === "dashboardController") {
                 $scope.$on('$viewContentLoaded', function () {
                     $scope.$on('$includeContentLoaded', function (event, templateName) {
-                        // console.log('tpl', templateName);
+                        console.log('tpl', templateName);
                         if (templateName.toString() === 'hr/templates/partial/footer.html') {
-                            let url = rest_api_host + 'users/' + user_id + '?include=ProfessionalExperiences,Education,Images,Countries';
+                            let url = rest_api_host + 'users/' + user_id + '?include=ProfessionalExperiences,Education,Images,Countries,Subscriptions,Invitations,AppliedVacancies,Vacancies,Resumes,Resumes,Senders,FavoriteResumes,FavoriteVacancies';
                             $http.get(url
                                 ,
                                 {
