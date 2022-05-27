@@ -57,7 +57,7 @@ angular.module('Dashboard', [], function () {
                                     $scope.company = role === 'admin' || role === 'superadmin' || role === 'partner' || role === 'manager';
                                     $scope.superadmin =  role === 'superadmin';
                                     // $scope.company = true;
-                                    console.warn(1, $scope.company, role);
+                                    // console.info(1, $scope.company, $scope.superadmin, role);
                                 },
                                 function (data) {
                                     console.log('error response', data);
