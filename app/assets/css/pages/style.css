@@ -1156,7 +1156,7 @@ button {
     }
 
     .bg {
-        background-image: url("../images/bg.png");
+        background-image: url("../../images/bg.png");
         background-color: transparent;
         background-repeat: repeat-x;
         background-position: center 0;
@@ -1347,7 +1347,7 @@ button {
 
 .arrow-drop div.account-image {
     /*background: transparent url('assets/images/design/arrow_d.png') no-repeat right 16px;*/
-    background: transparent url('../images/design/arrow_d.png') no-repeat right 16px;
+    background: transparent url('../../images/design/arrow_d.png') no-repeat right 16px;
 }
 
 .arrow-drop div.account-image:hover {
@@ -2426,11 +2426,11 @@ select.placeholder-gray option:not(:first-of-type) {
 
     .search-icon input[type="text"] {
 
-        background: url(../images/mobile/s240.png) no-repeat 90.13%, linear-gradient(top, #e3e5e8, #EEEEEE 0.375em, #FFFFFF 1.125em);
-        background: url(../images/mobile/s240.png) no-repeat 90.13%, -webkit-linear-gradient(top, #e3e5e8, #EEEEEE 0.375em, #FFFFFF 1.125em);
-        background: url(../images/mobile/s240.png) no-repeat 90.13%, -moz-linear-gradient(top, #e3e5e8, #EEEEEE 0.375em, #FFFFFF 1.125em);
-        background: url(../images/mobile/s240.png) no-repeat 90.13%, -o-linear-gradient(top, #e3e5e8, #EEEEEE 0.375em, #FFFFFF 1.125em);
-        background: url(../images/mobile/s240.png) no-repeat 90.13%, -ms-linear-gradient(top, #e3e5e8, #EEEEEE 0.375em, #FFFFFF 1.125em);
+        background: url(../../images/mobile/s240.png) no-repeat 90.13%, linear-gradient(top, #e3e5e8, #EEEEEE 0.375em, #FFFFFF 1.125em);
+        background: url(../../images/mobile/s240.png) no-repeat 90.13%, -webkit-linear-gradient(top, #e3e5e8, #EEEEEE 0.375em, #FFFFFF 1.125em);
+        background: url(../../images/mobile/s240.png) no-repeat 90.13%, -moz-linear-gradient(top, #e3e5e8, #EEEEEE 0.375em, #FFFFFF 1.125em);
+        background: url(../../images/mobile/s240.png) no-repeat 90.13%, -o-linear-gradient(top, #e3e5e8, #EEEEEE 0.375em, #FFFFFF 1.125em);
+        background: url(../../images/mobile/s240.png) no-repeat 90.13%, -ms-linear-gradient(top, #e3e5e8, #EEEEEE 0.375em, #FFFFFF 1.125em);
 
     }
 }
@@ -2443,11 +2443,11 @@ select.placeholder-gray option:not(:first-of-type) {
 
     .search-icon input[type="text"] {
 
-        background: url(../images/mobile/search.png) no-repeat 90.13%, linear-gradient(top, #e3e5e8, #EEEEEE 0.375em, #FFFFFF 1.125em);
-        background: url(../images/mobile/search.png) no-repeat 90.13%, -webkit-linear-gradient(top, #e3e5e8, #EEEEEE 0.375em, #FFFFFF 1.125em);
-        background: url(../images/mobile/search.png) no-repeat 90.13%, -moz-linear-gradient(top, #e3e5e8, #EEEEEE 0.375em, #FFFFFF 1.125em);
-        background: url(../images/mobile/search.png) no-repeat 90.13%, -o-linear-gradient(top, #e3e5e8, #EEEEEE 0.375em, #FFFFFF 1.125em);
-        background: url(../images/mobile/search.png) no-repeat 90.13%, -ms-linear-gradient(top, #e3e5e8, #EEEEEE 0.375em, #FFFFFF 1.125em);
+        background: url(../../images/mobile/search.png) no-repeat 90.13%, linear-gradient(top, #e3e5e8, #EEEEEE 0.375em, #FFFFFF 1.125em);
+        background: url(../../images/mobile/search.png) no-repeat 90.13%, -webkit-linear-gradient(top, #e3e5e8, #EEEEEE 0.375em, #FFFFFF 1.125em);
+        background: url(../../images/mobile/search.png) no-repeat 90.13%, -moz-linear-gradient(top, #e3e5e8, #EEEEEE 0.375em, #FFFFFF 1.125em);
+        background: url(../../images/mobile/search.png) no-repeat 90.13%, -o-linear-gradient(top, #e3e5e8, #EEEEEE 0.375em, #FFFFFF 1.125em);
+        background: url(../../images/mobile/search.png) no-repeat 90.13%, -ms-linear-gradient(top, #e3e5e8, #EEEEEE 0.375em, #FFFFFF 1.125em);
 
     }
 }
@@ -2460,11 +2460,11 @@ select.placeholder-gray option:not(:first-of-type) {
 
     .search-icon input[type="text"] {
 
-        background: url(../images/mobile/s480.png) no-repeat 90.13%, linear-gradient(top, #e3e5e8, #EEEEEE 0.375em, #FFFFFF 1.125em);
-        background: url(../images/mobile/s480.png) no-repeat 90.13%, -webkit-linear-gradient(top, #e3e5e8, #EEEEEE 0.375em, #FFFFFF 1.125em);
-        background: url(../images/mobile/s480.png) no-repeat 90.13%, -moz-linear-gradient(top, #e3e5e8, #EEEEEE 0.375em, #FFFFFF 1.125em);
-        background: url(../images/mobile/s480.png) no-repeat 90.13%, -o-linear-gradient(top, #e3e5e8, #EEEEEE 0.375em, #FFFFFF 1.125em);
-        background: url(../images/mobile/s480.png) no-repeat 90.13%, -ms-linear-gradient(top, #e3e5e8, #EEEEEE 0.375em, #FFFFFF 1.125em);
+        background: url(../../images/mobile/s480.png) no-repeat 90.13%, linear-gradient(top, #e3e5e8, #EEEEEE 0.375em, #FFFFFF 1.125em);
+        background: url(../../images/mobile/s480.png) no-repeat 90.13%, -webkit-linear-gradient(top, #e3e5e8, #EEEEEE 0.375em, #FFFFFF 1.125em);
+        background: url(../../images/mobile/s480.png) no-repeat 90.13%, -moz-linear-gradient(top, #e3e5e8, #EEEEEE 0.375em, #FFFFFF 1.125em);
+        background: url(../../images/mobile/s480.png) no-repeat 90.13%, -o-linear-gradient(top, #e3e5e8, #EEEEEE 0.375em, #FFFFFF 1.125em);
+        background: url(../../images/mobile/s480.png) no-repeat 90.13%, -ms-linear-gradient(top, #e3e5e8, #EEEEEE 0.375em, #FFFFFF 1.125em);
 
     }
 }
@@ -2477,11 +2477,11 @@ select.placeholder-gray option:not(:first-of-type) {
 
     .search-icon input[type="text"] {
 
-        background: url(../images/mobile/s640.png) no-repeat 90.13%, linear-gradient(top, #e3e5e8, #EEEEEE 0.375em, #FFFFFF 1.125em);
-        background: url(../images/mobile/s640.png) no-repeat 90.13%, -webkit-linear-gradient(top, #e3e5e8, #EEEEEE 0.375em, #FFFFFF 1.125em);
-        background: url(../images/mobile/s640.png) no-repeat 90.13%, -moz-linear-gradient(top, #e3e5e8, #EEEEEE 0.375em, #FFFFFF 1.125em);
-        background: url(../images/mobile/s640.png) no-repeat 90.13%, -o-linear-gradient(top, #e3e5e8, #EEEEEE 0.375em, #FFFFFF 1.125em);
-        background: url(../images/mobile/s640.png) no-repeat 90.13%, -ms-linear-gradient(top, #e3e5e8, #EEEEEE 0.375em, #FFFFFF 1.125em);
+        background: url(../../images/mobile/s640.png) no-repeat 90.13%, linear-gradient(top, #e3e5e8, #EEEEEE 0.375em, #FFFFFF 1.125em);
+        background: url(../../images/mobile/s640.png) no-repeat 90.13%, -webkit-linear-gradient(top, #e3e5e8, #EEEEEE 0.375em, #FFFFFF 1.125em);
+        background: url(../../images/mobile/s640.png) no-repeat 90.13%, -moz-linear-gradient(top, #e3e5e8, #EEEEEE 0.375em, #FFFFFF 1.125em);
+        background: url(../../images/mobile/s640.png) no-repeat 90.13%, -o-linear-gradient(top, #e3e5e8, #EEEEEE 0.375em, #FFFFFF 1.125em);
+        background: url(../../images/mobile/s640.png) no-repeat 90.13%, -ms-linear-gradient(top, #e3e5e8, #EEEEEE 0.375em, #FFFFFF 1.125em);
 
     }
 
@@ -2495,11 +2495,11 @@ select.placeholder-gray option:not(:first-of-type) {
 
     .search-icon input[type="text"] {
 
-        background: url(../images/mobile/s768.png) no-repeat 90.13%, linear-gradient(top, #e3e5e8, #EEEEEE 0.375em, #FFFFFF 1.125em);
-        background: url(../images/mobile/s768.png) no-repeat 90.13%, -webkit-linear-gradient(top, #e3e5e8, #EEEEEE 0.375em, #FFFFFF 1.125em);
-        background: url(../images/mobile/s768.png) no-repeat 90.13%, -moz-linear-gradient(top, #e3e5e8, #EEEEEE 0.375em, #FFFFFF 1.125em);
-        background: url(../images/mobile/s768.png) no-repeat 90.13%, -o-linear-gradient(top, #e3e5e8, #EEEEEE 0.375em, #FFFFFF 1.125em);
-        background: url(../images/mobile/s768.png) no-repeat 90.13%, -ms-linear-gradient(top, #e3e5e8, #EEEEEE 0.375em, #FFFFFF 1.125em);
+        background: url(../../images/mobile/s768.png) no-repeat 90.13%, linear-gradient(top, #e3e5e8, #EEEEEE 0.375em, #FFFFFF 1.125em);
+        background: url(../../images/mobile/s768.png) no-repeat 90.13%, -webkit-linear-gradient(top, #e3e5e8, #EEEEEE 0.375em, #FFFFFF 1.125em);
+        background: url(../../images/mobile/s768.png) no-repeat 90.13%, -moz-linear-gradient(top, #e3e5e8, #EEEEEE 0.375em, #FFFFFF 1.125em);
+        background: url(../../images/mobile/s768.png) no-repeat 90.13%, -o-linear-gradient(top, #e3e5e8, #EEEEEE 0.375em, #FFFFFF 1.125em);
+        background: url(../../images/mobile/s768.png) no-repeat 90.13%, -ms-linear-gradient(top, #e3e5e8, #EEEEEE 0.375em, #FFFFFF 1.125em);
     }
 }
 
@@ -2511,11 +2511,11 @@ select.placeholder-gray option:not(:first-of-type) {
 
     .search-icon input[type="text"] {
 
-        background: url(../images/mobile/s1024.png) no-repeat 90.13%, linear-gradient(top, #e3e5e8, #EEEEEE 0.375em, #FFFFFF 1.125em);
-        background: url(../images/mobile/s1024.png) no-repeat 90.13%, -webkit-linear-gradient(top, #e3e5e8, #EEEEEE 0.375em, #FFFFFF 1.125em);
-        background: url(../images/mobile/s1024.png) no-repeat 90.13%, -moz-linear-gradient(top, #e3e5e8, #EEEEEE 0.375em, #FFFFFF 1.125em);
-        background: url(../images/mobile/s1024.png) no-repeat 90.13%, -o-linear-gradient(top, #e3e5e8, #EEEEEE 0.375em, #FFFFFF 1.125em);
-        background: url(../images/mobile/s1024.png) no-repeat 90.13%, -ms-linear-gradient(top, #e3e5e8, #EEEEEE 0.375em, #FFFFFF 1.125em);
+        background: url(../../images/mobile/s1024.png) no-repeat 90.13%, linear-gradient(top, #e3e5e8, #EEEEEE 0.375em, #FFFFFF 1.125em);
+        background: url(../../images/mobile/s1024.png) no-repeat 90.13%, -webkit-linear-gradient(top, #e3e5e8, #EEEEEE 0.375em, #FFFFFF 1.125em);
+        background: url(../../images/mobile/s1024.png) no-repeat 90.13%, -moz-linear-gradient(top, #e3e5e8, #EEEEEE 0.375em, #FFFFFF 1.125em);
+        background: url(../../images/mobile/s1024.png) no-repeat 90.13%, -o-linear-gradient(top, #e3e5e8, #EEEEEE 0.375em, #FFFFFF 1.125em);
+        background: url(../../images/mobile/s1024.png) no-repeat 90.13%, -ms-linear-gradient(top, #e3e5e8, #EEEEEE 0.375em, #FFFFFF 1.125em);
     }
 }
 

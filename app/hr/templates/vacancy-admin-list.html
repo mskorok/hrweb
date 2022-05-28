@@ -9,11 +9,6 @@
                 <div id="error_container" class="red-color f-size-24"></div>
             </center>
         </div>
-        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 m-b-50 t-a-c">
-            <div ng-cloak class="block-title">
-                <h2 class="title-color">Applied</h2>
-            </div>
-        </div>
     </div>
     <div class="right" data-ng-include="pagination"></div>
     <div ng-cloak ng-show="vacancies" class="row section-content" ng-repeat="vacancy in vacancies">
@@ -25,8 +20,8 @@
                     <div ng-cloak ng-show="vacancy.location" class="search-grey-text left">
                         {{ vacancy.location }}
                     </div>
-                    <div ng-cloak ng-show="vacancy.location && vacancy.company" class="search-grey-text left m-l-5">|</div>
-                    <div class="search-grey-text left m-l-5">{{ vacancy.company.name }}</div>
+                    <div ng-cloak ng-show="vacancy.location && vacancy.Companies" class="search-grey-text left m-l-5">|</div>
+                    <div class="search-grey-text left m-l-5">{{ vacancy.Companies.name }}</div>
 
                     <div class="search-block-salary" ng-cloak=""  ng-show="vacancy.salary">
                         <span class="block-salary">{{ vacancy.salary }}&nbsp;{{ vacancy.currency }}</span>

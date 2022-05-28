@@ -1,5 +1,5 @@
 angular.module('Dashboard', [], function () {
-    console.log('module Dashboard init');
+    // console.log('module Dashboard init');
 }).controller('dashboardController', [
         "$scope",
         '$state',
@@ -13,10 +13,10 @@ angular.module('Dashboard', [], function () {
             $scope.hr_rest_limit = 100;
             $scope.header_content = 'hr/templates/partial/header-content.html';
             $scope.header_background = 'hr/templates/partial/header-background.html';
-            $scope.top_menu = 'hr/templates/partial/top-menu.html';
-            $scope.top_menu_mobile = 'hr/templates/partial/top-menu-mobile.html';
             $scope.footer = 'hr/templates/partial/footer.html';
+            $scope.admin_menu = 'hr/templates/partial/admin-menu.html';
             $scope.rest_api_host = rest_api_host;
+
 
 
             let token = 'Bearer ' + $cookies.get('rest_user_token');
@@ -41,6 +41,8 @@ angular.module('Dashboard', [], function () {
             $scope.invitations = 0
             $scope.favoriteResumes = 0
 
+            $scope.companyRequests = 0;
+
 
             if (!user_id) {
                 console.log('id not found');
@@ -51,7 +53,6 @@ angular.module('Dashboard', [], function () {
             }
 
             $http.get(rest_api_host + 'home').then(function (data) {
-                console.log('data home', data);
                 if (typeof data.data.vacancies != "undefined")
                     $scope.totalVacancies = data.data.vacancies;
                 if (typeof data.data.resumes != "undefined")
@@ -71,18 +72,15 @@ angular.module('Dashboard', [], function () {
                                 }
                             ).then(function (data) {
                                 console.warn('data', data);
-                                    $scope.user = data.data.user;
-                                    let role = $scope.user.role;
-                                    $scope.user.role = $scope.user.role.capitalize();
+                                $scope.user = data.data.user;
+                                let role = $scope.user.role;
+                                $scope.user.role = $scope.user.role.capitalize();
+                                $scope.company = role === 'admin' || role === 'superadmin' || role === 'partner' || role === 'manager';
+                                $scope.admin = role === 'admin' || role === 'superadmin';
+                                $scope.companyAdmin = role === 'admin' || role === 'superadmin' || role === 'companyAdmin';
+                                $scope.superadmin = role === 'superadmin';
 
-                                    $scope.company = role === 'admin' || role === 'superadmin' || role === 'partner' || role === 'manager';
-                                    $scope.admin = role === 'admin' || role === 'superadmin';
-                                    $scope.companyAdmin = role === 'admin' || role === 'superadmin' || role === 'companyAdmin';
-                                    $scope.superadmin = role === 'superadmin';
-                                    // $scope.company = true;
-                                    // console.info(1, $scope.company, $scope.superadmin, role);
-
-                                $scope.cpmpanies = $scope.user.Companies;
+                                $scope.companies = $scope.user.Companies.length;
                                 $scope.favoriteVacancies = $scope.user.FavoriteVacancies.length;
                                 $scope.appliedVacancies = $scope.user.AppliedVacancies.length;
                                 $scope.myResumes =  $scope.user.Resumes.length;

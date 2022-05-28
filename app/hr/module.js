@@ -58,6 +58,7 @@ var app = angular.module(
         'Subcategory',
         'SubcategoryArticles',
         'Subscribe',
+        'Subscriptions',
         'Tests',
         'Unsubscribe',
         'Vacancy',
@@ -84,7 +85,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$cookiesProvider', function
             templateUrl: 'hr/templates/home.html',
             data: {
                 title: 'Home',
-                css: 'assets/css/home.css'
+                css: 'assets/css/pages/home.css'
             }
         })
         .state('job', {
@@ -93,7 +94,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$cookiesProvider', function
             templateUrl: 'hr/templates/job.html',
             data: {
                 title: 'Job',
-                css: 'assets/css/job.css'
+                css: 'assets/css/pages/job.css'
             }
         })
         .state('jobs', {
@@ -102,7 +103,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$cookiesProvider', function
             templateUrl: 'hr/templates/subcategory.html',
             data: {
                 title: 'Job',
-                css: 'assets/css/subcategory.css'
+                css: 'assets/css/pages/subcategory.css'
             }
         })
         // .state('events', {
@@ -111,7 +112,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$cookiesProvider', function
         //     templateUrl: 'hr/templates/events.html',
         //     data: {
         //         title: 'Events',
-        //         css: 'assets/css/events.css'
+        //         css: 'assets/css/pages/events.css'
         //     }
         // })
         .state('events', {
@@ -120,7 +121,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$cookiesProvider', function
             templateUrl: 'hr/templates/subcategory.html',
             data: {
                 title: 'Events',
-                css: 'assets/css/subcategory.css'
+                css: 'assets/css/pages/subcategory.css'
             }
         })
         .state('educations', {
@@ -129,7 +130,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$cookiesProvider', function
             templateUrl: 'hr/templates/educations.html',
             data: {
                 title: 'Educations',
-                css: 'assets/css/educations.css'
+                css: 'assets/css/pages/educations.css'
             }
         })
         // .state('educations', {
@@ -138,7 +139,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$cookiesProvider', function
         //     templateUrl: 'hr/templates/subcategory.html',
         //     data: {
         //         title: 'Educations',
-        //         css: 'assets/css/subcategory.css'
+        //         css: 'assets/css/pages/subcategory.css'
         //     }
         // })
         // .state('books', {
@@ -147,7 +148,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$cookiesProvider', function
         //     templateUrl: 'hr/templates/books.html',
         //     data: {
         //         title: 'Books',
-        //         css: 'assets/css/books.css'
+        //         css: 'assets/css/pages/books.css'
         //     }
         // })
         .state('books', {
@@ -156,7 +157,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$cookiesProvider', function
             templateUrl: 'hr/templates/subcategory.html',
             data: {
                 title: 'Books',
-                css: 'assets/css/subcategory.css'
+                css: 'assets/css/pages/subcategory.css'
             }
         })
         // .state('tests', {
@@ -165,7 +166,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$cookiesProvider', function
         //     templateUrl: 'hr/templates/tests.html',
         //     data: {
         //         title: 'Tests',
-        //         css: 'assets/css/tests.css'
+        //         css: 'assets/css/pages/tests.css'
         //     }
         // })
         .state('tests', {
@@ -174,7 +175,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$cookiesProvider', function
             templateUrl: 'hr/templates/subcategory.html',
             data: {
                 title: 'Tests',
-                css: 'assets/css/subcategory.css'
+                css: 'assets/css/pages/subcategory.css'
             }
         })
         // .state('migration', {
@@ -183,7 +184,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$cookiesProvider', function
         //     templateUrl: 'hr/templates/migration.html',
         //     data: {
         //         title: 'Migration',
-        //         css: 'assets/css/migration.css'
+        //         css: 'assets/css/pages/migration.css'
         //     }
         // })
         .state('migration', {
@@ -192,7 +193,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$cookiesProvider', function
             templateUrl: 'hr/templates/subcategory.html',
             data: {
                 title: 'Migration',
-                css: 'assets/css/subcategory.css'
+                css: 'assets/css/pages/subcategory.css'
             }
         })
         // .state('certification', {
@@ -201,7 +202,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$cookiesProvider', function
         //     templateUrl: 'hr/templates/certification.html',
         //     data: {
         //         title: 'Certification',
-        //         css: 'assets/css/certification.css'
+        //         css: 'assets/css/pages/certification.css'
         //     }
         // })
         .state('certification', {
@@ -210,7 +211,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$cookiesProvider', function
             templateUrl: 'hr/templates/subcategory.html',
             data: {
                 title: 'Certification',
-                css: 'assets/css/subcategory.css'
+                css: 'assets/css/pages/subcategory.css'
             }
         })
         // .state('software', {
@@ -219,7 +220,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$cookiesProvider', function
         //     templateUrl: 'hr/templates/software.html',
         //     data: {
         //         title: 'Software',
-        //         css: 'assets/css/software.css'
+        //         css: 'assets/css/pages/software.css'
         //     }
         // })
         .state('software', {
@@ -228,7 +229,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$cookiesProvider', function
             templateUrl: 'hr/templates/subcategory.html',
             data: {
                 title: 'Software',
-                css: 'assets/css/subcategory.css'
+                css: 'assets/css/pages/subcategory.css'
             }
         })
         // .state('hardware', {
@@ -237,7 +238,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$cookiesProvider', function
         //     templateUrl: 'hr/templates/hardware.html',
         //     data: {
         //         title: 'Hardware',
-        //         css: 'assets/css/hardware.css'
+        //         css: 'assets/css/pages/hardware.css'
         //     }
         // })
         .state('hardware', {
@@ -246,7 +247,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$cookiesProvider', function
             templateUrl: 'hr/templates/subcategory.html',
             data: {
                 title: 'Hardware',
-                css: 'assets/css/subcategory.css'
+                css: 'assets/css/pages/subcategory.css'
             }
         })
         .state('search-resume', {
@@ -255,7 +256,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$cookiesProvider', function
             templateUrl: 'hr/templates/search-resume.html',
             data: {
                 title: 'Search',
-                css: 'assets/css/search-resume.css'
+                css: 'assets/css/pages/search-resume.css'
             }
         })
         .state('search-article', {
@@ -264,7 +265,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$cookiesProvider', function
             templateUrl: 'hr/templates/search-article.html',
             data: {
                 title: 'Search',
-                css: 'assets/css/search-article.css'
+                css: 'assets/css/pages/search-article.css'
             }
         })
         .state('search-vacancy', {
@@ -273,7 +274,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$cookiesProvider', function
             templateUrl: 'hr/templates/search-vacancy.html',
             data: {
                 title: 'Search',
-                css: 'assets/css/search-vacancy.css'
+                css: 'assets/css/pages/search-vacancy.css'
             }
         })
         .state('article', {
@@ -282,7 +283,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$cookiesProvider', function
             templateUrl: 'hr/templates/article.html',
             data: {
                 title: 'Article',
-                css: 'assets/css/article.css'
+                css: 'assets/css/pages/article.css'
             }
         })
         .state('articles', {
@@ -291,7 +292,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$cookiesProvider', function
             templateUrl: 'hr/templates/articles.html',
             data: {
                 title: 'Articles',
-                css: 'assets/css/articles.css'
+                css: 'assets/css/pages/articles.css'
             }
         })
         .state('subcategory-articles', {
@@ -300,7 +301,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$cookiesProvider', function
             templateUrl: 'hr/templates/articles.html',
             data: {
                 title: 'Articles',
-                css: 'assets/css/articles.css'
+                css: 'assets/css/pages/articles.css'
             }
         })
         // .state('links', {
@@ -309,7 +310,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$cookiesProvider', function
         //     templateUrl: 'hr/templates/links.html',
         //     data: {
         //         title: 'Article',
-        //         css: 'assets/css/links.css'
+        //         css: 'assets/css/pages/links.css'
         //     }
         // })
 
@@ -319,7 +320,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$cookiesProvider', function
         //     templateUrl: 'hr/templates/link.html',
         //     data: {
         //         title: 'Article',
-        //         css: 'assets/css/link.css'
+        //         css: 'assets/css/pages/link.css'
         //     }
         // })
 
@@ -329,7 +330,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$cookiesProvider', function
             templateUrl: 'hr/templates/profile-edit.html',
             data: {
                 title: 'Edit Profile ',
-                css: 'assets/css/profile-edit.css'
+                css: 'assets/css/pages/profile-edit.css'
             }
         })
 
@@ -339,7 +340,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$cookiesProvider', function
             templateUrl: 'hr/templates/profile-create.html',
             data: {
                 title: 'Create Profile ',
-                css: 'assets/css/profile-create.css'
+                css: 'assets/css/pages/profile-create.css'
             }
         })
 
@@ -349,7 +350,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$cookiesProvider', function
             templateUrl: 'hr/templates/profile.html',
             data: {
                 title: 'Profile',
-                css: 'assets/css/profile.css'
+                css: 'assets/css/pages/profile.css'
             }
         })
 
@@ -359,7 +360,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$cookiesProvider', function
             templateUrl: 'hr/templates/dashboard.html',
             data: {
                 title: 'Dashboard',
-                css: 'assets/css/dashboard.css'
+                css: 'assets/css/pages/dashboard.css'
             }
         })
 
@@ -369,7 +370,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$cookiesProvider', function
             templateUrl: 'hr/templates/admin.html',
             data: {
                 title: 'Admin',
-                css: 'assets/css/admin.css'
+                css: 'assets/css/pages/admin.css'
             }
         })
 
@@ -379,7 +380,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$cookiesProvider', function
             templateUrl: 'hr/templates/resume-edit.html',
             data: {
                 title: 'Edit Resume ',
-                css: 'assets/css/resume-edit.css'
+                css: 'assets/css/pages/resume-edit.css'
             }
         })
 
@@ -389,7 +390,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$cookiesProvider', function
             templateUrl: 'hr/templates/resume-create.html',
             data: {
                 title: 'Create Resume ',
-                css: 'assets/css/resume-create.css'
+                css: 'assets/css/pages/resume-create.css'
             }
         })
 
@@ -400,7 +401,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$cookiesProvider', function
             templateUrl: 'hr/templates/resume-list.html',
             data: {
                 title: 'List Resume ',
-                css: 'assets/css/resume-list.css'
+                css: 'assets/css/pages/resume-list.css'
             }
         })
 
@@ -410,7 +411,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$cookiesProvider', function
             templateUrl: 'hr/templates/resume-user-list.html',
             data: {
                 title: 'User Resume List',
-                css: 'assets/css/resume-user-list.css'
+                css: 'assets/css/pages/resume-user-list.css'
             }
         })
 
@@ -420,7 +421,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$cookiesProvider', function
             templateUrl: 'hr/templates/resume-favorite-list.html',
             data: {
                 title: 'Favorite Resume List',
-                css: 'assets/css/resume-user-list.css'
+                css: 'assets/css/pages/resume-user-list.css'
             }
         })
 
@@ -430,7 +431,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$cookiesProvider', function
             templateUrl: 'hr/templates/resume-invited-list.html',
             data: {
                 title: 'Invited Resume List',
-                css: 'assets/css/resume-user-list.css'
+                css: 'assets/css/pages/resume-user-list.css'
             }
         })
 
@@ -441,7 +442,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$cookiesProvider', function
             templateUrl: 'hr/templates/resume.html',
             data: {
                 title: 'Resume',
-                css: 'assets/css/resume.css'
+                css: 'assets/css/pages/resume.css'
             }
         })
 
@@ -452,7 +453,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$cookiesProvider', function
             templateUrl: 'hr/templates/vacancy-edit.html',
             data: {
                 title: 'Edit Vacancy ',
-                css: 'assets/css/vacancy-edit.css'
+                css: 'assets/css/pages/vacancy-edit.css'
             }
         })
 
@@ -462,7 +463,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$cookiesProvider', function
             templateUrl: 'hr/templates/vacancy-create.html',
             data: {
                 title: 'Create Vacancy ',
-                css: 'assets/css/vacancy-create.css'
+                css: 'assets/css/pages/vacancy-create.css'
             }
         })
 
@@ -473,7 +474,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$cookiesProvider', function
             templateUrl: 'hr/templates/vacancy-list.html',
             data: {
                 title: 'List Vacancy ',
-                css: 'assets/css/vacancy-list.css'
+                css: 'assets/css/pages/vacancy-list.css'
             }
         })
 
@@ -483,7 +484,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$cookiesProvider', function
             templateUrl: 'hr/templates/vacancy-favorite-list.html',
             data: {
                 title: 'Favorite Vacancy List',
-                css: 'assets/css/vacancy-favorite-list.css'
+                css: 'assets/css/pages/vacancy-favorite-list.css'
             }
         })
 
@@ -493,7 +494,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$cookiesProvider', function
             templateUrl: 'hr/templates/vacancy-applied-list.html',
             data: {
                 title: 'Applied Vacancy List',
-                css: 'assets/css/vacancy-favorite-list.css'
+                css: 'assets/css/pages/vacancy-favorite-list.css'
             }
         })
 
@@ -503,7 +504,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$cookiesProvider', function
             templateUrl: 'hr/templates/vacancy-user-list.html',
             data: {
                 title: 'User Vacancy List',
-                css: 'assets/css/vacancy-user-list.css'
+                css: 'assets/css/pages/vacancy-user-list.css'
             }
         })
 
@@ -514,7 +515,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$cookiesProvider', function
             templateUrl: 'hr/templates/vacancy.html',
             data: {
                 title: 'Vacancy',
-                css: 'assets/css/vacancy.css'
+                css: 'assets/css/pages/vacancy.css'
             }
         })
 
@@ -525,7 +526,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$cookiesProvider', function
             templateUrl: 'hr/templates/education-edit.html',
             data: {
                 title: 'Edit Education ',
-                css: 'assets/css/education-edit.css'
+                css: 'assets/css/pages/education-edit.css'
             }
         })
 
@@ -535,7 +536,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$cookiesProvider', function
             templateUrl: 'hr/templates/education-create.html',
             data: {
                 title: 'Create Education ',
-                css: 'assets/css/education-create.css'
+                css: 'assets/css/pages/education-create.css'
             }
         })
 
@@ -546,7 +547,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$cookiesProvider', function
             templateUrl: 'hr/templates/education-list.html',
             data: {
                 title: 'List Education ',
-                css: 'assets/css/education-list.css'
+                css: 'assets/css/pages/education-list.css'
             }
         })
 
@@ -557,7 +558,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$cookiesProvider', function
             templateUrl: 'hr/templates/education.html',
             data: {
                 title: 'Education',
-                css: 'assets/css/education.css'
+                css: 'assets/css/pages/education.css'
             }
         })
 
@@ -567,7 +568,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$cookiesProvider', function
             templateUrl: 'hr/templates/experience-edit.html',
             data: {
                 title: 'Edit Experience ',
-                css: 'assets/css/experience-edit.css'
+                css: 'assets/css/pages/experience-edit.css'
             }
         })
 
@@ -577,7 +578,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$cookiesProvider', function
             templateUrl: 'hr/templates/experience-create.html',
             data: {
                 title: 'Create Experience ',
-                css: 'assets/css/experience-create.css'
+                css: 'assets/css/pages/experience-create.css'
             }
         })
 
@@ -588,7 +589,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$cookiesProvider', function
             templateUrl: 'hr/templates/experience-list.html',
             data: {
                 title: 'List Experience ',
-                css: 'assets/css/experience-list.css'
+                css: 'assets/css/pages/experience-list.css'
             }
         })
 
@@ -599,7 +600,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$cookiesProvider', function
             templateUrl: 'hr/templates/experience.html',
             data: {
                 title: 'Experience',
-                css: 'assets/css/experience.css'
+                css: 'assets/css/pages/experience.css'
             }
         })
         .state('company-edit', {
@@ -608,7 +609,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$cookiesProvider', function
             templateUrl: 'hr/templates/company-edit.html',
             data: {
                 title: 'Edit Company ',
-                css: 'assets/css/company-edit.css'
+                css: 'assets/css/pages/company-edit.css'
             }
         })
 
@@ -618,7 +619,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$cookiesProvider', function
             templateUrl: 'hr/templates/company-create.html',
             data: {
                 title: 'Create Company ',
-                css: 'assets/css/company-create.css'
+                css: 'assets/css/pages/company-create.css'
             }
         })
 
@@ -628,7 +629,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$cookiesProvider', function
             templateUrl: 'hr/templates/company.html',
             data: {
                 title: 'Company',
-                css: 'assets/css/company.css'
+                css: 'assets/css/pages/company.css'
             }
         })
 
@@ -638,7 +639,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$cookiesProvider', function
             templateUrl: 'hr/templates/company-list.html',
             data: {
                 title: 'Companies ',
-                css: 'assets/css/company-list.css'
+                css: 'assets/css/pages/company-list.css'
             }
         })
 
@@ -648,7 +649,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$cookiesProvider', function
             templateUrl: 'hr/templates/confirm-user.html',
             data: {
                 title: '',
-                css: 'assets/css/confirm-user.css'
+                css: 'assets/css/pages/confirm-user.css'
             }
         })
 
@@ -657,8 +658,18 @@ app.config(['$stateProvider', '$urlRouterProvider', '$cookiesProvider', function
             controller: 'subscribeController',
             templateUrl: 'hr/templates/subscribe.html',
             data: {
-                title: '',
-                css: 'assets/css/subscribe.css'
+                title: 'Subscribe',
+                css: 'assets/css/pages/subscribe.css'
+            }
+        })
+
+        .state('subscriptions', {
+            url: '/subscriptions',
+            controller: 'subscriptionsController',
+            templateUrl: 'hr/templates/subscriptions.html',
+            data: {
+                title: 'Subscriptions',
+                css: 'assets/css/pages/subscriptions.css'
             }
         })
 
@@ -668,7 +679,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$cookiesProvider', function
             templateUrl: 'hr/templates/contact.html',
             data: {
                 title: 'Contacts',
-                css: 'assets/css/contact.css'
+                css: 'assets/css/pages/contact.css'
             }
         })
 
@@ -678,7 +689,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$cookiesProvider', function
             templateUrl: 'hr/templates/404.html',
             data: {
                 title: '404',
-                css: 'assets/css/404.css'
+                css: 'assets/css/pages/404.css'
             }
         })
 
@@ -688,7 +699,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$cookiesProvider', function
             templateUrl: 'hr/templates/login.html',
             data: {
                 title: 'Login',
-                css: 'assets/css/login.css'
+                css: 'assets/css/pages/login.css'
             }
         })
         .state('logout', {
@@ -697,7 +708,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$cookiesProvider', function
             templateUrl: 'hr/templates/login.html',
             data: {
                 title: 'Login',
-                css: 'assets/css/login.css'
+                css: 'assets/css/pages/login.css'
             }
         })
         .state('login-recovery', {
@@ -706,7 +717,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$cookiesProvider', function
             templateUrl: 'hr/templates/login-recovery.html',
             data: {
                 title: 'Password Recovery',
-                css: 'assets/css/login-recovery.css'
+                css: 'assets/css/pages/login-recovery.css'
             }
         })
         .state('new-password', {
@@ -715,7 +726,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$cookiesProvider', function
             templateUrl: 'hr/templates/new-password.html',
             data: {
                 title: 'New Password',
-                css: 'assets/css/new-password.css'
+                css: 'assets/css/pages/new-password.css'
             }
         })
         .state('unsubscribe', {
@@ -724,7 +735,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$cookiesProvider', function
             templateUrl: 'hr/templates/unsubscribe.html',
             data: {
                 title: 'Unsubscribe',
-                css: 'assets/css/unsubscribe.css'
+                css: 'assets/css/pages/unsubscribe.css'
             }
         });
 

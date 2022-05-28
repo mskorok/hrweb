@@ -5,25 +5,7 @@
 <!--<div data-ng-include="top_menu"></div>-->
 <!--<div data-ng-include="top_menu_mobile"></div>-->
 <div class="container">
-    <div class="row section-content">
-        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 m-b-30">
-            <div class="h-menu-container">
-                <a href="/profile/delete" class="h-link red-color">Profile Delete</a>
-                <span class="h-link">|</span>
-                <!--                <a ng-cloak ng-show="company" href="/company/list" class="h-link">Companies</a>-->
-                <!--                <span ng-cloak ng-show="company" class="h-link">|</span>-->
-                <a href="/profile/edit" class="h-link">Profile Edit</a>
-                <span class="h-link">|</span>
-                <a href="/profile" class="h-link">Profile</a>
-                <span class="h-link" ng-if="superadmin">|</span>
-                <a href="/admin" class="h-link" ng-if="superadmin">Admin</a>
-                <span class="h-link">|</span>
-                <a href="/dashboard" class="h-link active">Dashboard</a>
-                <span class="h-link">|</span>
-                <a href="/" class="h-link">Home</a>
-            </div>
-        </div>
-    </div>
+    <div data-ng-include="admin_menu"></div>
     <h2 class="m-t-100 m-b-50 title-color">Notifications</h2>
     <div class="row m-b-30">
         <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 m-b-20">
@@ -43,14 +25,14 @@
         <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 m-b-20">
             <a href="404.html">
                 <div class="search-block  d-f-center gray-color dashboard-block">
-                    Create message
+                    Send message
                 </div>
             </a>
         </div>
         <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 m-b-20">
-            <a href="{{subscriptions > 0 ? '' : '#'}}">
+            <a href="{{subscriptions > 0 ? '/subscriptions' : '#'}}">
                 <div class="search-block  d-f-center gray-color dashboard-block">
-                    Subscriptions &nbsp; ({{subscriptions}}) ---- TODO
+                    Subscriptions &nbsp; ({{subscriptions}})
                 </div>
             </a>
         </div>
@@ -58,9 +40,16 @@
     <h2 class="m-t-100 m-b-50 title-color">Companies</h2>
     <div class="row m-b-50">
         <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 m-b-20">
-            <a href="{{ user.Companies.length > 0 ? '/company/list' : '#'}}">
+            <a href="{{companies > 0 ? '/company/list' : '#'}}">
                 <div class="search-block  d-f-center gray-color dashboard-block">
-                    List Companies &nbsp; ({{user.Companies.length}}) +
+                    List Companies &nbsp; ({{companies}}) +
+                </div>
+            </a>
+        </div>
+        <div ng-if="companyAdmin" class="col-xs-4 col-sm-4 col-md-4 col-lg-4 m-b-20">
+            <a href="{{companyRequests > 0 ? '/company/list' : '#'}}">
+                <div class="search-block t-a-c  d-f-center gray-color dashboard-block">
+                    Company <br> connect requests &nbsp; ({{companyRequests}}) +
                 </div>
             </a>
         </div>

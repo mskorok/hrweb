@@ -13,8 +13,7 @@ angular.module('Profile', [], function () {
             $scope.hr_rest_limit = 100;
             $scope.header_content = 'hr/templates/partial/header-content.html';
             $scope.header_background = 'hr/templates/partial/header-background.html';
-            $scope.top_menu = 'hr/templates/partial/top-menu.html';
-            $scope.top_menu_mobile = 'hr/templates/partial/top-menu-mobile.html';
+            $scope.admin_menu = 'hr/templates/partial/admin-menu.html';
             $scope.footer = 'hr/templates/partial/footer.html';
             $scope.rest_api_host = rest_api_host;
 
@@ -54,7 +53,9 @@ angular.module('Profile', [], function () {
                                     $scope.user.role = $scope.user.role.capitalize();
 
                                     $scope.company = role === 'admin' || role === 'superadmin' || role === 'partner' || role === 'manager';
-                                    // $scope.company = true;
+                                    $scope.admin = role === 'admin' || role === 'superadmin';
+                                    $scope.companyAdmin = role === 'admin' || role === 'superadmin' || role === 'companyAdmin';
+                                    $scope.superadmin = role === 'superadmin';
                                 },
                                 function (data) {
                                     console.log('error response', data);

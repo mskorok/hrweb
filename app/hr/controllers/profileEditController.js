@@ -15,13 +15,12 @@ angular.module('ProfileEdit', [], function () {
             $scope.hr_rest_limit = 100;
             $scope.header_content = 'hr/templates/partial/header-content.html';
             $scope.header_background = 'hr/templates/partial/header-background.html';
-            $scope.top_menu = 'hr/templates/partial/top-menu.html';
-            $scope.top_menu_mobile = 'hr/templates/partial/top-menu-mobile.html';
+            $scope.admin_menu = 'hr/templates/partial/admin-menu.html';
             $scope.footer = 'hr/templates/partial/footer.html';
 
-            var token = 'Bearer ' + $cookies.get('rest_user_token');
+            let token = 'Bearer ' + $cookies.get('rest_user_token');
 
-            var user_id = hr_authorized_id();
+            let user_id = hr_authorized_id();
 
             $scope.user_id = user_id;
 
@@ -29,7 +28,6 @@ angular.module('ProfileEdit', [], function () {
 
             $scope.user_avatar = hr_user_avatar();
 
-            var url = rest_api_host + '/profile/update/' + user_id;
 
             if (!user_id) {
                 console.log('id not found');
@@ -39,8 +37,29 @@ angular.module('ProfileEdit', [], function () {
                 })
             }
 
+            let url = rest_api_host + 'users/' + user_id;
+            $http.get(url
+                ,
+                {
+                    headers: {'Authorization': token}
+                }
+            ).then(function (data) {
+                    $scope.user = data.data.user;
+                    let role = $scope.user.role;
+                    $scope.user.role = $scope.user.role.capitalize();
+
+                    $scope.company = role === 'admin' || role === 'superadmin' || role === 'partner' || role === 'manager';
+                    $scope.admin = role === 'admin' || role === 'superadmin';
+                    $scope.companyAdmin = role === 'admin' || role === 'superadmin' || role === 'companyAdmin';
+                    $scope.superadmin = role === 'superadmin';
+                },
+                function (data) {
+                    console.log('error response', data);
+                });
+
 
             $scope.$on('$viewContentLoaded', function () {
+                let url = rest_api_host + '/profile/update/' + user_id;
                 $http.get(url
                     ,
                     {
@@ -54,13 +73,13 @@ angular.module('ProfileEdit', [], function () {
                         $('#avatar_model_Users_counter_').remove();
 
                         $('input[name=username]').attr('disabled', 'disabled');
-                        var role_select = document.querySelector('select[name=role]');
+                        let role_select = document.querySelector('select[name=role]');
                         if (role_select) {
-                            var role_id_input = document.getElementById('role_id');
+                            let role_id_input = document.getElementById('role_id');
                             role_select.removeAttribute('disabled');
                             if (role_id_input) {
-                                var role_id = role_id_input.value;
-                                var options = [];
+                                let role_id = role_id_input.value;
+                                let options = [];
                                 if (role_select) {
                                     options = role_select.querySelectorAll('option');
                                 }
@@ -80,7 +99,7 @@ angular.module('ProfileEdit', [], function () {
                                 // role_select.setAttribute('disabled', 'disabled');
                             }
                         }
-                        var form = document.getElementById('user_form');
+                        let form = document.getElementById('user_form');
                         if (form) {
                             form.addEventListener('submit', function (e) {
                                 e.stopPropagation();
@@ -110,17 +129,17 @@ angular.module('ProfileEdit', [], function () {
                 });
             });
 
-            var hr_edit = {
+            const hr_edit = {
                 appendCheckbox: function (form, form_data) {
                 },
                 hr_user_edit: function (form) {
                     hr_sanitize_checkbox(form);
-                    var form_data = new FormData(form);
+                    let form_data = new FormData(form);
                     this.appendCheckbox(form, form_data);
 
-                    var file_input = document.getElementById('base64');
+                    let file_input = document.getElementById('base64');
                     if (file_input && file_input.value) {
-                        var file = dataURLtoFile(file_input.value, 'avatar.png');
+                        let file = dataURLtoFile(file_input.value, 'avatar.png');
 
                         if (file) {
                             form_data.append('fileName', file);
@@ -128,21 +147,21 @@ angular.module('ProfileEdit', [], function () {
                     }
 
 
-                    var xhr = new XMLHttpRequest();
+                    let xhr = new XMLHttpRequest();
                     xhr.onload = function () {
                         if (this.readyState === 4) {
                             if (this.status === 200) {
                                 try {
-                                    var response = JSON.parse(this.response);
-                                    var error_container = document.getElementById('jd_error_container');
-                                    var html;
+                                    let response = JSON.parse(this.response);
+                                    let error_container = document.getElementById('jd_error_container');
+                                    let html;
                                     if (response.result === 'error') {
                                         if (error_container) {
                                             html = '';
                                             if (Array.isArray(response.message)) {
                                                 response.message.forEach(function (message) {
                                                     if (typeof message === 'object') {
-                                                        for (var key in message) {
+                                                        for (let key in message) {
                                                             html += '<div>' + key + ' : ' + message[key] + '</div>';
                                                         }
                                                     } else if (typeof message === 'string') {
@@ -150,7 +169,7 @@ angular.module('ProfileEdit', [], function () {
                                                     }
                                                 });
                                             } else if (typeof response.message === 'object') {
-                                                for (var key in response.message) {
+                                                for (let key in response.message) {
                                                     html += '<div>' + key + ' : ' + response.message[key] + '</div>';
                                                 }
                                             } else {
@@ -166,7 +185,7 @@ angular.module('ProfileEdit', [], function () {
                                             if (Array.isArray(response.error.message)) {
                                                 response.error.message.forEach(function (message) {
                                                     if (typeof message === 'object') {
-                                                        for (var key in message) {
+                                                        for (let key in message) {
                                                             html += '<div>' + key + ' : ' + message[key] + '</div>';
                                                         }
                                                     } else if (typeof message === 'string') {
@@ -175,7 +194,7 @@ angular.module('ProfileEdit', [], function () {
                                                 })
                                             } else if (typeof response.error.message === 'string') {
                                                 try {
-                                                    var errors = JSON.parse(response);
+                                                    let errors = JSON.parse(response);
                                                     errors.forEach(function (message) {
                                                         html += '<div>' + message + '</div>';
                                                     })

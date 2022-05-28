@@ -9,11 +9,11 @@
                            class="new-input placeholder-gray p-l-10" placeholder="Email">
                 </div>
                 <div class="col-md-4 col-lg-5 p-l-50">
-                    <select name="category" id="subscription_category"
+                    <select ng-if="categories.length" name="category" id="subscription_category"
                             class="new-input placeholder-gray p-l-10" title="Subscription category">
-                        <option value="0" selected>Choose category</option>
-                        <option value="1">Certification</option>
-                        <option value="2">Countries</option>
+                        <option ng-selected="category.id == selected" data-ng-repeat="category in categories" value="{{category.id}}">
+                            {{category.name.toUpperCase()}}
+                        </option>
                     </select>
                 </div>
                 <div class="col-md-4 col-lg-2">
