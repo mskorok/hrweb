@@ -62,8 +62,8 @@ angular.module('Subscriptions', [], function () {
             });
 
             if ($state.current.controller === "subscriptionsController") {
-                let url = rest_api_host + 'subscriptions';
-                $http.post(url
+                let url = rest_api_host + 'users/subscriptions/' + user_id;
+                $http.get(url
                     ,
                     {
                         headers: {'Authorization': token}
