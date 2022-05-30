@@ -20,7 +20,7 @@ angular.module('Link', [], function () {
 
             $scope.user_id = hr_authorized_id();
 
-            $scope.user_name = hr_user();
+            $scope.user_name = hr_user_name();
 
             $scope.user_avatar = hr_user_avatar();
 
@@ -31,7 +31,7 @@ angular.module('Link', [], function () {
             if ($state.current.controller === "linkController") {
                 $scope.$on('$viewContentLoaded', function () {
                     $scope.$on('$includeContentLoaded', function (event, templateName) {
-                        console.log('tpl', templateName);
+                        // console.log('tpl', templateName);
                         if (templateName.toString() === 'hr/templates/partial/footer.html') {
                             var url = rest_api_host + 'articles-linked/' + article_id;
                             // console.log('url', url);

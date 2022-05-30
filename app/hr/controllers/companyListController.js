@@ -23,7 +23,7 @@ angular.module('CompanyList', [], function () {
 
             $scope.user_id = user_id;
 
-            $scope.user_name = hr_user();
+            $scope.user_name = hr_user_name();
 
             $scope.user_avatar = hr_user_avatar();
 

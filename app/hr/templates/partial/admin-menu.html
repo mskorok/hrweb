@@ -1,10 +1,10 @@
 <div class="row section-content admin-menu">
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 m-b-30">
         <div class="h-menu-container">
-            <a href="/profile/delete" class="h-link red-color">Profile Delete</a>
-            <span class="h-link">|</span>
-            <a id="admin_menu_profile_edit" href="/profile/edit" class="h-link">Profile Edit</a>
-            <span class="h-link">|</span>
+            <a id="admin_menu_profile_delete" href="/profile/delete" class="h-link red-color hidden">Profile Delete</a>
+            <span id="admin_menu_profile_delete_link" class="h-link hidden">|</span>
+            <a id="admin_menu_profile_edit" href="/profile/edit" class="h-link hidden">Profile Edit</a>
+            <span id="admin_menu_profile_edit_link" class="h-link hidden">|</span>
             <a id="admin_menu_profile" href="/profile" class="h-link">Profile</a>
             <span class="h-link" ng-if="superadmin">|</span>
             <a id="admin_menu" href="/admin" class="h-link" ng-if="superadmin">Admin</a>
@@ -20,17 +20,70 @@
         const path = window.location.pathname;
         let id = null;
 
+        const removeProfile = () => {
+            const el_edit = document.getElementById('admin_menu_profile_edit');
+            if (el_edit) {
+                el_edit.classList.add('hidden');
+
+            }
+            const el_edit_link = document.getElementById('admin_menu_profile_edit_link');
+            if (el_edit_link) {
+                el_edit_link.classList.add('hidden');
+            }
+        }
+        const addProfile = () => {
+            const el_edit = document.getElementById('admin_menu_profile_edit');
+            if (el_edit) {
+                el_edit.classList.remove('hidden');
+
+            }
+            const el_edit_link = document.getElementById('admin_menu_profile_edit_link');
+            if (el_edit_link) {
+                el_edit_link.classList.remove('hidden');
+            }
+        }
+
+        const removeDel = () => {
+            const el_delete = document.getElementById('admin_menu_profile_delete');
+            if (el_delete) {
+                el_delete.classList.add('hidden');
+            }
+            const el_delete_link = document.getElementById('admin_menu_profile_delete_link');
+            if (el_delete_link) {
+                el_delete_link.classList.add('hidden');
+            }
+        }
+        const addDel = () => {
+            const el_delete = document.getElementById('admin_menu_profile_delete');
+            if (el_delete) {
+                el_delete.classList.remove('hidden');
+            }
+            const el_delete_link = document.getElementById('admin_menu_profile_delete_link');
+            if (el_delete_link) {
+                el_delete_link.classList.remove('hidden');
+            }
+        }
+
         if (path.includes('dashboard')) {
             id = 'admin_menu_dashboard';
+            removeProfile();
+            removeDel();
         }
         if (path.includes('admin')) {
             id = 'admin_menu';
+            removeProfile();
+            removeDel();
         }
         if (path.includes('profile')) {
             id = 'admin_menu_profile';
+            addDel();
+            addProfile();
         }
         if (path.includes('profile/edit')) {
             id = 'admin_menu_profile_edit';
+            addProfile();
+            removeDel();
+
         }
 
         const el = document.getElementById(id);

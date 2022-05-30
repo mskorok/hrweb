@@ -7,8 +7,9 @@ angular.module('Subscriptions', [], function () {
         '$http',
         '$templateCache',
         '$location',
+        '$cacheFactory',
         function (
-            $scope, $state, $cookies, $http, $templateCache, $location
+            $scope, $state, $cookies, $http, $templateCache, $location, $cacheFactory
         ) {
             $scope.hr_rest_limit = 100;
             $scope.header_content = 'hr/templates/partial/header-content.html';
@@ -17,33 +18,24 @@ angular.module('Subscriptions', [], function () {
             $scope.footer = 'hr/templates/partial/footer.html';
             $scope.rest_api_host = rest_api_host;
 
-
             let token = 'Bearer ' + $cookies.get('rest_user_token');
-            console.warn('token', token);
+            $templateCache.removeAll();
 
             let user_id = hr_authorized_id();
 
             $scope.user_id = user_id;
-
-            $scope.user_name = hr_user();
-
+            $scope.user = hr_user();
+            $scope.user_name = hr_user_name();
             $scope.user_avatar = hr_user_avatar();
-            $scope.superadmin = false;
+            $scope.role = hr_get_roles();
 
-            $scope.subscriptions = 0
+            $scope.company = $scope.role === 'admin' || $scope.role === 'superadmin' || $scope.role === 'partner' || $scope.role === 'manager';
+            $scope.companyAdmin = $scope.role === 'admin' || $scope.role === 'superadmin' || $scope.role === 'companyAdmin';
+            $scope.admin = $scope.role === 'admin' || $scope.role === 'superadmin';
+            $scope.superadmin = $scope.role === 'superadmin';
 
-            $scope.totalVacancies = 0;
-            $scope.favoriteVacancies = 0;
-            $scope.appliedVacancies = 0
-
-            $scope.totalResumes = 0;
-            $scope.myResumes = 0;
-            $scope.invitations = 0
-            $scope.favoriteResumes = 0
-
-            $scope.superadmin = true;
+            $scope.subscriptions = []
             $scope.company = true;
-
 
             if (!user_id) {
                 console.log('id not found');
@@ -53,41 +45,102 @@ angular.module('Subscriptions', [], function () {
                 })
             }
 
-            $http.get(rest_api_host + 'home').then(function (data) {
-                // console.log('data home', data);
-                if (typeof data.data.vacancies != "undefined")
-                    $scope.totalVacancies = data.data.vacancies;
-                if (typeof data.data.resumes != "undefined")
-                    $scope.totalResumes = data.data.resumes;
-            });
-
-            if ($state.current.controller === "subscriptionsController") {
-                let url = rest_api_host + 'users/subscriptions/' + user_id;
+            $scope.subscribeUser = (subscription_id) => {
+                let url = rest_api_host + 'users/subscribe/user/' + subscription_id + '?prevent=' +  + get_random_number();
                 $http.get(url
                     ,
                     {
-                        headers: {'Authorization': token}
+                        headers: {'Authorization': token},
+                        cache: false
                     }
                 ).then(function (data) {
-                        console.warn('data', data);
-
-                        // $scope.user = data.data.user;
-                        //
-                        // let role = $scope.user.role;
-                        // $scope.user.role = $scope.user.role.capitalize();
-                        //
-                        // $scope.company = role === 'admin' || role === 'superadmin' || role === 'partner' || role === 'manager';
-                        // $scope.admin = role === 'admin' || role === 'superadmin';
-                        // $scope.companyAdmin = role === 'admin' || role === 'superadmin' || role === 'companyAdmin';
-                        // $scope.superadmin = role === 'superadmin';
-                        //
-                        // $scope.subscriptions = $scope.user.Subscriptions.length;
+                        $templateCache.remove('hr/templates/subscriptions.html');
+                        localStorage.clear()
+                        window.location.reload();
                     },
                     function (data) {
                         console.error('error response', data);
                     }
                 );
             }
+
+            $scope.unsubscribeUser = (subscription_id) => {
+                let url = rest_api_host + 'users/unsubscribe/user/' + subscription_id + '?prevent=' +  + get_random_number();
+                $http.get(url
+                    ,
+                    {
+                        headers: {'Authorization': token},
+                        cache: false
+                    }
+                ).then(function (data) {
+                        $templateCache.remove('hr/templates/subscriptions.html');
+                        localStorage.clear()
+                        window.location.reload();
+                    },
+                    function (data) {
+                        console.error('error response', data);
+                    }
+                );
+            }
+
+            $scope.subscribeCompany = (company_id, subscription_id) => {
+                let url = rest_api_host + 'users/subscribe/company/' + company_id + '/' + subscription_id + '?prevent=' +  + get_random_number();
+                $http.get(url
+                    ,
+                    {
+                        headers: {'Authorization': token},
+                        cache: false
+                    }
+                ).then(function (data) {
+                        $templateCache.remove('hr/templates/subscriptions.html');
+                        window.location.reload();
+                    },
+                    function (data) {
+                        console.error('error response', data);
+                    }
+                );
+            }
+            $scope.unsubscribeCompany = (company_id, subscription_id) => {
+                let url = rest_api_host + 'users/unsubscribe/company/' + company_id + '/' + subscription_id + '?prevent=' +  + get_random_number();
+                $http.get(url
+                    ,
+                    {
+                        headers: {'Authorization': token},
+                        cache: false
+                    }
+                ).then(function (data) {
+                        $templateCache.remove('hr/templates/subscriptions.html');
+                        window.location.reload();
+                    },
+                    function (data) {
+                        console.error('error response', data);
+                    }
+                );
+
+            }
+
+
+            if ($state.current.controller === "subscriptionsController") {
+                let url = rest_api_host + 'users/subscriptions?random=' + get_random_number();
+
+                $http.get(url
+                    ,
+                    {
+                        headers: {'Authorization': token},
+                        cache: false
+                    }
+                ).then(function (data) {
+
+                        $scope.subscriptions = data.data.data;
+                    },
+                    function (data) {
+                        console.error('error response', data);
+                    }
+                );
+            }
+
+            $scope.$on('$viewContentLoaded', function () {
+            });
         }
     ]
 );

@@ -132,6 +132,10 @@
     border: 1px solid black;
 }
 
+.b-1-lg {
+    border: 1px solid lightgrey
+}
+
 .fwn {
     font-weight: normal !important;
 }
@@ -2723,6 +2727,10 @@ select.placeholder-gray option:not(:first-of-type) {
 
 .gray-color {
     color: #4a4c4f !important;
+}
+
+.light-gray-color {
+    color: lightgray !important;
 }
 
 .brown-color {

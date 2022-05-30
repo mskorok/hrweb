@@ -23,10 +23,15 @@ angular.module('Profile', [], function () {
             let user_id = hr_authorized_id();
 
             $scope.user_id = user_id;
-
-            $scope.user_name = hr_user();
-
+            $scope.user = hr_user();
+            $scope.user_name = hr_user_name();
             $scope.user_avatar = hr_user_avatar();
+            $scope.role = hr_get_roles();
+
+            $scope.company = $scope.role === 'admin' || $scope.role === 'superadmin' || $scope.role === 'partner' || $scope.role === 'manager';
+            $scope.companyAdmin = $scope.role === 'admin' || $scope.role === 'superadmin' || $scope.role === 'companyAdmin';
+            $scope.admin =$scope.role === 'admin' || $scope.role === 'superadmin';
+            $scope.superadmin = $scope.role === 'superadmin';
 
             if (!user_id) {
                 console.log('id not found');
@@ -41,7 +46,7 @@ angular.module('Profile', [], function () {
                     $scope.$on('$includeContentLoaded', function (event, templateName) {
                         // console.log('tpl', templateName);
                         if (templateName.toString() === 'hr/templates/partial/footer.html') {
-                            let url = rest_api_host + 'users/' + user_id + '?include=ProfessionalExperiences,Education,Images,Countries';
+                            let url = rest_api_host + 'users/' + user_id + '?include=ProfessionalExperiences,Education,Images,Countries&random=' + get_random_number();
                             $http.get(url
                                 ,
                                 {

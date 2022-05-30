@@ -666,6 +666,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$cookiesProvider', function
         .state('subscriptions', {
             url: '/subscriptions',
             controller: 'subscriptionsController',
+            cache: false,
             templateUrl: 'hr/templates/subscriptions.html',
             data: {
                 title: 'Subscriptions',

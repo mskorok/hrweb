@@ -4,7 +4,7 @@ String.prototype.capitalize = function() {
     return this.charAt(0).toUpperCase() + this.slice(1);
 };
 
-var admin_auth = {
+const admin_auth = {
     frontHome: '/',
     frontLogin: '/login',
     frontRegister: '/profile-create',
@@ -20,7 +20,7 @@ var admin_auth = {
     ],
     check_auth: function () {
         window.rest_user_id = null;
-        var cookies = admin_auth.get_cookies(), current_url = window.location.href;
+        const cookies = admin_auth.get_cookies(), current_url = window.location.href;
         if (typeof cookies === 'object' && Object.keys(cookies).length > 0) {
             console.info('logged in');
             window.rest_user_role = cookies['rest_user_role'];
@@ -44,7 +44,7 @@ var admin_auth = {
         }
     },
     get_cookies: function () {
-        var parsed = {};
+        let parsed = {};
         if (this.get_cookie('rest_user_role') !== '') {
             parsed.rest_user_role = this.get_cookie('rest_user_role');
         }
@@ -64,9 +64,9 @@ var admin_auth = {
     },
     set_cookie: function (name, value, days) {
         if (days) {
-            var d = new Date();
+            let d = new Date();
             d.setTime(d.getTime() + (days * 24 * 60 * 60 * 1000));
-            var expires = "expires=" + d.toUTCString();
+            const expires = "expires=" + d.toUTCString();
             document.cookie = name + "=" + value + ";" + expires + ";path=/";
         } else {
             document.cookie = name + "=" + value +  ";expires=0;path=/";
@@ -74,11 +74,11 @@ var admin_auth = {
 
     },
     get_cookie: function (cname) {
-        var name = cname + "=";
-        var decodedCookie = decodeURIComponent(document.cookie);
-        var ca = decodedCookie.split(';');
-        for (var i = 0; i < ca.length; i++) {
-            var c = ca[i];
+        let name = cname + "=";
+        let decodedCookie = decodeURIComponent(document.cookie);
+        let ca = decodedCookie.split(';');
+        for (let i = 0; i < ca.length; i++) {
+            let c = ca[i];
             while (c.charAt(0) === ' ') {
                 c = c.substring(1);
             }
@@ -94,22 +94,22 @@ var admin_auth = {
     login: function (name, password, remember) {
         setTimeout(function () {
             remember = remember || null;
-            var error_container = document.getElementById('error_container');
-            var url = rest_api_host + hr_login_post_url;
-            var xhr = new XMLHttpRequest();
-            var form_data = new FormData();
+            const error_container = document.getElementById('error_container');
+            const url = rest_api_host + hr_login_post_url;
+            const xhr = new XMLHttpRequest();
+            let form_data = new FormData();
             form_data.append('username', name);
             form_data.append('password', password);
-            var basic = 'Basic ' + btoa(name + ":" + password);
+            let basic = 'Basic ' + btoa(name + ":" + password);
             form_data.append('Authorization', basic);
             xhr.onload = function () {
                 if (this.readyState === 4) {
                     if (this.status === 200) {
                         try {
-                            var response = JSON.parse(this.response);
-                            console.log('r', response, remember);
+                            const response = JSON.parse(this.response);
+                            // console.info('r', response, remember);
                             admin_auth.set_cookies(response, remember);
-                            console.log(444, admin_auth.get_token());
+                            // console.info('token', admin_auth.get_token());
                             window.location.href = admin_auth.frontHome;
                         } catch (e) {
                             if (error_container) {
@@ -130,11 +130,11 @@ var admin_auth = {
             xhr.setRequestHeader('Authorization', basic);
             xhr.send(form_data);
         }, 500);
-        // var token = 'Bearer ' + this.get_cookie('rest_user_token');
+        // let token = 'Bearer ' + this.get_cookie('rest_user_token');
     },
     logout: function () {
         setTimeout(function () {
-            var el = document.getElementById('hr_nav_logout');
+            const el = document.getElementById('hr_nav_logout');
             if (el) {
                 el.addEventListener('click', function (ev) {
                     ev.stopPropagation();
@@ -150,12 +150,12 @@ var admin_auth = {
         window.location.reload();
     },
     set_cookies: function (response, remember) {
-        var expires = remember ? 7 : null;
+        const expires = remember ? 7 : null;
         if (typeof response.data !== 'undefined' && typeof response.data.role !== 'undefined') {
             this.set_cookie('rest_user_role', response.data.role, expires);
         }
 
-        var img;
+        let img;
 
         if (typeof response.data !== 'undefined'
             && typeof response.data.avatar !== 'undefined'
@@ -180,11 +180,11 @@ var admin_auth = {
             this.set_cookie('rest_user_id', response.data.user.id, expires);
         }
         if (typeof response.data !== 'undefined' && typeof  response.data.user.id !== 'undefined') {
-            var name = response.data.user.name + ' ' + response.data.user.surname;
+            const name = response.data.user.name + ' ' + response.data.user.surname;
             this.set_cookie('rest_user_full_name', name, expires);
         }
         if (typeof response.data !== 'undefined' && typeof  response.data.user !== 'undefined') {
-            var user = JSON.stringify(response.data.user);
+            const user = JSON.stringify(response.data.user);
             this.set_cookie('front_user', user, expires);
             localStorage.setItem('front_user', user);
         }
@@ -213,11 +213,15 @@ admin_auth.check_auth();
 function getParameterByName(name, url) {
     if (!url) url = window.location.href;
     name = name.replace(/[\[\]]/g, "\\$&");
-    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+    const regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
         results = regex.exec(url);
     if (!results) return null;
     if (!results[2]) return '';
     return decodeURIComponent(results[2].replace(/\+/g, " "));
+}
+
+function get_random_number(max = 19487596549463) {
+    return Math.floor(Math.random() * max) + 1
 }
 
 /**
@@ -227,8 +231,8 @@ function getParameterByName(name, url) {
  * @returns {Array}
  */
 function hr_rest_distinct(items, prop) {
-    var unique = [];
-    var distinctItems = [];
+    let unique = [];
+    let distinctItems = [];
     [].forEach.call(items, function (item) {
         if (unique[item[prop]] === undefined) {
             distinctItems.push(item);
@@ -247,17 +251,17 @@ function hr_rest_distinct(items, prop) {
  * @param scope
  */
 function hr_rest_awesomplete(field, key, url, selector, scope) {
-    var ajax = new XMLHttpRequest();
-    var token = admin_auth.get_token();
-    var list = [];
+    const ajax = new XMLHttpRequest();
+    const token = admin_auth.get_token();
+    let list = [];
     ajax.open("GET", url, true);
     ajax.onload = function () {
         // console.log('aws', ajax.responseText);
         try {
-            var obj = JSON.parse(ajax.responseText);
+            let obj = JSON.parse(ajax.responseText);
             // console.log('obj', obj);
             if (scope) {
-                var opt = obj[key];
+                let opt = obj[key];
                 opt = hr_rest_distinct(opt, field);
                 scope[key + '_' + field] = opt;
             }
@@ -295,17 +299,17 @@ function hr_rest_awesomplete(field, key, url, selector, scope) {
  * @param scope
  */
 function hr_rest_awesomplete_mass(field, key, url, selectors, scope) {
-    var ajax = new XMLHttpRequest();
-    var token = admin_auth.get_token();
-    var list = [];
+    const ajax = new XMLHttpRequest();
+    const token = admin_auth.get_token();
+    let list = [];
     ajax.open("GET", url, true);
     ajax.onload = function () {
         // console.log('aws', ajax.responseText);
         try {
-            var obj = JSON.parse(ajax.responseText);
+            let obj = JSON.parse(ajax.responseText);
             // console.log('obj', obj, scope, key + '_' + field);
             if (scope) {
-                var opt = obj[key];
+                let opt = obj[key];
                 opt = hr_rest_distinct(opt, field);
                 scope[key + '_' + field] = opt;
             }
@@ -331,13 +335,13 @@ function hr_rest_awesomplete_mass(field, key, url, selectors, scope) {
 }
 
 function hr_rest_fill_model(field, key, url, scope) {
-    var ajax = new XMLHttpRequest();
-    var token = admin_auth.get_token();
+    const ajax = new XMLHttpRequest();
+    const token = admin_auth.get_token();
     ajax.open("GET", url, true);
     ajax.onload = function () {
         try {
-            var obj = JSON.parse(ajax.responseText);
-            var opt = obj[key];
+            let obj = JSON.parse(ajax.responseText);
+            let opt = obj[key];
             opt = hr_rest_distinct(opt, field);
             scope[key + '_' + field] = opt;
         } catch (e) {
@@ -349,115 +353,115 @@ function hr_rest_fill_model(field, key, url, scope) {
     ajax.send();
 }
 
-function hr_profile_edit_link() {
-    window.location.href = hr_profile_edit_url;
-}
+// function hr_profile_edit_link() {
+//     window.location.href = hr_profile_edit_url;
+// }
 
-var hr_rest_booking_offset = 0;
-var hr_rest_product_offset = 0;
-var hr_rest_user_offset = 0;
-var hr_rest_message_offset = 0;
-var hr_rest_payment_offset = 0;
-var hr_rest_admin_offset = 0;
-var hr_rest_limit = 100;
+let hr_rest_booking_offset = 0;
+let hr_rest_product_offset = 0;
+let hr_rest_user_offset = 0;
+let hr_rest_message_offset = 0;
+let hr_rest_payment_offset = 0;
+let hr_rest_admin_offset = 0;
+let hr_rest_limit = 100;
 
-function hr_reduce_admin_offset() {
-    if (hr_rest_admin_offset < hr_rest_limit) {
-        hr_rest_admin_offset = 0;
-    } else {
-        hr_rest_admin_offset -= hr_rest_limit;
-    }
-}
+// function hr_reduce_admin_offset() {
+//     if (hr_rest_admin_offset < hr_rest_limit) {
+//         hr_rest_admin_offset = 0;
+//     } else {
+//         hr_rest_admin_offset -= hr_rest_limit;
+//     }
+// }
+//
+// function hr_reduce_booking_offset() {
+//     if (hr_rest_booking_offset < hr_rest_limit) {
+//         hr_rest_booking_offset = 0;
+//     } else {
+//         hr_rest_booking_offset -= hr_rest_limit;
+//     }
+// }
+//
+// function hr_reduce_product_offset() {
+//     if (hr_rest_product_offset < hr_rest_limit) {
+//         hr_rest_product_offset = 0;
+//     } else {
+//         hr_rest_product_offset -= hr_rest_limit;
+//     }
+// }
+//
+// function hr_reduce_message_offset() {
+//     if (hr_rest_message_offset < hr_rest_limit) {
+//         hr_rest_message_offset = 0;
+//     } else {
+//         hr_rest_message_offset -= hr_rest_limit;
+//     }
+// }
+//
+// function hr_reset_message_offset() {
+//     hr_rest_message_offset = hr_rest_limit;
+// }
+//
+// function hr_reduce_user_offset() {
+//     if (hr_rest_user_offset < hr_rest_limit) {
+//         hr_rest_user_offset = 0;
+//     } else {
+//         hr_rest_user_offset -= hr_rest_limit;
+//     }
+// }
+//
+// function hr_reduce_payment_offset() {
+//     if (hr_rest_payment_offset < hr_rest_limit) {
+//         hr_rest_payment_offset = 0;
+//     } else {
+//         hr_rest_payment_offset -= hr_rest_limit;
+//     }
+// }
+//
+// function hr_increase_admin_offset() {
+//     hr_rest_admin_offset += hr_rest_limit;
+// }
+//
+// function hr_increase_booking_offset() {
+//     hr_rest_booking_offset += hr_rest_limit;
+// }
+//
+// function hr_increase_product_offset() {
+//     hr_rest_product_offset += hr_rest_limit;
+// }
+//
+// function hr_increase_message_offset() {
+//     hr_rest_message_offset += hr_rest_limit;
+// }
+//
+// function hr_increase_user_offset() {
+//     hr_rest_user_offset += hr_rest_limit;
+// }
+//
+// function hr_increase_payment_offset() {
+//     hr_rest_payment_offset += hr_rest_limit;
+// }
 
-function hr_reduce_booking_offset() {
-    if (hr_rest_booking_offset < hr_rest_limit) {
-        hr_rest_booking_offset = 0;
-    } else {
-        hr_rest_booking_offset -= hr_rest_limit;
-    }
-}
-
-function hr_reduce_product_offset() {
-    if (hr_rest_product_offset < hr_rest_limit) {
-        hr_rest_product_offset = 0;
-    } else {
-        hr_rest_product_offset -= hr_rest_limit;
-    }
-}
-
-function hr_reduce_message_offset() {
-    if (hr_rest_message_offset < hr_rest_limit) {
-        hr_rest_message_offset = 0;
-    } else {
-        hr_rest_message_offset -= hr_rest_limit;
-    }
-}
-
-function hr_reset_message_offset() {
-    hr_rest_message_offset = hr_rest_limit;
-}
-
-function hr_reduce_user_offset() {
-    if (hr_rest_user_offset < hr_rest_limit) {
-        hr_rest_user_offset = 0;
-    } else {
-        hr_rest_user_offset -= hr_rest_limit;
-    }
-}
-
-function hr_reduce_payment_offset() {
-    if (hr_rest_payment_offset < hr_rest_limit) {
-        hr_rest_payment_offset = 0;
-    } else {
-        hr_rest_payment_offset -= hr_rest_limit;
-    }
-}
-
-function hr_increase_admin_offset() {
-    hr_rest_admin_offset += hr_rest_limit;
-}
-
-function hr_increase_booking_offset() {
-    hr_rest_booking_offset += hr_rest_limit;
-}
-
-function hr_increase_product_offset() {
-    hr_rest_product_offset += hr_rest_limit;
-}
-
-function hr_increase_message_offset() {
-    hr_rest_message_offset += hr_rest_limit;
-}
-
-function hr_increase_user_offset() {
-    hr_rest_user_offset += hr_rest_limit;
-}
-
-function hr_increase_payment_offset() {
-    hr_rest_payment_offset += hr_rest_limit;
-}
-
-var DateDiff = {
+const DateDiff = {
 
     inDays: function (d1, d2) {
-        var t2 = d2.getTime();
-        var t1 = d1.getTime();
+        const t2 = d2.getTime();
+        const t1 = d1.getTime();
 
         return parseInt((t2 - t1) / (24 * 3600 * 1000));
     },
 
     inWeeks: function (d1, d2) {
-        var t2 = d2.getTime();
-        var t1 = d1.getTime();
+        const t2 = d2.getTime();
+        const t1 = d1.getTime();
 
         return parseInt((t2 - t1) / (24 * 3600 * 1000 * 7));
     },
 
     inMonths: function (d1, d2) {
-        var d1Y = d1.getFullYear();
-        var d2Y = d2.getFullYear();
-        var d1M = d1.getMonth();
-        var d2M = d2.getMonth();
+        const d1Y = d1.getFullYear();
+        const d2Y = d2.getFullYear();
+        const d1M = d1.getMonth();
+        const d2M = d2.getMonth();
 
         return (d2M + 12 * d2Y) - (d1M + 12 * d1Y);
     },
@@ -468,7 +472,7 @@ var DateDiff = {
 };
 
 function hr_sanitize_checkbox(form) {
-    var inputs = form.querySelectorAll('input[type=checkbox]');
+    const inputs = form.querySelectorAll('input[type=checkbox]');
     [].forEach.call(inputs, function (input) {
         if (input.checked) {
             input.value = 1;
@@ -482,7 +486,7 @@ function hr_sanitize_checkbox(form) {
 
 function hr_successEdit(form) {
     form = form || null;
-    var container = document.querySelector('#hr_success_container');
+    const container = document.querySelector('#hr_success_container');
     if (container) {
         container.textContent = 'Successfully updated';
         setTimeout(function () {
@@ -491,7 +495,7 @@ function hr_successEdit(form) {
     }
 
     if (form) {
-        var inputs = form.querySelectorAll('input[type=checkbox]');
+        const inputs = form.querySelectorAll('input[type=checkbox]');
         [].forEach.call(inputs, function (input) {
             if (input.value && input.value == 1) {
                 input.setAttribute('checked', 'checked');
@@ -505,20 +509,18 @@ function hr_successEdit(form) {
 
 
 function hr_get_roles() {
-    var role = window.rest_user_role;
-    if (role === 'Superadmin') {
-        role = 'Admin';
-    }
-    var roles = [
-        'Admin',
-        'Superadmin',
-        'Manager',
-        'Employer',
-        'Applicant',
-        'Partner',
-        'Expert',
-        'Author',
-        'Unauthorized'
+    const role = admin_auth.get_cookie('rest_user_role');
+    const roles = [
+        'admin',
+        'superadmin',
+        'companyAdmin',
+        'manager',
+        'employer',
+        'applicant',
+        'partner',
+        'expert',
+        'author',
+        'unauthorized',
     ];
     if (roles.indexOf(role) !== -1) {
         return role;
@@ -531,7 +533,7 @@ function hr_user_avatar() {
     return rest_api_host + admin_auth.get_cookie('rest_user_avatar_url');
 }
 
-function hr_user() {
+function hr_user_name() {
     return admin_auth.get_cookie('rest_user_full_name');
 }
 
@@ -541,31 +543,35 @@ function hr_authorized_id() {
 }
 
 function hr_authorized() {
-    var id = admin_auth.get_cookie('rest_user_id');
+    const id = admin_auth.get_cookie('rest_user_id');
     return id !== '';
 }
 
 function hr_admin() {
-    var role = window.rest_user_role;
-    return role === 'Admin' || role === 'Superadmin';
+    const role = admin_auth.get_cookie('rest_user_avatar_url');
+    return role === 'admin' || role === 'superadmin';
 }
 
 function dataURLtoFile(data_url, filename) {
-    var arr = data_url.split(','), mime = arr[0].match(/:(.*?);/)[1],
+    let arr = data_url.split(','), mime = arr[0].match(/:(.*?);/)[1],
         bstr = atob(arr[1]), n = bstr.length, u8arr = new Uint8Array(n);
     while (n--) {
         u8arr[n] = bstr.charCodeAt(n);
     }
-    var file = new File([u8arr], filename, {type: mime});
+    const file = new File([u8arr], filename, {type: mime});
     console.log('file obj ', file);
     return file;
 }
 
-console.info('loaded');
+function hr_user() {
+    return admin_auth.get_cookie('front_user');
+}
+
+// console.info('loaded');
 
 document.addEventListener('DOMContentLoaded', function (e) {
     if (admin_auth.get_cookie('close_cookies_block') === '') {
-        var el = document.getElementById('wr-cookies-notice');
+        const el = document.getElementById('wr-cookies-notice');
         if (el) {
             el.classList.remove('hidden');
         }

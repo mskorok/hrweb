@@ -18,17 +18,21 @@ angular.module('Dashboard', [], function () {
             $scope.rest_api_host = rest_api_host;
 
 
-
             let token = 'Bearer ' + $cookies.get('rest_user_token');
 
             let user_id = hr_authorized_id();
 
             $scope.user_id = user_id;
-
-            $scope.user_name = hr_user();
-
+            $scope.user = hr_user();
+            $scope.user_name = hr_user_name();
             $scope.user_avatar = hr_user_avatar();
-            $scope.superadmin = false;
+            $scope.role = hr_get_roles();
+
+            $scope.company = $scope.role === 'admin' || $scope.role === 'superadmin' || $scope.role === 'partner' || $scope.role === 'manager';
+            $scope.companyAdmin = $scope.role === 'admin' || $scope.role === 'superadmin' || $scope.role === 'companyAdmin';
+            $scope.admin = $scope.role === 'admin' || $scope.role === 'superadmin';
+            $scope.superadmin = $scope.role === 'superadmin';
+
 
             $scope.subscriptions = 0
 
@@ -62,31 +66,49 @@ angular.module('Dashboard', [], function () {
             if ($state.current.controller === "dashboardController") {
                 $scope.$on('$viewContentLoaded', function () {
                     $scope.$on('$includeContentLoaded', function (event, templateName) {
-                        console.log('tpl', templateName);
+                        // console.log('tpl', templateName);
                         if (templateName.toString() === 'hr/templates/partial/footer.html') {
-                            let url = rest_api_host + 'users/' + user_id + '?include=ProfessionalExperiences,Education,Images,Countries,Companies,Subscriptions,Invitations,AppliedVacancies,Vacancies,Resumes,Resumes,Senders,FavoriteResumes,FavoriteVacancies';
+                            let url = rest_api_host + 'users/' + user_id + '?include=ProfessionalExperiences,Education,Images,Countries,Companies,Subscriptions,Invitations,AppliedVacancies,Vacancies,Resumes,Resumes,Senders,FavoriteResumes,FavoriteVacancies&random=' + get_random_number();
                             $http.get(url
                                 ,
                                 {
-                                    headers: {'Authorization': token}
+                                    headers: {'Authorization': token},
+                                    cache: false
                                 }
                             ).then(function (data) {
-                                console.warn('data', data);
-                                $scope.user = data.data.user;
-                                let role = $scope.user.role;
-                                $scope.user.role = $scope.user.role.capitalize();
-                                $scope.company = role === 'admin' || role === 'superadmin' || role === 'partner' || role === 'manager';
-                                $scope.admin = role === 'admin' || role === 'superadmin';
-                                $scope.companyAdmin = role === 'admin' || role === 'superadmin' || role === 'companyAdmin';
-                                $scope.superadmin = role === 'superadmin';
+                                    $scope.user = data.data.user;
+                                    let role = $scope.user.role;
+                                    $scope.user.role = $scope.user.role.capitalize();
+                                    $scope.company = role === 'admin' || role === 'superadmin' || role === 'partner' || role === 'manager';
+                                    $scope.admin = role === 'admin' || role === 'superadmin';
+                                    $scope.companyAdmin = role === 'admin' || role === 'superadmin' || role === 'companyAdmin';
+                                    $scope.superadmin = role === 'superadmin';
 
-                                $scope.companies = $scope.user.Companies.length;
-                                $scope.favoriteVacancies = $scope.user.FavoriteVacancies.length;
-                                $scope.appliedVacancies = $scope.user.AppliedVacancies.length;
-                                $scope.myResumes =  $scope.user.Resumes.length;
-                                $scope.invitations = $scope.user.Invitations.length;
-                                $scope.favoriteResumes = $scope.user.FavoriteResumes.length;
-                                $scope.subscriptions = $scope.user.Subscriptions.length;
+                                    $scope.companies = $scope.user.Companies.length;
+                                    $scope.favoriteVacancies = $scope.user.FavoriteVacancies.length;
+                                    $scope.appliedVacancies = $scope.user.AppliedVacancies.length;
+                                    $scope.myResumes = $scope.user.Resumes.length;
+                                    $scope.invitations = $scope.user.Invitations.length;
+                                    $scope.favoriteResumes = $scope.user.FavoriteResumes.length;
+                                    $scope.subscriptions = $scope.user.Subscriptions.length;
+
+
+                                    let _url = rest_api_host + 'users/company/subscriptions?random='+ get_random_number();
+                                    $http.get(_url
+                                        ,
+                                        {
+                                            headers: {'Authorization': token},
+                                            cache: false
+                                        }
+                                    ).then(function (data) {
+                                            if (data.data.data) {
+                                                $scope.subscriptions = data.data.data.user.length + data.data.data.companies.length;
+                                            }
+
+                                        },
+                                        function (data) {
+                                            console.log('error response', data);
+                                        });
                                 },
                                 function (data) {
                                     console.log('error response', data);

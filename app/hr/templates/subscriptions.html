@@ -2,10 +2,71 @@
     <div data-ng-include="header_content"></div>
     <div data-ng-include="header_background"></div>
 </header>
-<!--<div data-ng-include="top_menu"></div>-->
-<!--<div data-ng-include="top_menu_mobile"></div>-->
 <div class="container">
     <div data-ng-include="admin_menu"></div>
+    <h2 class="m-t-100 m-b-50 title-color">Subscriptions</h2>
+
+    <div class="row m-b-150">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 m-b-20" ng-repeat="subscription in subscriptions">
+            <div class="search-block b-1-lg w-100">
+                <div class="t-a-c w-100  m-t-10 m-b-10 link-color f-size-28">{{subscription.subscription.title}}</div>
+                <p class="t-a-l w-100 m-b-10 vacancy-list-text">{{subscription.subscription.description}}</p>
+                <div class="row">
+                    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                        <div ng-if="subscription.subscription.is_user === '1' && subscription.user"
+                             class="olive-color f-size-16 m-t-30">
+                            Subscribed
+                        </div>
+                        <div ng-if="subscription.subscription.is_user === '1' && subscription.user"
+                             ng-click="unsubscribeUser(subscription.subscription.id)"
+                             class="link-color pointer m-t-20 f-size-14">
+                            unsubscribe
+                        </div>
+                        <div ng-if="subscription.subscription.is_user === '1' && !subscription.user"
+                             ng-click="subscribeUser(subscription.subscription.id)"
+                             class="link-color pointer m-t-30 f-size-14">
+                            subscribe
+                        </div>
+                    </div>
+                    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                        <div ng-if="subscription.subscription.is_company === '1'  && subscription.companies.length > 0"
+                             class="olive-color f-size-16 m-t-30">
+                            Subscribed Companies
+                        </div>
+                        <div ng-if="subscription.subscription.is_company === '1'  && subscription.companies.length > 0"
+                             class="w-100 m-b-10"
+                             ng-repeat="company in subscription.companies">
+                            <p class="w-100 p-l-20 m-t-10">
+                                <span class=" brown-color f-size-16">{{company.name}}</span>
+                                &nbsp; &nbsp;&nbsp;
+                                <span class="link-color pointer  f-size-14" ng-click="unsubscribeCompany(company.id, subscription.subscription.id)">
+                                    unsubscribe
+                                </span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                        <div ng-if="subscription.subscription.is_company === '1'  && subscription.not_subscribed_companies.length > 0"
+                             class="olive-color f-size-16 m-t-30">
+                            Subscribe Company
+                        </div>
+                        <div ng-if="subscription.subscription.is_company === '1'  && subscription.not_subscribed_companies.length > 0"
+                             class="w-100 m-b-10" ng-repeat="company in subscription.not_subscribed_companies">
+                            <p class="w-100 p-l-20 m-t-10">
+                                <span class=" brown-color f-size-16">
+                                    {{company.name}}
+                                </span>
+                                &nbsp; &nbsp;&nbsp;
+                                <span class="link-color pointer  f-size-14" ng-click="subscribeCompany(company.id, subscription.subscription.id)">
+                                    subscribe
+                                </span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </div>
 <div data-ng-include="footer"></div>

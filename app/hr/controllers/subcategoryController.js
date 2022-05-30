@@ -1,5 +1,5 @@
 angular.module('Subcategory', [], function () {
-    console.info('module Subcategory init');
+    // console.info('module Subcategory init');
 }).controller(
     'subcategoryController',
     [
@@ -19,7 +19,7 @@ angular.module('Subcategory', [], function () {
             $scope.footer = 'hr/templates/partial/footer.html';
 
             $scope.user_id = hr_authorized_id();
-            $scope.user_name = hr_user();
+            $scope.user_name = hr_user_name();
             $scope.user_avatar = hr_user_avatar();
 
             let segment = $location.path();
