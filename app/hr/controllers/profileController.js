@@ -33,6 +33,11 @@ angular.module('Profile', [], function () {
             $scope.admin =$scope.role === 'admin' || $scope.role === 'superadmin';
             $scope.superadmin = $scope.role === 'superadmin';
 
+            $scope.deleteProfile = () => {
+                let del = confirm('Are you sure what you are doing? \n This action cannot be undone.');
+                console.warn('del', del);
+            }
+
             if (!user_id) {
                 console.log('id not found');
                 $state.go('login', {
