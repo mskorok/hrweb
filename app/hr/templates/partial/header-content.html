@@ -115,6 +115,9 @@
                             <li class="menu-item">
                                 <a id="right_menu_home" class="menu-link" href="/" title="Home">Home</a>
                             </li>
+                            <li id="right_menu_profile_link" class="menu-item hidden">
+                                <a id="right_menu_profile" class="menu-link" href="/profile" title="Home">Profile</a>
+                            </li>
                             <li class="menu-item">
                                 <a id="right_menu_jobs" class="menu-link" href="/jobs" title="Jobs">Jobs</a>
                             </li>
@@ -399,6 +402,10 @@
             id = 'right_menu_jobs';
             title = 'Jobs';
         }
+        if (path.includes('profile')) {
+            id = 'right_menu_profile';
+            title = 'Profile';
+        }
         if (path === '/') {
             id = 'right_menu_home';
             title = '';
@@ -407,6 +414,16 @@
         const el = document.getElementById(id);
         if (el) {
             el.classList.add('active');
+        }
+
+        const auth = hr_authorized();
+        if (auth) {
+            const profile_link = document.getElementById('right_menu_profile_link')
+            if (profile_link) {
+                profile_link.classList.remove('hidden');
+            } else {
+                profile_link.classList.add('hidden');
+            }
         }
     })()
 
