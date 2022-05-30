@@ -35,7 +35,26 @@ angular.module('Profile', [], function () {
 
             $scope.deleteProfile = () => {
                 let del = confirm('Are you sure what you are doing? \n This action cannot be undone.');
-                console.warn('del', del);
+
+                if (!del) {
+                    return;
+                }
+
+                let url = rest_api_host + '/profile/delete/' + user_id + '?random=' + get_random_number();
+                $http.get(url
+                    ,
+                    {
+                        headers: {'Authorization': token}
+                    }
+                ).then(function (data) {
+                        console.warn('data', data);
+                        $state.go('home', {
+                            url: '/'
+                        })
+                    },
+                    function (data) {
+                        console.log('error response', data);
+                    });
             }
 
             if (!user_id) {
