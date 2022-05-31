@@ -1,6 +1,6 @@
-angular.module('Admin', [], function () {
-    // console.log('module Profile init');
-}).controller('adminController', [
+angular.module('Notifications', [], function () {
+    // console.log('module Notifications init');
+}).controller('notificationsController', [
         "$scope",
         '$state',
         '$cookies',
