@@ -39,7 +39,6 @@ angular.module('Vacancy', [], function () {
                 $scope.$on('$includeContentLoaded', function (event, templateName) {
                     // console.log('tpl', templateName);
                     if (templateName.toString() === 'hr/templates/partial/footer.html') {
-
                         const url = rest_api_host + 'vacancies/' + vacancy_id + '/?include=Companies,CompanyAvatar,JobTypes,Country,Favorites,Applied&random=' + get_random_number();
                         $http.get(url).then(function (data) {
                                 if (data.data.vacancy) {
@@ -93,9 +92,6 @@ angular.module('Vacancy', [], function () {
                 $scope.removeFavorite = function () {
                     if (user_id && $scope.vacancy && $scope.vacancy.id) {
                         const url = rest_api_host + 'favorite/remove/' + $scope.vacancy.id + '?random=' + get_random_number();
-
-
-
                         $http.get(url
                             ,
                             {
