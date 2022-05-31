@@ -150,7 +150,6 @@ angular.module('Vacancy', [], function () {
                               headers: {'Authorization': token}
                             }
                         ).then(function (data) {
-                            console.warn('data', data);
                                 if (data.data.result === 'OK') {
                                     $scope.show_apply = false;
                                     $scope.show_applied = true;
