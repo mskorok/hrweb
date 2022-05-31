@@ -117,7 +117,7 @@ angular.module('Resume', [], function () {
 
                         $scope.removeFavorite = function () {
                             if (user_id && $scope.resume && $scope.resume.id) {
-                                let url = rest_api_host + 'favorite-resume/remove/' + user_id + '/' + $scope.resume.id;
+                                let url = rest_api_host + 'favorite-resume/remove/' + user_id + '/' + $scope.resume.id + '?random=' + get_random_number();
                                 $http.get(url
                                     ,
                                     {
@@ -141,7 +141,7 @@ angular.module('Resume', [], function () {
 
                         $scope.addFavorite = function () {
                             if (user_id && $scope.resume && $scope.resume.id) {
-                                let url = rest_api_host + 'favorite-resume/add/' + user_id + '/' + $scope.resume.id;
+                                let url = rest_api_host + 'favorite-resume/add/' + user_id + '/' + $scope.resume.id + '?random=' + get_random_number();
                                 $http.get(url
                                     ,
                                     {
