@@ -12,8 +12,9 @@
                 <li ng-if="companyAdmin"><a data-toggle="tab" href="#tab2">Invitations</a></li>
                 <li><a data-toggle="tab" href="#tab3">Applied</a></li>
                 <li ng-if="companyAdmin"><a data-toggle="tab" href="#tab4">Applicants</a></li>
-                <li><a data-toggle="tab" href="#tab5">Admin</a></li>
-                <li  ng-if="superadmin"><a  data-toggle="tab" href="#tab6">Superadmin</a></li>
+                <li><a data-toggle="tab" href="#tab5">Support</a></li>
+                <li><a data-toggle="tab" href="#tab6">Admin</a></li>
+                <li  ng-if="superadmin"><a  data-toggle="tab" href="#tab7">Superadmin</a></li>
             </ul>
             <div class="tab-content">
                 <div ng-if="companyAdmin" id="tab1" class="tab-pane fade in active">
@@ -49,6 +50,14 @@
                     </div>
                 </div>
                 <div id="tab5" class="tab-pane fade">
+                    <h3 class="m-t-50 m-b-50 t-a-c">Support</h3>
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 p-20">
+                            <p>Content for tab 3.</p>
+                        </div>
+                    </div>
+                </div>
+                <div id="tab6" class="tab-pane fade">
                     <h3 class="m-t-50 m-b-50 t-a-c">Admin</h3>
                     <div class="row">
                         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 p-20">
@@ -56,7 +65,7 @@
                         </div>
                     </div>
                 </div>
-                <div ng-if="superadmin" id="tab6" class="tab-pane fade">
+                <div ng-if="superadmin" id="tab7" class="tab-pane fade">
                     <h3 class="m-t-50 m-b-50 t-a-c">Superadmin</h3>
                     <div class="row">
                         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 p-20">
