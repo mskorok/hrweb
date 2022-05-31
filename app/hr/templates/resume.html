@@ -18,10 +18,14 @@
                 <div class="col-xs-12 col-sm-8 col-md-9 col-lg-10 d-f m-t-75">
                     <div class="row w-100">
                         <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
-                            <div  ng-cloak ng-show="resume.Users.name" class="resume-name d-i-b m-l-30"><h3>{{ resume.Users.name }} &nbsp;{{resume.Users.surname}}</h3></div>
-                            <div ng-cloak ng-show="resume.age" class="resume-age d-i-b m-l-30">Age: {{ resume.age }}</div>
-                            <span ng-cloak id="remove_favorite" ng-show="show_remove_favorite" class="resume-age m-l-30" ng-click="removeFavorite()"><img src="assets/images/heart.png"></span>
-                            <span ng-cloak id="add_favorite" ng-show="show_add_favorite" class="resume-age m-l-30" ng-click="addFavorite()"><img src="assets/images/heart-bg.png"></span>
+                            <div ng-cloak ng-show="resume.Users.name" class="resume-name d-i-b m-l-30"><h3>
+                                {{ resume.Users.name }} &nbsp;{{resume.Users.surname}}</h3></div>
+                            <div ng-cloak ng-show="resume.age" class="resume-age d-i-b m-l-30">Age: {{ resume.age }}
+                            </div>
+                            <span ng-cloak id="remove_favorite" ng-show="show_remove_favorite" class="resume-age m-l-30"
+                                  ng-click="removeFavorite()"><img src="assets/images/heart.png"></span>
+                            <span ng-cloak id="add_favorite" ng-show="show_add_favorite" class="resume-age m-l-30"
+                                  ng-click="addFavorite()"><img src="assets/images/heart-bg.png"></span>
                         </div>
                         <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4" ng-cloak ng-show="resume.salary">
                             <div class="resume-salary d-b right">
@@ -36,35 +40,47 @@
 
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                    <div ng-cloak ng-show="resume.key_skills" class="resume-key m-b-20">Key skills:&nbsp; <span class="resume-text">{{ resume.key_skills }}</span></div>
-                    <div ng-cloak ng-show="resume.professional_area" class="resume-key m-b-20">Professional area:&nbsp;<span
-                        class="resume-text">{{ resume.professional_area }}</span>
+                    <div ng-cloak ng-show="resume.key_skills" class="resume-key m-b-20">Key skills:&nbsp; <span
+                            class="resume-text">{{ resume.key_skills }}</span></div>
+                    <div ng-cloak ng-show="resume.professional_area" class="resume-key m-b-20">Professional
+                        area:&nbsp;<span
+                                class="resume-text">{{ resume.professional_area }}</span>
                     </div>
-                    <div ng-cloak ng-show="resume.language" class="resume-key m-b-20">Languages:&nbsp;<span class="resume-text">{{ resume.language }}</span>
+                    <div ng-cloak ng-show="resume.language" class="resume-key m-b-20">Languages:&nbsp;<span
+                            class="resume-text">{{ resume.language }}</span>
                     </div>
-                    <div  ng-cloak ng-show="resume.about_me" class="resume-key m-b-20">About me:&nbsp;
+                    <div ng-cloak ng-show="resume.about_me" class="resume-key m-b-20">About me:&nbsp;
                         <span class="resume-content">
                             {{ resume.about_me }}
                         </span>
                     </div>
-                    <div  ng-cloak ng-show="resume.Uploaded.fileName" class="resume-key m-b-20">CV:&nbsp;<a target="_blank" href="{{rest_api_host}}{{resume.Uploaded.path}}{{resume.Uploaded.fileName}}" class="resume-text link-color"  download>download</a>
+                    <div ng-cloak ng-show="resume.Uploaded.fileName" class="resume-key m-b-20">CV:&nbsp;<a
+                            target="_blank" href="{{rest_api_host}}{{resume.Uploaded.path}}{{resume.Uploaded.fileName}}"
+                            class="resume-text link-color" download>download</a>
                     </div>
-                    <div  ng-cloak ng-show="resume.Experience" class="resume-list">Professional experience:</div>
+                    <div ng-cloak ng-show="resume.Experience" class="resume-list">Professional experience:</div>
                     <div class="resume-list-container m-l-50 m-b-10" ng-repeat="exp in resume.Experience">
-                        <div  ng-cloak ng-show="exp.title" class="resume-list-key">
+                        <div ng-cloak ng-show="exp.title" class="resume-list-key">
                             Position : <span class="resume-list-text m-l-5 title-color">{{ exp.position }}</span>
                         </div>
-                        <div  ng-cloak ng-show="exp.organization" class="resume-list-key">
+                        <div ng-cloak ng-show="exp.organization" class="resume-list-key">
                             Organization: <span class="m-l-5 resume-list-text olive-color">{{ exp.organization }}</span>
                         </div>
-                        <div  ng-cloak ng-show="exp.location" class="resume-list-key">Location: <span class="m-l-5 resume-list-text">{{ exp.location }}</span></div>
-                        <div  ng-cloak ng-show="exp.site" class="resume-list-key">Site: <a href="{{exp.site}}" class="m-l-5 resume-list-text link-color">{{ exp.site }}</a></div>
-                        <div  ng-cloak ng-show="exp.area" class="resume-list-key">Professional area:&nbsp;<span class="m-l-5 resume-list-text">{{ resume.area }}</span>
+                        <div ng-cloak ng-show="exp.location" class="resume-list-key">Location: <span
+                                class="m-l-5 resume-list-text">{{ exp.location }}</span></div>
+                        <div ng-cloak ng-show="exp.site" class="resume-list-key">Site: <a href="{{exp.site}}"
+                                                                                          class="m-l-5 resume-list-text link-color">{{ exp.site
+                            }}</a></div>
+                        <div ng-cloak ng-show="exp.area" class="resume-list-key">Professional area:&nbsp;<span
+                                class="m-l-5 resume-list-text">{{ resume.area }}</span>
                         </div>
-                        <div   ng-cloak ng-show="exp.position" class="resume-list-key">Profession: <span class="m-l-5 resume-list-text">{{ exp.title }}</span></div>
-                        <div   ng-cloak ng-show="exp.start" class="resume-list-key">Date Start: <span class="m-l-5 resume-list-text">{{ exp.start.substring(0, 10) }}</span></div>
-                        <div  ng-cloak ng-show="exp.finish" class="resume-list-key">Date Finish: <span class="m-l-5 resume-list-text">{{ exp.finish.substring(0, 10) }}</span></div>
-                        <div  ng-cloak ng-show="!exp.finish" class="resume-list-key">Work now</div>
+                        <div ng-cloak ng-show="exp.position" class="resume-list-key">Profession: <span
+                                class="m-l-5 resume-list-text">{{ exp.title }}</span></div>
+                        <div ng-cloak ng-show="exp.start" class="resume-list-key">Date Start: <span
+                                class="m-l-5 resume-list-text">{{ exp.start.substring(0, 10) }}</span></div>
+                        <div ng-cloak ng-show="exp.finish" class="resume-list-key">Date Finish: <span
+                                class="m-l-5 resume-list-text">{{ exp.finish.substring(0, 10) }}</span></div>
+                        <div ng-cloak ng-show="!exp.finish" class="resume-list-key">Work now</div>
                         <div class="resume-list-key">
                             Description:
                             <span class="resume-list-content m-l-5">
@@ -74,25 +90,46 @@
                         <hr>
                     </div>
 
-                    <div  ng-cloak ng-show="resume.Education" class="resume-list">Education:</div>
+                    <div ng-cloak ng-show="resume.Education" class="resume-list">Education:</div>
                     <div class="resume-list-container  m-l-50 m-b-10" ng-repeat="edu in resume.Education">
-                        <div  ng-cloak ng-show="edu.name" class="resume-list-key">Profession: <span class="m-l-5 resume-list-text title-color">{{ edu.name }}</span></div>
-                        <div  ng-cloak ng-show="edu.organization" class="resume-list-key">Education organization: <span class="m-l-5 resume-list-text olive-color">{{ edu.organization }}</span></div>
-                        <div  ng-cloak ng-show="edu.level" class="resume-list-key">Level: <span class="m-l-5 resume-list-text">{{ edu.level }}</span></div>
-                        <div  ng-cloak ng-show="edu.specialization" class="resume-list-key">Specialization: <span class="m-l-5 resume-list-text">{{ edu.specialization }}</span></div>
-                        <div  ng-cloak ng-show="edu.start" class="resume-list-key">Date Start: <span class="m-l-5 resume-list-text">{{ edu.start.substring(0, 10) }}</span></div>
-                        <div  ng-cloak ng-show="edu.finish" class="resume-list-key">Date Finish: <span class="m-l-5 resume-list-text">{{ edu.finish.substring(0, 10) }}</span></div>
+                        <div ng-cloak ng-show="edu.name" class="resume-list-key">Profession: <span
+                                class="m-l-5 resume-list-text title-color">{{ edu.name }}</span></div>
+                        <div ng-cloak ng-show="edu.organization" class="resume-list-key">Education organization: <span
+                                class="m-l-5 resume-list-text olive-color">{{ edu.organization }}</span></div>
+                        <div ng-cloak ng-show="edu.level" class="resume-list-key">Level: <span
+                                class="m-l-5 resume-list-text">{{ edu.level }}</span></div>
+                        <div ng-cloak ng-show="edu.specialization" class="resume-list-key">Specialization: <span
+                                class="m-l-5 resume-list-text">{{ edu.specialization }}</span></div>
+                        <div ng-cloak ng-show="edu.start" class="resume-list-key">Date Start: <span
+                                class="m-l-5 resume-list-text">{{ edu.start.substring(0, 10) }}</span></div>
+                        <div ng-cloak ng-show="edu.finish" class="resume-list-key">Date Finish: <span
+                                class="m-l-5 resume-list-text">{{ edu.finish.substring(0, 10) }}</span></div>
                         <hr>
                     </div>
                     <div class="m-t-30">
                         <div class="resume-date left">{{ resume.creationDate.substring(0, 10) }}</div>
                     </div>
                     <div class="clearfix"></div>
-                    <div class="m-t-50 m-b-150">
-                        <span class="applied"  ng-cloak ng-show="show_applied">You have already applied for this resume</span>
-                        <button  id="apply_button"  ng-cloak ng-show="show_apply" class="apply-button" ng-click="inviteResume()" type="submit">
-                            <span>Apply</span>
-                        </button>
+                    <div class="m-t-50 m-b-150" ng-cloak ng-if="show_apply">
+                        <span class="applied" ng-cloak
+                              ng-if="show_applied">You have already invited this resume</span>
+                        <div class="w-100" ng-if="managed_companies.length > 0">
+                            <form id="resume_invitation_companies">
+                                <div class="m-b-30 fwbl f-size-20">Invite companies</div>
+                                <div ng-repeat="cp in managed_companies">
+                                    <div class="checkbox">
+                                        <label class="f-size-18 gray-color">
+                                            <input type="checkbox" value="{{cp.id}}" name="managed">
+                                            {{cp.name}}
+                                        </label>
+                                    </div>
+                                </div>
+                            </form>
+                            <button id="apply_button" ng-cloak ng-if="show_apply" class="apply-button"
+                                    ng-click="inviteResume()" type="submit">
+                                <span>Invite</span>
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>

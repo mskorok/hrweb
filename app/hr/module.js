@@ -35,6 +35,7 @@ var app = angular.module(
         'Hardware',
         'Home',
         'Job',
+        'Messages',
         'Migration',
         'Link',
         'Links',
@@ -371,6 +372,16 @@ app.config(['$stateProvider', '$urlRouterProvider', '$cookiesProvider', function
             data: {
                 title: 'Admin',
                 css: 'assets/css/pages/admin.css'
+            }
+        })
+
+        .state('messages', {
+            url: '/messages',
+            controller: 'messagesController',
+            templateUrl: 'hr/templates/messages.html',
+            data: {
+                title: 'Admin',
+                css: 'assets/css/pages/messages.css'
             }
         })
 

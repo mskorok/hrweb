@@ -1,0 +1,71 @@
+<header id="header" class="  clear-fix">
+    <div data-ng-include="header_content"></div>
+    <div data-ng-include="header_background"></div>
+</header>
+<div class="container">
+    <div data-ng-include="admin_menu"></div>
+    <h2 class="m-t-100 m-b-50 title-color">Notifications</h2>
+    <div class="row m-b-150">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <ul class="nav nav-tabs">
+                <li class="active"><a data-toggle="tab" href="#tab1">Invited</a></li>
+                <li ng-if="companyAdmin"><a data-toggle="tab" href="#tab2">Invitations</a></li>
+                <li><a data-toggle="tab" href="#tab3">Applied</a></li>
+                <li ng-if="companyAdmin"><a data-toggle="tab" href="#tab4">Applicants</a></li>
+                <li><a data-toggle="tab" href="#tab5">Admin</a></li>
+                <li  ng-if="superadmin"><a  data-toggle="tab" href="#tab6">Superadmin</a></li>
+            </ul>
+            <div class="tab-content">
+                <div ng-if="companyAdmin" id="tab1" class="tab-pane fade in active">
+                    <h3 class="m-t-50 m-b-50 t-a-c">Invited</h3>
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 p-20">
+                            <p>Content for tab 1.</p>
+                        </div>
+                    </div>
+                </div>
+                <div id="tab2" class="tab-pane fade">
+                    <h3 class="m-t-50 m-b-50 t-a-c">Invitations</h3>
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 p-20">
+                            <p>Content for tab 1.</p>
+                        </div>
+                    </div>
+                </div>
+                <div id="tab3" class="tab-pane fade">
+                    <h3 class="m-t-50 m-b-50 t-a-c">Applied</h3>
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 p-20">
+                            <p>Content for tab 2.</p>
+                        </div>
+                    </div>
+                </div>
+                <div ng-if="companyAdmin" id="tab4" class="tab-pane fade">
+                    <h3 class="m-t-50 m-b-50 t-a-c">Applicants</h3>
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 p-20">
+                            <p>Content for tab 2.</p>
+                        </div>
+                    </div>
+                </div>
+                <div id="tab5" class="tab-pane fade">
+                    <h3 class="m-t-50 m-b-50 t-a-c">Admin</h3>
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 p-20">
+                            <p>Content for tab 3.</p>
+                        </div>
+                    </div>
+                </div>
+                <div ng-if="superadmin" id="tab6" class="tab-pane fade">
+                    <h3 class="m-t-50 m-b-50 t-a-c">Superadmin</h3>
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 p-20">
+                            <p>Content for tab 4.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div data-ng-include="footer"></div>
