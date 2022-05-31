@@ -110,24 +110,46 @@
                         <div class="resume-date left">{{ resume.creationDate.substring(0, 10) }}</div>
                     </div>
                     <div class="clearfix"></div>
-                    <div class="m-t-50 m-b-150" ng-cloak ng-if="show_apply">
-                        <span class="applied" ng-cloak
-                              ng-if="show_applied">You have already invited this resume</span>
-                        <div class="w-100" ng-if="managed_companies.length > 0">
+                    <hr ng-if="companyAdmin" class="w-100 m-t-50 m-b-30 hr-admin">
+                    <h3 ng-if="companyAdmin" class="w-100 t-a-c">Admin Section</h3>
+                    <div class="m-t-50 m-b-150" ng-cloak ng-if="managed_companies.length > 0">
+<!--                        <span class="applied" ng-cloak-->
+<!--                              ng-if="show_applied">You have already invited this resume</span>-->
+                        <div class="w-100" >
                             <form id="resume_invitation_companies">
                                 <div class="m-b-30 fwbl f-size-20">Invite companies</div>
                                 <div ng-repeat="cp in managed_companies">
                                     <div class="checkbox">
                                         <label class="f-size-18 gray-color">
                                             <input type="checkbox" value="{{cp.id}}" name="managed">
-                                            {{cp.name}}
+                                            &nbsp;{{cp.name}}
                                         </label>
                                     </div>
                                 </div>
                             </form>
-                            <button id="apply_button" ng-cloak ng-if="show_apply" class="apply-button"
+                            <button id="invite_button" ng-cloak class="apply-button"
                                     ng-click="inviteResume()" type="submit">
                                 <span>Invite</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="m-t-50 m-b-150" ng-cloak ng-if="invited_companies.length > 0">
+                        <div class="w-100">
+                            <form id="resume_remove_invitation">
+                                <div class="m-b-30 fwbl f-size-20">Invited companies</div>
+                                <div ng-repeat="cp in invited_companies">
+                                    <div class="checkbox">
+                                        <label class="f-size-18 gray-color">
+                                            <input type="checkbox" value="{{cp.id}}" name="removed">
+                                            &nbsp;{{cp.name}}
+                                        </label>
+                                    </div>
+                                </div>
+                            </form>
+                            <button id="apply_button" class="apply-button"
+                                    ng-click="removeInvitation()" type="submit">
+                                <span>Remove invitation</span>
                             </button>
                         </div>
                     </div>

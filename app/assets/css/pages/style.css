@@ -3406,4 +3406,8 @@ label.error {
     }
 }
 
+.hr-admin {
+    border: 1px solid black !important;
+}
+
 

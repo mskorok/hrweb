@@ -539,7 +539,7 @@ function hr_user_name() {
 
 function hr_authorized_id() {
     // console.log('authorized_id', admin_auth.get_cookie('rest_user_id'), document.cookie);
-    return admin_auth.get_cookie('rest_user_id');
+    return parseInt(admin_auth.get_cookie('rest_user_id'));
 }
 
 function hr_authorized() {

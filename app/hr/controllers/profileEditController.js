@@ -50,7 +50,7 @@ angular.module('ProfileEdit', [], function () {
 
                     $scope.company = role === 'admin' || role === 'superadmin' || role === 'partner' || role === 'manager';
                     $scope.admin = role === 'admin' || role === 'superadmin';
-                    $scope.companyAdmin = role === 'admin' || role === 'superadmin' || role === 'companyAdmin';
+                    $scope.companyAdmin = role === 'admin' || role === 'superadmin' || $scope.user.Companies.length > 0;
                     $scope.superadmin = role === 'superadmin';
                 },
                 function (data) {

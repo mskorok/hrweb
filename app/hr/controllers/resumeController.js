@@ -19,8 +19,6 @@ angular.module('Resume', [], function () {
             $scope.top_menu_mobile = 'hr/templates/partial/top-menu-mobile.html';
             $scope.footer = 'hr/templates/partial/footer.html';
             $scope.rest_api_host = rest_api_host;
-            $scope.show_apply = false;
-            $scope.show_applied = false;
             $scope.show_remove_favorite = false;
             $scope.show_add_favorite = false;
             $scope.company_id = null;
@@ -32,10 +30,13 @@ angular.module('Resume', [], function () {
             $scope.user_name = hr_user_name();
 
             $scope.user_avatar = hr_user_avatar();
+            $scope.companyAdmin = false;
 
             const resume_id = $stateParams.id;
 
             $scope.managed_companies = [];
+            $scope.invited_companies = [];
+            $scope.invited = [];
 
             let url = rest_api_host + 'resumes/' + resume_id + '?include=Uploaded,Avatar,Experience,Education,Users,Favorites,Invited&random=' + get_random_number();
 
@@ -49,14 +50,18 @@ angular.module('Resume', [], function () {
                             $http.get(url).then(function (data) {
                                     const birthday = new Date(data.data.resume.Users.birthday).getFullYear();
                                     const now = new Date().getFullYear();
-                                    console.info('resume data', data.data.resume);
+                                    // console.info('resume data', data.data.resume);
                                     $scope.resume = data.data.resume;
                                     $scope.resume.age = now - birthday;
                                     $scope.avatar = data.data.resume.Avatar[0];
-
                                     const invited = data.data.resume.Invited;
-
                                     const favorites = data.data.resume.Favorites;
+
+                                    [].forEach.call(invited, (inv) => {
+                                        if (parseInt(inv.user_id) === $scope.user_id) {
+                                            $scope.invited.push(inv);
+                                        }
+                                    });
 
 
                                     if (user_id) {
@@ -70,42 +75,30 @@ angular.module('Resume', [], function () {
                                         ).then(function (data) {
                                             const managers = data.data.user.CompanyManager;
                                             const companies = data.data.user.Companies;
+                                            $scope.user = data.data.user;
+                                            let role = $scope.user.role;
+                                            $scope.companyAdmin = role === 'admin' || role === 'superadmin' || $scope.user.Companies.length > 0;
                                             if (companies.length > 0 && managers.length > 0) {
                                                 [].forEach.call(companies, function (company) {
-                                                    [].forEach.call(invited, function (inv) {
-                                                        if (company.id !== inv.company_id) {
-                                                            $scope.managed_companies.push(company);
+                                                    let flag = true;
+                                                    [].forEach.call($scope.invited, function (inv) {
+                                                        if (parseInt(company.id) === parseInt(inv.company_id)) {
+                                                            flag = false;
                                                         }
                                                     });
+                                                    if (flag) {
+                                                        $scope.managed_companies.push(company);
+                                                    } else {
+                                                        $scope.invited_companies.push(company);
+                                                    }
                                                 });
                                             }
-
-                                            console.warn('ic', invited, $scope.managed_companies);
                                         });
-                                    }
-
-
-
-
-
-
-
-                                    if (invited && invited.length > 0) {
-                                        [].forEach.call(invited, function (inv) {
-                                            if (user_id && parseInt(inv.user_id) === parseInt(user_id)) {
-                                                $scope.show_applied = true;
-                                            }
-                                        });
-                                        if (!$scope.show_applied) {
-                                            $scope.show_apply = true;
-                                        }
-                                    } else {
-                                        $scope.show_apply = true;
                                     }
 
                                     if (favorites && favorites.length > 0) {
                                         [].forEach.call(favorites, function (favorite) {
-                                            if (user_id && parseInt(favorite.user_id) === parseInt(user_id)) {
+                                            if (user_id && parseInt(favorite.user_id) === user_id) {
                                                 $scope.show_remove_favorite = true;
                                             }
                                         });
@@ -170,20 +163,23 @@ angular.module('Resume', [], function () {
                             }
                         };
 
-                        $scope.inviteResume = function () {
+                        $scope.inviteResume = () => {
                             if (user_id && $scope.resume.id && user_id) {
                                 const invitation_form = document.getElementById('resume_invitation_companies');
                                 let inputs = invitation_form.elements['managed'];
+
+                                if (inputs.constructor.name === 'HTMLInputElement') {
+                                    inputs = [inputs];
+                                }
                                 let ids = [];
                                 [].forEach.call(inputs, (input) => {
-                                    if (input.checked){
+                                    if (input.checked) {
                                         ids.push(input.value)
                                     }
                                 })
 
-                                let joined = ids.join(',');
+                                let url = rest_api_host + 'resume/invite/' + $scope.resume.id + '?companies=' + ids.join(',') + '&random=' + get_random_number();
 
-                                let url = rest_api_host + 'resume/invite/' + user_id + '/' + $scope.resume.id + '?companies=' + ids.join(',') + '&random=' + get_random_number();
                                 $http.get(url
                                     ,
                                     {
@@ -191,8 +187,46 @@ angular.module('Resume', [], function () {
                                     }
                                 ).then(function (data) {
                                         if (data.data.result === 'OK') {
-                                            $scope.show_apply = false;
-                                            $scope.show_applied = true;
+                                            window.location.reload();
+                                        } else if (data.data.result === 'error') {
+                                            console.log('error', data.data.message);
+                                        } else {
+                                            console.log('error response', data);
+                                        }
+                                    },
+                                    function (data) {
+                                        console.log('error response', data);
+                                    });
+                            }
+
+                        };
+                        $scope.removeInvitation = () => {
+                            if (user_id && $scope.resume.id && user_id) {
+                                const invitation_form = document.getElementById('resume_remove_invitation');
+                                let inputs = invitation_form.elements['removed'];
+
+                                if (inputs.constructor.name === 'HTMLInputElement') {
+                                    inputs = [inputs];
+                                }
+
+                                let ids = [];
+                                [].forEach.call(inputs, (input) => {
+                                    if (input.checked){
+                                        ids.push(input.value)
+                                    }
+                                })
+
+                                console.warn('inputs', ids, inputs);
+
+                                let url = rest_api_host + 'resume/remove/invited/' + $scope.resume.id + '?companies=' + ids.join(',') + '&random=' + get_random_number();
+                                $http.get(url
+                                    ,
+                                    {
+                                        headers: {'Authorization': token}
+                                    }
+                                ).then(function (data) {
+                                        if (data.data.result === 'OK') {
+                                            window.location.reload();
                                         } else if (data.data.result === 'error') {
                                             console.log('error', data.data.message);
                                         } else {

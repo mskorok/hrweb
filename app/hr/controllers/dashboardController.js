@@ -81,7 +81,7 @@ angular.module('Dashboard', [], function () {
                                     $scope.user.role = $scope.user.role.capitalize();
                                     $scope.company = role === 'admin' || role === 'superadmin' || role === 'partner' || role === 'manager';
                                     $scope.admin = role === 'admin' || role === 'superadmin';
-                                    $scope.companyAdmin = role === 'admin' || role === 'superadmin' || role === 'companyAdmin';
+                                    $scope.companyAdmin = role === 'admin' || role === 'superadmin' || $scope.user.Companies.length > 0;
                                     $scope.superadmin = role === 'superadmin';
 
                                     $scope.companies = $scope.user.Companies.length;

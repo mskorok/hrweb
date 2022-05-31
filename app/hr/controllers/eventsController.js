@@ -19,7 +19,7 @@ angular.module('Events', [], function () {
             $scope.footer = 'hr/templates/partial/footer.html';
 
 
-            var page = $location.search().page;
+            let page = $location.search().page;
 
             if (!page) page = 1;
 

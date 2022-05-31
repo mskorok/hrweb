@@ -46,13 +46,12 @@ angular.module('Profile', [], function () {
                     {
                         headers: {'Authorization': token}
                     }
-                ).then(function (data) {
-                        console.warn('data', data);
+                ).then((data) => {
                         $state.go('home', {
                             url: '/'
                         })
                     },
-                    function (data) {
+                    (data) => {
                         console.log('error response', data);
                     });
             }
@@ -83,7 +82,7 @@ angular.module('Profile', [], function () {
 
                                     $scope.company = role === 'admin' || role === 'superadmin' || role === 'partner' || role === 'manager';
                                     $scope.admin = role === 'admin' || role === 'superadmin';
-                                    $scope.companyAdmin = role === 'admin' || role === 'superadmin' || role === 'companyAdmin';
+                                    $scope.companyAdmin = role === 'admin' || role === 'superadmin' || $scope.user.Companies.length > 0;
                                     $scope.superadmin = role === 'superadmin';
                                 },
                                 function (data) {
