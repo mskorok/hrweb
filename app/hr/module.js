@@ -380,8 +380,18 @@ app.config(['$stateProvider', '$urlRouterProvider', '$cookiesProvider', function
             controller: 'messagesController',
             templateUrl: 'hr/templates/messages.html',
             data: {
-                title: 'Admin',
+                title: 'Messages',
                 css: 'assets/css/pages/messages.css'
+            }
+        })
+
+        .state('notifications', {
+            url: '/notifications',
+            controller: 'notificationsController',
+            templateUrl: 'hr/templates/notifications.html',
+            data: {
+                title: 'Notifications',
+                css: 'assets/css/pages/notifications.css'
             }
         })
 
