@@ -20,14 +20,13 @@ angular.module('Vacancy', [], function () {
         $scope.show_add_favorite = false;
         $scope.server = rest_api_host;
 
-        var token = 'Bearer ' + $cookies.get('rest_user_token');
-
-        // var vacancy_id = window.location.pathname.split("/").pop();
-
-        var vacancy_id = $stateParams.id;
+        const token = 'Bearer ' + $cookies.get('rest_user_token');
 
 
-        var user_id = hr_authorized_id();
+        const vacancy_id = $stateParams.id;
+
+
+        const user_id = hr_authorized_id();
 
         $scope.user_id = user_id;
 
@@ -41,10 +40,10 @@ angular.module('Vacancy', [], function () {
                     // console.log('tpl', templateName);
                     if (templateName.toString() === 'hr/templates/partial/footer.html') {
 
-                        var url = rest_api_host + 'vacancies/' + vacancy_id + '/?include=Companies,CompanyAvatar,JobTypes,Country,Favorites,Applied';
+                        const url = rest_api_host + 'vacancies/' + vacancy_id + '/?include=Companies,CompanyAvatar,JobTypes,Country,Favorites,Applied&random=' + get_random_number();
                         $http.get(url).then(function (data) {
                                 if (data.data.vacancy) {
-                                    var vacancy = data.data.vacancy;
+                                    const vacancy = data.data.vacancy;
                                     vacancy.job_type = vacancy.JobTypes.length > 0 ? vacancy.JobTypes[0].name : null;
                                     vacancy.company_url = vacancy.Companies.site;
                                     vacancy.company_name = vacancy.Companies.name;
@@ -54,9 +53,9 @@ angular.module('Vacancy', [], function () {
 
                                     $scope.vacancy = vacancy;
 
-                                    var applied = vacancy.Applied;
+                                    const applied = vacancy.Applied;
 
-                                    var favorites = vacancy.Favorites;
+                                    const favorites = vacancy.Favorites;
 
                                     if (user_id && applied && applied.length > 0) {
                                         [].forEach.call(applied, function (apl) {
@@ -93,7 +92,9 @@ angular.module('Vacancy', [], function () {
 
                 $scope.removeFavorite = function () {
                     if (user_id && $scope.vacancy && $scope.vacancy.id) {
-                        var url = rest_api_host + 'favorite/remove/' + user_id + '/' + $scope.vacancy.id;
+                        const url = rest_api_host + 'favorite/remove/' + $scope.vacancy.id + '?random=' + get_random_number();
+
+
 
                         $http.get(url
                             ,
@@ -118,7 +119,7 @@ angular.module('Vacancy', [], function () {
 
                 $scope.addFavorite = function () {
                     if (user_id && $scope.vacancy && $scope.vacancy.id) {
-                        var url = rest_api_host + 'favorite/add/' + user_id + '/' + $scope.vacancy.id;
+                        const url = rest_api_host + 'favorite/add/' + $scope.vacancy.id + '?random=' + get_random_number();
                         $http.get(url
                             ,
                             {
@@ -142,13 +143,14 @@ angular.module('Vacancy', [], function () {
 
                 $scope.applyVacancy = function () {
                     if (user_id && $scope.vacancy.id && user_id) {
-                        var url = rest_api_host + 'vacancy/apply/' + user_id + '/' + $scope.vacancy.id ;
+                        const url = rest_api_host + 'vacancy/apply/' + $scope.vacancy.id + '?random=' + get_random_number() ;
                         $http.get(url
                             ,
                             {
                               headers: {'Authorization': token}
                             }
                         ).then(function (data) {
+                            console.warn('data', data);
                                 if (data.data.result === 'OK') {
                                     $scope.show_apply = false;
                                     $scope.show_applied = true;
@@ -163,9 +165,6 @@ angular.module('Vacancy', [], function () {
                             });
                     }
                 };
-            });
-            angular.element(document).ready(function () {
-
             });
         }
     }]);
