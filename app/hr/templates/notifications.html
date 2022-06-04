@@ -46,7 +46,13 @@
                         <label for="notification_description" class="fwbl f-size-16 olive-color m-b-3">Description</label>
                         <textarea class="form-control" name="description" id="notification_description" rows="3"></textarea>
                     </div>
-                    <div class="form-check m-b-3">
+                    <div ng-if="superadmin" class="form-check m-b-3">
+                        <input class="form-check-input" name="role" type="checkbox" value="superadmin" id="notification_superadmin">
+                        <label class="form-check-label fwbl f-size-16 olive-color checkbox-position" for="notification_superadmin">
+                            Superadmin
+                        </label>
+                    </div>
+                    <div ng-if="superadmin" class="form-check m-b-3">
                         <input class="form-check-input" name="role" type="checkbox" value="admin" id="notification_admin">
                         <label class="form-check-label fwbl f-size-16 olive-color checkbox-position" for="notification_admin">
                             Admin

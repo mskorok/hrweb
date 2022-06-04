@@ -11,7 +11,7 @@
                             </a>
                         </div>
                         <div class="account-controls">
-                            <ul class="account-list">
+                            <ul class="account-list p-t-20">
                                 <li><a href="/profile" title="Profile">Profile</a></li>
                                 <li><a href="javascript:void 0" id="hr_nav_logout" onclick="admin_auth.force_logout()"
                                        title="Logout">Logout</a></li>
@@ -117,6 +117,9 @@
                             </li>
                             <li id="right_menu_profile_link" class="menu-item hidden">
                                 <a id="right_menu_profile" class="menu-link" href="/profile" title="Home">Profile</a>
+                            </li>
+                            <li class="menu-item">
+                                <a id="right_menu_articles" class="menu-link" href="/search-article" title="Articles">Articles</a>
                             </li>
                             <li class="menu-item">
                                 <a id="right_menu_jobs" class="menu-link" href="/jobs" title="Jobs">Jobs</a>
@@ -405,6 +408,10 @@
         if (path.includes('profile') && !path.includes('edit')) {
             id = 'right_menu_profile';
             title = 'Profile';
+        }
+        if (path === '/search-article') {
+            id = 'right_menu_articles';
+            title = 'Articles';
         }
         if (path === '/') {
             id = 'right_menu_home';

@@ -1,45 +1,6 @@
 <header id="header" class="  clear-fix">
     <div data-ng-include="header_content"></div>
-    <div class=" hidden-xs hidden-sm search-panel desktop"
-         style="height: 100px; width: 100%; background-color: #F6D101;">
-        <div class="section-content" style="height: 130px;">
-            <form id="articles_full_text_search_form" novalidate class="page-search-form" action="/search-article" style="margin-bottom: 200px">
-                <div class="row">
-                    <div class="col-md-10 col-lg-10">
-                        <div class="row m-t-10">
-                            <div class="col-md-8 col-lg-8">
-                                <div class="form-group">
-                                    <div class="input-label-mobile m-b-5">
-                                        <label for="articles" class="brown-color p-l-20">Articles</label>
-                                    </div>
-                                    <input class="new-input placeholder-gray desktop-group" type="text" id="articles" name="keywords"
-                                           placeholder="Keywords, minimum 5 characters" title="Keywords" style="" value="{{keyword}}">
-                                </div>
-                            </div>
-                            <div class="col-md-1 col-lg-1"></div>
-                            <div class="col-md-3 col-lg-3">
-                                <div class="form-group">
-                                    <div class="input-label-mobile m-b-5">
-                                        <label for="categories" class="brown-color">Categories</label>
-                                    </div>
-                                    <select ng-if="categories.length" class="new-input placeholder-gray desktop-group" id="categories" name="category">
-                                        <option ng-selected="category.id == selected" data-ng-repeat="category in categories" value="{{category.id}}">
-                                            {{category.name.toUpperCase()}}
-                                        </option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-2 col-lg-2">
-                        <div class="w-100 m-t-30">
-                            <button class="btn btn-orange btn-lg" type="submit">Search</button>
-                        </div>
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>
+
     <button id="filter_button" class="hidden-md hidden-lg btn filter-button hidden" type="button">
         <span>Filter</span>
     </button>
@@ -50,14 +11,17 @@
                     <div class="input-label-mobile m-b-5">
                         <label for="m_keywords" class="brown-color p-l-20">Articles</label>
                     </div>
-                    <input name="keywords" required type="text" id="m_keywords" placeholder="Keywords, minimum 5 characters"/>
+                    <input name="keywords" required type="text" id="m_keywords"
+                           placeholder="Keywords, minimum 5 characters"/>
                 </div>
                 <div class="input-text-block-mobile m-b-5">
                     <div class="input-label-mobile m-b-25">
                         <label for="m_categories" class="brown-color  p-l-20">Categories</label>
                     </div>
-                    <select ng-if="categories.length" class="new-input placeholder-gray" id="m_categories" name="category">
-                        <option ng-selected="category.id == selected"  data-ng-repeat="category in categories" value="{{category.id}}">
+                    <select ng-if="categories.length" class="new-input placeholder-gray" id="m_categories"
+                            name="category">
+                        <option ng-selected="category.id == selected" data-ng-repeat="category in categories"
+                                value="{{category.id}}">
                             {{category.name}}
                         </option>
                     </select>
@@ -74,6 +38,50 @@
     </div>
     <div data-ng-include="header_background"></div>
 </header>
+<div class=" hidden-xs hidden-sm search-panel desktop"
+     style="width: 100%; ">
+    <form id="articles_full_text_search_form" novalidate class="page-search-form" action="/search-article">
+        <div class="section-content page-additional-form">
+            <div class="row  p-t-25 p-l-20 p-r-20">
+                <div class="col-md-10 col-lg-10">
+                    <div class="row">
+                        <div class="col-md-8 col-lg-8">
+                            <div class="form-group">
+                                <div class="input-label-mobile m-b-5">
+                                    <label for="articles" class="light-brown-color p-l-20">Articles</label>
+                                </div>
+                                <input class="new-input placeholder-gray desktop-group m-t-3" type="text" id="articles"
+                                       name="keywords"
+                                       placeholder="Keywords, minimum 5 characters" title="Keywords" style=""
+                                       value="{{keyword}}">
+                            </div>
+                        </div>
+                        <div class="col-md-2 col-lg-2"></div>
+                        <div class="col-md-2 col-lg-2">
+                            <div class="form-group">
+                                <div class="input-label-mobile m-b-5">
+                                    <label for="categories" class="light-brown-color  p-l-20">Categories</label>
+                                </div>
+                                <select ng-if="categories.length" class="new-input placeholder-gray desktop-group"
+                                        id="categories" name="category">
+                                    <option class="f-size-14" ng-selected="category.id == selected"
+                                            data-ng-repeat="category in categories" value="{{category.id}}">
+                                        {{category.name.toUpperCase()}}
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2 col-lg-2">
+                    <div class="w-100 m-t-20">
+                        <button class="btn btn-orange btn-lg" type="submit">Search</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
 <div data-ng-include="top_menu"></div>
 <div data-ng-include="top_menu_mobile"></div>
 <div class="container m-t-75 m-b-150">
@@ -87,17 +95,20 @@
         <div class="row section-content" ng-repeat="article in articles">
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                 <div class="search-block m-b-30 t-a-c">
-                    <a ng-show="article.title" href="/article/{{article.id}}" class="block-title"
-                       style="font-size: 18px;"> <h4  class="title-color">{{article.title}}</h4> </a>
-                    <div class="resume-key m-b-20 m-t-30" ng-show="article.description">
-                        <span class="resume-text content-item" ng-bind-html="article.description"></span>
+                    <a ng-show="article.title" href="/article/{{article.id}}" class="block-title f-size-18">
+                        <h4 class="title-color">{{article.title}}</h4>
+                    </a>
+                    <div class="resume-key m-b-20 m-t-30 w-100 image-width" ng-show="article.description">
+                        <span class="resume-text content-item w-100" ng-bind-html="article.description"></span>
                     </div>
 
 
                     <div class="m-t-10">
                         <div class="search-block-date right" data-art="{{article.article_id}}" data-link="article.link">
-                            <a href="/article/{{article.article_id}}" target="_blank" ng-show="article.show == 1 && article.article_id != null" style="text-decoration: none;">More</a>
-                            <a href="{{article.link}}" target="_blank" ng-show="article.show == 0 || article.article_id == null" style="text-decoration: none;">More</a>
+                            <a href="/article/{{article.article_id}}" target="_blank"
+                               ng-show="article.show == 1 && article.article_id != null" style="text-decoration: none;">More</a>
+                            <a href="{{article.link}}" target="_blank"
+                               ng-show="article.show == 0 || article.article_id == null" style="text-decoration: none;">More</a>
                         </div>
                     </div>
                 </div>

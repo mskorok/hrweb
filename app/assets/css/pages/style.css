@@ -1075,14 +1075,14 @@ body {
 }
 
 header {
-    margin-bottom: 25px;
+    /*margin-bottom: 25px;*/
 }
 
 @media screen and (max-width: 990px) {
     header {
         background-color: #d7d7d7;
         margin-bottom: 0 !important;
-        padding-bottom: 25px;
+        /*padding-bottom: 25px;*/
     }
 }
 
@@ -2177,6 +2177,10 @@ select.placeholder-gray option:not(:first-of-type) {
 .vacancy-date {
     color: #BD8200;
     font-size: 13px;
+}
+
+.image-width img {
+    width: 100%;
 }
 
 @media screen and (min-width: 991px) {
