@@ -17,6 +17,7 @@
     "html5-boilerplate": "0.0.1",
     "jquery-validation": "^1.19.3",
     "ng-cookies": "^1.0.2",
+    "ng-dialog": "^1.4.0",
     "uglify-js": "^3.7.3",
     "uglify-js-es6": "^2.8.9"
   },
@@ -29,7 +30,7 @@
     "postinstall": "npm run copy-libs",
     "update-deps": "npm update",
     "postupdate-deps": "npm run copy-libs",
-    "copy-libs": "cpx \"node_modules/{@uirouter,angular,angular-resource, angular-route, angular-*, jquery-validation, html5-boilerplate/dist}/**/*\" app/lib -C",
+    "copy-libs": "cpx \"node_modules/{@uirouter,angular,angular-resource, angular-route, ng-dialog, angular-*, jquery-validation, html5-boilerplate/dist}/**/*\" app/lib -C",
     "prestart": "npm install",
     "start": "http-server -a localhost -p 8000 -c-1 ./app",
     "pretest": "npm install",

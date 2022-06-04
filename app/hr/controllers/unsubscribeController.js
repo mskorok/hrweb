@@ -22,10 +22,10 @@ angular.module('Unsubscribe', [], function () {
             $scope.user_name = hr_user_name();
             $scope.user_avatar = hr_user_avatar();
 
-            var email = $location.search().email;
-            var category = $location.search().category;
+            const email = $location.search().email;
+            let category = $location.search().category;
             category = category ? category : '';
-            var data = {
+            const data = {
                 email: email,
                 category: category
             };
@@ -35,7 +35,7 @@ angular.module('Unsubscribe', [], function () {
                     $scope.$on('$includeContentLoaded', function (event, templateName) {
                         // console.log('tpl', templateName);
                         if (templateName.toString() === 'hr/templates/partial/footer.html') {
-                            var url = rest_api_host + 'unsubscribe/mail';
+                            const url = rest_api_host + 'unsubscribe/mail';
                             $http.post(url, data).then(function (data) {
                                     if (data.data.result === 'OK') {
                                         $scope.success = true;

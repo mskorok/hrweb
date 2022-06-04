@@ -33,33 +33,79 @@ angular.module('Notifications', [], function () {
             $scope.admin =$scope.role === 'admin' || $scope.role === 'superadmin';
             $scope.superadmin = $scope.role === 'superadmin';
 
+            $scope.notifications = [];
 
             if (!user_id) {
                 console.log('id not found');
                 $state.go('login', {
                     url: '/login'
-                    // url: '/search/:keyword'
                 })
             }
 
-            if ($state.current.controller === "adminController") {
+            if ($state.current.controller === 'notificationsController') {
                 $scope.$on('$viewContentLoaded', function () {
+                    const form = document.getElementById('notification_create_form');
+                    if (form) {
+                        form.addEventListener('submit', () => {
+                            $('#notificationModal').modal('hide');
+                            let ids = [];
+                            let chb_inputs = form.elements['role'];
+                            if (chb_inputs) {
+                                if (chb_inputs.constructor.name === 'HTMLInputElement') {
+                                    chb_inputs = [chb_inputs];
+                                }
+
+                                [].forEach.call(chb_inputs, (input) => {
+                                    if (input.checked) {
+                                        ids.push(input.value)
+                                    }
+                                })
+                            }
+
+
+                            let title = form.elements['title'];
+                            title = title ? title.value : '';
+
+                            let desc = form.elements['description'];
+                            desc = desc ? desc.value : '';
+                            const data = {
+                                description: desc,
+                                title: title,
+                                category: ids.join(',')
+                            };
+
+                            $("#notification_create_form").trigger('reset');
+
+                            let url = rest_api_host + 'notifications/create?random='  + get_random_number();
+                            console.warn('data', data, url);
+                            $http({
+                                method: 'POST',
+                                url: url,
+                                headers: {'Authorization': token},
+                                data: {
+                                    description: desc,
+                                    title: title,
+                                    category: ids.join(',')
+                                }
+                            }).then(function (data) {
+                                    console.info(data);
+                                },
+                                function (data) {
+                                    console.log('error response', data);
+                                });
+                        });
+                    }
                     $scope.$on('$includeContentLoaded', function (event, templateName) {
                         // console.log('tpl', templateName);
                         if (templateName.toString() === 'hr/templates/partial/footer.html') {
-                            let url = rest_api_host + 'users/' + user_id + '?include=ProfessionalExperiences,Education,Images,Countries,Subscriptions,Invitations,AppliedVacancies,Vacancies,Resumes,Resumes,Senders,FavoriteResumes,FavoriteVacancies&random='  + get_random_number();
+                            let url = rest_api_host + 'notifications/collection?random='  + get_random_number();
                             $http.get(url
                                 ,
                                 {
                                   headers: {'Authorization': token}
                                 }
                             ).then(function (data) {
-                                    $scope.user = data.data.user;
-                                    let role = $scope.user.role;
-                                    $scope.user.role = $scope.user.role.capitalize();
-
-                                    $scope.company = role === 'admin' || role === 'superadmin' || role === 'partner' || role === 'manager';
-                                    // $scope.company = true;
+                                    $scope.notifications = data.data.data;
                                 },
                                 function (data) {
                                     console.log('error response', data);

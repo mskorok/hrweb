@@ -77,6 +77,30 @@ app.config(['$locationProvider', function ($locationProvider) {
     $locationProvider.html5Mode(true);
 }]);
 
+// app.config(["ngDialogProvider", function (ngDialogProvider) {
+//     ngDialogProvider.setDefaults({
+//         className: "ngdialog-theme-default",
+//         plain: false,
+//         showClose: true,
+//         closeByDocument: true,
+//         closeByEscape: true,
+//         appendTo: false,
+//         preCloseCallback: function () {
+//             console.log("default pre-close callback");
+//         }
+//     });
+// }]);
+
+// app.config(['ngDialogProvider', function (ngDialogProvider) {
+//     ngDialogProvider.setDefaults({
+//         className: 'ngdialog-theme-plain',
+//         plain: true,
+//         showClose: true,
+//         closeByDocument: true,
+//         closeByEscape: true
+//     });
+// }]);
+
 app.config(['$stateProvider', '$urlRouterProvider', '$cookiesProvider', function ($stateProvider, $urlRouterProvider, $cookiesProvider) {
 
 

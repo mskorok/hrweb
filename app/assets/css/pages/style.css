@@ -119,6 +119,8 @@
     height: 12rem !important;
 }
 
+
+
 .b-t-l-0 {
     border-top-left-radius: 0 !important;
     border-top-right-radius: 0 !important;
@@ -2972,15 +2974,15 @@ a.chosen-single img, img.chose-image-list {
 .btn-blue {
     background-color: #064874;
     border-color: #064874;
-    color: #fff;
+    color: #fff !important;
     text-transform: uppercase;
     outline-style: none;
 }
 
-.btn-blue:hover, .btn-group:hover .btn-blue {
+.btn-blue:hover, .btn-group:hover .btn-blue, .btn-blue:visited, .btn-blue:active {
     background-color: #054066;
     border-color: #054066;
-    color: #fff;
+    color: #fff !important;
     outline-style: none;
 }
 
@@ -2995,7 +2997,7 @@ a.chosen-single img, img.chose-image-list {
 .btn-green:hover, .btn-group:hover .btn-green {
     background-color: #247D36;
     border-color: #247D36;
-    color: #fff;
+    color: #fff !important;
     outline-style: none;
 }
 
@@ -3410,4 +3412,17 @@ label.error {
     border: 1px solid black !important;
 }
 
+
+.pos-rel {
+    position: relative;
+}
+
+.pos-abs {
+    position: absolute;
+}
+
+.checkbox-position {
+    position: relative;
+    top: 3px;
+}
 
