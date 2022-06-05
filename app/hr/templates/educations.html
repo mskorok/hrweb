@@ -22,10 +22,11 @@
         <div class="row section-content m-b-30" ng-repeat="institution in institutions">
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                 <div class="search-block m-b-30">
-                    <div ng-show="institution.title" class="block-title"
-                       style="font-size: 18px;"> {{institution.title}} </div>
+                    <div ng-show="institution.title" class="block-title f-size-18 title-color">
+                        {{institution.title}}
+                    </div>
                     <div class="resume-key m-b-20 m-t-30  pull-right" ng-show="institution.specialization">
-                        <span class="orange-color f-size-16  content-item" ng-bind-html="institution.specialization"></span>
+                        <span class="gray-color fwbl f-size-16  content-item" ng-bind-html="institution.specialization"></span>
                     </div>
 
                     <div class="resume-key m-b-20 m-t-30">
