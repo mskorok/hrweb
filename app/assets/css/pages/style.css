@@ -2790,6 +2790,14 @@ select.placeholder-gray option:not(:first-of-type) {
     color: black !important;
 }
 
+.bg-comment {
+    background-color: lightsteelblue !important;
+}
+
+.bg-comment-body {
+    background-color: white !important;
+}
+
 @media screen and (max-width: 990px) {
     .bg-mobile-gray {
         background-color: #d7d7d7;

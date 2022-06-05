@@ -8,71 +8,207 @@
     <div class="row m-b-150">
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
             <ul class="nav nav-tabs">
-                <li class="active"><a data-toggle="tab" href="#tab1">Invited</a></li>
-                <li ng-if="companyAdmin"><a data-toggle="tab" href="#tab2">Invitations</a></li>
-                <li><a data-toggle="tab" href="#tab3">Applied</a></li>
+                <li ng-if="companyAdmin" class="active"><a data-toggle="tab" href="#tab1">Invited</a></li>
+                <li  ng-if="applicant"><a data-toggle="tab" href="#tab2">Invitations</a></li>
+                <li ng-if="applicant"><a data-toggle="tab" href="#tab3">Applied</a></li>
                 <li ng-if="companyAdmin"><a data-toggle="tab" href="#tab4">Applicants</a></li>
-                <li><a data-toggle="tab" href="#tab5">Support</a></li>
-                <li><a data-toggle="tab" href="#tab6">Admin</a></li>
-                <li  ng-if="superadmin"><a  data-toggle="tab" href="#tab7">Superadmin</a></li>
+<!--                <li  ng-if="superadmin"><a data-toggle="tab" href="#tab5">Support</a></li>-->
+<!--                <li   ng-if="superadmin"><a data-toggle="tab" href="#tab6">Admin</a></li>-->
+<!--                <li  ng-if="superadmin"><a  data-toggle="tab" href="#tab7">Superadmin</a></li>-->
             </ul>
             <div class="tab-content">
-                <div ng-if="companyAdmin" id="tab1" class="tab-pane fade in active">
-                    <h3 class="m-t-50 m-b-50 t-a-c">Invited</h3>
+                <div ng-if="applicant" id="tab1" class="tab-pane fade in active">
+<!--                    <h3 class="m-t-50 m-b-50 t-a-c">Invited</h3>-->
                     <div class="row">
-                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 p-20">
-                            <p>Content for tab 1.</p>
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 p-20"  ng-repeat="message in invitations">
+                            <div class="search-block b-1-lg w-100" id="message_block_{{message.message.id}}">
+                                <div class="t-a-c w-100  m-t-10 m-b-10 link-color f-size-28">{{message.message.title}}</div>
+                                <p class="t-a-l w-100 m-b-10 vacancy-list-text">{{message.message.content}}</p>
+                                <span class="left gray-color">{{message.sender.name}}&nbsp;{{message.sender.surname}}</span>
+                                <span class="right gray-color fwbl">{{message.message.sentDate}}</span>
+                                <div class="show-comments link-color w-100 t-a-c" ng-click="showComments($event)">show comments</div>
+                                <div class="hide-comments link-color w-100 t-a-c hidden" ng-click="hideComments($event)">hide comments</div>
+                                <div class="row comments-container hidden hide-comments p-t-30">
+                                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 p-20 bg-comment" style="border-top-right-radius: 5px; border-top-left-radius: 5px;"  ng-repeat="child in message.children">
+                                        <div class="w-100">
+                                            <div class="comment-item m-t-3 m-b-3 bg-comment-body w-66 modal-content p-20" ng-class="child.sender == user_id ? 'pull-left' : 'pull-right'">
+                                                <div class="f-size-14 org-color m-b-15">{{child.sender == user_id ? 'me' : message.sender.username}}</div>
+                                                <div class="f-size-18 m-b-5 fwb w-100 t-a-r link-color">{{child.title}}</div>
+                                                <div class="vacancy-list-text">{{child.content}}</div>
+                                                <span class="right gray-color fwbl">{{child.sentDate}}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row m-t-25">
+                                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                            <div class="olive-color hidden f-size-18 m-t-20 m-b-10 fwb t-a-c" id="sent_info_{{message.message.id}}">Message sent</div>
+                                            <div class="red-color hidden f-size-18 m-t-20 m-b-10 fwb t-a-c" id="sent_error_{{message.message.id}}">Something went wrong!</div>
+                                            <form class="new-message" id="message_create_form_{{message.message.id}}">
+                                                <div class="modal-body">
+                                                    <input type="hidden" value="{{message.message.id}}" name="message_id">
+                                                    <div class="form-group">
+                                                        <label for="message_title_{{message.message.id}}" class="fwbl olive-color f-size-16 m-b-10">New Message</label>
+                                                        <input required type="text" class="form-control" name="title" id="message_title_{{message.message.id}}"
+                                                               placeholder="Title">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="message_desc_{{message.message.id}}" class="fwbl f-size-16 olive-color m-b-3"></label>
+                                                        <textarea required class="form-control" placeholder="Text" name="content" id="message_desc_{{message.message.id}}" rows="3"></textarea>
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="submit" data-id="{{message.message.id}}" ng-click="submitForm($event)"   class="btn btn-primary">Send</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div id="tab2" class="tab-pane fade">
-                    <h3 class="m-t-50 m-b-50 t-a-c">Invitations</h3>
+                <div ng-if="companyAdmin" id="tab2" class="tab-pane fade">
+<!--                    <h3 class="m-t-50 m-b-50 t-a-c">Invitations</h3>-->
                     <div class="row">
-                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 p-20">
-                            <p>Content for tab 1.</p>
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 p-20"  ng-repeat="message in invitations">
+                            <div class="search-block b-1-lg w-100" id="message_block_{{message.message.id}}">
+                                <div class="t-a-c w-100  m-t-10 m-b-10 link-color f-size-28">{{message.message.title}}</div>
+                                <p class="t-a-l w-100 m-b-10 vacancy-list-text">{{message.message.content}}</p>
+                                <span class="left gray-color">{{message.sender.name}}&nbsp;{{message.sender.surname}}</span>
+                                <span class="right gray-color fwbl">{{message.message.sentDate}}</span>
+                                <div class="show-comments link-color w-100 t-a-c" ng-click="showComments($event)">show comments</div>
+                                <div class="hide-comments link-color w-100 t-a-c hidden" ng-click="hideComments($event)">hide comments</div>
+                                <div class="row comments-container hidden hide-comments p-t-30">
+                                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 p-20 bg-comment" style="border-top-right-radius: 5px; border-top-left-radius: 5px;"  ng-repeat="child in message.children">
+                                        <div class="w-100">
+                                            <div class="comment-item m-t-3 m-b-3 bg-comment-body w-66 modal-content p-20" ng-class="child.sender == user_id ? 'pull-left' : 'pull-right'">
+                                                <div class="f-size-14 org-color m-b-15">{{child.sender == user_id ? 'me' : message.sender.username}}</div>
+                                                <div class="f-size-18 m-b-5 fwb w-100 t-a-r link-color">{{child.title}}</div>
+                                                <div class="vacancy-list-text">{{child.content}}</div>
+                                                <span class="right gray-color fwbl">{{child.sentDate}}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row m-t-25">
+                                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                            <div class="olive-color hidden f-size-18 m-t-20 m-b-10 fwb t-a-c" id="sent_info_{{message.message.id}}">Message sent</div>
+                                            <div class="red-color hidden f-size-18 m-t-20 m-b-10 fwb t-a-c" id="sent_error_{{message.message.id}}">Something went wrong!</div>
+                                            <form class="new-message" id="message_create_form_{{message.message.id}}">
+                                                <div class="modal-body">
+                                                    <input type="hidden" value="{{message.message.id}}" name="message_id">
+                                                    <div class="form-group">
+                                                        <label for="message_title_{{message.message.id}}" class="fwbl olive-color f-size-16 m-b-10">New Message</label>
+                                                        <input required type="text" class="form-control" name="title" id="message_title_{{message.message.id}}"
+                                                               placeholder="Title">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="message_desc_{{message.message.id}}" class="fwbl f-size-16 olive-color m-b-3"></label>
+                                                        <textarea required class="form-control" placeholder="Text" name="content" id="message_desc_{{message.message.id}}" rows="3"></textarea>
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="submit" data-id="{{message.message.id}}" ng-click="submitForm($event)"   class="btn btn-primary">Send</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div id="tab3" class="tab-pane fade">
-                    <h3 class="m-t-50 m-b-50 t-a-c">Applied</h3>
+                <div  ng-if="applicant" id="tab3" class="tab-pane fade">
+<!--                    <h3 class="m-t-50 m-b-50 t-a-c">Applied</h3>-->
                     <div class="row">
-                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 p-20">
-                            <p>Content for tab 2.</p>
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 p-20"  ng-repeat="message in applied">
+                            <div class="search-block b-1-lg w-100">
+                                <div class="t-a-c w-100  m-t-10 m-b-10 link-color f-size-28">{{message.message.title}}</div>
+                                <p class="t-a-l w-100 m-b-10 vacancy-list-text">{{message.message.content}}</p>
+                                <span class="left gray-color">{{message.recipient.name}}&nbsp;{{message.recipient.surname}}</span>
+                                <span class="right orange-color">{{message.message.sentDate}}</span>
+                                <div class="show-comments link-color w-100 t-a-c" ng-click="showComments($event)">show comments</div>
+                                <div class="hide-comments link-color w-100 t-a-c hidden" ng-click="hideComments($event)">hide comments</div>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div ng-if="companyAdmin" id="tab4" class="tab-pane fade">
-                    <h3 class="m-t-50 m-b-50 t-a-c">Applicants</h3>
+<!--                    <h3 class="m-t-50 m-b-50 t-a-c">Applicants</h3>-->
                     <div class="row">
-                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 p-20">
-                            <p>Content for tab 2.</p>
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 p-20"  ng-repeat="message in applied">
+                            <div class="search-block b-1-lg w-100" id="message_block_{{message.message.id}}">
+                                <div class="t-a-c w-100  m-t-10 m-b-10 link-color f-size-28">{{message.message.title}}</div>
+                                <p class="t-a-l w-100 m-b-10 vacancy-list-text">{{message.message.content}}</p>
+                                <span class="left gray-color">{{message.sender.name}}&nbsp;{{message.sender.surname}}</span>
+                                <span class="right gray-color fwbl">{{message.message.sentDate}}</span>
+                                <div class="show-comments link-color w-100 t-a-c" ng-click="showComments($event)">show comments</div>
+                                <div class="hide-comments link-color w-100 t-a-c hidden" ng-click="hideComments($event)">hide comments</div>
+                                <div class="row comments-container hidden hide-comments p-t-30">
+                                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 p-20 bg-comment" style="border-top-right-radius: 5px; border-top-left-radius: 5px;"  ng-repeat="child in message.children">
+                                        <div class="w-100">
+                                            <div class="comment-item m-t-3 m-b-3 bg-comment-body w-66 modal-content p-20" ng-class="child.sender == user_id ? 'pull-left' : 'pull-right'">
+                                                <div class="f-size-14 org-color m-b-15">{{child.sender == user_id ? 'me' : message.sender.username}}</div>
+                                                <div class="f-size-18 m-b-5 fwb w-100 t-a-r link-color">{{child.title}}</div>
+                                                <div class="vacancy-list-text">{{child.content}}</div>
+                                                <span class="right gray-color fwbl">{{child.sentDate}}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row m-t-25">
+                                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                            <div class="olive-color hidden f-size-18 m-t-20 m-b-10 fwb t-a-c" id="sent_info_{{message.message.id}}">Message sent</div>
+                                            <div class="red-color hidden f-size-18 m-t-20 m-b-10 fwb t-a-c" id="sent_error_{{message.message.id}}">Something went wrong!</div>
+                                            <form class="new-message" id="message_create_form_{{message.message.id}}">
+                                                <div class="modal-body">
+                                                    <input type="hidden" value="{{message.message.id}}" name="message_id">
+                                                    <div class="form-group">
+                                                        <label for="message_title_{{message.message.id}}" class="fwbl olive-color f-size-16 m-b-10">New Message</label>
+                                                        <input required type="text" class="form-control" name="title" id="message_title_{{message.message.id}}"
+                                                               placeholder="Title">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="message_desc_{{message.message.id}}" class="fwbl f-size-16 olive-color m-b-3"></label>
+                                                        <textarea required class="form-control" placeholder="Text" name="content" id="message_desc_{{message.message.id}}" rows="3"></textarea>
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="submit" data-id="{{message.message.id}}" ng-click="submitForm($event)"   class="btn btn-primary">Send</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div id="tab5" class="tab-pane fade">
-                    <h3 class="m-t-50 m-b-50 t-a-c">Support</h3>
-                    <div class="row">
-                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 p-20">
-                            <p>Content for tab 3.</p>
-                        </div>
-                    </div>
-                </div>
-                <div id="tab6" class="tab-pane fade">
-                    <h3 class="m-t-50 m-b-50 t-a-c">Admin</h3>
-                    <div class="row">
-                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 p-20">
-                            <p>Content for tab 3.</p>
-                        </div>
-                    </div>
-                </div>
-                <div ng-if="superadmin" id="tab7" class="tab-pane fade">
-                    <h3 class="m-t-50 m-b-50 t-a-c">Superadmin</h3>
-                    <div class="row">
-                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 p-20">
-                            <p>Content for tab 4.</p>
-                        </div>
-                    </div>
-                </div>
+<!--                <div  ng-if="superadmin" id="tab5" class="tab-pane fade">-->
+<!--                    <h3 class="m-t-50 m-b-50 t-a-c">Support</h3>-->
+<!--                    <div class="row">-->
+<!--                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 p-20">-->
+<!--                            <p>Content for tab 3.</p>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div ng-if="superadmin" id="tab6" class="tab-pane fade">-->
+<!--                    <h3 class="m-t-50 m-b-50 t-a-c">Admin</h3>-->
+<!--                    <div class="row">-->
+<!--                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 p-20">-->
+<!--                            <p>Content for tab 3.</p>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div ng-if="superadmin" id="tab7" class="tab-pane fade">-->
+<!--                    <h3 class="m-t-50 m-b-50 t-a-c">Superadmin</h3>-->
+<!--                    <div class="row">-->
+<!--                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 p-20">-->
+<!--                            <p>Content for tab 4.</p>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
             </div>
         </div>
     </div>

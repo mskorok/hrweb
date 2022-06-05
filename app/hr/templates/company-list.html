@@ -11,15 +11,15 @@
             </center>
         </div>
     </div>
-    <div class="pull-left m-b-30 m-l-75">
-        <a class="btn btn-info" href="/company/create">Add Company</a>
+    <div class="pull-right m-b-30 m-r-75">
+        <a class="btn btn-blue" href="/company/create">Add Company</a>
     </div>
     <div  ng-cloak ng-show="not_empty" class="right" data-ng-include="pagination"></div>
     <div ng-cloak ng-show="companies" class="row section-content" ng-repeat="company in companies">
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
             <div class="search-block  m-b-30">
                 <div ng-show="company.site" ng-cloak class="search-grey-text right org-color">{{ company.site }}</div>
-                <a href="/company/{{ company.id }}" ng-cloak ng-show="company.name" class="block-title">{{ company.name }}</a>
+                <a href="/company/{{ company.id }}" ng-cloak ng-show="company.name" class="block-title title-color">{{ company.name }}</a>
                 <div class="m-t-10">
                     <div ng-cloak ng-show="company.Countries.name" class="search-grey-text left m-l-5">
                         {{ company.Countries.name }}

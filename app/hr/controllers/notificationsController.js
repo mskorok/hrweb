@@ -74,7 +74,7 @@ angular.module('Notifications', [], function () {
                                 category: ids.join(',')
                             };
 
-                            $("#notification_create_form").trigger('reset');
+                            $('#notification_create_form').trigger('reset');
 
                             let url = rest_api_host + 'notifications/create?random='  + get_random_number();
                             $http({
