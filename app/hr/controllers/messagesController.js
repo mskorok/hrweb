@@ -31,7 +31,7 @@ angular.module('Messages', [], function () {
             $scope.company = $scope.role === 'admin' || $scope.role === 'superadmin' || $scope.role === 'partner' || $scope.role === 'manager';
             $scope.companyAdmin = $scope.role === 'admin' || $scope.role === 'superadmin' || $scope.role === 'companyAdmin' || $scope.role === 'partner' || $scope.role === 'manager';
             $scope.admin = $scope.role === 'admin' || $scope.role === 'superadmin';
-            $scope.applicant = $scope.role === 'admin' || $scope.role === 'superadmin' || $scope.role === 'applicant'
+            $scope.applicant = $scope.role === 'admin' || $scope.role === 'superadmin' || $scope.role === 'applicant' || $scope.role === 'manager';
             $scope.superadmin = $scope.role === 'superadmin';
 
             $scope.applied = [];
