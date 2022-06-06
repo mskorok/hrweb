@@ -16,10 +16,10 @@ angular.module('CompanyList', [], function () {
             $scope.pagination = 'hr/templates/partial/pagination.html';
             $scope.footer = 'hr/templates/partial/footer.html';
 
-            var token = 'Bearer ' + $cookies.get('rest_user_token');
+            const token = 'Bearer ' + $cookies.get('rest_user_token');
 
 
-            var user_id = hr_authorized_id();
+            const user_id = hr_authorized_id();
 
             $scope.user_id = user_id;
 
@@ -29,7 +29,9 @@ angular.module('CompanyList', [], function () {
 
             $scope.not_empty = false;
 
-            var page = $location.search().page;
+            $scope.userCompanies = [];
+
+            let page = $location.search().page;
 
             if (typeof page == 'undefined') {
                 page = 1;
@@ -39,7 +41,6 @@ angular.module('CompanyList', [], function () {
                 console.log('id not found');
                 $state.go('login', {
                     url: '/login'
-                    // url: '/search/:keyword'
                 })
             }
 
@@ -53,7 +54,7 @@ angular.module('CompanyList', [], function () {
                     $scope.$on('$includeContentLoaded', function (event, templateName) {
                         // console.log('tpl', templateName);
                         if (templateName.toString() === 'hr/templates/partial/footer.html') {
-                            var url = rest_api_host + '/company/list/' + page;
+                            const url = rest_api_host + '/company/list/' + page + '?random=' + get_random_number();
                             // console.log('url', url);
                             $http.get(url
                                 ,
@@ -61,7 +62,8 @@ angular.module('CompanyList', [], function () {
                                     headers: {'Authorization': token}
                                 }
                             ).then(function (data) {
-                                    var error_container = document.getElementById('error_container');
+                                    // console.info('data', data);
+                                    const error_container = document.getElementById('error_container');
                                     if (data.data.result === 'error') {
                                         if (error_container) {
                                             error_container.textContent = data.data.message
@@ -70,7 +72,7 @@ angular.module('CompanyList', [], function () {
                                         return;
                                     }
 
-                                    var error = 'Something went wrong';
+                                    let error = 'Something went wrong';
 
                                     if (data.data.data.companies
                                         && data.data.data.companies.length === 0
@@ -97,8 +99,14 @@ angular.module('CompanyList', [], function () {
                                         $scope.bottomInRange = data.data.data.bottomInRange;
                                         $scope.topInRange = data.data.data.topInRange;
                                         $scope.firstInRange = $scope.pagesRange.length > 0 ? $scope.pagesRange[0] : 0;
+                                        $scope.userCompanies = data.data.data.userCompanies;
                                         $scope.lastInRange = $scope.pagesRange.length > 0 ? $scope.pagesRange.slice(-1)[0] : 0;
                                         $scope.pageUrl = window.location.origin + window.location.pathname;
+
+                                        $scope.companies.forEach(function (item) {
+                                            item['my'] = $scope.userCompanies.includes(parseInt(item.id));
+                                        })
+
 
                                         if ($scope.totalPages > 1) {
                                             $scope.not_empty = true;
@@ -119,9 +127,6 @@ angular.module('CompanyList', [], function () {
                         }
                     });
                     $templateCache.remove('hr/templates/partial/pagination.html');
-                });
-                angular.element(document).ready(function () {
-
                 });
             }
         }

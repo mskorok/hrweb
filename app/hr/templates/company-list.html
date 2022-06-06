@@ -19,12 +19,14 @@
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
             <div class="search-block  m-b-30">
                 <div ng-show="company.site" ng-cloak class="search-grey-text right org-color">{{ company.site }}</div>
-                <a href="/company/{{ company.id }}" ng-cloak ng-show="company.name" class="block-title title-color">{{ company.name }}</a>
+                <a href="/company/{{ company.id }}" ng-cloak ng-show="company.name" class="block-title title-color">
+                    {{ company.name }} <span class="red-color" ng-if="company.my">*</span>
+                </a>
                 <div class="m-t-10">
                     <div ng-cloak ng-show="company.Countries.name" class="search-grey-text left m-l-5">
                         {{ company.Countries.name }}
                     </div>
-                    <div ng-cloak ng-show="company.city && company.Countries.name" class="search-grey-text left m-l-5">|</div>
+                    <div ng-cloak ng-show="company.city && company.Countries.name" class="search-grey-text left m-l-5 m-r-5">|</div>
                     <div ng-cloak ng-show="company.city" class="search-grey-text left">
                         {{ company.city }}
                     </div>
