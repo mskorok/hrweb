@@ -13,6 +13,7 @@ angular.module('CompanyList', [], function () {
             $scope.header_background = 'hr/templates/partial/header-background.html';
             $scope.top_menu = 'hr/templates/partial/top-menu.html';
             $scope.top_menu_mobile = 'hr/templates/partial/top-menu-mobile.html';
+            $scope.admin_menu = 'hr/templates/partial/admin-menu.html';
             $scope.pagination = 'hr/templates/partial/pagination.html';
             $scope.footer = 'hr/templates/partial/footer.html';
 
@@ -47,6 +48,22 @@ angular.module('CompanyList', [], function () {
             $scope.goLink = function (page) {
                 window.location = $scope.pageUrl + '?page=' + page;
             };
+
+            $scope.disconnect = (id) => {
+
+                const url = rest_api_host + '/companies/disconnect/' + id + '?random=' + get_random_number();
+                $http.get(url
+                    ,
+                    {
+                        headers: {'Authorization': token}
+                    }
+                ).then(function (data) {
+                    // console.info(data);
+                    if (data.data.result === 'OK') {
+                        window.location.reload();
+                    }
+                });
+            }
 
 
             if ($state.current.controller === "companyListController") {
@@ -103,7 +120,7 @@ angular.module('CompanyList', [], function () {
                                         $scope.lastInRange = $scope.pagesRange.length > 0 ? $scope.pagesRange.slice(-1)[0] : 0;
                                         $scope.pageUrl = window.location.origin + window.location.pathname;
 
-                                        $scope.companies.forEach(function (item) {
+                                        $scope.companies.forEach((item) => {
                                             item['my'] = $scope.userCompanies.includes(parseInt(item.id));
                                         })
 
