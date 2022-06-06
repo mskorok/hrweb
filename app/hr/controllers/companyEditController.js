@@ -18,11 +18,12 @@ angular.module('CompanyEdit', [], function () {
             $scope.header_background = 'hr/templates/partial/header-background.html';
             $scope.top_menu = 'hr/templates/partial/top-menu.html';
             $scope.top_menu_mobile = 'hr/templates/partial/top-menu-mobile.html';
+            $scope.admin_menu = 'hr/templates/partial/admin-menu.html';
             $scope.footer = 'hr/templates/partial/footer.html';
 
-            var token = 'Bearer ' + $cookies.get('rest_user_token');
+            const token = 'Bearer ' + $cookies.get('rest_user_token');
 
-            var user_id = hr_authorized_id();
+            const user_id = hr_authorized_id();
 
             $scope.user_id = user_id;
 
@@ -39,9 +40,11 @@ angular.module('CompanyEdit', [], function () {
 
             // var edu_id = window.location.pathname.split("/").pop();
 
-            var company_id = $stateParams.id;
+            const company_id = $stateParams.id;
 
-            var url = rest_api_host + '/company/update/' + company_id;
+            $scope.company_id = company_id;
+
+            const url = rest_api_host + '/company/update/' + company_id;
 
             $scope.$on('$viewContentLoaded', function () {
                 $http.get(url
@@ -55,7 +58,7 @@ angular.module('CompanyEdit', [], function () {
 
                         $('#content_container').html(data.data.html);
 
-                        var form = document.getElementById('company_form');
+                        const form = document.getElementById('company_form');
                         if (form) {
                             form.addEventListener('submit', function (e) {
                                 e.stopPropagation();
@@ -70,31 +73,31 @@ angular.module('CompanyEdit', [], function () {
                     });
             });
 
-            var hr_edit = {
+            const hr_edit = {
                 appendCheckbox: function (form, form_data) {
                 },
                 hr_user_edit: function (form) {
                     hr_sanitize_checkbox(form);
-                    var form_data = new FormData(form);
+                    const form_data = new FormData(form);
                     this.appendCheckbox(form, form_data);
 
 
-                    var xhr = new XMLHttpRequest();
+                    const xhr = new XMLHttpRequest();
                     xhr.onload = function () {
                         if (this.readyState === 4) {
                             if (this.status === 200) {
                                 try {
                                     // console.log('æ', this.response);
-                                    var response = JSON.parse(this.response);
-                                    var error_container = document.getElementById('error_container');
-                                    var html;
+                                    const response = JSON.parse(this.response);
+                                    const error_container = document.getElementById('error_container');
+                                    let html;
                                     if (response.result === 'error') {
                                         if (error_container) {
                                             html = '';
                                             if (Array.isArray(response.message)) {
                                                 response.message.forEach(function (message) {
                                                     if (typeof message === 'object') {
-                                                        for (var key in message) {
+                                                        for (let key in message) {
                                                             html += '<div>' + key + ' : ' + message[key] + '</div>';
                                                         }
                                                     } else if (typeof message === 'string') {
@@ -102,7 +105,7 @@ angular.module('CompanyEdit', [], function () {
                                                     }
                                                 });
                                             } else if (typeof response.message === 'object') {
-                                                for (var key in response.message) {
+                                                for (let key in response.message) {
                                                     html += '<div>' + key + ' : ' + response.message[key] + '</div>';
                                                 }
                                             } else {
@@ -118,7 +121,7 @@ angular.module('CompanyEdit', [], function () {
                                             if (Array.isArray(response.error.message)) {
                                                 response.error.message.forEach(function (message) {
                                                     if (typeof message === 'object') {
-                                                        for (var key in message) {
+                                                        for (let key in message) {
                                                             html += '<div>' + key + ' : ' + message[key] + '</div>';
                                                         }
                                                     } else if (typeof message === 'string') {
@@ -127,7 +130,7 @@ angular.module('CompanyEdit', [], function () {
                                                 })
                                             } else if (typeof response.error.message === 'string') {
                                                 try {
-                                                    var errors = JSON.parse(response);
+                                                    const errors = JSON.parse(response);
                                                     errors.forEach(function (message) {
                                                         html += '<div>' + message + '</div>';
                                                     })
@@ -160,12 +163,6 @@ angular.module('CompanyEdit', [], function () {
                 },
 
             };
-
-            if ($state.current.controller === "companyEditController") {
-                angular.element(document).ready(function () {
-
-                });
-            }
         }
     ]
 );

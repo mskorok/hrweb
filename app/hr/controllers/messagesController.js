@@ -36,6 +36,7 @@ angular.module('Messages', [], function () {
 
             $scope.applied = [];
             $scope.invitations = [];
+            $scope.supported = [];
 
 
             if (!user_id) {
@@ -86,6 +87,56 @@ angular.module('Messages', [], function () {
                 }
             }
 
+            $scope.submitSupportForm = (event) => {
+                const btn = event.target;
+                if (btn) {
+                    const form = btn.closest('form');
+
+                    if (form.checkValidity()) {
+                        console.warn('f', form.elements);
+                        const title = form.elements['title'].value;
+                        const content = form.elements['content'].value;
+
+                        const data = {
+                            content: content,
+                            title: title,
+                            categories: 'support'
+                        };
+
+                        let url = rest_api_host + '/messages/support/send?random='  + get_random_number();
+                        $http({
+                            method: 'POST',
+                            url: url,
+                            headers: {'Authorization': token},
+                            data: data
+                        }).then(function (data) {
+                                console.info('data comment', data.data, data.data.result);
+                                if (data.data.result && data.data.result === 'OK') {
+                                    const sent = document.getElementById('sent_support_info');
+
+                                    if (sent) {
+                                        sent.classList.remove('hidden');
+
+                                        setTimeout(() => {
+                                            sent.classList.add('hidden');
+                                        }, 2000);
+                                    }
+                                    $('#support_message_create_form').trigger('reset');
+                                    $scope.rerenderComments();
+                                } else {
+                                    $scope.wentWrongSupport();
+                                }
+                            },
+                            function (data) {
+                                console.log('error response', data);
+                            });
+
+
+
+                    }
+                }
+            }
+
             $scope.submitForm = (event) => {
                 const btn = event.target;
                 if (btn) {
@@ -104,6 +155,12 @@ angular.module('Messages', [], function () {
                         });
 
                         [].forEach.call($scope.invitations, (message) => {
+                            if ('' + message.message.id === '' + id) {
+                                _message = message.message;
+                            }
+                        });
+
+                        [].forEach.call($scope.supported, (message) => {
                             if ('' + message.message.id === '' + id) {
                                 _message = message.message;
                             }
@@ -156,10 +213,13 @@ angular.module('Messages', [], function () {
                 ).then(function (data) {
                         $scope.applied = data.data.data.applied;
                         $scope.invitations = data.data.data.invitations;
+                        $scope.supported = data.data.data.support;
 
-                        setTimeout(() => {
-                            $scope.openCommentBlock(id);
-                        }, 50);
+                        if (id) {
+                            setTimeout(() => {
+                                $scope.openCommentBlock(id);
+                            }, 50);
+                        }
 
 
 
@@ -229,6 +289,19 @@ angular.module('Messages', [], function () {
                 }
             }
 
+
+            $scope.wentWrongSupport = () => {
+                const error = document.getElementById('sent_support_error');
+
+                if (error) {
+                    error.classList.remove('hidden');
+
+                    setTimeout(() => {
+                        error.classList.add('hidden');
+                    }, 2000);
+                }
+            }
+
             $scope.getForms = () => {
                 const forms = document.querySelectorAll('form');
 
@@ -261,6 +334,8 @@ angular.module('Messages', [], function () {
                             ).then(function (data) {
                                     $scope.applied = data.data.data.applied;
                                     $scope.invitations = data.data.data.invitations;
+                                    $scope.supported = data.data.data.support;
+
 
                                     $scope.getForms();
 

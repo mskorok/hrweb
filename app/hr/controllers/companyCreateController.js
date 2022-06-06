@@ -17,6 +17,7 @@ angular.module('CompanyCreate', [], function () {
             $scope.header_background = 'hr/templates/partial/header-background.html';
             $scope.top_menu = 'hr/templates/partial/top-menu.html';
             $scope.top_menu_mobile = 'hr/templates/partial/top-menu-mobile.html';
+            $scope.admin_menu = 'hr/templates/partial/admin-menu.html';
             $scope.footer = 'hr/templates/partial/footer.html';
 
             let token = 'Bearer ' + $cookies.get('rest_user_token');
