@@ -18,7 +18,7 @@
     <div ng-cloak ng-show="companies" class="row section-content" ng-repeat="company in companies">
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
             <div class="search-block  m-b-30">
-                <div ng-show="company.site" ng-cloak class="search-grey-text right org-color">{{ company.site }}</div>
+                <a target="_blank" href="{{company.site}}" ng-show="company.site && company.site.length > 0" ng-cloak class="search-grey-text right gray-color pointer">{{ company.site }}</a>
                 <a href="/company/{{ company.id }}" ng-cloak ng-show="company.name" class="block-title title-color">
                     {{ company.name }} <span class="olive-color" ng-if="company.my">*</span>
                 </a>
