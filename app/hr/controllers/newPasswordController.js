@@ -24,20 +24,20 @@ angular.module('New Password', [], function () {
             $scope.user_avatar = hr_user_avatar();
 
             $scope.$on('$viewContentLoaded', function () {
-                var url = rest_api_host + hr_new_password_get_url;
+                const url = rest_api_host + hr_new_password_get_url  + '&random='  + get_random_number();
 
                 // console.log('url', url);
 
-                var xhr = new XMLHttpRequest();
+                const xhr = new XMLHttpRequest();
                 xhr.onload = function () {
                     if (this.readyState === 4) {
                         if (this.status === 200) {
                             try {
-                                var response = JSON.parse(this.response);
+                                const response = JSON.parse(this.response);
                                 // console.log(response.html);
                                 $('#new_password_container').html(response.html);
                                 $('#ajax_loader').hide();
-                                var form = document.getElementById('new_password_form');
+                                const form = document.getElementById('new_password_form');
                                 if (form) {
                                     form.addEventListener('submit', function (e) {
                                         e.stopPropagation();
@@ -59,17 +59,17 @@ angular.module('New Password', [], function () {
                 xhr.send();
             });
 
-            var hr_new_password = {
+            const hr_new_password = {
                 login_recovery: function (form) {
-                    var form_data = new FormData(form);
-                    var url = rest_api_host + hr_new_password_post_url + window.location.search;
-                    var xhr = new XMLHttpRequest();
+                    const form_data = new FormData(form);
+                    const url = rest_api_host + hr_new_password_post_url + window.location.search;
+                    const xhr = new XMLHttpRequest();
                     xhr.onload = function () {
                         if (this.readyState === 4) {
                             if (this.status === 200) {
                                 try {
-                                    var response = JSON.parse(this.response);
-                                    var message = response.result;
+                                    const response = JSON.parse(this.response);
+                                    const message = response.result;
                                     $('#new_password_container').html('<div class="recovery-response">' + message + '</div>');
                                 } catch (e) {
                                     console.log('error', e);

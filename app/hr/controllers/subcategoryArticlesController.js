@@ -20,10 +20,10 @@ angular.module('SubcategoryArticles', [], function () {
             $scope.footer = 'hr/templates/partial/footer.html';
 
 
-            var page = $location.search().page;
+            let page = $location.search().page;
             // var id = window.location.pathname.split("/").pop();
 
-            var id = $stateParams.id;
+            const id = $stateParams.id;
 
             console.log(9, id, isNaN(id));
 
@@ -52,7 +52,7 @@ angular.module('SubcategoryArticles', [], function () {
                 $scope.$on('$includeContentLoaded', function (event, templateName) {
                     // console.log('tpl', templateName);
                     if (templateName.toString() === 'hr/templates/partial/footer.html') {
-                        var url = rest_api_host + 'subcategory/articles/' + id + '?page=' + page;
+                        var url = rest_api_host + 'subcategory/articles/' + id + '?page=' + page + '&random='  + get_random_number();
                         $http.get(url).then(function (data) {
                             console.log(8, url, data);
 

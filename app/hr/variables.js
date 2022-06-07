@@ -4,65 +4,65 @@ window.hr_offset = 0;
 window.hr_user_offset = 0;
 
 
-// var rest_api_host = 'http://api.hr.me/';
-var rest_api_host = 'http://hr.me/';
-var the_host = 'http://ir.me';
+// const  rest_api_host = 'http://api.hr.me/';
+const  rest_api_host = 'http://hr.me/';
+const  the_host = 'http://ir.me';
 
-var redirectUrl = '/login';
-
-
-
-var hr_login_get_url = '/login';
-var hr_login_post_url = 'users/authenticate';
-var hr_login_recovery_get_url = 'password/recovery';
-var hr_login_recovery_post_url = 'users/recovery';
-var hr_new_password_get_url = 'password/new';
-var hr_new_password_post_url = 'users/password';
+const  redirectUrl = '/login';
 
 
-var hr_form_create = '/api/form/create';
-var hr_form_create_main = '/api/form/create/main';
-var hr_form_create_image = '/api/form/create/image';
-var hr_form_create_related = 'api/form/create/related';
-var hr_form_create_related_image = '/api/form/create/related/image';
-var hr_form_delete_related = '/api/form/delete/related';
 
-var hr_mail_subscription_url = '/subscribe/mail';
+const  hr_login_get_url = '/login';
+const  hr_login_post_url = 'users/authenticate';
+const  hr_login_recovery_get_url = 'password/recovery';
+const  hr_login_recovery_post_url = 'users/recovery';
+const  hr_new_password_get_url = 'password/new';
+const  hr_new_password_post_url = 'users/password';
 
 
+const  hr_form_create = '/api/form/create';
+const  hr_form_create_main = '/api/form/create/main';
+const  hr_form_create_image = '/api/form/create/image';
+const  hr_form_create_related = 'api/form/create/related';
+const  hr_form_create_related_image = '/api/form/create/related/image';
+const  hr_form_delete_related = '/api/form/delete/related';
+
+const  hr_mail_subscription_url = '/subscribe/mail';
 
 
 
 
 
-var hr_user_list_url = 'user-list';
-var hr_user_item_url = 'user-item';
-var hr_user_edit_url = 'user-edit';
-var hr_user_create_url = 'user-create';
-var hr_user_search_url = 'user-search';
-var hr_profile_url = 'user-profile';
-var hr_profile_edit_url = 'profile-edit';
-var hr_profile_create_url = 'profile-create';
-var hr_profile_autoresponder_url = 'profile-autoresponder';
-var hr_home_url = '/';
-var hr_login_url = 'login';
-var hr_signup_url = 'signup';
 
 
-var hr_edit_user_key = 'edit-user';
-var hr_profile_key = 'user';
-var rest_admin_confirm_user = 'confirm-user';
+const  hr_user_list_url = 'user-list';
+const  hr_user_item_url = 'user-item';
+const  hr_user_edit_url = 'user-edit';
+const  hr_user_create_url = 'user-create';
+const  hr_user_search_url = 'user-search';
+const  hr_profile_url = 'user-profile';
+const  hr_profile_edit_url = 'profile-edit';
+const  hr_profile_create_url = 'profile-create';
+const  hr_profile_autoresponder_url = 'profile-autoresponder';
+const  hr_home_url = '/';
+const  hr_login_url = 'login';
+const  hr_signup_url = 'signup';
 
-var avatar_url = '/avatar/create'; // TODO
+
+const  hr_edit_user_key = 'edit-user';
+const  hr_profile_key = 'user';
+const  rest_admin_confirm_user = 'confirm-user';
+
+const  avatar_url = '/avatar/create'; // TODO
 
 
 
-var navbar = {
+const  navbar = {
     admin: 'templates/admin-navbar.html',
     nav: 'templates/navbar.html'
 };
 
-var crop_opts = {
+const  crop_opts = {
     viewport: {
         width: 300,
         height: 300,
@@ -76,7 +76,7 @@ var crop_opts = {
     showZoomer: false
 };
 
-var scripts = [
+const  scripts = [
     'js/vendor/js/jquery/jquery.js',
     'https://ajax.googleapis.com/ajax/libs/angularjs/1.6.7/angular.min.js',
     'js/components/awesomplete.js',

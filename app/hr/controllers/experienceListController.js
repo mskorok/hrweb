@@ -24,7 +24,7 @@ angular.module('ExperienceList', [], function () {
 
             $scope.user_avatar = hr_user_avatar();
 
-            var page = $location.search().page;
+            let page = $location.search().page;
 
             if (typeof page == 'undefined') {
                 page = 1;
@@ -39,7 +39,7 @@ angular.module('ExperienceList', [], function () {
                     $scope.$on('$includeContentLoaded', function (event, templateName) {
                         // console.log('tpl', templateName);
                         if (templateName.toString() === 'hr/templates/partial/footer.html') {
-                            var url = rest_api_host + 'experience/user/list?page=' + page;
+                            const url = rest_api_host + 'experience/user/list?page=' + page + '&random='  + get_random_number();
                             // console.log('url', url);
                             $http.get(url).then(function (data) {
                                     // console.log(data.data);
@@ -66,9 +66,6 @@ angular.module('ExperienceList', [], function () {
                         }
                     });
                     $templateCache.remove('hr/templates/partial/pagination.html');
-                });
-                angular.element(document).ready(function () {
-
                 });
             }
         }

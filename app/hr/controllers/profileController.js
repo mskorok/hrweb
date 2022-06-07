@@ -91,9 +91,6 @@ angular.module('Profile', [], function () {
                         }
                     });
                 });
-                angular.element(document).ready(function () {
-
-                });
             }
         }
     ]

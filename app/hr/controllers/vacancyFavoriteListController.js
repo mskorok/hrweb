@@ -16,9 +16,12 @@ angular.module('VacancyFavoriteList', [], function () {
             $scope.pagination = 'hr/templates/partial/pagination.html';
             $scope.footer = 'hr/templates/partial/footer.html';
 
-            var token = 'Bearer ' + $cookies.get('rest_user_token');
+            const path = window.location.pathname;
+            $scope.dashboard = path.includes('dashboard');
 
-            var user_id = hr_authorized_id();
+            const token = 'Bearer ' + $cookies.get('rest_user_token');
+
+            const user_id = hr_authorized_id();
 
             $scope.user_id = user_id;
 
@@ -26,7 +29,7 @@ angular.module('VacancyFavoriteList', [], function () {
 
             $scope.user_avatar = hr_user_avatar();
 
-            var page = $location.search().page;
+            let page = $location.search().page;
 
             if (typeof page == 'undefined') {
                 page = 1;
@@ -39,13 +42,17 @@ angular.module('VacancyFavoriteList', [], function () {
                 })
             }
 
+            $scope.goLink = function (page) {
+                window.location = $scope.pageUrl + '?page=' + page;
+            };
+
 
             if ($state.current.controller === "vacancyFavoriteListController") {
                 $scope.$on('$viewContentLoaded', function () {
                     $scope.$on('$includeContentLoaded', function (event, templateName) {
                         // console.log('tpl', templateName);
                         if (templateName.toString() === 'hr/templates/partial/footer.html') {
-                            var url = rest_api_host + 'favorite/list/' + page;
+                            const url = rest_api_host + 'favorite/list/' + page  + '?random='  + get_random_number();
                             $http.get(url
                                 ,
                                 {
@@ -75,9 +82,6 @@ angular.module('VacancyFavoriteList', [], function () {
                     });
 
                     $templateCache.remove('hr/templates/partial/pagination.html');
-                });
-                angular.element(document).ready(function () {
-
                 });
             }
         }

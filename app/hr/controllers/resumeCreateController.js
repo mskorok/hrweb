@@ -17,7 +17,7 @@ angular.module('ResumeCreate', [], function () {
             $scope.top_menu_mobile = 'hr/templates/partial/top-menu-mobile.html';
             $scope.footer = 'hr/templates/partial/footer.html';
 
-            var token = 'Bearer ' + $cookies.get('rest_user_token');
+            const token = 'Bearer ' + $cookies.get('rest_user_token');
 
             $scope.user_id = hr_authorized_id();
 
@@ -33,7 +33,7 @@ angular.module('ResumeCreate', [], function () {
                 })
             }
 
-            var url = rest_api_host + 'resume/create';
+            const url = rest_api_host + 'resume/create' + '?random='  + get_random_number();
 
             $scope.$on('$viewContentLoaded', function () {
                 $http.get(url
@@ -53,7 +53,7 @@ angular.module('ResumeCreate', [], function () {
                     });
             });
 
-            var hr_create = {
+            const hr_create = {
                 init: function () {
                     //
                 },
@@ -61,9 +61,9 @@ angular.module('ResumeCreate', [], function () {
                     //
                 },
                 submit: function () {
-                    var self = this;
-                    var button = document.querySelector('button[type=submit]');
-                    var form = button.closest('form');
+                    const self = this;
+                    const button = document.querySelector('button[type=submit]');
+                    const form = button.closest('form');
                     if (form) {
                         form.addEventListener('submit', function (e) {
                             e.preventDefault();
@@ -75,24 +75,24 @@ angular.module('ResumeCreate', [], function () {
                 },
                 send: function (form) {
                     hr_sanitize_checkbox(form);
-                    var form_data = new FormData(form);
+                    const form_data = new FormData(form);
 
-                    var xhr = new XMLHttpRequest();
+                    const xhr = new XMLHttpRequest();
                     xhr.onload = function () {
                         if (this.readyState === 4) {
                             if (this.status === 200) {
                                 try {
-                                    var error_container = document.getElementById('error_container');
+                                    const error_container = document.getElementById('error_container');
                                     error_container.innerHTML = '';
-                                    var response = JSON.parse(this.response);
+                                    const response = JSON.parse(this.response);
 
-                                    var html = '';
+                                    let html = '';
                                     if (response.result === 'error') {
                                         if (error_container) {
                                             if (Array.isArray(response.message)) {
                                                 response.message.forEach(function (message) {
                                                     if (typeof message === 'object') {
-                                                        for (var key in message) {
+                                                        for (let key in message) {
                                                             html += '<div>' + key + ' : ' + message[key] + '</div>';
                                                         }
                                                     } else if (typeof message === 'string') {
@@ -100,7 +100,7 @@ angular.module('ResumeCreate', [], function () {
                                                     }
                                                 });
                                             } else if (typeof response.message === 'object') {
-                                                for (var key in response.message) {
+                                                for (let key in response.message) {
                                                     html += '<div>' + key + ' : ' + response.message[key] + '</div>';
                                                 }
                                             } else {
@@ -137,13 +137,6 @@ angular.module('ResumeCreate', [], function () {
                 }
 
             };
-
-            if ($state.current.controller === "resumeCreateController") {
-                angular.element(document).ready(function () {
-
-                });
-            }
-
         }
     ]
 );

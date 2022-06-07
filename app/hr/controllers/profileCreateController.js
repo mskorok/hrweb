@@ -38,7 +38,7 @@ angular.module('ProfileCreate', [], function () {
                 })
             }
 
-            let url = rest_api_host + 'profile/create/';
+            let url = rest_api_host + 'profile/create/'  + '?random='  + get_random_number();
 
             $scope.$on('$viewContentLoaded', function () {
                 // console.info('url', url);
@@ -169,13 +169,6 @@ angular.module('ProfileCreate', [], function () {
                 }
 
             };
-
-            if ($state.current.controller === "profileCreateController") {
-                angular.element(document).ready(function () {
-
-                });
-            }
-
         }
     ]
 );

@@ -44,7 +44,7 @@ angular.module('CompanyEdit', [], function () {
 
             $scope.company_id = company_id;
 
-            const url = rest_api_host + '/company/update/' + company_id;
+            const url = rest_api_host + '/company/update/' + company_id + '?random='  + get_random_number();
 
             $scope.$on('$viewContentLoaded', function () {
                 $http.get(url

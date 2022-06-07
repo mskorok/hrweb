@@ -37,7 +37,7 @@ angular.module('ProfileEdit', [], function () {
                 })
             }
 
-            let url = rest_api_host + 'users/' + user_id;
+            let url = rest_api_host + 'users/' + user_id  + '?random='  + get_random_number();
             $http.get(url
                 ,
                 {
@@ -59,7 +59,7 @@ angular.module('ProfileEdit', [], function () {
 
 
             $scope.$on('$viewContentLoaded', function () {
-                let url = rest_api_host + '/profile/update/' + user_id;
+                let url = rest_api_host + '/profile/update/' + user_id  + '?random='  + get_random_number();
                 $http.get(url
                     ,
                     {
@@ -226,12 +226,6 @@ angular.module('ProfileEdit', [], function () {
                 },
 
             };
-
-            if ($state.current.controller === "profileEditController") {
-                angular.element(document).ready(function () {
-
-                });
-            }
         }
     ]
 );

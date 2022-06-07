@@ -37,7 +37,7 @@ angular.module('Migration', [], function () {
             $scope.$on('$includeContentLoaded', function (event, templateName) {
                 // console.log(templateName);
                 if (templateName.toString() === 'hr/templates/partial/footer.html') {
-                    const url = rest_api_host + 'categories/sub/migration' + '?page=' + page;
+                    const url = rest_api_host + 'categories/sub/migration' + '?page=' + page  + '&random='  + get_random_number();
                     $http.get(url).then(function (data) {
                         // console.log('data events', data);
                         $scope.subcategories = data.data.data.subcategory;
@@ -101,6 +101,8 @@ angular.module('Migration', [], function () {
                         if (keyword) {
                             qs += '&q=' + keyword;
                         }
+
+                        qs  += '&random='  + get_random_number();
 
                         const url = rest_api_host + 'categories/sub/migration' + qs;
                         $http.get(url).then(function (data) {

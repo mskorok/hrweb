@@ -22,7 +22,7 @@ angular.module('Books', [], function () {
             $scope.user_name = hr_user_name();
             $scope.user_avatar = hr_user_avatar();
 
-            var page = $location.search().page;
+            let page = $location.search().page;
 
             if (!page) page = 1;
 
@@ -37,7 +37,7 @@ angular.module('Books', [], function () {
             $scope.$on('$includeContentLoaded', function (event, templateName) {
                 // console.log(templateName);
                 if (templateName.toString() === 'hr/templates/partial/footer.html') {
-                    var url = rest_api_host + 'categories/sub/books' + '?page=' + page;
+                    const url = rest_api_host + 'categories/sub/books' + '?page=' + page+ '&random='  + get_random_number();
                     $http.get(url).then(function (data) {
                         // console.log('data events', data);
                         $scope.subcategories = data.data.data.subcategory;
@@ -57,8 +57,8 @@ angular.module('Books', [], function () {
                         $scope.pageUrl = window.location.origin + window.location.pathname;
                     });
 
-                    var select = jQuery("#banner");
-                    var options = [];
+                    const select = jQuery("#banner");
+                    let options = [];
                     if (select[0]) {
                         options = select[0].querySelectorAll('option');
                     }
@@ -72,7 +72,7 @@ angular.module('Books', [], function () {
                             option.removeAttribute('selected');
                         });
                         [].forEach.call(options, function (option) {
-                            var val = parseInt(option.getAttribute('value'));
+                            const val = parseInt(option.getAttribute('value'));
                             if (val === $scope.lang) {
                                 option.setAttribute('selected', 'selected');
                             }
@@ -83,17 +83,17 @@ angular.module('Books', [], function () {
                 }
 
                 if (templateName.toString() === 'hr/templates/partial/header-search-keywords.html') {
-                    var form = document.getElementById('full_text_search_form');
+                    const form = document.getElementById('full_text_search_form');
 
                     form.addEventListener('submit', function (ev) {
                         ev.preventDefault();
                         ev.stopPropagation();
-                        var keywordInput = form.querySelector('#search_keywords');
-                        var keyword = keywordInput? keywordInput.value : null;
-                        var countryInput = form.querySelector('#banner');
-                        var country = countryInput? countryInput.value : null;
+                        const keywordInput = form.querySelector('#search_keywords');
+                        const keyword = keywordInput? keywordInput.value : null;
+                        const countryInput = form.querySelector('#banner');
+                        const country = countryInput? countryInput.value : null;
 
-                        var qs = '?page=' + page;
+                        let qs = '?page=' + page;
 
                         if (country) {
                             qs += '&country=' + country;
@@ -103,7 +103,9 @@ angular.module('Books', [], function () {
                             qs += '&q=' + keyword;
                         }
 
-                        var url = rest_api_host + 'categories/sub/books' + qs;
+                        qs += '&random='  + get_random_number();
+
+                        const url = rest_api_host + 'categories/sub/books' + qs;
                         $http.get(url).then(function (data) {
                             $scope.subcategories = data.data.data.subcategory;
                             $scope.totalItems = data.data.data.totalItems;

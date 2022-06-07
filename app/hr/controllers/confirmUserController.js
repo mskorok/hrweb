@@ -14,24 +14,24 @@ angular.module('Confirm User', [], function () {
 
     $scope.user_avatar = hr_user_avatar();
 
-    var email = $location.search().email;
+    const email = $location.search().email;
 
-    var confirm_token = $location.search().confirm_token;
+    const confirm_token = $location.search().confirm_token;
 
 
-    var confirmUrl = '/users/confirm/email';
+    const confirmUrl = '/users/confirm/email';
 
     $scope.$on('$viewContentLoaded', function () {
         rest_confirm.init();
     });
 
-    var rest_confirm = {
+    const rest_confirm = {
         init: function () {
-            var url = rest_api_host + confirmUrl + '?email=' + email + '&confirm_token=' + confirm_token;
+            const url = rest_api_host + confirmUrl + '?email=' + email + '&confirm_token=' + confirm_token + '&random='  + get_random_number();
 
             // console.log('url', url);
 
-            var xhr = new XMLHttpRequest();
+            const xhr = new XMLHttpRequest();
             xhr.onload = function () {
                 if (this.readyState === 4) {
                     if (this.status === 200) {
@@ -57,9 +57,4 @@ angular.module('Confirm User', [], function () {
             xhr.send();
         }
     };
-
-    if ($state.current.controller === "confirmUserController") {
-        angular.element(document).ready(function () {
-        });
-    }
 }]);

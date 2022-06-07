@@ -35,7 +35,7 @@ angular.module('Unsubscribe', [], function () {
                     $scope.$on('$includeContentLoaded', function (event, templateName) {
                         // console.log('tpl', templateName);
                         if (templateName.toString() === 'hr/templates/partial/footer.html') {
-                            const url = rest_api_host + 'unsubscribe/mail';
+                            const url = rest_api_host + 'unsubscribe/mail' + '?random='  + get_random_number();
                             $http.post(url, data).then(function (data) {
                                     if (data.data.result === 'OK') {
                                         $scope.success = true;

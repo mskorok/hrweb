@@ -57,7 +57,7 @@
             </a>
         </div>
         <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 m-b-20">
-            <a href="{{totalVacancies > 0 ? '/vacancy/list' : '#'}}">
+            <a href="{{totalVacancies > 0 ? '/dashboard/vacancy/list' : '#'}}">
                 <div class="search-block  d-f-center gray-color dashboard-block">
                     All Vacancies &nbsp; ({{totalVacancies}}) +
                 </div>
@@ -78,23 +78,16 @@
             </a>
         </div>
         <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 m-b-20">
+            <a href="/vacancy/me/applied/list">
+                <div class="search-block  d-f-center gray-color dashboard-block">
+                    I applied
+                </div>
+            </a>
+        </div>
+        <div ng-if="company" class="col-xs-4 col-sm-4 col-md-4 col-lg-4 m-b-20">
             <a href="/vacancy/applied/list">
                 <div class="search-block  d-f-center gray-color dashboard-block">
-                    Applied Vacancies +
-                </div>
-            </a>
-        </div>
-        <div ng-if="company" class="col-xs-4 col-sm-4 col-md-4 col-lg-4 m-b-20">
-            <a href="404.html">
-                <div class="search-block  d-f-center gray-color dashboard-block">
-                    Applied Users
-                </div>
-            </a>
-        </div>
-        <div ng-if="company" class="col-xs-4 col-sm-4 col-md-4 col-lg-4 m-b-20">
-            <a href="404.html">
-                <div class="search-block  d-f-center gray-color dashboard-block">
-                    Invited Users
+                    Applied vacancies
                 </div>
             </a>
         </div>
@@ -109,7 +102,7 @@
             </a>
         </div>
         <div  ng-if="company" class="col-xs-4 col-sm-4 col-md-4 col-lg-4 m-b-20">
-            <a href="{{totalResumes > 0 ? '/resume/list' : '#'}}">
+            <a href="{{totalResumes > 0 ? '/dashboard/resume/list' : '#'}}">
                 <div class="search-block  d-f-center gray-color dashboard-block">
                     All Resumes &nbsp; ({{totalResumes}})
                 </div>
@@ -136,20 +129,7 @@
                 </div>
             </a>
         </div>
-        <div ng-if="superadmin" class="col-xs-4 col-sm-4 col-md-4 col-lg-4 m-b-20">
-            <a href="404.html">
-                <div class="search-block  d-f-center gray-color dashboard-block">
-                    All Invited Resumes
-                </div>
-            </a>
-        </div>
-        <div  ng-if="superadmin" class="col-xs-4 col-sm-4 col-md-4 col-lg-4 m-b-20">
-            <a href="404.html">
-                <div class="search-block  d-f-center gray-color dashboard-block">
-                    All Favorite Resumes
-                </div>
-            </a>
-        </div>
+
     </div>
 </div>
 <div data-ng-include="footer"></div>

@@ -26,14 +26,14 @@ angular.module('Link', [], function () {
 
             // var article_id = window.location.pathname.split("/").pop();
 
-            var article_id = $stateParams.id;
+            const article_id = $stateParams.id;
 
             if ($state.current.controller === "linkController") {
                 $scope.$on('$viewContentLoaded', function () {
                     $scope.$on('$includeContentLoaded', function (event, templateName) {
                         // console.log('tpl', templateName);
                         if (templateName.toString() === 'hr/templates/partial/footer.html') {
-                            var url = rest_api_host + 'articles-linked/' + article_id;
+                            const url = rest_api_host + 'articles-linked/' + article_id  + '?random='  + get_random_number();
                             // console.log('url', url);
                             $http.get(url).then(function (data) {
                                     // console.log(data.data.html);
@@ -44,9 +44,6 @@ angular.module('Link', [], function () {
                                 });
                         }
                     });
-                });
-                angular.element(document).ready(function () {
-
                 });
             }
         }

@@ -20,8 +20,10 @@
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
             <div class="search-block m-b-30">
                 <div ng-show="resume.age"  class="search-grey-text right">Age: {{ resume.age }}</div>
-                <a href="/resume/{{resume.id}}" ng-cloak ng-show="resume.position" class="block-title"
-                   style="font-size: 18px;"> {{resume.position}} </a>
+                <a  ng-if="!dashboard" href="/resume/{{resume.id}}" ng-cloak ng-show="resume.position"
+                    class="block-title f-size-18"> {{resume.position}} </a>
+                <a  ng-if="dashboard" href="/dashboard/resume/{{resume.id}}" ng-cloak ng-show="resume.position"
+                    class="block-title f-size-18"> {{resume.position}} </a>
 
                 <div class="resume-user-info m-t-10">
                     <div ng-cloak ng-show="resume.location" class="search-grey-text left">{{ resume.location }}</div>
@@ -38,7 +40,8 @@
                     </div>
                     <div class="m-t-10">
                         <div class="search-block-date left">{{ resume.date }}</div>
-                        <a href="/resume/{{ resume.id }}" class="search-block-more right">More</a>
+                        <a data-ng-cloak ng-if="!dashboard" href="/resume/{{ resume.id }}" class="search-block-more right">More</a>
+                        <a data-ng-cloak ng-if="dashboard" href="/dashboard/resume/{{ resume.id }}" class="search-block-more right">More</a>
                     </div>
                 </div>
             </div>

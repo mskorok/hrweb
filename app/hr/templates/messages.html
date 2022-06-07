@@ -29,7 +29,7 @@
                                 <div class="show-comments link-color w-100 t-a-c pointer" ng-click="showComments($event)">show comments</div>
                                 <div class="hide-comments link-color w-100 t-a-c hidden pointer" ng-click="hideComments($event)">hide comments</div>
                                 <div class="row comments-container hidden hide-comments p-t-30">
-                                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 p-20 bg-comment" style="border-top-right-radius: 5px; border-top-left-radius: 5px;"  ng-repeat="child in message.children">
+                                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 p-20 bg-comment border-t-5"  ng-repeat="child in message.children">
                                         <div class="w-100">
                                             <div class="comment-item m-t-3 m-b-3 bg-comment-body w-66 modal-content p-20" ng-class="child.sender == user_id ? 'pull-left' : 'pull-right'">
                                                 <div class="f-size-14 org-color m-b-15">{{child.sender == user_id ? 'me' : message.sender.username}}</div>

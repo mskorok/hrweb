@@ -13,12 +13,16 @@ angular.module('VacancyAppliedList', [], function () {
             $scope.header_background = 'hr/templates/partial/header-background.html';
             $scope.top_menu = 'hr/templates/partial/top-menu.html';
             $scope.top_menu_mobile = 'hr/templates/partial/top-menu-mobile.html';
+            $scope.admin_menu = 'hr/templates/partial/admin-menu.html';
             $scope.pagination = 'hr/templates/partial/pagination.html';
             $scope.footer = 'hr/templates/partial/footer.html';
 
-            var token = 'Bearer ' + $cookies.get('rest_user_token');
+            const path = window.location.pathname;
+            $scope.dashboard = path.includes('dashboard');
 
-            var user_id = hr_authorized_id();
+            const token = 'Bearer ' + $cookies.get('rest_user_token');
+
+            const user_id = hr_authorized_id();
 
             $scope.user_id = user_id;
 
@@ -26,7 +30,7 @@ angular.module('VacancyAppliedList', [], function () {
 
             $scope.user_avatar = hr_user_avatar();
 
-            var page = $location.search().page;
+            let page = $location.search().page;
 
             if (typeof page == 'undefined') {
                 page = 1;
@@ -39,19 +43,64 @@ angular.module('VacancyAppliedList', [], function () {
                 })
             }
 
+            $scope.goLink = function (page) {
+                window.location = $scope.pageUrl + '?page=' + page;
+            };
+            
+            $scope.showApplicants = (event) => {
+                const parent = event.target.parentNode;
+
+                if (parent) {
+                    const show = parent.querySelectorAll('.hide-applicants');
+                    if (show) {
+                        [].forEach.call(show, (i) => {
+                            i.classList.remove('hidden');
+                        });
+                    }
+
+                    const hide = parent.querySelectorAll('.show-applicants');
+                    if (hide) {
+                        [].forEach.call(hide, (i) => {
+                            i.classList.add('hidden');
+                        });
+                    }
+                }
+            }
+
+            $scope.hideApplicants = (event) => {
+                const parent = event.target.parentNode;
+
+                if (parent) {
+                    const show = parent.querySelectorAll('.show-applicants');
+                    if (show) {
+                        [].forEach.call(show, (i) => {
+                            i.classList.remove('hidden');
+                        });
+                    }
+
+                    const hide = parent.querySelectorAll('.hide-applicants');
+                    if (hide) {
+                        [].forEach.call(hide, (i) => {
+                            i.classList.add('hidden');
+                        });
+                    }
+                }
+            }
+
 
             if ($state.current.controller === "vacancyAppliedListController") {
                 $scope.$on('$viewContentLoaded', function () {
                     $scope.$on('$includeContentLoaded', function (event, templateName) {
                         // console.log('tpl', templateName);
                         if (templateName.toString() === 'hr/templates/partial/footer.html') {
-                            var url = rest_api_host + 'vacancy/applied/list/' + page;
+                            const url = rest_api_host + 'vacancy/applied/' + page  + '?random='  + get_random_number();
                             $http.get(url
                                 ,
                                 {
                                   headers: {'Authorization': token}
                                 }
                             ).then(function (data) {
+                                console.info('data applied', data);
                                     $scope.vacancies = data.data.data.vacancies;
                                     $scope.totalItems = data.data.data.totalItems;
                                     $scope.totalPages = data.data.data.totalPages;
@@ -67,7 +116,6 @@ angular.module('VacancyAppliedList', [], function () {
                                     $scope.firstInRange = $scope.pagesRange.length > 0 ? $scope.pagesRange[0] : 0;
                                     $scope.lastInRange = $scope.pagesRange.length > 0 ? $scope.pagesRange.slice(-1)[0] : 0;
                                     $scope.pageUrl = window.location.origin + window.location.pathname;
-                                    // console.log('scope', $scope)
                                 },
                                 function (data) {
                                     console.log('error response', data);
@@ -76,9 +124,6 @@ angular.module('VacancyAppliedList', [], function () {
                     });
 
                     $templateCache.remove('hr/templates/partial/pagination.html');
-                });
-                angular.element(document).ready(function () {
-
                 });
             }
         }

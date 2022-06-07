@@ -16,17 +16,20 @@ angular.module('ResumeInvitedList', [], function () {
             $scope.pagination = 'hr/templates/partial/pagination.html';
             $scope.footer = 'hr/templates/partial/footer.html';
 
+            const path = window.location.pathname;
+            $scope.dashboard = path.includes('dashboard');
 
-            var token = 'Bearer ' + $cookies.get('rest_user_token');
 
-            var user_id = hr_authorized_id();
+            const token = 'Bearer ' + $cookies.get('rest_user_token');
+
+            const user_id = hr_authorized_id();
 
             $scope.user_id = user_id;
 
             $scope.user_name = hr_user_name();
 
             $scope.user_avatar = hr_user_avatar();
-            var page = $location.search().page;
+            let page = $location.search().page;
 
 
             if (typeof page == 'undefined') {
@@ -49,7 +52,7 @@ angular.module('ResumeInvitedList', [], function () {
                     $scope.$on('$includeContentLoaded', function (event, templateName) {
                         // console.log('tpl', templateName);
                         if (templateName.toString() === 'hr/templates/partial/footer.html') {
-                            var url = rest_api_host + 'resume/invited/list/' + page;
+                            const url = rest_api_host + 'resume/invited/list/' + page + '?random='  + get_random_number();
                             // console.log('url', url);
                             $http.get(url
                                 ,
@@ -73,7 +76,7 @@ angular.module('ResumeInvitedList', [], function () {
                                     $scope.firstInRange = $scope.pagesRange.length > 0 ? $scope.pagesRange[0] : 0;
                                     $scope.lastInRange = $scope.pagesRange.length > 0 ? $scope.pagesRange.slice(-1)[0] : 0;
                                     $scope.pageUrl = window.location.origin + window.location.pathname;
-                                    // console.log('scope', $scope)
+
                                 },
                                 function (data) {
                                     console.log('error response', data);
@@ -81,9 +84,6 @@ angular.module('ResumeInvitedList', [], function () {
                         }
                     });
                     $templateCache.remove('hr/templates/partial/pagination.html');
-                });
-                angular.element(document).ready(function () {
-
                 });
             }
         }

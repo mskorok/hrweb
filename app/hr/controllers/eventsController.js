@@ -44,7 +44,7 @@ angular.module('Events', [], function () {
                 $scope.$on('$includeContentLoaded', function (event, templateName) {
                     // console.log('tpl', templateName);
                     if (templateName.toString() === 'hr/templates/partial/footer.html') {
-                        var url = rest_api_host + 'categories/sub/events' + '?page=' + page;
+                        const url = rest_api_host + 'categories/sub/events' + '?page=' + page + '?random='  + get_random_number();
                         $http.get(url).then(function (data) {
                             $scope.subcategories = data.data.data.subcategory;
                             $scope.totalItems = data.data.data.totalItems;
@@ -65,8 +65,8 @@ angular.module('Events', [], function () {
                     }
 
                     if (templateName.toString() === 'hr/templates/partial/header-search-keywords.html') {
-                        var select = jQuery("#banner");
-                        var options = [];
+                        const select = jQuery("#banner");
+                        let options = [];
                         if (select[0]) {
                             options = select[0].querySelectorAll('option');
                         }
@@ -80,7 +80,7 @@ angular.module('Events', [], function () {
                                 option.removeAttribute('selected');
                             });
                             [].forEach.call(options, function (option) {
-                                var val = parseInt(option.getAttribute('value'));
+                                const val = parseInt(option.getAttribute('value'));
                                 if (val === $scope.lang) {
                                     option.setAttribute('selected', 'selected');
                                 }
@@ -88,17 +88,17 @@ angular.module('Events', [], function () {
                         });
 
 
-                        var form = document.getElementById('full_text_search_form');
+                        const form = document.getElementById('full_text_search_form');
 
                         form.addEventListener('submit', function (ev) {
                             ev.preventDefault();
                             ev.stopPropagation();
-                            var keywordInput = form.querySelector('#search_keywords');
-                            var keyword = keywordInput? keywordInput.value : null;
-                            var countryInput = form.querySelector('#banner');
-                            var country = countryInput? countryInput.value : null;
+                            const keywordInput = form.querySelector('#search_keywords');
+                            const keyword = keywordInput? keywordInput.value : null;
+                            const countryInput = form.querySelector('#banner');
+                            const country = countryInput? countryInput.value : null;
 
-                            var qs = '?page=' + page;
+                            let qs = '?page=' + page;
 
                             if (country) {
                                 qs += '&country=' + country;
@@ -108,7 +108,9 @@ angular.module('Events', [], function () {
                                 qs += '&q=' + keyword;
                             }
 
-                            var url = rest_api_host + 'categories/sub/events' + qs;
+                            qs += '&random='  + get_random_number();
+
+                            const url = rest_api_host + 'categories/sub/events' + qs;
                             $http.get(url).then(function (data) {
                                 // console.info('data events', data);
                                 $scope.subcategories = data.data.data.subcategory;

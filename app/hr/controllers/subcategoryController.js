@@ -61,7 +61,7 @@ angular.module('Subcategory', [], function () {
             $scope.$on('$includeContentLoaded', function (event, templateName) {
                 // console.log(templateName);
                 if (templateName.toString() === 'hr/templates/partial/footer.html') {
-                    let url = rest_api_host + 'categories/sub' + segment + '?page=' + page;
+                    let url = rest_api_host + 'categories/sub' + segment + '?page=' + page + '&random='  + get_random_number();
                     $http.get(url).then((data) => {
                         $scope.subcategories = data.data.data.subcategory;
                         $scope.totalItems = data.data.data.totalItems;
@@ -124,7 +124,9 @@ angular.module('Subcategory', [], function () {
                             qs += '&q=' + encodeURIComponent(keyword);
                         }
 
-                        let url = rest_api_host + 'categories/sub'  + segment + qs;
+                        qs += '&random='  + get_random_number();
+
+                        let url = rest_api_host + 'categories/sub'  + segment + qs + '&random='  + get_random_number();
                         $http.get(url).then((data) => {
                             $scope.subcategories = data.data.data.subcategory;
                             $scope.totalItems = data.data.data.totalItems;
@@ -155,6 +157,8 @@ angular.module('Subcategory', [], function () {
                                 }
 
                                 qs1 = qs1.slice(0, -1);
+
+                                qs1 += '&random='  + get_random_number();
                             }
 
                             $scope.pageUrl +=  qs1;

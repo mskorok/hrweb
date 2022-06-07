@@ -23,9 +23,9 @@ angular.module('Articles', [], function () {
 
             $scope.user_avatar = hr_user_avatar();
 
-            var page = $location.search().page;
-            var category = $location.search().category;
-            var tag = $location.search().tag;
+            let page = $location.search().page;
+            const category = $location.search().category;
+            const tag = $location.search().tag;
 
             if (typeof page == 'undefined') {
                 page = 1;
@@ -36,7 +36,7 @@ angular.module('Articles', [], function () {
                     $scope.$on('$includeContentLoaded', function (event, templateName) {
                         // console.log('tpl', templateName);
                         if (templateName.toString() === 'hr/templates/partial/footer.html') {
-                            var qs = '';
+                            let qs = '';
                             if (category || tag || page) {
                                 qs = '?';
 
@@ -54,10 +54,11 @@ angular.module('Articles', [], function () {
 
                                 qs = qs.slice(0, -1);
 
+                                qs += '&random='  + get_random_number();
+
                             }
 
-                            // var debug = qs === '' ? '?XDEBUG_SESSION_START=16583' : '&XDEBUG_SESSION_START=16583';
-                            var url = rest_api_host + 'articles-list' + qs;
+                            const url = rest_api_host + 'articles-list' + qs;
                             // console.log('url', url);
                             $http.get(url).then(function (data) {
                                     // console.log(data);
@@ -85,9 +86,6 @@ angular.module('Articles', [], function () {
                         }
                     });
                     $templateCache.remove('hr/templates/partial/pagination.html');
-                });
-                angular.element(document).ready(function () {
-
                 });
             }
         }

@@ -154,6 +154,8 @@ angular.module('SearchVacancy', [], function () {
 
                                 qs = qs.slice(0, -1);
 
+                                qs += '&random='  + get_random_number();
+
                                 let url = rest_api_host + 'vacancy/search' + qs;
                                 $http.get(url).then(function (data) {
                                         // console.info('data', data);
@@ -205,6 +207,8 @@ angular.module('SearchVacancy', [], function () {
                                             }
 
                                             qs1 = qs1.slice(0, -1);
+
+                                            qs += '&random='  + get_random_number();
                                         }
 
                                         $scope.pageUrl +=  qs1;

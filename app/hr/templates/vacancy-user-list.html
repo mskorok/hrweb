@@ -1,8 +1,8 @@
 <header id="header" class="  clear-fix">
     <div data-ng-include="header-content"></div>
 </header>
+<div data-ng-include="admin_menu"></div>
 <div class="container">
-    <div data-ng-include="admin_menu"></div>
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
             <center>
@@ -15,7 +15,8 @@
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
             <div class="search-block  m-b-30">
                 <div ng-show="vacancy.jobTypes[0]" class="search-grey-text right">{{ vacancy.jobTypes[0] }}</div>
-                <a href="/vacancy/{{ vacancy.id }}" class="block-title">{{ vacancy.title }}</a>
+                <a ng-if="!dashboard" href="/vacancy/{{ vacancy.id }}" ng-cloak ng-show="vacancy.name" class="block-title">{{ vacancy.name }}</a>
+                <a ng-if="dashboard" href="/dashboard/vacancy/{{ vacancy.id }}" ng-cloak ng-show="vacancy.name" class="block-title">{{ vacancy.name }}</a>
                 <div class="m-t-10">
                     <div class="search-grey-text left">
                         {{ vacancy.location }}
@@ -33,7 +34,8 @@
                 </div>
                 <div class="m-t-10">
                     <div class="search-block-date left">{{ vacancy.date }}</div>
-                    <a href="/vacancy/{{ vacancy.id }}" class="search-block-more right">More</a>
+                    <a data-ng-cloak ng-if="!dashboard" href="/vacancy/{{ vacancy.id }}" class="search-block-more right">More</a>
+                    <a data-ng-cloak ng-if="!dashboard" href="/dashboard/vacancy/{{ vacancy.id }}" class="search-block-more right">More</a>
                 </div>
             </div>
 

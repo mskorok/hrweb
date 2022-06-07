@@ -68,14 +68,14 @@ angular.module('Home', [], function () {
                         // });
                     }
                     if (templateName.toString() === 'hr/templates/partial/home-content-mobile.html') {
-                        $("#mobile_main_search").validate({
-                            rules: {
-                                field: {
-                                    required: true,
-                                    // email: true
-                                }
-                            }
-                        });
+                        // $("#mobile_main_search").validate({
+                        //     rules: {
+                        //         field: {
+                        //             required: true,
+                        //             // email: true
+                        //         }
+                        //     }
+                        // });
                     }
                 });
             });

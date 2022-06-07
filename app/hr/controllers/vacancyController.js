@@ -13,7 +13,13 @@ angular.module('Vacancy', [], function () {
         $scope.header_content = 'hr/templates/partial/header-content.html';
         $scope.top_menu = 'hr/templates/partial/top-menu.html';
         $scope.top_menu_mobile = 'hr/templates/partial/top-menu-mobile.html';
+        $scope.admin_menu = 'hr/templates/partial/admin-menu.html';
         $scope.footer = 'hr/templates/partial/footer.html';
+        const path = window.location.pathname;
+        $scope.dashboard = path.includes('dashboard');
+
+
+
         $scope.show_apply = false;
         $scope.show_applied = false;
         $scope.show_remove_favorite = false;
@@ -25,6 +31,13 @@ angular.module('Vacancy', [], function () {
         const vacancy_id = $stateParams.id;
 
         const user_id = hr_authorized_id();
+
+        if ($scope.dashboard && !user_id) {
+            console.log('id not found');
+            $state.go('login', {
+                url: '/login'
+            })
+        }
 
         $scope.user_id = user_id;
         $scope.user_name = hr_user_name();

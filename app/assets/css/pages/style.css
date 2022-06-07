@@ -2798,8 +2798,21 @@ select.placeholder-gray option:not(:first-of-type) {
     background-color: lightsteelblue !important;
 }
 
+.bg-lg {
+    background-color: lightgray;
+}
+
+.bg-llg {
+    background-color: #fefefe;
+}
+
 .bg-comment-body {
     background-color: white !important;
+}
+
+.border-t-5 {
+    border-top-right-radius: 5px !important;
+    border-top-left-radius: 5px !important;
 }
 
 @media screen and (max-width: 990px) {

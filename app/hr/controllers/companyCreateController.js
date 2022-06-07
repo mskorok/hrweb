@@ -34,7 +34,7 @@ angular.module('CompanyCreate', [], function () {
                 })
             }
 
-            let url = rest_api_host + 'company/create';
+            let url = rest_api_host + 'company/create' + '?random='  + get_random_number();
 
             $scope.$on('$viewContentLoaded', function () {
                 // console.log('url', url);
@@ -142,13 +142,6 @@ angular.module('CompanyCreate', [], function () {
                 }
 
             };
-
-            if ($state.current.controller === "companyCreateController") {
-                angular.element(document).ready(function () {
-
-                });
-            }
-
         }
     ]
 );

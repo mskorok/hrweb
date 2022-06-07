@@ -29,7 +29,7 @@ angular.module('Links', [], function () {
                     $scope.$on('$includeContentLoaded', function (event, templateName) {
                         // console.log('tpl', templateName);
                         if (templateName.toString() === 'hr/templates/partial/footer.html') {
-                            var url = rest_api_host + 'articles';
+                            const url = rest_api_host + 'articles'  + '?random='  + get_random_number();
                             // console.log('url', url);
                             $http.get(url).then(function (data) {
                                     $scope.articles = data.data.data.articles;
@@ -46,9 +46,6 @@ angular.module('Links', [], function () {
                                 });
                         }
                     });
-                });
-                angular.element(document).ready(function () {
-
                 });
             }
         }

@@ -10,20 +10,34 @@ angular.module('Resume', [], function () {
         '$stateParams',
         function ($scope, $state, $cookies, $http, $templateCache, $location, $stateParams) {
 
-            let token = 'Bearer ' + $cookies.get('rest_user_token');
+            const token = 'Bearer ' + $cookies.get('rest_user_token');
 
             $scope.hr_rest_limit = 100;
             $scope.header_content = 'hr/templates/partial/header-content.html';
             $scope.header_background = 'hr/templates/partial/header-background.html';
             $scope.top_menu = 'hr/templates/partial/top-menu.html';
             $scope.top_menu_mobile = 'hr/templates/partial/top-menu-mobile.html';
+            $scope.admin_menu = 'hr/templates/partial/admin-menu.html';
             $scope.footer = 'hr/templates/partial/footer.html';
+
+            const path = window.location.pathname;
+            $scope.dashboard = path.includes('dashboard');
+
+
+
             $scope.rest_api_host = rest_api_host;
             $scope.show_remove_favorite = false;
             $scope.show_add_favorite = false;
             $scope.company_id = null;
 
             const user_id = hr_authorized_id();
+
+            if ($scope.dashboard && !user_id) {
+                console.log('id not found');
+                $state.go('login', {
+                    url: '/login'
+                })
+            }
 
             $scope.user_id = user_id;
 

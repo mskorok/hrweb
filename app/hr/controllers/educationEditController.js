@@ -20,7 +20,7 @@ angular.module('EducationEdit', [], function () {
             $scope.top_menu_mobile = 'hr/templates/partial/top-menu-mobile.html';
             $scope.footer = 'hr/templates/partial/footer.html';
 
-            var token = 'Bearer ' + $cookies.get('rest_user_token');
+            const token = 'Bearer ' + $cookies.get('rest_user_token');
 
             $scope.user_id = hr_authorized_id();
 
@@ -36,9 +36,9 @@ angular.module('EducationEdit', [], function () {
 
             // var edu_id = window.location.pathname.split("/").pop();
 
-            var edu_id = $stateParams.id;
+            const edu_id = $stateParams.id;
 
-            var url = rest_api_host + '/education/update/' + edu_id;
+            const url = rest_api_host + '/education/update/' + edu_id + '?random='  + get_random_number();
 
             $scope.$on('$viewContentLoaded', function () {
                 $http.get(url
@@ -52,7 +52,7 @@ angular.module('EducationEdit', [], function () {
 
                         $('#content_container').html(data.data.html);
 
-                        var form = document.getElementById('education_form');
+                        const form = document.getElementById('education_form');
                         if (form) {
                             form.addEventListener('submit', function (e) {
                                 e.stopPropagation();
@@ -67,31 +67,31 @@ angular.module('EducationEdit', [], function () {
                     });
             });
 
-            var hr_edit = {
+            const hr_edit = {
                 appendCheckbox: function (form, form_data) {
                 },
                 hr_user_edit: function (form) {
                     hr_sanitize_checkbox(form);
-                    var form_data = new FormData(form);
+                    const form_data = new FormData(form);
                     this.appendCheckbox(form, form_data);
 
 
-                    var xhr = new XMLHttpRequest();
+                    const xhr = new XMLHttpRequest();
                     xhr.onload = function () {
                         if (this.readyState === 4) {
                             if (this.status === 200) {
                                 try {
                                     // console.log('æ', this.response);
-                                    var response = JSON.parse(this.response);
-                                    var error_container = document.getElementById('error_container');
-                                    var html;
+                                    const response = JSON.parse(this.response);
+                                    const error_container = document.getElementById('error_container');
+                                    let html;
                                     if (response.result === 'error') {
                                         if (error_container) {
                                             html = '';
                                             if (Array.isArray(response.message)) {
                                                 response.message.forEach(function (message) {
                                                     if (typeof message === 'object') {
-                                                        for (var key in message) {
+                                                        for (let key in message) {
                                                             html += '<div>' + key + ' : ' + message[key] + '</div>';
                                                         }
                                                     } else if (typeof message === 'string') {
@@ -99,7 +99,7 @@ angular.module('EducationEdit', [], function () {
                                                     }
                                                 });
                                             } else if (typeof response.message === 'object') {
-                                                for (var key in response.message) {
+                                                for (let key in response.message) {
                                                     html += '<div>' + key + ' : ' + response.message[key] + '</div>';
                                                 }
                                             } else {
@@ -115,7 +115,7 @@ angular.module('EducationEdit', [], function () {
                                             if (Array.isArray(response.error.message)) {
                                                 response.error.message.forEach(function (message) {
                                                     if (typeof message === 'object') {
-                                                        for (var key in message) {
+                                                        for (let key in message) {
                                                             html += '<div>' + key + ' : ' + message[key] + '</div>';
                                                         }
                                                     } else if (typeof message === 'string') {
@@ -124,7 +124,7 @@ angular.module('EducationEdit', [], function () {
                                                 })
                                             } else if (typeof response.error.message === 'string') {
                                                 try {
-                                                    var errors = JSON.parse(response);
+                                                    const errors = JSON.parse(response);
                                                     errors.forEach(function (message) {
                                                         html += '<div>' + message + '</div>';
                                                     })
@@ -157,12 +157,6 @@ angular.module('EducationEdit', [], function () {
                 },
 
             };
-
-            if ($state.current.controller === "educationEditController") {
-                angular.element(document).ready(function () {
-
-                });
-            }
         }
     ]
 );

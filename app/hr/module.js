@@ -70,6 +70,7 @@ var app = angular.module(
         'VacancyUserList',
         'VacancyFavoriteList',
         'VacancyAppliedList',
+        'VacancyMeAppliedList',
     ]
 );
 app.config(['$locationProvider', function ($locationProvider) {
@@ -516,7 +517,17 @@ app.config(['$stateProvider', '$urlRouterProvider', '$cookiesProvider', function
             templateUrl: 'hr/templates/vacancy-applied-list.html',
             data: {
                 title: 'Applied Vacancy List',
-                css: 'assets/css/pages/vacancy-favorite-list.css'
+                css: 'assets/css/pages/vacancy-applied-list.css'
+            }
+        })
+
+        .state('vacancy-me-applied-list', {
+            url: '/vacancy/me/applied/list',
+            controller: 'vacancyMeAppliedListController',
+            templateUrl: 'hr/templates/vacancy-me-applied-list.html',
+            data: {
+                title: 'Applied Vacancy List',
+                css: 'assets/css/pages/vacancy-applied-list.css'
             }
         })
 
@@ -530,7 +541,6 @@ app.config(['$stateProvider', '$urlRouterProvider', '$cookiesProvider', function
             }
         })
 
-
         .state('vacancy', {
             url: '/vacancy/:id',
             controller: 'vacancyController',
@@ -541,6 +551,47 @@ app.config(['$stateProvider', '$urlRouterProvider', '$cookiesProvider', function
             }
         })
 
+        .state('dashboard-resume-list', {
+            url: '/dashboard/resume/list',
+            controller: 'resumeListController',
+            templateUrl: 'hr/templates/resume-list.html',
+            data: {
+                title: 'List Resume ',
+                css: 'assets/css/pages/resume-list.css'
+            }
+        })
+
+        .state('dashboard-resume', {
+            url: '/dashboard/resume/:id',
+            controller: 'resumeController',
+            templateUrl: 'hr/templates/resume.html',
+            data: {
+                title: 'Resume',
+                css: 'assets/css/pages/resume.css'
+            }
+        })
+
+
+        .state('dashboard-vacancy-list', {
+            url: '/dashboard/vacancy/list',
+            controller: 'vacancyListController',
+            templateUrl: 'hr/templates/vacancy-list.html',
+            data: {
+                title: 'List Vacancy ',
+                css: 'assets/css/pages/vacancy-list.css'
+            }
+        })
+
+
+        .state('dashboard-vacancy', {
+            url: '/dashboard/vacancy/:id',
+            controller: 'vacancyController',
+            templateUrl: 'hr/templates/vacancy.html',
+            data: {
+                title: 'Vacancy',
+                css: 'assets/css/pages/vacancy.css'
+            }
+        })
 
         .state('education-edit', {
             url: '/education/edit/:id',

@@ -28,14 +28,14 @@ angular.module('Article', [], function () {
 
             // var article_id = window.location.pathname.split("/").pop();
 
-            var article_id = $stateParams.id;
+            const article_id = $stateParams.id;
 
             if ($state.current.controller === "articleController") {
                 $scope.$on('$viewContentLoaded', function () {
                     $scope.$on('$includeContentLoaded', function (event, templateName) {
                         // console.log('tpl', templateName);
                         if (templateName.toString() === 'hr/templates/partial/footer.html') {
-                            var url = rest_api_host + 'articles/' + article_id;
+                            const url = rest_api_host + 'articles/' + article_id+ '?random='  + get_random_number();
 
                             // console.log('url', url);
                             $http.get(url).then(function (data) {
@@ -44,8 +44,8 @@ angular.module('Article', [], function () {
                                     $scope.lang = $scope.article.language_id;
 
 
-                                    var select = jQuery("#banner");
-                                    var options = [];
+                                    const select = jQuery("#banner");
+                                    let options = [];
                                     if (select[0]) {
                                         options = select[0].querySelectorAll('option');
                                     }
@@ -53,7 +53,7 @@ angular.module('Article', [], function () {
                                         option.removeAttribute('selected');
                                     });
                                     [].forEach.call(options, function (option) {
-                                        var val = parseInt(option.getAttribute('value'));
+                                        const val = parseInt(option.getAttribute('value'));
                                         if (val === $scope.lang) {
                                             option.setAttribute('selected', 'selected');
                                         }
@@ -63,7 +63,7 @@ angular.module('Article', [], function () {
                                     select.chosen({width: "100px",});
                                     select.chosen().change(function () {
                                         $scope.lang = parseInt($(this).val());
-                                        var url_translated = rest_api_host + 'article-translated/' + $scope.article.id + '/' + $scope.lang;
+                                        const url_translated = rest_api_host + 'article-translated/' + $scope.article.id + '/' + $scope.lang+ '?random='  + get_random_number();
                                         $http.get(url_translated).then(function (data) {
                                             $scope.article.title = data.data.title;
                                             $scope.article.text = data.data.text;
@@ -75,9 +75,6 @@ angular.module('Article', [], function () {
                                 });
                         }
                     });
-                });
-                angular.element(document).ready(function () {
-
                 });
             }
         }

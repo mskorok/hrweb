@@ -25,7 +25,7 @@ angular.module('Experience', [], function () {
             $scope.user_avatar = hr_user_avatar();
             // var exp_id = window.location.pathname.split("/").pop();
 
-            var exp_id = $stateParams.id;
+            const exp_id = $stateParams.id;
 
 
             if ($state.current.controller === "experienceController") {
@@ -33,7 +33,7 @@ angular.module('Experience', [], function () {
                     $scope.$on('$includeContentLoaded', function (event, templateName) {
                         // console.log('tpl', templateName);
                         if (templateName.toString() === 'hr/templates/partial/footer.html') {
-                            var url = rest_api_host + 'experience' + exp_id;
+                            const url = rest_api_host + 'experience' + exp_id + '?random='  + get_random_number();
                             $http.get(url).then(function (data) {
                                     $scope.experience = data.data;
                                 },
@@ -42,9 +42,6 @@ angular.module('Experience', [], function () {
                                 });
                         }
                     });
-                });
-                angular.element(document).ready(function () {
-
                 });
             }
         }

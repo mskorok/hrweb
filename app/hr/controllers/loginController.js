@@ -17,7 +17,7 @@ angular.module('Login', [], function () {
             $scope.top_menu_mobile = 'hr/templates/partial/top-menu-mobile.html';
             $scope.footer = 'hr/templates/partial/footer.html';
 
-            var user_id = hr_authorized_id();
+            const user_id = hr_authorized_id();
 
             $scope.user_id = user_id;
 
@@ -32,17 +32,17 @@ angular.module('Login', [], function () {
             }
 
             $scope.$on('$viewContentLoaded', function () {
-                var url = rest_api_host + hr_login_get_url;
-                var xhr = new XMLHttpRequest();
+                const url = rest_api_host + hr_login_get_url  + '?random='  + get_random_number();
+                const xhr = new XMLHttpRequest();
                 xhr.onload = function () {
                     if (this.readyState === 4) {
                         if (this.status === 200) {
                             try {
-                                var response = JSON.parse(this.response);
+                                const response = JSON.parse(this.response);
                                 // console.log(response.html);
                                 $('#login_container').html(response.html);
                                 $('#ajax_loader').hide();
-                                var form = document.getElementById('login_form');
+                                const form = document.getElementById('login_form');
                                 if (form) {
                                     form.addEventListener('submit', function (e) {
                                         e.stopPropagation();
@@ -64,9 +64,9 @@ angular.module('Login', [], function () {
                 xhr.send();
             });
 
-            var hr_ajax_login = {
+            const hr_ajax_login = {
                 login: function (form) {
-                    var name, password, remember;
+                    let name, password, remember;
                     if (typeof form.username.value != 'undefined') {
                         name = form.username.value;
                     } else {

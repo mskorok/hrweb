@@ -11,10 +11,16 @@ angular.module('VacancyList', [], function () {
             $scope.hr_rest_limit = 100;
             $scope.header_content = 'hr/templates/partial/header-content.html';
             $scope.header_background = 'hr/templates/partial/header-background.html';
-            $scope.top_menu = 'hr/templates/partial/top-menu.html';
-            $scope.top_menu_mobile = 'hr/templates/partial/top-menu-mobile.html';
             $scope.pagination = 'hr/templates/partial/pagination.html';
             $scope.footer = 'hr/templates/partial/footer.html';
+            $scope.admin_menu = 'hr/templates/partial/admin-menu.html';
+            $scope.top_menu = 'hr/templates/partial/top-menu.html';
+            $scope.top_menu_mobile = 'hr/templates/partial/top-menu-mobile.html';
+
+
+            const path = window.location.pathname;
+
+            $scope.dashboard = path.includes('dashboard');
 
 
             $scope.user_id = hr_authorized_id();
@@ -23,7 +29,14 @@ angular.module('VacancyList', [], function () {
 
             $scope.user_avatar = hr_user_avatar();
 
-            var page = $location.search().page;
+            if ($scope.dashboard && !$scope.user_id) {
+                console.log('id not found');
+                $state.go('login', {
+                    url: '/login'
+                })
+            }
+
+            let page = $location.search().page;
 
             if (typeof page == 'undefined') {
                 page = 1;
@@ -39,8 +52,9 @@ angular.module('VacancyList', [], function () {
                     $scope.$on('$includeContentLoaded', function (event, templateName) {
                         // console.log('tpl', templateName);
                         if (templateName.toString() === 'hr/templates/partial/footer.html') {
-                            var url = rest_api_host + '/vacancy/list/' + page;
-                            $http.get(url).then(function (data) {
+                            const url = rest_api_host + '/vacancy/list/' + page  + '?random='  + get_random_number();
+                            $http.get(url).then((data) => {
+                                // console.info('data', data);
                                     $scope.vacancies = data.data.data.vacancies;
                                     $scope.totalItems = data.data.data.totalItems;
                                     $scope.totalPages = data.data.data.totalPages;
@@ -64,9 +78,6 @@ angular.module('VacancyList', [], function () {
                         }
                     });
                     $templateCache.remove('hr/templates/partial/pagination.html');
-                });
-                angular.element(document).ready(function () {
-
                 });
             }
         }

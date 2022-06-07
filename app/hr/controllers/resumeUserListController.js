@@ -16,10 +16,13 @@ angular.module('ResumeUserList', [], function () {
             $scope.pagination = 'hr/templates/partial/pagination.html';
             $scope.footer = 'hr/templates/partial/footer.html';
 
+            const path = window.location.pathname;
+            $scope.dashboard = path.includes('dashboard');
 
-            var token = 'Bearer ' + $cookies.get('rest_user_token');
 
-            var user_id = hr_authorized_id();
+            const token = 'Bearer ' + $cookies.get('rest_user_token');
+
+            const user_id = hr_authorized_id();
 
             $scope.user_id = user_id;
 
@@ -27,9 +30,7 @@ angular.module('ResumeUserList', [], function () {
 
             $scope.user_avatar = hr_user_avatar();
 
-            var page = $location.search().page;
-
-            // console.log('page', page);
+            let page = $location.search().page;
 
             if (typeof page == 'undefined') {
                 page = 1;
@@ -52,7 +53,7 @@ angular.module('ResumeUserList', [], function () {
                     $scope.$on('$includeContentLoaded', function (event, templateName) {
                         // console.log('tpl', templateName);
                         if (templateName.toString() === 'hr/templates/partial/footer.html') {
-                            var url = rest_api_host + 'resume/user/list/' + page;
+                            const url = rest_api_host + 'resume/user/list/' + page + '?random='  + get_random_number();
                             // console.log('url', url);
                             $http.get(url
                                 ,
@@ -84,9 +85,6 @@ angular.module('ResumeUserList', [], function () {
                     });
 
                     $templateCache.remove('hr/templates/partial/pagination.html');
-                });
-                angular.element(document).ready(function () {
-
                 });
             }
         }

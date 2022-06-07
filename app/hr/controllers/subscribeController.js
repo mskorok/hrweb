@@ -57,7 +57,7 @@ angular.module('Subscribe', [], function () {
 
                             if (mail_form_mobile) {
                                 mail_form_mobile.addEventListener('submit', function (ev) {
-                                    let url = rest_api_host + hr_mail_subscription_url;
+                                    let url = rest_api_host + hr_mail_subscription_url  + '?random='  + get_random_number();
                                     let xhr = new XMLHttpRequest();
                                     let form_data = new FormData(mail_form_mobile);
                                     xhr.onload = function () {
@@ -123,9 +123,6 @@ angular.module('Subscribe', [], function () {
                         }
                     });
                     $templateCache.remove('hr/templates/partial/pagination.html');
-                });
-                angular.element(document).ready(function () {
-
                 });
             }
         }

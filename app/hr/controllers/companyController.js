@@ -78,7 +78,7 @@ angular.module('Company', [], function () {
                     $scope.$on('$includeContentLoaded', function (event, templateName) {
                         // console.log('tpl', templateName);
                         if (templateName.toString() === 'hr/templates/partial/footer.html') {
-                            const url = rest_api_host + 'companies/' + company_id + '?include=Countries,Images';
+                            const url = rest_api_host + 'companies/' + company_id + '?include=Countries,Images' + '&random='  + get_random_number();
                             $http.get(url).then(function (data) {
                                     $scope.company = data.data.company;
                                     $scope.avatar = rest_api_host + $scope.company.Images.path + $scope.company.Images.fileName;

@@ -23,16 +23,14 @@ angular.module('Education', [], function () {
             $scope.user_name = hr_user_name();
 
             $scope.user_avatar = hr_user_avatar();
-            var edu_id = window.location.pathname.split("/").pop();
-
-
+            const edu_id = window.location.pathname.split("/").pop();
 
             if ($state.current.controller === "educationController") {
                 $scope.$on('$viewContentLoaded', function () {
                     $scope.$on('$includeContentLoaded', function (event, templateName) {
                         // console.log('tpl', templateName);
                         if (templateName.toString() === 'hr/templates/partial/footer.html') {
-                            var url = rest_api_host + 'education' + edu_id;
+                            const url = rest_api_host + 'education' + edu_id + '?random='  + get_random_number();
                             $http.get(url).then(function (data) {
                                     $scope.education = data.data;
                                     $('#content_container').html(data.data.html);
@@ -42,9 +40,6 @@ angular.module('Education', [], function () {
                                 });
                         }
                     });
-                });
-                angular.element(document).ready(function () {
-
                 });
             }
         }

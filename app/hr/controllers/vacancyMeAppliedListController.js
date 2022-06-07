@@ -1,6 +1,6 @@
-angular.module('ResumeFavoriteList', [], function () {
-    // console.log('module ResumeFavoriteList init');
-}).controller('resumeFavoriteListController', [
+angular.module('VacancyMeAppliedList', [], function () {
+    // console.log('module VacancyAppliedList init');
+}).controller('vacancyMeAppliedListController', [
         "$scope",
         '$state',
         '$cookies',
@@ -13,12 +13,12 @@ angular.module('ResumeFavoriteList', [], function () {
             $scope.header_background = 'hr/templates/partial/header-background.html';
             $scope.top_menu = 'hr/templates/partial/top-menu.html';
             $scope.top_menu_mobile = 'hr/templates/partial/top-menu-mobile.html';
+            $scope.admin_menu = 'hr/templates/partial/admin-menu.html';
             $scope.pagination = 'hr/templates/partial/pagination.html';
             $scope.footer = 'hr/templates/partial/footer.html';
 
             const path = window.location.pathname;
             $scope.dashboard = path.includes('dashboard');
-
 
             const token = 'Bearer ' + $cookies.get('rest_user_token');
 
@@ -29,6 +29,7 @@ angular.module('ResumeFavoriteList', [], function () {
             $scope.user_name = hr_user_name();
 
             $scope.user_avatar = hr_user_avatar();
+
             let page = $location.search().page;
 
             if (typeof page == 'undefined') {
@@ -46,21 +47,21 @@ angular.module('ResumeFavoriteList', [], function () {
                 window.location = $scope.pageUrl + '?page=' + page;
             };
 
-            if ($state.current.controller === "resumeFavoriteListController") {
+
+            if ($state.current.controller === "vacancyMeAppliedListController") {
                 $scope.$on('$viewContentLoaded', function () {
                     $scope.$on('$includeContentLoaded', function (event, templateName) {
                         // console.log('tpl', templateName);
                         if (templateName.toString() === 'hr/templates/partial/footer.html') {
-                            const url = rest_api_host + 'favorite-resume/list/' + page + '?random='  + get_random_number();
-                            // console.log('url', url);
+                            const url = rest_api_host + 'vacancy/me/applied/' + page  + '?random='  + get_random_number();
                             $http.get(url
                                 ,
                                 {
                                   headers: {'Authorization': token}
                                 }
                             ).then(function (data) {
-                                    // console.log(data.data.data.resumes);
-                                    $scope.resumes = data.data.data.resumes;
+                                    console.info('data me applied', data);
+                                    $scope.vacancies = data.data.data.vacancies;
                                     $scope.totalItems = data.data.data.totalItems;
                                     $scope.totalPages = data.data.data.totalPages;
                                     $scope.limit = data.data.data.limit;

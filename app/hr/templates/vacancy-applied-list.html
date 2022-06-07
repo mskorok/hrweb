@@ -1,17 +1,17 @@
 <header id="header" class="  clear-fix">
     <div data-ng-include="header_content"></div>
 </header>
-<div class="container m-t-75">
-    <div data-ng-include="admin_menu"></div>
+<div data-ng-include="admin_menu"></div>
+<div class="container m-t-75  m-b-150">
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
             <center>
                 <div id="error_container" class="red-color f-size-24"></div>
             </center>
         </div>
-        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 m-b-50 t-a-c">
-            <div ng-cloak class="block-title">
-                <h2 class="title-color">Applied</h2>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="left   m-b-50">
+                <span class="f-size-28 title-color m-l-30">Applied</span>
             </div>
         </div>
     </div>
@@ -20,7 +20,8 @@
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
             <div class="search-block  m-b-30">
                 <div ng-show="vacancy.work_place" ng-cloak class="search-grey-text right">{{ vacancy.work_place }}</div>
-                <a href="/vacancy/{{ vacancy.id }}" ng-cloak ng-show="vacancy.name" class="block-title">{{ vacancy.name }}</a>
+                <a ng-if="!dashboard" href="/vacancy/{{ vacancy.id }}" ng-cloak ng-show="vacancy.name" class="block-title title-color">{{ vacancy.name }}</a>
+                <a ng-if="dashboard" href="/dashboard/vacancy/{{ vacancy.id }}" ng-cloak ng-show="vacancy.name" class="block-title title-color">{{ vacancy.name }}</a>
                 <div class="m-t-10">
                     <div ng-cloak ng-show="vacancy.location" class="search-grey-text left">
                         {{ vacancy.location }}
@@ -38,7 +39,30 @@
                 </div>
                 <div class="m-t-10">
                     <div ng-cloak ng-show="vacancy.creationDate" class="search-block-date left">{{ vacancy.creationDate }}</div>
-                    <a href="/vacancy/{{ vacancy.id }}" class="search-block-more right">More</a>
+                    <a data-ng-cloak ng-if="!dashboard" href="/vacancy/{{ vacancy.id }}" class="search-block-more right">More</a>
+                    <a data-ng-cloak ng-if="dashboard" href="/dashboard/vacancy/{{ vacancy.id }}" class="search-block-more right">More</a>
+                </div>
+                <div class="w-100 t-a-c m-t-20 m-b-10">
+                    <div class="show-applicants link-color w-100 t-a-c pointer" ng-click="showApplicants($event)">show applicants</div>
+                    <div class="hide-applicants link-color w-100 t-a-c hidden pointer" ng-click="hideApplicants($event)">hide applicants</div>
+                    <div class="row bg-llg hide-applicants hidden m-t-15 p-t-10 p-b-10 border-t-5" ng-repeat="applied in vacancy.applied">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ">
+                            <div class="f-size-18 title-color t-a-l m-l-50"> {{applied.applicant.name}} &nbsp; {{applied.applicant.surname}}</div>
+                            <div class="row p-t-5 p-b-5"  ng-repeat="resume in applied.resumes">
+                                <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 ">
+
+                                </div>
+                                <div class="col-xs-9 col-sm-9 col-md-6 col-lg-6 ">
+                                    <div class="f-size-14 gray-color t-a-l m-l-50">
+                                        <span class="fwbl">{{resume.position}} &nbsp; | &nbsp; {{resume.location}} </span>
+                                        <a href="/dashboard/resume/{{resume.id}}" target="_blank" class="link-color m-l-50 f-s-14">More</a>
+                                    </div>
+                                </div>
+
+                                <hr class=" w-100 gray-color">
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 

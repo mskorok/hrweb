@@ -129,6 +129,7 @@ angular.module('SearchArticle', [], function () {
                                 }
 
                                 qs = qs.slice(0, -1);
+                                qs += '&random='  + get_random_number()
                             }
 
 
@@ -173,6 +174,8 @@ angular.module('SearchArticle', [], function () {
                                         }
 
                                         qs1 = qs1.slice(0, -1);
+
+                                        qs1 += '&random='  + get_random_number()
                                     }
 
                                     $scope.pageUrl +=  qs1;

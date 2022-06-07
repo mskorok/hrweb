@@ -24,17 +24,17 @@ angular.module('Login Recovery', [], function () {
 
 
             $scope.$on('$viewContentLoaded', function () {
-                var url = rest_api_host + hr_login_recovery_get_url;
+                const url = rest_api_host + hr_login_recovery_get_url  + '?random='  + get_random_number();
 
-                var xhr = new XMLHttpRequest();
+                const xhr = new XMLHttpRequest();
                 xhr.onload = function () {
                     if (this.readyState === 4) {
                         if (this.status === 200) {
                             try {
-                                var response = JSON.parse(this.response);
+                                const response = JSON.parse(this.response);
                                 $('#login_recovery_container').html(response.html);
                                 $('#ajax_loader').hide();
-                                var form = document.getElementById('login_recovery_form');
+                                const form = document.getElementById('login_recovery_form');
                                 if (form) {
                                     form.addEventListener('submit', function (e) {
                                         e.stopPropagation();
@@ -56,19 +56,19 @@ angular.module('Login Recovery', [], function () {
                 xhr.send();
             });
 
-            var hr_ajax_login_recovery = {
+            const hr_ajax_login_recovery = {
                 login_recovery: function (form) {
-                    var form_data = new FormData(form);
-                    var url = rest_api_host + hr_login_recovery_post_url;
+                    const form_data = new FormData(form);
+                    const url = rest_api_host + hr_login_recovery_post_url;
                     // console.log('u', url);
-                    var xhr = new XMLHttpRequest();
+                    const xhr = new XMLHttpRequest();
                     xhr.onload = function () {
                         if (this.readyState === 4) {
                             if (this.status === 200) {
                                 try {
                                     // console.log('resp', this.response);
-                                    var response = JSON.parse(this.response);
-                                    var message = response.result;
+                                    const response = JSON.parse(this.response);
+                                    const message = response.result;
                                     $('#login_recovery_container').html('<div class="recovery-response">' + message + '</div>');
                                 } catch (e) {
                                     console.log('error', e);

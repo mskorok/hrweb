@@ -32,7 +32,7 @@ angular.module('ResumeEdit', [], function () {
 
             let resume_id = $stateParams.id;
 
-            let url = rest_api_host + '/resume/update/' + resume_id;
+            let url = rest_api_host + '/resume/update/' + resume_id + '?random='  + get_random_number();
 
             if (!user_id) {
                 console.log('id not found');
@@ -50,9 +50,6 @@ angular.module('ResumeEdit', [], function () {
                         headers: {'Authorization': token}
                     }
                 ).then(function (data) {
-                        // console.info('loaded', new Date().getTime());
-                        // console.info('form', data.data.html);
-
                         $('#content_container').html(data.data.html);
 
                         let form = document.getElementById('resume_form');
@@ -160,12 +157,6 @@ angular.module('ResumeEdit', [], function () {
                 },
 
             };
-
-            if ($state.current.controller === "resumeEditController") {
-                angular.element(document).ready(function () {
-
-                });
-            }
         }
     ]
 );

@@ -346,9 +346,6 @@ angular.module('Messages', [], function () {
                         }
                     });
                 });
-                angular.element(document).ready(function () {
-
-                });
             }
         }
     ]
