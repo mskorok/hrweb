@@ -1908,26 +1908,26 @@ select.placeholder-gray option:not(:first-of-type) {
 }
 
 .btn-orange {
-    background-color: #F6AE01;
-    background: linear-gradient(top, #F6AE01, #F4AC01);
-    background: -webkit-linear-gradient(top, #F6AE01, #F4AC01);
-    background: -moz-linear-gradient(top, #F6AE01, #F4AC01);
-    background: -o-linear-gradient(top, #F6AE01, #F4AC01);
-    background: -ms-linear-gradient(top, #F6AE01, #F4AC01);
-    border: thin solid #BD8200;
+    background-color: #F6AE01 !important;
+    background: linear-gradient(top, #F6AE01, #F4AC01) !important;
+    background: -webkit-linear-gradient(top, #F6AE01, #F4AC01) !important;
+    background: -moz-linear-gradient(top, #F6AE01, #F4AC01) !important;
+    background: -o-linear-gradient(top, #F6AE01, #F4AC01) !important;
+    background: -ms-linear-gradient(top, #F6AE01, #F4AC01) !important;
+    border: thin solid #BD8200 !important;
     font-weight: 700;
-    color: white;
+    color: white !important;
     outline-style: none;
 }
 
 .btn-orange:hover, .btn-orange:visited, .btn-orange:active, .btn-orange:focus, .btn-orange:link {
     color: white !important;
-    background-color: #F4AC01;
-    background: linear-gradient(top, #F4AC01, #EB9601);
-    background: -webkit-linear-gradient(top, #F4AC01, #EB9601);
-    background: -moz-linear-gradient(top, #F4AC01, #EB9601);
-    background: -o-linear-gradient(top, #F4AC01, #EB9601);
-    background: -ms-linear-gradient(top, #F4AC01, #EB9601);
+    background-color: #F4AC01 !important;
+    background: linear-gradient(top, #F4AC01, #EB9601) !important;
+    background: -webkit-linear-gradient(top, #F4AC01, #EB9601) !important;
+    background: -moz-linear-gradient(top, #F4AC01, #EB9601) !important;
+    background: -o-linear-gradient(top, #F4AC01, #EB9601) !important;
+    background: -ms-linear-gradient(top, #F4AC01, #EB9601) !important;
     border: thin solid #BD8200;
     border-color: #fb9f4e;
     outline-style: none;
@@ -2806,6 +2806,10 @@ select.placeholder-gray option:not(:first-of-type) {
     background-color: #fefefe;
 }
 
+.bg-yellow {
+    background-color: #F6D101;
+}
+
 .bg-comment-body {
     background-color: white !important;
 }
@@ -3453,5 +3457,10 @@ label.error {
 .checkbox-position {
     position: relative;
     top: 3px;
+}
+
+.search-style-grey {
+    height: 100px;
+    background-color: #ebebeb;
 }
 

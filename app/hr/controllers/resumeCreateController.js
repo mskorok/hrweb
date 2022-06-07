@@ -15,6 +15,7 @@ angular.module('ResumeCreate', [], function () {
             $scope.header_background = 'hr/templates/partial/header-background.html';
             $scope.top_menu = 'hr/templates/partial/top-menu.html';
             $scope.top_menu_mobile = 'hr/templates/partial/top-menu-mobile.html';
+            $scope.admin_menu = 'hr/templates/partial/admin-menu.html';
             $scope.footer = 'hr/templates/partial/footer.html';
 
             const token = 'Bearer ' + $cookies.get('rest_user_token');
@@ -42,7 +43,12 @@ angular.module('ResumeCreate', [], function () {
                       headers: {'Authorization': token}
                     }
                 ).then(function (data) {
-                        $('#content_container').html(data.data.html);
+                    console.info('data', data.data.html);
+                    const container = document.getElementById('content_container');
+                    if (container) {
+                        container.innerHTML = data.data.html;
+                    }
+                        // $('#content_container').html(data.data.html);
 
                         hr_create.init();
                         hr_create.autocomplete();

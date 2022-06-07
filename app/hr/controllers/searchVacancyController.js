@@ -11,7 +11,7 @@ angular.module('SearchVacancy', [], function () {
             $scope.hr_rest_limit = 100;
             $scope.header_content = 'hr/templates/partial/header-content.html';
             $scope.header_background = 'hr/templates/partial/header-search-background.html';
-            $scope.header_search_page = 'hr/templates/partial/header-search-resume.html';
+            $scope.header_search_page = 'hr/templates/partial/header-search-vacancy.html';
             $scope.top_menu = 'hr/templates/partial/top-menu.html';
             $scope.top_menu_mobile = 'hr/templates/partial/top-menu-mobile.html';
             $scope.pagination = 'hr/templates/partial/pagination.html';

@@ -2,7 +2,7 @@
      style="height: 100px;">
 
     <form id="full_text_search_form"  novalidate action="/search-resume">
-        <div class="section-content p-t-10" style="height: 100px;">
+        <div class="section-content search-style-grey p-t-10">
             <div class="page-search-form">
                 <div class="row">
                     <div class="col-md-5 col-lg-5">
@@ -22,9 +22,9 @@
                             <div class="w-100">
                                 <button class="btn btn-orange" type="submit">Search Resume</button>
                             </div>
-                            <div class="w-100">
-                                <div class="add-block m-t-3">
-                                    <a id="addVacancyButton" href="/vacancy/create" title="Add vacancy">
+                            <div class="w-100" ng-if="user_id">
+                                <div class="add-block m-t-5">
+                                    <a id="addVacancyButton" href="/vacancy/create" target="_blank" title="Add vacancy">
                                         <img src="assets/images/new/plus.svg"
                                              alt=""
                                              class="m-t-5"
@@ -64,7 +64,6 @@
                                 id="search_currency"
                                 data-live-search="true"
                                 name="currencies">
-                            <option></option>
                             <option value="USD"  ng-selected="currencies === 'USD'">USD</option>
                             <option value="EURO" ng-selected="currencies === 'EURO'">EURO</option>
                             <option value="GBP"  ng-selected="currencies === 'GBP'">GBP</option>
@@ -171,7 +170,6 @@
                         data-live-search="true"
                         id="mobile_search_currency"
                         name="currencies">
-                    <option value=""></option>
                     <option value="USD"  ng-selected="currencies === 'USD'">USD</option>
                     <option value="EURO" ng-selected="currencies === 'EURO'">EURO</option>
                     <option value="GBP"  ng-selected="currencies === 'GBP'">GBP</option>
